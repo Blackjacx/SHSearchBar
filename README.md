@@ -5,11 +5,11 @@
 [![License](https://img.shields.io/cocoapods/l/SHSearchBar.svg?style=flat)](http://cocoapods.org/pods/SHSearchBar)
 [![Platform](https://img.shields.io/cocoapods/p/SHSearchBar.svg?style=flat)](http://cocoapods.org/pods/SHSearchBar)
 
+The clean and shiny search bar that does what UISearchBar does only with dirty hacks. This search bar class is designed to overcome the customization limits of UISearchBar. The difference here is that this class does not inherit UISearchBar but composes a new UIControl object by using a UITextField that is much easier to use.
+
 ## Example
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
-
-## Requirements
 
 ## Installation
 
@@ -22,7 +22,7 @@ pod "SHSearchBar"
 
 ## Author
 
-Stefan Herold, stefan.herold@flincteam.org
+Stefan Herold, stefan.herold@gmail.com
 
 ## License
 
