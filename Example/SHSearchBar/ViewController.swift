@@ -7,18 +7,21 @@
 //
 
 import UIKit
+import SHSearchBar
 
 class ViewController: UIViewController {
 
+    var searchBar: SHSearchBar = SHSearchBar()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.white()
+        
+        
+        
+        view.addSubview(searchBar)
+        
+        
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
 }
 
