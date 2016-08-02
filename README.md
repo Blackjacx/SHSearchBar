@@ -22,10 +22,14 @@ pod "SHSearchBar"
 
 ## Next Steps
 
+- cancel button not yet shown
 - complete the search bar class
+- add support for a blurred background view
 - create the example project
 - add tests
 - implement protocols: ShadowCaster, RectRounding including the protocol extensions that implement the methods behind it. So you can just conform any view to the protocol and it will have a default shadow/ round corners. PLus you will have control over the parameters via the protocol.
+- test programmatic use
+- implement storyboard support (low priority)
 
 ## Author
 
