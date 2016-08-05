@@ -30,6 +30,7 @@ pod "SHSearchBar"
 
 - solve the scaling text on textField width animation bug when there are multiple SHSearchBars on the same view (liek the example)
 - use the class in a real project
+- put the examples with images in this readme
 - add support for a blurred background view
 - add tests
 - test programmatic use
