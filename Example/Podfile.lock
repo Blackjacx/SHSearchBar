@@ -1,5 +1,5 @@
 PODS:
-  - SHSearchBar (0.1.0)
+  - SHSearchBar (1.0.0)
 
 DEPENDENCIES:
   - SHSearchBar (from `../`)
@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  SHSearchBar: d44f985f785ce87acf326616efae5a9ccc4e32b2
+  SHSearchBar: 18a0d3e80d4c9693ae5e95168d5dd2d0bf290cd3
 
 PODFILE CHECKSUM: 70094350671a13b314712dbefad5b9011d4bbaf6
 

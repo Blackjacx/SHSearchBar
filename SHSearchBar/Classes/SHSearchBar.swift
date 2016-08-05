@@ -115,9 +115,9 @@ public class SHSearchBar: UIView, UITextFieldDelegate {
             addConstraints(NSLayoutConstraint.constraints(withVisualFormat: format, options: [], metrics: metrics, views: views))
         }
 
-        cancelButton.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-        bgToCancelButtonConstraint = backgroundView.trailingAnchor.constraint(equalTo: cancelButton.leadingAnchor, constant: -kDefaultRasterSize)
-        bgToParentConstraint = backgroundView.trailingAnchor.constraint(equalTo: trailingAnchor)
+        NSLayoutConstraint(item: cancelButton, attribute: .centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1, constant: 0).isActive = true
+        bgToCancelButtonConstraint = NSLayoutConstraint(item: backgroundView, attribute: .trailing, relatedBy: .equal, toItem: cancelButton, attribute: .leading, multiplier: 1, constant: -kDefaultRasterSize)
+        bgToParentConstraint = NSLayoutConstraint(item: backgroundView, attribute: .trailing, relatedBy: .equal, toItem: self, attribute: .trailing, multiplier: 1, constant: 0)
         bgToParentConstraint.isActive = true
     }
 

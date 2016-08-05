@@ -20,7 +20,7 @@ The example project shows different use cases of the searchbar. To run it, clone
 
 ## Installation
 
-SHSearchBar is compatible with `iOS 9` or higher and `Xcode 8 beta 4` with the newest `Swift 3` Syntax. It is available through [CocoaPods](http://cocoapods.org). To install it, simply add the following line to your Podfile:
+SHSearchBar is compatible with `iOS 8` or higher and build with `Xcode 8 beta 4` and the newest `Swift 3` syntax. It is available through [CocoaPods](http://cocoapods.org). To install it, simply add the following line to your Podfile:
 
 ```ruby
 pod "SHSearchBar"
