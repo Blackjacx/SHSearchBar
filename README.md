@@ -5,16 +5,22 @@
 [![License](https://img.shields.io/cocoapods/l/SHSearchBar.svg?style=flat)](http://cocoapods.org/pods/SHSearchBar)
 [![Platform](https://img.shields.io/cocoapods/p/SHSearchBar.svg?style=flat)](http://cocoapods.org/pods/SHSearchBar)
 
-The clean and shiny search bar that does what UISearchBar does only with dirty hacks. This search bar class is designed to overcome the customization limits of UISearchBar. The difference here is that this class does not inherit UISearchBar but composes a new UIView object by using a UITextField that is much easier to use.
+The clean and shiny search bar that does what UISearchBar does only with dirty hacks. This search bar class is designed to overcome the customization limits of UISearchBar. The difference here is that this class does not inherit UISearchBar but composes a new UIView object by using a UITextField that is much easier to use. The limits of the search bar are as follows:
+
+- no clean way to left align the placeholder
+- the cancel button is hard to taylor to your needs
+- generally the appearance is not customizable (e.g. the font of the text)
+- there are some strange behaviours when you set a custom background image
+
+Since I use a UITextField these restrictions do not apply.
 
 ## Example
 
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
+The example project shows different use cases of the searchbar. To run it, clone the repo, and run `pod install` from the Example directory first.
 
 ## Installation
 
-SHSearchBar is available through [CocoaPods](http://cocoapods.org). To install
-it, simply add the following line to your Podfile:
+SHSearchBar is compatible with `iOS 9` and higher and is available through [CocoaPods](http://cocoapods.org). To install it, simply add the following line to your Podfile:
 
 ```ruby
 pod "SHSearchBar"
@@ -22,12 +28,10 @@ pod "SHSearchBar"
 
 ## Next Steps
 
-- cancel button not yet shown
-- complete the search bar class
+- solve the scaling text on textView width animation bug
+- use the class in a real project
 - add support for a blurred background view
-- create the example project
 - add tests
-- implement protocols: ShadowCaster, RectRounding including the protocol extensions that implement the methods behind it. So you can just conform any view to the protocol and it will have a default shadow/ round corners. PLus you will have control over the parameters via the protocol.
 - test programmatic use
 - implement storyboard support (low priority)
 

@@ -9,42 +9,84 @@
 import UIKit
 import SHSearchBar
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, SHSearchBarDelegate {
 
-    var searchBar: SHSearchBar = SHSearchBar()
+    var searchBar1: SHSearchBar!
+    var searchBar2: SHSearchBar!
+    var searchBar3: SHSearchBar!
+    var searchBar4: SHSearchBar!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = UIColor.white()
-        
-        searchBar.text = "Hello World!"
-        searchBar.backgroundColor = UIColor.white()
-        searchBar.cornerRadius = 11
-        searchBar.layer.shadowColor = UIColor.black().cgColor
-        searchBar.layer.shadowOffset = CGSize(width: 0, height: 3)
-        searchBar.layer.shadowRadius = 5
-        searchBar.layer.shadowOpacity = 0.25
-        searchBar.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(searchBar)
-        
+        view.backgroundColor = UIColor.white
+
+        searchBar1 = defaultSearchBar()
+        view.addSubview(searchBar1)
+
+        searchBar2 = defaultSearchBar()
+        searchBar2.textField.text = "Example With Text"
+        view.addSubview(searchBar2)
+
+        let search3ImgView = UIImageView(image: UIImage(named: "icon-search")?.withRenderingMode(.alwaysTemplate))
+        search3ImgView.contentMode = .center
+        search3ImgView.tintColor = UIColor(red: 0.75, green: 0, blue: 0, alpha: 1)
+        searchBar3 = defaultSearchBar()
+        searchBar3.textField.text = "Example With Left View"
+        searchBar3.textField.leftView = search3ImgView
+        view.addSubview(searchBar3)
+
+        let search4ImgView = UIImageView(image: UIImage(named: "icon-search")?.withRenderingMode(.alwaysTemplate))
+        search4ImgView.contentMode = .center
+        search4ImgView.tintColor = UIColor(red: 0.75, green: 0, blue: 0, alpha: 1)
+        searchBar4 = defaultSearchBar()
+        searchBar4.textField.textAlignment = .center
+        searchBar4.textField.text = "Example With Centered Text"
+        searchBar4.textField.leftView = search4ImgView
+        searchBar4.isHidden = true // Does not fork as intended
+        view.addSubview(searchBar4)
+
         setupConstraints()
     }
     
     private func setupConstraints() {
-        let views = ["searchbar":searchBar]
-        let metrics = ["margin":11, "buttonHeight":44]
+        let views: [String: AnyObject] = ["TLG":topLayoutGuide, "search1":searchBar1, "search2":searchBar2, "search3":searchBar3, "search4":searchBar4]
+        let metrics = ["margin":11, "searchHeight":44]
         
         let formatList: [String] = [
-            // Text field
-            "H:|-(margin)-[searchbar]-(margin)-|",
-            "V:|-(100)-[searchbar(44)]",
+            // SearchBar
+            "H:|-(margin)-[search1]-(margin)-|",
+            "H:|-(margin)-[search2]-(margin)-|",
+            "H:|-(margin)-[search3]-(margin)-|",
+            "H:|-(margin)-[search4]-(margin)-|",
+            "V:[TLG]-(margin)-[search1(searchHeight)]-(margin)-[search2(searchHeight)]-(margin)-[search3(searchHeight)]-(margin)-[search4(searchHeight)]"
             ]
         
         for format in formatList {
             view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: format, options: [], metrics: metrics, views: views))
         }
+    }
+
+    private func defaultSearchBar() -> SHSearchBar {
+        let bar = SHSearchBar()
+        bar.delegate = self
+        bar.textField.placeholder = "Example"
+        bar.backgroundColor = UIColor.white
+        bar.cornerRadius = 11
+        bar.layer.shadowColor = UIColor.black.cgColor
+        bar.layer.shadowOffset = CGSize(width: 0, height: 3)
+        bar.layer.shadowRadius = 5
+        bar.layer.shadowOpacity = 0.25
+        return bar
+    }
+
+
+    // MARK: - SHSearchBarDelegate
+
+    func searchBarShouldReturn(_ searchBar: SHSearchBar) -> Bool {
+        searchBar.textField.resignFirstResponder()
+        return true
     }
 }
 

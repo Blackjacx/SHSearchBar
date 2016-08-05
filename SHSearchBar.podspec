@@ -27,7 +27,7 @@ This search bar class is designed to overcome the customization limits of UISear
   s.source           = { :git => 'https://github.com/Blackjacx/SHSearchBar.git', :tag => s.version.to_s }
   s.social_media_url = 'https://twitter.com/Blackjacxxx'
 
-  s.ios.deployment_target = '8.0'
+  s.ios.deployment_target = '9.0'
 
   s.source_files = 'SHSearchBar/Classes/**/*'
   
