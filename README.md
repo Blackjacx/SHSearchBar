@@ -28,7 +28,7 @@ pod "SHSearchBar"
 
 ## Next Steps
 
-- solve the scaling text on textView width animation bug
+- solve the scaling text on textField width animation bug when there are multiple SHSearchBars on the same view (liek the example)
 - use the class in a real project
 - add support for a blurred background view
 - add tests
