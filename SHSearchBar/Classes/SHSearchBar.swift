@@ -21,15 +21,6 @@ public class SHSearchBar: UIView, UITextFieldDelegate {
     private var bgToParentConstraint: NSLayoutConstraint!
     
     public var delegate: SHSearchBarDelegate?
-
-
-    // MARK: - Overwritten Properties
-    
-    //! Use this property to set the background color. It will be applied to a special background (not the search bar itself) view that spans the whole search bar.
-    public override var backgroundColor: UIColor? {
-        get { return backgroundView.backgroundColor }
-        set { backgroundView.backgroundColor = newValue }
-    }
     
     
     // MARK: - Lifecycle
