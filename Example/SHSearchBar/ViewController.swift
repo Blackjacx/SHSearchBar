@@ -69,7 +69,7 @@ class ViewController: UIViewController, SHSearchBarDelegate {
     }
 
     private func defaultSearchBar() -> SHSearchBar {
-        let bar = SHSearchBar()
+        let bar = SHSearchBar(with: 11)
         bar.delegate = self
         bar.textField.placeholder = "Example"
         bar.updateBackgroundWith(6, corners: [.AllCorners], color: UIColor.whiteColor())

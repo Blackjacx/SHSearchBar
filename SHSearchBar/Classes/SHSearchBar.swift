@@ -8,7 +8,6 @@
 
 import UIKit
 
-let kDefaultRasterSize: CGFloat = 11.0
 let kDefaultAnimationDuration: NSTimeInterval = 0.25
 
 public class SHSearchBar: UIView, UITextFieldDelegate {
@@ -35,8 +34,8 @@ public class SHSearchBar: UIView, UITextFieldDelegate {
     
     // MARK: - Lifecycle
     
-    public override init(frame: CGRect) {
-        super.init(frame: frame)
+    public init(with rasterSize: CGFloat) {
+        super.init(frame: CGRectZero)
         
         translatesAutoresizingMaskIntoConstraints = false
 
@@ -51,7 +50,7 @@ public class SHSearchBar: UIView, UITextFieldDelegate {
         textField.autocapitalizationType = .None
         textField.spellCheckingType = .No
         textField.adjustsFontSizeToFitWidth = false
-        textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: kDefaultRasterSize, height: 10.0))
+        textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: rasterSize, height: 10.0))
 
         // These are the properties you probably want to customize
         textField.leftViewMode = .Always
@@ -76,7 +75,7 @@ public class SHSearchBar: UIView, UITextFieldDelegate {
         addSubview(cancelButton)
         sendSubviewToBack(cancelButton)
 
-        setupConstraints()
+        setupConstraints(with: rasterSize)
     }
     
     required public init?(coder aDecoder: NSCoder) {
@@ -84,9 +83,9 @@ public class SHSearchBar: UIView, UITextFieldDelegate {
     }
     
     
-    private func setupConstraints() {
+    private func setupConstraints(with rasterSize: CGFloat) {
         let views = ["text":textField, "bg":backgroundView, "cancel":cancelButton]
-        let metrics = ["margin":kDefaultRasterSize]
+        let metrics = ["margin":rasterSize]
         
         let formatList: [String] = [
             // Background
@@ -104,7 +103,7 @@ public class SHSearchBar: UIView, UITextFieldDelegate {
             addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(format, options: [], metrics: metrics, views: views))
         }
 
-        bgToCancelButtonConstraint = NSLayoutConstraint(item: backgroundView, attribute: .Trailing, relatedBy: .Equal, toItem: cancelButton, attribute: .Leading, multiplier: 1, constant: -kDefaultRasterSize)
+        bgToCancelButtonConstraint = NSLayoutConstraint(item: backgroundView, attribute: .Trailing, relatedBy: .Equal, toItem: cancelButton, attribute: .Leading, multiplier: 1, constant: -rasterSize)
         bgToParentConstraint = NSLayoutConstraint(item: backgroundView, attribute: .Trailing, relatedBy: .Equal, toItem: self, attribute: .Trailing, multiplier: 1, constant: 0)
         bgToParentConstraint.active = true
     }
