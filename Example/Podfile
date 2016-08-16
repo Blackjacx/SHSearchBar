@@ -1,8 +1,15 @@
 use_frameworks!
 
 target 'SHSearchBar_Example' do
-  pod 'SHSearchBar', :path => '../'
+    pod 'SHSearchBar', :path => '../'
+
+    target 'SHSearchBar_ExampleTests' do
+        # Pods for testing
+        pod 'Quick'
+        pod 'Nimble'
+    end
 end
+
 
 post_install do |installer|
     installer.pods_project.targets.each do |target|

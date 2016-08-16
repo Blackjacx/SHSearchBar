@@ -55,6 +55,7 @@ public class SHSearchBar: UIView, UITextFieldDelegate {
         backgroundView.addSubview(textField)
 
         // Cancel Button
+        cancelButton.alpha = 0.0
         cancelButton.setTitle(NSLocalizedString("Cancel", comment: "") , forState: .Normal)
         cancelButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
         cancelButton.setTitleColor(UIColor.darkGrayColor(), forState: .Highlighted)
@@ -171,7 +172,7 @@ public class SHSearchBar: UIView, UITextFieldDelegate {
         delegate?.searchBarShouldCancel?(self) ?? true
     }
 
-    private func setCancelButtonVisibility(makeVisible: Bool) {
+    func setCancelButtonVisibility(makeVisible: Bool) {
         // Thsi 'complex' if-else avoids constraint warnings in the console
         if makeVisible {
             bgToParentConstraint.active = false

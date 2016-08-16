@@ -7,12 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5987392D6FFCB669C7D97480 /* Pods_SHSearchBar_Example_SHSearchBar_ExampleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86C8F3692A6C6C46B41BC093 /* Pods_SHSearchBar_Example_SHSearchBar_ExampleTests.framework */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		B954A3701D4FF2470065A12E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B954A36F1D4FF2470065A12E /* LaunchScreen.storyboard */; };
+		B98B59211D63584800AF06AE /* SHSearchBar_ExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98B59201D63584800AF06AE /* SHSearchBar_ExampleTests.swift */; };
 		DB92636F93857BE89DBCBEFC /* Pods_SHSearchBar_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 241990B96669B92E591D1B62 /* Pods_SHSearchBar_Example.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B98B59231D63584800AF06AE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 607FACC81AFB9204008FA782 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 607FACCF1AFB9204008FA782;
+			remoteInfo = SHSearchBar_Example;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		241990B96669B92E591D1B62 /* Pods_SHSearchBar_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SHSearchBar_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -21,16 +33,21 @@
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		607FACD71AFB9204008FA782 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		607FACDC1AFB9204008FA782 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		78D7167BC326C6FC32392569 /* Pods-SHSearchBar_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SHSearchBar_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SHSearchBar_Tests/Pods-SHSearchBar_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		86C8F3692A6C6C46B41BC093 /* Pods_SHSearchBar_Example_SHSearchBar_ExampleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SHSearchBar_Example_SHSearchBar_ExampleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E0FCF1203E5E60DA6E89E06 /* Pods_SHSearchBar_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SHSearchBar_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A48AE3ED4D6559D7D8ECF269 /* Pods-SHSearchBar_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SHSearchBar_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SHSearchBar_Tests/Pods-SHSearchBar_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		A9E2FE79C3C867023CC5FB3E /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		ADF27C65086E62357C6E3949 /* SHSearchBar.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = SHSearchBar.podspec; path = ../SHSearchBar.podspec; sourceTree = "<group>"; };
 		B954A36F1D4FF2470065A12E /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		B98B591E1D63584800AF06AE /* SHSearchBar_ExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SHSearchBar_ExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B98B59201D63584800AF06AE /* SHSearchBar_ExampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHSearchBar_ExampleTests.swift; sourceTree = "<group>"; };
+		B98B59221D63584800AF06AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C9BBA5024C646D82BD2E2D84 /* Pods-SHSearchBar_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SHSearchBar_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SHSearchBar_Example/Pods-SHSearchBar_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		DEEA84F57ED326B431A40CBA /* Pods-SHSearchBar_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SHSearchBar_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-SHSearchBar_Example/Pods-SHSearchBar_Example.release.xcconfig"; sourceTree = "<group>"; };
+		E75D04810E1E4936978C130C /* Pods-SHSearchBar_Example-SHSearchBar_ExampleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SHSearchBar_Example-SHSearchBar_ExampleTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SHSearchBar_Example-SHSearchBar_ExampleTests/Pods-SHSearchBar_Example-SHSearchBar_ExampleTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E99749B6C927EF61CF213F42 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		FFC7A4BFFC7318854EC8378C /* Pods-SHSearchBar_Example-SHSearchBar_ExampleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SHSearchBar_Example-SHSearchBar_ExampleTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SHSearchBar_Example-SHSearchBar_ExampleTests/Pods-SHSearchBar_Example-SHSearchBar_ExampleTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +56,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				DB92636F93857BE89DBCBEFC /* Pods_SHSearchBar_Example.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B98B591B1D63584800AF06AE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5987392D6FFCB669C7D97480 /* Pods_SHSearchBar_Example_SHSearchBar_ExampleTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -52,6 +77,8 @@
 				DEEA84F57ED326B431A40CBA /* Pods-SHSearchBar_Example.release.xcconfig */,
 				A48AE3ED4D6559D7D8ECF269 /* Pods-SHSearchBar_Tests.debug.xcconfig */,
 				78D7167BC326C6FC32392569 /* Pods-SHSearchBar_Tests.release.xcconfig */,
+				E75D04810E1E4936978C130C /* Pods-SHSearchBar_Example-SHSearchBar_ExampleTests.debug.xcconfig */,
+				FFC7A4BFFC7318854EC8378C /* Pods-SHSearchBar_Example-SHSearchBar_ExampleTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -61,7 +88,7 @@
 			children = (
 				607FACF51AFB993E008FA782 /* Podspec Metadata */,
 				607FACD21AFB9204008FA782 /* Example for SHSearchBar */,
-				607FACE81AFB9204008FA782 /* Tests */,
+				B98B591F1D63584800AF06AE /* SHSearchBar_ExampleTests */,
 				607FACD11AFB9204008FA782 /* Products */,
 				03677E18B086D38BB3B97742 /* Pods */,
 				DB0928DCB7C316D74328B4BD /* Frameworks */,
@@ -72,6 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				607FACD01AFB9204008FA782 /* SHSearchBar_Example.app */,
+				B98B591E1D63584800AF06AE /* SHSearchBar_ExampleTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -97,22 +125,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		607FACE81AFB9204008FA782 /* Tests */ = {
-			isa = PBXGroup;
-			children = (
-				607FACE91AFB9204008FA782 /* Supporting Files */,
-			);
-			path = Tests;
-			sourceTree = "<group>";
-		};
-		607FACE91AFB9204008FA782 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				607FACEA1AFB9204008FA782 /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 		607FACF51AFB993E008FA782 /* Podspec Metadata */ = {
 			isa = PBXGroup;
 			children = (
@@ -123,11 +135,21 @@
 			name = "Podspec Metadata";
 			sourceTree = "<group>";
 		};
+		B98B591F1D63584800AF06AE /* SHSearchBar_ExampleTests */ = {
+			isa = PBXGroup;
+			children = (
+				B98B59201D63584800AF06AE /* SHSearchBar_ExampleTests.swift */,
+				B98B59221D63584800AF06AE /* Info.plist */,
+			);
+			path = SHSearchBar_ExampleTests;
+			sourceTree = "<group>";
+		};
 		DB0928DCB7C316D74328B4BD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				241990B96669B92E591D1B62 /* Pods_SHSearchBar_Example.framework */,
 				9E0FCF1203E5E60DA6E89E06 /* Pods_SHSearchBar_Tests.framework */,
+				86C8F3692A6C6C46B41BC093 /* Pods_SHSearchBar_Example_SHSearchBar_ExampleTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -155,13 +177,34 @@
 			productReference = 607FACD01AFB9204008FA782 /* SHSearchBar_Example.app */;
 			productType = "com.apple.product-type.application";
 		};
+		B98B591D1D63584800AF06AE /* SHSearchBar_ExampleTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B98B59271D63584800AF06AE /* Build configuration list for PBXNativeTarget "SHSearchBar_ExampleTests" */;
+			buildPhases = (
+				6F9CCBE3DF9639D13EE1678F /* [CP] Check Pods Manifest.lock */,
+				B98B591A1D63584800AF06AE /* Sources */,
+				B98B591B1D63584800AF06AE /* Frameworks */,
+				B98B591C1D63584800AF06AE /* Resources */,
+				F65D3BA1FA263FA6915AE5C7 /* [CP] Embed Pods Frameworks */,
+				7696B1A6BD6DB1C849FC7D05 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B98B59241D63584800AF06AE /* PBXTargetDependency */,
+			);
+			name = SHSearchBar_ExampleTests;
+			productName = SHSearchBar_ExampleTests;
+			productReference = B98B591E1D63584800AF06AE /* SHSearchBar_ExampleTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		607FACC81AFB9204008FA782 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0720;
+				LastSwiftUpdateCheck = 0800;
 				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = CocoaPods;
 				TargetAttributes = {
@@ -170,6 +213,12 @@
 						DevelopmentTeam = 678J5TKLZR;
 						DevelopmentTeamName = "Stefan Herold (Personal Team)";
 						LastSwiftMigration = 0800;
+					};
+					B98B591D1D63584800AF06AE = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = 678J5TKLZR;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 607FACCF1AFB9204008FA782;
 					};
 				};
 			};
@@ -187,6 +236,7 @@
 			projectRoot = "";
 			targets = (
 				607FACCF1AFB9204008FA782 /* SHSearchBar_Example */,
+				B98B591D1D63584800AF06AE /* SHSearchBar_ExampleTests */,
 			);
 		};
 /* End PBXProject section */
@@ -198,6 +248,13 @@
 			files = (
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
 				B954A3701D4FF2470065A12E /* LaunchScreen.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B98B591C1D63584800AF06AE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -234,6 +291,36 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SHSearchBar_Example/Pods-SHSearchBar_Example-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		6F9CCBE3DF9639D13EE1678F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		7696B1A6BD6DB1C849FC7D05 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SHSearchBar_Example-SHSearchBar_ExampleTests/Pods-SHSearchBar_Example-SHSearchBar_ExampleTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		D89D9D0D4EB17A256C505C9E /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -249,6 +336,21 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+		F65D3BA1FA263FA6915AE5C7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SHSearchBar_Example-SHSearchBar_ExampleTests/Pods-SHSearchBar_Example-SHSearchBar_ExampleTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -261,7 +363,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B98B591A1D63584800AF06AE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B98B59211D63584800AF06AE /* SHSearchBar_ExampleTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B98B59241D63584800AF06AE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 607FACCF1AFB9204008FA782 /* SHSearchBar_Example */;
+			targetProxy = B98B59231D63584800AF06AE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		607FACED1AFB9204008FA782 /* Debug */ = {
@@ -377,6 +495,49 @@
 			};
 			name = Release;
 		};
+		B98B59251D63584800AF06AE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E75D04810E1E4936978C130C /* Pods-SHSearchBar_Example-SHSearchBar_ExampleTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 678J5TKLZR;
+				INFOPLIST_FILE = SHSearchBar_ExampleTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "stefanherold.SHSearchBar-ExampleTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 2.3;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SHSearchBar_Example.app/SHSearchBar_Example";
+			};
+			name = Debug;
+		};
+		B98B59261D63584800AF06AE /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FFC7A4BFFC7318854EC8378C /* Pods-SHSearchBar_Example-SHSearchBar_ExampleTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				DEVELOPMENT_TEAM = 678J5TKLZR;
+				INFOPLIST_FILE = SHSearchBar_ExampleTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "stefanherold.SHSearchBar-ExampleTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 2.3;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SHSearchBar_Example.app/SHSearchBar_Example";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -394,6 +555,15 @@
 			buildConfigurations = (
 				607FACF01AFB9204008FA782 /* Debug */,
 				607FACF11AFB9204008FA782 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B98B59271D63584800AF06AE /* Build configuration list for PBXNativeTarget "SHSearchBar_ExampleTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B98B59251D63584800AF06AE /* Debug */,
+				B98B59261D63584800AF06AE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

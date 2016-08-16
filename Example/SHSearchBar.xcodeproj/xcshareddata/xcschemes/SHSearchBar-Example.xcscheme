@@ -52,6 +52,16 @@
                ReferencedContainer = "container:SHSearchBar.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "B98B591D1D63584800AF06AE"
+               BuildableName = "SHSearchBar_ExampleTests.xctest"
+               BlueprintName = "SHSearchBar_ExampleTests"
+               ReferencedContainer = "container:SHSearchBar.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
