@@ -172,8 +172,14 @@ public class SHSearchBar: UIView, UITextFieldDelegate {
     }
 
     private func setCancelButtonVisibility(makeVisible: Bool) {
-        bgToCancelButtonConstraint.active = makeVisible
-        bgToParentConstraint.active = !makeVisible
+        // Thsi 'complex' if-else avoids constraint warnings in the console
+        if makeVisible {
+            bgToParentConstraint.active = false
+            bgToCancelButtonConstraint.active = true
+        } else {
+            bgToCancelButtonConstraint.active = false
+            bgToParentConstraint.active = true
+        }
 
         UIView.animateWithDuration(kDefaultAnimationDuration, delay: 0, options: [.CurveEaseInOut], animations: {
             self.layoutIfNeeded()

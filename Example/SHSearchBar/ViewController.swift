@@ -15,6 +15,8 @@ class ViewController: UIViewController, SHSearchBarDelegate {
     var searchBar2: SHSearchBar!
     var searchBar3: SHSearchBar!
     var searchBar4: SHSearchBar!
+    var addressSearchbarTop: SHSearchBar!
+    var addressSearchbarBottom: SHSearchBar!
     
     
     override func viewDidLoad() {
@@ -44,15 +46,25 @@ class ViewController: UIViewController, SHSearchBarDelegate {
         searchBar4.textField.textAlignment = .Center
         searchBar4.textField.text = "Example With Centered Text"
         searchBar4.textField.leftView = search4ImgView
-        searchBar4.hidden = true // Does not fork as intended
+        searchBar4.hidden = true // TODO: centered text lets the icon on the left - this is not intended!
         view.addSubview(searchBar4)
+
+        addressSearchbarTop = defaultSearchBar()
+        addressSearchbarTop.textField.text = "Example With Text"
+        addressSearchbarTop.updateBackgroundWith(6, corners: [.TopLeft, .TopRight], color: UIColor.whiteColor())
+        view.addSubview(addressSearchbarTop)
+
+        addressSearchbarBottom = defaultSearchBar()
+        addressSearchbarBottom.textField.text = "Example With Text"
+        addressSearchbarBottom.updateBackgroundWith(6, corners: [.BottomLeft, .BottomRight], color: UIColor.whiteColor())
+        view.addSubview(addressSearchbarBottom)
 
         setupConstraints()
     }
     
     private func setupConstraints() {
-        let views: [String: AnyObject] = ["TLG":topLayoutGuide, "search1":searchBar1, "search2":searchBar2, "search3":searchBar3, "search4":searchBar4]
-        let metrics = ["margin":11, "searchHeight":44]
+        let views: [String: AnyObject] = ["TLG":topLayoutGuide, "search1":searchBar1, "search2":searchBar2, "search3":searchBar3, "search4":searchBar4, "addressTop":addressSearchbarTop, "addressBottom":addressSearchbarBottom]
+        let metrics = ["margin":11, "SH":44]
         
         let formatList: [String] = [
             // SearchBar
@@ -60,12 +72,16 @@ class ViewController: UIViewController, SHSearchBarDelegate {
             "H:|-(margin)-[search2]-(margin)-|",
             "H:|-(margin)-[search3]-(margin)-|",
             "H:|-(margin)-[search4]-(margin)-|",
-            "V:[TLG]-(margin)-[search1(searchHeight)]-(margin)-[search2(searchHeight)]-(margin)-[search3(searchHeight)]-(margin)-[search4(searchHeight)]"
+            "H:|-(margin)-[addressTop]-(margin)-|",
+            "H:|-(margin)-[addressBottom]-(margin)-|",
+            "V:[TLG]-(margin)-[search1(SH)]-(margin)-[search2(SH)]-(margin)-[search3(SH)]-(margin)-[search4(SH)]-(margin)-[addressTop(SH)]-(1)-[addressBottom(SH)]"
             ]
         
         for format in formatList {
             view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(format, options: [], metrics: metrics, views: views))
         }
+
+        
     }
 
     private func defaultSearchBar() -> SHSearchBar {
