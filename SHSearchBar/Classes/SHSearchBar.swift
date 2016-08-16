@@ -8,41 +8,28 @@
 
 import UIKit
 
-let kDefaultButtonHeight: CGFloat = 44.0
 let kDefaultRasterSize: CGFloat = 11.0
 let kDefaultAnimationDuration: TimeInterval = 0.25
 
 public class SHSearchBar: UIView, UITextFieldDelegate {
-    private var backgroundView: UIView = UIView()
+    private var backgroundView: UIImageView = UIImageView()
 
     public var cancelButton: UIButton = UIButton(type: .custom)
     public var textField: UITextField = UITextField()
-
 
     // Constraints for showing and hiding the cancel button
     private var bgToCancelButtonConstraint: NSLayoutConstraint!
     private var bgToParentConstraint: NSLayoutConstraint!
     
     public var delegate: SHSearchBarDelegate?
-    
+
+
     // MARK: - Overwritten Properties
     
     //! Use this property to set the background color. It will be applied to a special background (not the search bar itself) view that spans the whole search bar.
     public override var backgroundColor: UIColor? {
         get { return backgroundView.backgroundColor }
         set { backgroundView.backgroundColor = newValue }
-    }
-    
-    
-    // MARK: - Custom Properties
-    
-    //! Use this property to specify the views corner radius. It will be applied to a special background view (not the search bar itself) that spans the whole search bar. The backgroundColor of this view must remain clear to make the corner radius visible.
-    public var cornerRadius: CGFloat {
-        get { return backgroundView.layer.cornerRadius }
-        set {
-            backgroundView.layer.cornerRadius = newValue
-            backgroundView.layer.masksToBounds = true
-        }
     }
     
     
@@ -54,6 +41,8 @@ public class SHSearchBar: UIView, UITextFieldDelegate {
         translatesAutoresizingMaskIntoConstraints = false
 
         backgroundView.translatesAutoresizingMaskIntoConstraints = false
+        backgroundView.isUserInteractionEnabled = true
+        updateBackgroundWith(radius: 0, corners: .allCorners, color: UIColor.white)
         addSubview(backgroundView)
 
         // Text Field
@@ -97,7 +86,7 @@ public class SHSearchBar: UIView, UITextFieldDelegate {
     
     private func setupConstraints() {
         let views = ["text":textField, "bg":backgroundView, "cancel":cancelButton]
-        let metrics = ["margin":kDefaultRasterSize, "buttonSize":kDefaultButtonHeight]
+        let metrics = ["margin":kDefaultRasterSize]
         
         let formatList: [String] = [
             // Background
@@ -108,20 +97,33 @@ public class SHSearchBar: UIView, UITextFieldDelegate {
             "V:|[text]|",
             // Cancel Button
             "H:[cancel]|",
-            "V:[cancel(buttonSize)]",
+            "V:|[cancel]|"
             ]
 
         for format in formatList {
             addConstraints(NSLayoutConstraint.constraints(withVisualFormat: format, options: [], metrics: metrics, views: views))
         }
 
-        NSLayoutConstraint(item: cancelButton, attribute: .centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1, constant: 0).isActive = true
         bgToCancelButtonConstraint = NSLayoutConstraint(item: backgroundView, attribute: .trailing, relatedBy: .equal, toItem: cancelButton, attribute: .leading, multiplier: 1, constant: -kDefaultRasterSize)
         bgToParentConstraint = NSLayoutConstraint(item: backgroundView, attribute: .trailing, relatedBy: .equal, toItem: self, attribute: .trailing, multiplier: 1, constant: 0)
         bgToParentConstraint.isActive = true
     }
 
-    
+
+    // MARK: - UI Updates
+
+    //! Use this function to specify the views corner radii. It will be applied to a special background image view (not the search bar itself) that spans the whole search bar. The backgroundColor of this view must remain clear to make the corner radius visible.
+    public func updateBackgroundWith(radius: CGFloat, corners: UIRectCorner, color: UIColor) {
+        let insets = UIEdgeInsets(top: radius, left: radius, bottom: radius, right: radius)
+        let imgSize = CGSize(width: radius*2 + 1, height: radius*2 + 1)
+        var img = UIImage.imageWithSolidColor(color: color, size: imgSize)
+        img = img.roundedImage(with: radius, cornersToRound: corners)
+        img = img.resizableImage(withCapInsets: insets)
+        backgroundView.image = img
+        backgroundColor = UIColor.clear
+    }
+
+
     // MARK: - UITextFieldDelegate
     
     public func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {

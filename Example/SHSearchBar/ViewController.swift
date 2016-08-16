@@ -72,8 +72,7 @@ class ViewController: UIViewController, SHSearchBarDelegate {
         let bar = SHSearchBar()
         bar.delegate = self
         bar.textField.placeholder = "Example"
-        bar.backgroundColor = UIColor.white
-        bar.cornerRadius = 6
+        bar.updateBackgroundWith(radius: 6, corners: [.allCorners], color: UIColor.white)
         bar.layer.shadowColor = UIColor.black.cgColor
         bar.layer.shadowOffset = CGSize(width: 0, height: 3)
         bar.layer.shadowRadius = 5
