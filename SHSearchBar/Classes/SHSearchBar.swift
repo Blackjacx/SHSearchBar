@@ -9,12 +9,12 @@
 import UIKit
 
 let kDefaultRasterSize: CGFloat = 11.0
-let kDefaultAnimationDuration: TimeInterval = 0.25
+let kDefaultAnimationDuration: NSTimeInterval = 0.25
 
 public class SHSearchBar: UIView, UITextFieldDelegate {
     private var backgroundView: UIImageView = UIImageView()
 
-    public var cancelButton: UIButton = UIButton(type: .custom)
+    public var cancelButton: UIButton = UIButton(type: .Custom)
     public var textField: UITextField = UITextField()
 
     // Constraints for showing and hiding the cancel button
@@ -41,40 +41,40 @@ public class SHSearchBar: UIView, UITextFieldDelegate {
         translatesAutoresizingMaskIntoConstraints = false
 
         backgroundView.translatesAutoresizingMaskIntoConstraints = false
-        backgroundView.isUserInteractionEnabled = true
-        updateBackgroundWith(radius: 0, corners: .allCorners, color: UIColor.white)
+        backgroundView.userInteractionEnabled = true
+        updateBackgroundWith(0, corners: .AllCorners, color: UIColor.whiteColor())
         addSubview(backgroundView)
 
         // Text Field
         textField.delegate = self
-        textField.autocorrectionType = .no
-        textField.autocapitalizationType = .none
-        textField.spellCheckingType = .no
+        textField.autocorrectionType = .No
+        textField.autocapitalizationType = .None
+        textField.spellCheckingType = .No
         textField.adjustsFontSizeToFitWidth = false
         textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: kDefaultRasterSize, height: 10.0))
 
         // These are the properties you probably want to customize
-        textField.leftViewMode = .always
-        textField.rightViewMode = .never
-        textField.clearButtonMode = .whileEditing
-        textField.tintColor = UIColor.black // Styles the cursor as well as the selection marker
-        textField.defaultTextAttributes = [NSForegroundColorAttributeName:UIColor.black, NSBackgroundColorAttributeName: UIColor.clear]
+        textField.leftViewMode = .Always
+        textField.rightViewMode = .Never
+        textField.clearButtonMode = .WhileEditing
+        textField.tintColor = UIColor.blackColor() // Styles the cursor as well as the selection marker
+        textField.defaultTextAttributes = [NSForegroundColorAttributeName:UIColor.blackColor(), NSBackgroundColorAttributeName: UIColor.clearColor()]
         textField.typingAttributes = textField.defaultTextAttributes
 
         textField.translatesAutoresizingMaskIntoConstraints = false
         backgroundView.addSubview(textField)
 
         // Cancel Button
-        cancelButton.setTitle(NSLocalizedString("Cancel", comment: "") , for: .normal)
-        cancelButton.setTitleColor(UIColor.black, for: .normal)
-        cancelButton.setTitleColor(UIColor.darkGray, for: .highlighted)
-        cancelButton.setContentHuggingPriority(UILayoutPriorityRequired, for: .horizontal)
+        cancelButton.setTitle(NSLocalizedString("Cancel", comment: "") , forState: .Normal)
+        cancelButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
+        cancelButton.setTitleColor(UIColor.darkGrayColor(), forState: .Highlighted)
+        cancelButton.setContentHuggingPriority(UILayoutPriorityRequired, forAxis: .Horizontal)
         cancelButton.reversesTitleShadowWhenHighlighted = true
         cancelButton.adjustsImageWhenHighlighted = true
-        cancelButton.addTarget(self, action: #selector(SHSearchBar.pressedCancelButton(sender:)), for: .touchUpInside)
+        cancelButton.addTarget(self, action: #selector(SHSearchBar.pressedCancelButton(_:)), forControlEvents: .TouchUpInside)
         cancelButton.translatesAutoresizingMaskIntoConstraints = false
         addSubview(cancelButton)
-        sendSubview(toBack: cancelButton)
+        sendSubviewToBack(cancelButton)
 
         setupConstraints()
     }
@@ -101,12 +101,12 @@ public class SHSearchBar: UIView, UITextFieldDelegate {
             ]
 
         for format in formatList {
-            addConstraints(NSLayoutConstraint.constraints(withVisualFormat: format, options: [], metrics: metrics, views: views))
+            addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(format, options: [], metrics: metrics, views: views))
         }
 
-        bgToCancelButtonConstraint = NSLayoutConstraint(item: backgroundView, attribute: .trailing, relatedBy: .equal, toItem: cancelButton, attribute: .leading, multiplier: 1, constant: -kDefaultRasterSize)
-        bgToParentConstraint = NSLayoutConstraint(item: backgroundView, attribute: .trailing, relatedBy: .equal, toItem: self, attribute: .trailing, multiplier: 1, constant: 0)
-        bgToParentConstraint.isActive = true
+        bgToCancelButtonConstraint = NSLayoutConstraint(item: backgroundView, attribute: .Trailing, relatedBy: .Equal, toItem: cancelButton, attribute: .Leading, multiplier: 1, constant: -kDefaultRasterSize)
+        bgToParentConstraint = NSLayoutConstraint(item: backgroundView, attribute: .Trailing, relatedBy: .Equal, toItem: self, attribute: .Trailing, multiplier: 1, constant: 0)
+        bgToParentConstraint.active = true
     }
 
 
@@ -116,11 +116,11 @@ public class SHSearchBar: UIView, UITextFieldDelegate {
     public func updateBackgroundWith(radius: CGFloat, corners: UIRectCorner, color: UIColor) {
         let insets = UIEdgeInsets(top: radius, left: radius, bottom: radius, right: radius)
         let imgSize = CGSize(width: radius*2 + 1, height: radius*2 + 1)
-        var img = UIImage.imageWithSolidColor(color: color, size: imgSize)
+        var img = UIImage.imageWithSolidColor(color, size: imgSize)
         img = img.roundedImage(with: radius, cornersToRound: corners)
-        img = img.resizableImage(withCapInsets: insets)
+        img = img.resizableImageWithCapInsets(insets)
         backgroundView.image = img
-        backgroundColor = UIColor.clear
+        backgroundColor = UIColor.clearColor()
     }
 
 
@@ -128,10 +128,10 @@ public class SHSearchBar: UIView, UITextFieldDelegate {
     
     public func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         if let result = delegate?.searchBarShouldBeginEditing?(self) where result {
-            setCancelButtonVisibility(makeVisible: true)
+            setCancelButtonVisibility(true)
             return result
         }
-        setCancelButtonVisibility(makeVisible: true)
+        setCancelButtonVisibility(true)
         return true
     }
     
@@ -141,10 +141,10 @@ public class SHSearchBar: UIView, UITextFieldDelegate {
     
     public func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
         if let result = delegate?.searchBarShouldEndEditing?(self) where result {
-            setCancelButtonVisibility(makeVisible: false)
+            setCancelButtonVisibility(false)
             return result
         }
-        setCancelButtonVisibility(makeVisible: false)
+        setCancelButtonVisibility(false)
         return true
     }
     
@@ -178,10 +178,10 @@ public class SHSearchBar: UIView, UITextFieldDelegate {
     }
 
     private func setCancelButtonVisibility(makeVisible: Bool) {
-        bgToCancelButtonConstraint.isActive = makeVisible
-        bgToParentConstraint.isActive = !makeVisible
+        bgToCancelButtonConstraint.active = makeVisible
+        bgToParentConstraint.active = !makeVisible
 
-        UIView.animate(withDuration: kDefaultAnimationDuration, delay: 0, options: [.curveEaseInOut], animations: {
+        UIView.animateWithDuration(kDefaultAnimationDuration, delay: 0, options: [.CurveEaseInOut], animations: {
             self.layoutIfNeeded()
             self.cancelButton.alpha = makeVisible ? 1 : 0
         }, completion: nil)
