@@ -117,7 +117,7 @@ public class SHSearchBar: UIView, UITextFieldDelegate {
 
     // MARK: - UITextFieldDelegate
     
-    public func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+    public func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
         let shouldBegin = delegate?.searchBarShouldBeginEditing?(self) ?? true
         if shouldBegin {
             setCancelButtonVisibility(true)
@@ -125,11 +125,11 @@ public class SHSearchBar: UIView, UITextFieldDelegate {
         return shouldBegin
     }
     
-    public func textFieldDidBeginEditing(_ textField: UITextField) {
+    public func textFieldDidBeginEditing(textField: UITextField) {
         delegate?.searchBarDidBeginEditing?(self)
     }
     
-    public func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+    public func textFieldShouldEndEditing(textField: UITextField) -> Bool {
         let shouldEnd = delegate?.searchBarShouldEndEditing?(self) ?? true
         if shouldEnd {
             setCancelButtonVisibility(false)
@@ -137,21 +137,21 @@ public class SHSearchBar: UIView, UITextFieldDelegate {
         return shouldEnd
     }
     
-    public func textFieldDidEndEditing(_ textField: UITextField) {
+    public func textFieldDidEndEditing(textField: UITextField) {
         delegate?.searchBarDidEndEditing?(self)
     }
     
-    public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+    public func textField(textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let shouldChange = delegate?.searchBar?(self, shouldChangeCharactersIn: range, replacementString: string) ?? true
         return shouldChange
     }
     
-    public func textFieldShouldClear(_ textField: UITextField) -> Bool {
+    public func textFieldShouldClear(textField: UITextField) -> Bool {
         let shouldClear = delegate?.searchBarShouldClear?(self) ?? true
         return shouldClear
     }
     
-    public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    public func textFieldShouldReturn(textField: UITextField) -> Bool {
         let shouldReturn = delegate?.searchBarShouldReturn?(self) ?? true
         return shouldReturn
     }
@@ -160,7 +160,7 @@ public class SHSearchBar: UIView, UITextFieldDelegate {
     
     func pressedCancelButton(sender: AnyObject) {
         textField.resignFirstResponder()
-        delegate?.searchBarShouldCancel?(self) ?? true
+        delegate?.searchBarShouldCancel?(self)
     }
 
     func setCancelButtonVisibility(makeVisible: Bool) {
@@ -185,15 +185,15 @@ public class SHSearchBar: UIView, UITextFieldDelegate {
 @objc
 public protocol SHSearchBarDelegate : NSObjectProtocol {
     // UITextField Pendants
-    @objc optional func searchBarShouldBeginEditing(_ searchBar: SHSearchBar) -> Bool // return NO to disallow editing.
-    @objc optional func searchBarDidBeginEditing(_ searchBar: SHSearchBar) // became first responder
-    @objc optional func searchBarShouldEndEditing(_ searchBar: SHSearchBar) -> Bool // return YES to allow editing to stop and to resign first responder status. NO to disallow the editing session to end
-    @objc optional func searchBarDidEndEditing(_ searchBar: SHSearchBar) // may be called if forced even if shouldEndEditing returns NO (e.g. view removed from window) or endEditing:YES called
-    @objc optional func searchBar(_ searchBar: SHSearchBar, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool // return NO to not change text
-    @objc optional func searchBarShouldClear(_ searchBar: SHSearchBar) -> Bool // called when clear button pressed. return NO to ignore (no notifications)
-    @objc optional func searchBarShouldReturn(_ searchBar: SHSearchBar) -> Bool // called when 'return' key pressed. return NO to ignore.
+    @objc optional func searchBarShouldBeginEditing(searchBar: SHSearchBar) -> Bool // return NO to disallow editing.
+    @objc optional func searchBarDidBeginEditing(searchBar: SHSearchBar) // became first responder
+    @objc optional func searchBarShouldEndEditing(searchBar: SHSearchBar) -> Bool // return YES to allow editing to stop and to resign first responder status. NO to disallow the editing session to end
+    @objc optional func searchBarDidEndEditing(searchBar: SHSearchBar) // may be called if forced even if shouldEndEditing returns NO (e.g. view removed from window) or endEditing:YES called
+    @objc optional func searchBar(searchBar: SHSearchBar, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool // return NO to not change text
+    @objc optional func searchBarShouldClear(searchBar: SHSearchBar) -> Bool // called when clear button pressed. return NO to ignore (no notifications)
+    @objc optional func searchBarShouldReturn(searchBar: SHSearchBar) -> Bool // called when 'return' key pressed. return NO to ignore.
     
     // New delegate methods
-    @objc optional func searchBarShouldCancel(_ searchBar: SHSearchBar) -> Bool // called when 'cancel' button pressed.
-    @objc optional func searchBar(_ searchBar: SHSearchBar, textDidChange text: String) // Called when the text did change
+    @objc optional func searchBarShouldCancel(searchBar: SHSearchBar) -> Bool // called when 'cancel' button pressed.
+    @objc optional func searchBar(searchBar: SHSearchBar, textDidChange text: String) // Called when the text did change
 }
