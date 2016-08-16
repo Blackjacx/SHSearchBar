@@ -104,6 +104,26 @@ class SHSearchBarSpec: QuickSpec {
                     expect(result) == false
                 }
             }
+
+            context("if editing begins") {
+                let searchbar = SearchBarMock()
+                searchbar.delegate = SearchBarAlwaysTrueDelegate()
+
+                it("it sets the cancelButton visibility to true") {
+                    searchbar.textFieldShouldBeginEditing(searchbar.textField)
+                    expect(searchbar.cancelButton.alpha).toEventually(equal(1))
+                }
+            }
+
+            context("if editing ends") {
+                let searchbar = SearchBarMock()
+                searchbar.delegate = SearchBarAlwaysTrueDelegate()
+
+                it("it sets the cancelButton visibility to false") {
+                    searchbar.textFieldShouldEndEditing(searchbar.textField)
+                    expect(searchbar.cancelButton.alpha).toEventually(equal(0))
+                }
+            }
         }
 
         describe("setting the cancel button visibility") {
@@ -160,7 +180,7 @@ class SearchBarMock: SHSearchBar {
     init() {
         super.init(with: 11)
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -182,5 +202,24 @@ class SearchBarAlwaysFalseDelegate: NSObject, SHSearchBarDelegate {
     }
     @objc func searchBarShouldReturn(searchBar: SHSearchBar) -> Bool {
         return false
+    }
+}
+
+class SearchBarAlwaysTrueDelegate: NSObject, SHSearchBarDelegate {
+    // UITextField Pendants
+    @objc func searchBarShouldBeginEditing(searchBar: SHSearchBar) -> Bool {
+        return true
+    }
+    @objc func searchBarShouldEndEditing(searchBar: SHSearchBar) -> Bool {
+        return true
+    }
+    @objc func searchBar(searchBar: SHSearchBar, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        return true
+    }
+    @objc func searchBarShouldClear(searchBar: SHSearchBar) -> Bool {
+        return true
+    }
+    @objc func searchBarShouldReturn(searchBar: SHSearchBar) -> Bool {
+        return true
     }
 }

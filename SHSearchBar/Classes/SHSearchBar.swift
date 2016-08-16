@@ -118,14 +118,11 @@ public class SHSearchBar: UIView, UITextFieldDelegate {
     // MARK: - UITextFieldDelegate
     
     public func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        if let result = delegate?.searchBarShouldBeginEditing?(self) {
-            if result {
-                setCancelButtonVisibility(true)
-            }
-            return result
+        let shouldBegin = delegate?.searchBarShouldBeginEditing?(self) ?? true
+        if shouldBegin {
+            setCancelButtonVisibility(true)
         }
-        setCancelButtonVisibility(true)
-        return true
+        return shouldBegin
     }
     
     public func textFieldDidBeginEditing(_ textField: UITextField) {
@@ -133,14 +130,11 @@ public class SHSearchBar: UIView, UITextFieldDelegate {
     }
     
     public func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-        if let result = delegate?.searchBarShouldEndEditing?(self) {
-            if result {
-                setCancelButtonVisibility(false)
-            }
-            return result
+        let shouldEnd = delegate?.searchBarShouldEndEditing?(self) ?? true
+        if shouldEnd {
+            setCancelButtonVisibility(false)
         }
-        setCancelButtonVisibility(false)
-        return true
+        return shouldEnd
     }
     
     public func textFieldDidEndEditing(_ textField: UITextField) {
@@ -148,21 +142,18 @@ public class SHSearchBar: UIView, UITextFieldDelegate {
     }
     
     public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        return delegate?.searchBar?(self, shouldChangeCharactersIn: range, replacementString: string) ?? true
+        let shouldChange = delegate?.searchBar?(self, shouldChangeCharactersIn: range, replacementString: string) ?? true
+        return shouldChange
     }
     
     public func textFieldShouldClear(_ textField: UITextField) -> Bool {
-        if let result = delegate?.searchBarShouldClear?(self) {
-            return result
-        }
-        return true
+        let shouldClear = delegate?.searchBarShouldClear?(self) ?? true
+        return shouldClear
     }
     
     public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if let result = delegate?.searchBarShouldReturn?(self) {
-            return result
-        }
-        return true
+        let shouldReturn = delegate?.searchBarShouldReturn?(self) ?? true
+        return shouldReturn
     }
     
     // MARK: - Cancel Button Management
