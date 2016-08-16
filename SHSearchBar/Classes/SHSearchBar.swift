@@ -11,14 +11,14 @@ import UIKit
 let kDefaultAnimationDuration: NSTimeInterval = 0.25
 
 public class SHSearchBar: UIView, UITextFieldDelegate {
-    private var backgroundView: UIImageView = UIImageView()
+    private(set) var backgroundView: UIImageView = UIImageView()
 
     public var cancelButton: UIButton = UIButton(type: .Custom)
     public var textField: UITextField = UITextField()
 
     // Constraints for showing and hiding the cancel button
-    private var bgToCancelButtonConstraint: NSLayoutConstraint!
-    private var bgToParentConstraint: NSLayoutConstraint!
+    private(set) var bgToCancelButtonConstraint: NSLayoutConstraint!
+    private(set) var bgToParentConstraint: NSLayoutConstraint!
     
     public var delegate: SHSearchBarDelegate?
     
@@ -117,8 +117,10 @@ public class SHSearchBar: UIView, UITextFieldDelegate {
     // MARK: - UITextFieldDelegate
     
     public func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        if let result = delegate?.searchBarShouldBeginEditing?(self) where result {
-            setCancelButtonVisibility(true)
+        if let result = delegate?.searchBarShouldBeginEditing?(self) {
+            if result {
+                setCancelButtonVisibility(true)
+            }
             return result
         }
         setCancelButtonVisibility(true)
@@ -130,8 +132,10 @@ public class SHSearchBar: UIView, UITextFieldDelegate {
     }
     
     public func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-        if let result = delegate?.searchBarShouldEndEditing?(self) where result {
-            setCancelButtonVisibility(false)
+        if let result = delegate?.searchBarShouldEndEditing?(self) {
+            if result {
+                setCancelButtonVisibility(false)
+            }
             return result
         }
         setCancelButtonVisibility(false)
@@ -147,14 +151,14 @@ public class SHSearchBar: UIView, UITextFieldDelegate {
     }
     
     public func textFieldShouldClear(_ textField: UITextField) -> Bool {
-        if let result = delegate?.searchBarShouldClear?(self) where result {
+        if let result = delegate?.searchBarShouldClear?(self) {
             return result
         }
         return true
     }
     
     public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if let result = delegate?.searchBarShouldReturn?(self) where result {
+        if let result = delegate?.searchBarShouldReturn?(self) {
             return result
         }
         return true
