@@ -24,6 +24,9 @@ class ViewController: UIViewController, SHSearchBarDelegate {
         
         view.backgroundColor = UIColor.whiteColor()
 
+        SHSearchBar.kDefaultRasterSize = 11
+        SHSearchBar.kDefaultAnimationDuration = 0.25
+
         searchBar1 = defaultSearchBar()
         view.addSubview(searchBar1)
 
@@ -85,7 +88,7 @@ class ViewController: UIViewController, SHSearchBarDelegate {
     }
 
     private func defaultSearchBar() -> SHSearchBar {
-        let bar = SHSearchBar(with: 11)
+        let bar = SHSearchBar()
         bar.delegate = self
         bar.textField.placeholder = "Example"
         bar.updateBackgroundWith(6, corners: [.AllCorners], color: UIColor.whiteColor())
