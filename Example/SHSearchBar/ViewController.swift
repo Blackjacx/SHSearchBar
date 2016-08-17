@@ -24,8 +24,8 @@ class ViewController: UIViewController, SHSearchBarDelegate {
         
         view.backgroundColor = UIColor.whiteColor()
 
-        SHSearchBar.kDefaultRasterSize = 11
-        SHSearchBar.kDefaultAnimationDuration = 0.25
+        SHSearchBar.kRasterSize = 11
+        SHSearchBar.kAnimationDuration = 0.25
 
         searchBar1 = defaultSearchBar()
         view.addSubview(searchBar1)
