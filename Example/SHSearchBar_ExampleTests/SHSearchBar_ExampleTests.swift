@@ -178,7 +178,8 @@ class SHSearchBarSpec: QuickSpec {
 class SearchBarMock: SHSearchBar {
 
     init() {
-        super.init(with: 11)
+        let config = SHSearchBarConfig(animationDuration: 1234, rasterSize: 4321)
+        super.init(config: config)
     }
 
     required init?(coder aDecoder: NSCoder) {

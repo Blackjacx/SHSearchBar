@@ -9,13 +9,12 @@
 import UIKit
 
 public class SHSearchBar: UIView, UITextFieldDelegate {
-    public static var kAnimationDuration: NSTimeInterval = 0.25
-    public static var kRasterSize: CGFloat = 11.0
+    public let config: SHSearchBarConfig
 
-    private(set) var backgroundView: UIImageView = UIImageView()
+    public let backgroundView: UIImageView = UIImageView()
 
-    public var cancelButton: UIButton = UIButton(type: .Custom)
-    public var textField: UITextField = UITextField()
+    public let cancelButton: UIButton = UIButton(type: .Custom)
+    public let textField: UITextField = UITextField()
 
     // Constraints for showing and hiding the cancel button
     private(set) var bgToCancelButtonConstraint: NSLayoutConstraint!
@@ -26,7 +25,9 @@ public class SHSearchBar: UIView, UITextFieldDelegate {
     
     // MARK: - Lifecycle
 
-    public override init(frame: CGRect) {
+    public init(config: SHSearchBarConfig) {
+        self.config = config
+        
         super.init(frame: CGRectZero)
         
         translatesAutoresizingMaskIntoConstraints = false
@@ -42,7 +43,7 @@ public class SHSearchBar: UIView, UITextFieldDelegate {
         textField.autocapitalizationType = .None
         textField.spellCheckingType = .No
         textField.adjustsFontSizeToFitWidth = false
-        textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: SHSearchBar.kRasterSize, height: 10.0))
+        textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: config.rasterSize, height: 10.0))
 
         // These are the properties you probably want to customize
         textField.leftViewMode = .Always
@@ -78,7 +79,7 @@ public class SHSearchBar: UIView, UITextFieldDelegate {
     
     private func setupConstraints() {
         let views = ["text":textField, "bg":backgroundView, "cancel":cancelButton]
-        let metrics = ["margin":SHSearchBar.kRasterSize]
+        let metrics = ["margin":config.rasterSize]
         
         let formatList: [String] = [
             // Background
@@ -96,7 +97,7 @@ public class SHSearchBar: UIView, UITextFieldDelegate {
             addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(format, options: [], metrics: metrics, views: views))
         }
 
-        bgToCancelButtonConstraint = NSLayoutConstraint(item: backgroundView, attribute: .Trailing, relatedBy: .Equal, toItem: cancelButton, attribute: .Leading, multiplier: 1, constant: -SHSearchBar.kRasterSize)
+        bgToCancelButtonConstraint = NSLayoutConstraint(item: backgroundView, attribute: .Trailing, relatedBy: .Equal, toItem: cancelButton, attribute: .Leading, multiplier: 1, constant: -config.rasterSize)
         bgToParentConstraint = NSLayoutConstraint(item: backgroundView, attribute: .Trailing, relatedBy: .Equal, toItem: self, attribute: .Trailing, multiplier: 1, constant: 0)
         bgToParentConstraint.active = true
     }
@@ -174,7 +175,7 @@ public class SHSearchBar: UIView, UITextFieldDelegate {
             bgToParentConstraint.active = true
         }
 
-        UIView.animateWithDuration(SHSearchBar.kAnimationDuration, delay: 0, options: [.CurveEaseInOut], animations: {
+        UIView.animateWithDuration(config.animationDuration, delay: 0, options: [.CurveEaseInOut], animations: {
             self.layoutIfNeeded()
             self.cancelButton.alpha = makeVisible ? 1 : 0
         }, completion: nil)
