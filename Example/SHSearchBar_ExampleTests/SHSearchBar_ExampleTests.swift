@@ -66,7 +66,7 @@ class SHSearchBarSpec: QuickSpec {
                     expect(result) == true
                 }
                 it("returns true for shouldChangeCharactersinRange") {
-                    let result = searchbar.textField(searchbar.textField, shouldChangeCharactersIn: NSMakeRange(0, 0), replacementString: "")
+                    let result = searchbar.textField(searchbar.textField, shouldChangeCharactersInRange: NSMakeRange(0, 0), replacementString: "")
                     expect(result) == true
                 }
                 it("returns true for shouldClear") {
@@ -92,7 +92,7 @@ class SHSearchBarSpec: QuickSpec {
                     expect(result) == false
                 }
                 it("returns false for shouldChangeCharactersinRange") {
-                    let result = searchbar.textField(searchbar.textField, shouldChangeCharactersIn: NSMakeRange(0, 0), replacementString: "")
+                    let result = searchbar.textField(searchbar.textField, shouldChangeCharactersInRange: NSMakeRange(0, 0), replacementString: "")
                     expect(result) == false
                 }
                 it("returns false for shouldClear") {

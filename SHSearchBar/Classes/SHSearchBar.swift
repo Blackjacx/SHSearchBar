@@ -142,8 +142,8 @@ public class SHSearchBar: UIView, UITextFieldDelegate {
     public func textFieldDidEndEditing(textField: UITextField) {
         delegate?.searchBarDidEndEditing?(self)
     }
-    
-    public func textField(textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+
+    public func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
         let shouldChange = delegate?.searchBar?(self, shouldChangeCharactersIn: range, replacementString: string) ?? true
         return shouldChange
     }
