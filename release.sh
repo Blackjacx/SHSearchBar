@@ -11,7 +11,6 @@ trap "cleanup" EXIT
 
 NEW_APP_VERSION=$1
 PODSPEC=$2
-SPECS_REPO=$3
 
 # Check for missing app version
 if [[ $# -eq 0 ]]; then
@@ -28,12 +27,6 @@ fi
 # Check for file existence
 if [[ ! -e "$PODSPEC" ]]; then
   echo "Podspec file $PODSPEC does not exist!"
-  exit 1
-fi
-
-# Check if podspec repo exists
-if [[ ! -d "${HOME}/.cocoapods/repos/${SPECS_REPO}" ]]; then
-  echo "Pod repo $SPECS_REPO does not exist!"
   exit 1
 fi
 
@@ -57,4 +50,4 @@ git push --tag
 set -e
 
 # Command chain III
-pod trunk push "$PODSPEC" --allow-warnings
+pod trunk push "$PODSPEC"
