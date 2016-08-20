@@ -148,7 +148,7 @@ public class SHSearchBar: UIView, UITextFieldDelegate {
         let shouldChange = delegate?.searchBar?(self, shouldChangeCharactersIn: range, replacementString: string) ?? true
         if shouldChange {
             let currentText = NSString(string: textField.text ?? "")
-            var newText: String = currentText.stringByReplacingCharactersInRange(range, withString: string)
+            let newText: String = currentText.stringByReplacingCharactersInRange(range, withString: string)
             if !currentText.isEqualToString(newText) {
                 delegate?.searchBar?(self, textDidChange: newText)
             }
