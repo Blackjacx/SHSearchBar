@@ -126,6 +126,12 @@ class SHSearchBarSpec: QuickSpec {
                     searchbar.textField(searchbar.textField, shouldChangeCharactersInRange: NSMakeRange(0, 0), replacementString:replacement)
                     expect(alwaysTrueDelegate.hasTextDidChangeBeenCalled).to(beTrue())
                 }
+                it("does NOT call the textDidChange method when new text is set programmatically") {
+                    let newText = (searchbar.textField.text ?? "") + " appended text"
+                    expect(alwaysTrueDelegate.hasTextDidChangeBeenCalled).to(beFalse())
+                    searchbar.textField.text = newText
+                    expect(alwaysTrueDelegate.hasTextDidChangeBeenCalled).to(beFalse())
+                }
                 it("does NOT call the textDidChange method when text actually not changes") {
                     expect(alwaysTrueDelegate.hasTextDidChangeBeenCalled).to(beFalse())
                     searchbar.textField(searchbar.textField, shouldChangeCharactersInRange: NSMakeRange(0, 0), replacementString: "")
