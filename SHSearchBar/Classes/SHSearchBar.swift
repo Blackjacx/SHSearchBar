@@ -20,12 +20,12 @@ public class SHSearchBar: UIView, UITextFieldDelegate {
     private(set) var bgToCancelButtonConstraint: NSLayoutConstraint!
     private(set) var bgToParentConstraint: NSLayoutConstraint!
     
-    public let delegate: SHSearchBarDelegate?
+    private(set) weak var delegate: SHSearchBarDelegate?
     
     
     // MARK: - Lifecycle
 
-    public init(config: SHSearchBarConfig, delegate: SHSearchBarDelegate? = nil) {
+    public init(config: SHSearchBarConfig, delegate: SHSearchBarDelegate) {
         self.config = config
         self.delegate = delegate
         

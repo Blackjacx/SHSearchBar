@@ -17,13 +17,18 @@ class SHSearchBarSpec: QuickSpec {
 
     override func spec() {
 
+        let emptyDelegate = SearchBarEmptyDelegate()
+
         describe("searchbar") {
             var searchbar: SearchBarMock!
 
             beforeEach({
-                searchbar = SearchBarMock()
+                searchbar = SearchBarMock(delegate: emptyDelegate)
             })
 
+            it("has a delegate set") {
+                expect(searchbar.delegate).toNot(beNil())
+            }
             it("has a background view") {
                 expect(searchbar.backgroundView).toNot(beNil())
             }
@@ -52,7 +57,7 @@ class SHSearchBarSpec: QuickSpec {
             var searchbar: SearchBarMock!
 
             beforeEach({
-                searchbar = SearchBarMock()
+                searchbar = SearchBarMock(delegate: emptyDelegate)
             })
 
             it("has a non nil delegate") {
@@ -60,36 +65,7 @@ class SHSearchBarSpec: QuickSpec {
             }
         }
 
-        describe("internal textFieldDelegate") {
-
-            context("searchBarDelegate is set to nil") {
-                var searchbar: SearchBarMock!
-
-                beforeEach({
-                    searchbar = SearchBarMock()
-                })
-
-                it("returns true for shouldBeginEditing") {
-                    let result = searchbar.textFieldShouldBeginEditing(searchbar.textField)
-                    expect(result) == true
-                }
-                it("returns true for shouldEndEditing") {
-                    let result = searchbar.textFieldShouldEndEditing(searchbar.textField)
-                    expect(result) == true
-                }
-                it("returns true for shouldChangeCharactersinRange") {
-                    let result = searchbar.textField(searchbar.textField, shouldChangeCharactersInRange: NSMakeRange(0, 0), replacementString: "")
-                    expect(result) == true
-                }
-                it("returns true for shouldClear") {
-                    let result = searchbar.textFieldShouldClear(searchbar.textField)
-                    expect(result) == true
-                }
-                it("returns true for shouldReturn") {
-                    let result = searchbar.textFieldShouldReturn(searchbar.textField)
-                    expect(result) == true
-                }
-            }
+        describe("textFieldDelegate") {
 
             context("searchBarDelegate is set to always true delegate") {
                 var searchbar: SearchBarMock!
@@ -178,9 +154,11 @@ class SHSearchBarSpec: QuickSpec {
 
             context("editing begins") {
                 var searchbar: SearchBarMock!
+                var alwaysTrueDelegate: SearchBarAlwaysTrueDelegate!
 
                 beforeEach({
-                    searchbar = SearchBarMock(delegate: SearchBarAlwaysTrueDelegate())
+                    alwaysTrueDelegate = SearchBarAlwaysTrueDelegate()
+                    searchbar = SearchBarMock(delegate: alwaysTrueDelegate)
                 })
 
                 it("it sets the cancelButton visibility to true") {
@@ -191,9 +169,11 @@ class SHSearchBarSpec: QuickSpec {
 
             context("editing ends") {
                 var searchbar: SearchBarMock!
+                var alwaysTrueDelegate: SearchBarAlwaysTrueDelegate!
 
                 beforeEach({
-                    searchbar = SearchBarMock(delegate: SearchBarAlwaysTrueDelegate())
+                    alwaysTrueDelegate = SearchBarAlwaysTrueDelegate()
+                    searchbar = SearchBarMock(delegate: alwaysTrueDelegate)
                 })
 
                 it("it sets the cancelButton visibility to false") {
@@ -209,7 +189,7 @@ class SHSearchBarSpec: QuickSpec {
                 var searchbar: SearchBarMock!
 
                 beforeEach({
-                    searchbar = SearchBarMock()
+                    searchbar = SearchBarMock(delegate: emptyDelegate)
                     searchbar.setCancelButtonVisibility(false)
                 })
 
@@ -228,7 +208,7 @@ class SHSearchBarSpec: QuickSpec {
                 var searchbar: SearchBarMock!
 
                 beforeEach({
-                    searchbar = SearchBarMock()
+                    searchbar = SearchBarMock(delegate: emptyDelegate)
                     searchbar.setCancelButtonVisibility(true)
                 })
 
@@ -247,7 +227,7 @@ class SHSearchBarSpec: QuickSpec {
                 var searchbar: SearchBarMock!
 
                 beforeEach({
-                    searchbar = SearchBarMock()
+                    searchbar = SearchBarMock(delegate: emptyDelegate)
                 })
 
                 it("results in an alpha value of 1") {
@@ -266,7 +246,7 @@ class SHSearchBarSpec: QuickSpec {
 
 class SearchBarMock: SHSearchBar {
 
-    init(delegate: SHSearchBarDelegate? = nil) {
+    init(delegate: SHSearchBarDelegate) {
         let config = SHSearchBarConfig(animationDuration: 1234, rasterSize: 4321)
         super.init(config: config, delegate: delegate)
     }
@@ -274,6 +254,9 @@ class SearchBarMock: SHSearchBar {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+}
+
+class SearchBarEmptyDelegate: NSObject, SHSearchBarDelegate {
 }
 
 class SearchBarAlwaysFalseDelegate: NSObject, SHSearchBarDelegate {
