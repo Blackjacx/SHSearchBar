@@ -165,6 +165,7 @@ public class SHSearchBar: UIView, UITextFieldDelegate {
         let shouldReturn = delegate?.searchBarShouldReturn?(self) ?? true
         return shouldReturn
     }
+
     
     // MARK: - Cancel Button Management
     
