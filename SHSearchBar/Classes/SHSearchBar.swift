@@ -20,13 +20,14 @@ public class SHSearchBar: UIView, UITextFieldDelegate {
     private(set) var bgToCancelButtonConstraint: NSLayoutConstraint!
     private(set) var bgToParentConstraint: NSLayoutConstraint!
     
-    public var delegate: SHSearchBarDelegate?
+    public let delegate: SHSearchBarDelegate?
     
     
     // MARK: - Lifecycle
 
-    public init(config: SHSearchBarConfig) {
+    public init(config: SHSearchBarConfig, delegate: SHSearchBarDelegate? = nil) {
         self.config = config
+        self.delegate = delegate
         
         super.init(frame: CGRectZero)
         
@@ -145,6 +146,13 @@ public class SHSearchBar: UIView, UITextFieldDelegate {
 
     public func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
         let shouldChange = delegate?.searchBar?(self, shouldChangeCharactersIn: range, replacementString: string) ?? true
+        if shouldChange {
+            let currentText = NSString(string: textField.text ?? "")
+            var newText: String = currentText.stringByReplacingCharactersInRange(range, withString: string)
+            if !currentText.isEqualToString(newText) {
+                delegate?.searchBar?(self, textDidChange: newText)
+            }
+        }
         return shouldChange
     }
     

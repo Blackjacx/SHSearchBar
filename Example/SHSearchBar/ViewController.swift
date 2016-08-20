@@ -86,8 +86,7 @@ class ViewController: UIViewController, SHSearchBarDelegate {
 
     private func defaultSearchBar() -> SHSearchBar {
         let config: SHSearchBarConfig = SHSearchBarConfig(animationDuration: 0.25, rasterSize: 11.0)
-        let bar = SHSearchBar(config: config)
-        bar.delegate = self
+        let bar = SHSearchBar(config: config, delegate: self)
         bar.textField.placeholder = "Example"
         bar.updateBackgroundWith(6, corners: [.AllCorners], color: UIColor.whiteColor())
         bar.layer.shadowColor = UIColor.blackColor().CGColor

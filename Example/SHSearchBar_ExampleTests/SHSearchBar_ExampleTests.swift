@@ -18,7 +18,11 @@ class SHSearchBarSpec: QuickSpec {
     override func spec() {
 
         describe("searchbar") {
-            let searchbar = SearchBarMock()
+            var searchbar: SearchBarMock!
+
+            beforeEach({
+                searchbar = SearchBarMock()
+            })
 
             it("has a background view") {
                 expect(searchbar.backgroundView).toNot(beNil())
@@ -44,8 +48,12 @@ class SHSearchBarSpec: QuickSpec {
             }
         }
 
-        describe("textField") { 
-            let searchbar = SearchBarMock()
+        describe("textField") {
+            var searchbar: SearchBarMock!
+
+            beforeEach({
+                searchbar = SearchBarMock()
+            })
 
             it("has a non nil delegate") {
                 expect(searchbar.textField.delegate).toNot(beNil())
@@ -54,9 +62,13 @@ class SHSearchBarSpec: QuickSpec {
 
         describe("internal textFieldDelegate") {
 
-            context("if searchBarDelegate is set to nil") {
-                let searchbar = SearchBarMock()
-                
+            context("searchBarDelegate is set to nil") {
+                var searchbar: SearchBarMock!
+
+                beforeEach({
+                    searchbar = SearchBarMock()
+                })
+
                 it("returns true for shouldBeginEditing") {
                     let result = searchbar.textFieldShouldBeginEditing(searchbar.textField)
                     expect(result) == true
@@ -79,9 +91,56 @@ class SHSearchBarSpec: QuickSpec {
                 }
             }
 
-            context("if searchBarDelegate is set to the always false delegate") {
-                let searchbar = SearchBarMock()
-                searchbar.delegate = SearchBarAlwaysFalseDelegate()
+            context("searchBarDelegate is set to always true delegate") {
+                var searchbar: SearchBarMock!
+                var alwaysTrueDelegate: SearchBarAlwaysTrueDelegate!
+
+                beforeEach({
+                    alwaysTrueDelegate = SearchBarAlwaysTrueDelegate()
+                    searchbar = SearchBarMock(delegate: alwaysTrueDelegate)
+                })
+
+                it("returns true for shouldBeginEditing") {
+                    let result = searchbar.textFieldShouldBeginEditing(searchbar.textField)
+                    expect(result) == true
+                }
+                it("returns true for shouldEndEditing") {
+                    let result = searchbar.textFieldShouldEndEditing(searchbar.textField)
+                    expect(result) == true
+                }
+                it("returns true for shouldChangeCharactersinRange") {
+                    let result = searchbar.textField(searchbar.textField, shouldChangeCharactersInRange: NSMakeRange(0, 0), replacementString: "")
+                    expect(result) == true
+                }
+                it("returns true for shouldClear") {
+                    let result = searchbar.textFieldShouldClear(searchbar.textField)
+                    expect(result) == true
+                }
+                it("returns true for shouldReturn") {
+                    let result = searchbar.textFieldShouldReturn(searchbar.textField)
+                    expect(result) == true
+                }
+                it("calls the textDidChange method when text changes") {
+                    let replacement = (searchbar.textField.text ?? "") + " appended text"
+                    expect(alwaysTrueDelegate.hasTextDidChangeBeenCalled).to(beFalse())
+                    searchbar.textField(searchbar.textField, shouldChangeCharactersInRange: NSMakeRange(0, 0), replacementString:replacement)
+                    expect(alwaysTrueDelegate.hasTextDidChangeBeenCalled).to(beTrue())
+                }
+                it("does NOT call the textDidChange method when text actually not changes") {
+                    expect(alwaysTrueDelegate.hasTextDidChangeBeenCalled).to(beFalse())
+                    searchbar.textField(searchbar.textField, shouldChangeCharactersInRange: NSMakeRange(0, 0), replacementString: "")
+                    expect(alwaysTrueDelegate.hasTextDidChangeBeenCalled).to(beFalse())
+                }
+            }
+
+            context("searchBarDelegate is set to the always false delegate") {
+                var searchbar: SearchBarMock!
+                var alwaysFalseDelegate: SearchBarAlwaysFalseDelegate!
+
+                beforeEach({
+                    alwaysFalseDelegate = SearchBarAlwaysFalseDelegate()
+                    searchbar = SearchBarMock(delegate: alwaysFalseDelegate)
+                })
 
                 it("returns false for shouldBeginEditing") {
                     let result = searchbar.textFieldShouldBeginEditing(searchbar.textField)
@@ -103,11 +162,20 @@ class SHSearchBarSpec: QuickSpec {
                     let result = searchbar.textFieldShouldReturn(searchbar.textField)
                     expect(result) == false
                 }
+                it("does NOT call the textDidChange method when text changes") {
+                    let replacement = (searchbar.textField.text ?? "") + " appended text"
+                    expect(alwaysFalseDelegate.hasTextDidChangeBeenCalled).to(beFalse())
+                    searchbar.textField(searchbar.textField, shouldChangeCharactersInRange: NSMakeRange(0, 0), replacementString:replacement)
+                    expect(alwaysFalseDelegate.hasTextDidChangeBeenCalled).to(beFalse())
+                }
             }
 
-            context("if editing begins") {
-                let searchbar = SearchBarMock()
-                searchbar.delegate = SearchBarAlwaysTrueDelegate()
+            context("editing begins") {
+                var searchbar: SearchBarMock!
+
+                beforeEach({
+                    searchbar = SearchBarMock(delegate: SearchBarAlwaysTrueDelegate())
+                })
 
                 it("it sets the cancelButton visibility to true") {
                     searchbar.textFieldShouldBeginEditing(searchbar.textField)
@@ -115,9 +183,12 @@ class SHSearchBarSpec: QuickSpec {
                 }
             }
 
-            context("if editing ends") {
-                let searchbar = SearchBarMock()
-                searchbar.delegate = SearchBarAlwaysTrueDelegate()
+            context("editing ends") {
+                var searchbar: SearchBarMock!
+
+                beforeEach({
+                    searchbar = SearchBarMock(delegate: SearchBarAlwaysTrueDelegate())
+                })
 
                 it("it sets the cancelButton visibility to false") {
                     searchbar.textFieldShouldEndEditing(searchbar.textField)
@@ -129,8 +200,12 @@ class SHSearchBarSpec: QuickSpec {
         describe("setting the cancel button visibility") {
 
             context("to false") {
-                let searchbar = SearchBarMock()
-                searchbar.setCancelButtonVisibility(false)
+                var searchbar: SearchBarMock!
+
+                beforeEach({
+                    searchbar = SearchBarMock()
+                    searchbar.setCancelButtonVisibility(false)
+                })
 
                 it("results in a zero alpha value") {
                     expect(searchbar.cancelButton.alpha).toEventually(equal(0))
@@ -144,8 +219,12 @@ class SHSearchBarSpec: QuickSpec {
             }
 
             context("to true") {
-                let searchbar = SearchBarMock()
-                searchbar.setCancelButtonVisibility(true)
+                var searchbar: SearchBarMock!
+
+                beforeEach({
+                    searchbar = SearchBarMock()
+                    searchbar.setCancelButtonVisibility(true)
+                })
 
                 it("results in an alpha value of 1") {
                     expect(searchbar.cancelButton.alpha).toEventually(equal(1))
@@ -159,7 +238,11 @@ class SHSearchBarSpec: QuickSpec {
             }
 
             context("do not set the visibility") {
-                let searchbar = SearchBarMock()
+                var searchbar: SearchBarMock!
+
+                beforeEach({
+                    searchbar = SearchBarMock()
+                })
 
                 it("results in an alpha value of 1") {
                     expect(searchbar.cancelButton.alpha).toEventually(equal(0))
@@ -177,9 +260,9 @@ class SHSearchBarSpec: QuickSpec {
 
 class SearchBarMock: SHSearchBar {
 
-    init() {
+    init(delegate: SHSearchBarDelegate? = nil) {
         let config = SHSearchBarConfig(animationDuration: 1234, rasterSize: 4321)
-        super.init(config: config)
+        super.init(config: config, delegate: delegate)
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -188,6 +271,8 @@ class SearchBarMock: SHSearchBar {
 }
 
 class SearchBarAlwaysFalseDelegate: NSObject, SHSearchBarDelegate {
+    var hasTextDidChangeBeenCalled: Bool = false
+
     // UITextField Pendants
     @objc func searchBarShouldBeginEditing(searchBar: SHSearchBar) -> Bool {
         return false
@@ -203,10 +288,15 @@ class SearchBarAlwaysFalseDelegate: NSObject, SHSearchBarDelegate {
     }
     @objc func searchBarShouldReturn(searchBar: SHSearchBar) -> Bool {
         return false
+    }
+    @objc func searchBar(searchBar: SHSearchBar, textDidChange text: String) {
+        hasTextDidChangeBeenCalled = true
     }
 }
 
 class SearchBarAlwaysTrueDelegate: NSObject, SHSearchBarDelegate {
+    var hasTextDidChangeBeenCalled: Bool = false
+
     // UITextField Pendants
     @objc func searchBarShouldBeginEditing(searchBar: SHSearchBar) -> Bool {
         return true
@@ -222,5 +312,8 @@ class SearchBarAlwaysTrueDelegate: NSObject, SHSearchBarDelegate {
     }
     @objc func searchBarShouldReturn(searchBar: SHSearchBar) -> Bool {
         return true
+    }
+    @objc func searchBar(searchBar: SHSearchBar, textDidChange text: String) {
+        hasTextDidChangeBeenCalled = true
     }
 }
