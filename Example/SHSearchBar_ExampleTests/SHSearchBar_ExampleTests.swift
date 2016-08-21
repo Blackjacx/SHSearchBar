@@ -17,18 +17,17 @@ class SHSearchBarSpec: QuickSpec {
 
     override func spec() {
 
+        let config = SHSearchBarConfig(animationDuration: 1234, rasterSize: 4321)
         let emptyDelegate = SearchBarEmptyDelegate()
 
         describe("searchbar") {
             var searchbar: SearchBarMock!
 
             beforeEach({
-                searchbar = SearchBarMock(delegate: emptyDelegate)
+                searchbar = SearchBarMock(config: config)
+                searchbar.delegate = emptyDelegate
             })
 
-            it("has a delegate set") {
-                expect(searchbar.delegate).toNot(beNil())
-            }
             it("has a background view") {
                 expect(searchbar.backgroundView).toNot(beNil())
             }
@@ -67,7 +66,8 @@ class SHSearchBarSpec: QuickSpec {
             var searchbar: SearchBarMock!
 
             beforeEach({
-                searchbar = SearchBarMock(delegate: emptyDelegate)
+                searchbar = SearchBarMock(config: config)
+                searchbar.delegate = emptyDelegate
             })
 
             it("has a non nil delegate") {
@@ -83,7 +83,8 @@ class SHSearchBarSpec: QuickSpec {
 
                 beforeEach({
                     alwaysTrueDelegate = SearchBarAlwaysTrueDelegate()
-                    searchbar = SearchBarMock(delegate: alwaysTrueDelegate)
+                    searchbar = SearchBarMock(config: config)
+                    searchbar.delegate = alwaysTrueDelegate
                 })
 
                 it("returns true for shouldBeginEditing") {
@@ -131,7 +132,8 @@ class SHSearchBarSpec: QuickSpec {
 
                 beforeEach({
                     alwaysFalseDelegate = SearchBarAlwaysFalseDelegate()
-                    searchbar = SearchBarMock(delegate: alwaysFalseDelegate)
+                    searchbar = SearchBarMock(config: config)
+                    searchbar.delegate = alwaysFalseDelegate
                 })
 
                 it("returns false for shouldBeginEditing") {
@@ -168,7 +170,8 @@ class SHSearchBarSpec: QuickSpec {
 
                 beforeEach({
                     alwaysTrueDelegate = SearchBarAlwaysTrueDelegate()
-                    searchbar = SearchBarMock(delegate: alwaysTrueDelegate)
+                    searchbar = SearchBarMock(config: config)
+                    searchbar.delegate = alwaysTrueDelegate
                 })
 
                 it("it sets the cancelButton visibility to true") {
@@ -183,7 +186,8 @@ class SHSearchBarSpec: QuickSpec {
 
                 beforeEach({
                     alwaysTrueDelegate = SearchBarAlwaysTrueDelegate()
-                    searchbar = SearchBarMock(delegate: alwaysTrueDelegate)
+                    searchbar = SearchBarMock(config: config)
+                    searchbar.delegate = alwaysTrueDelegate
                 })
 
                 it("it sets the cancelButton visibility to false") {
@@ -199,7 +203,8 @@ class SHSearchBarSpec: QuickSpec {
                 var searchbar: SearchBarMock!
 
                 beforeEach({
-                    searchbar = SearchBarMock(delegate: emptyDelegate)
+                    searchbar = SearchBarMock(config: config)
+                    searchbar.delegate = emptyDelegate
                     searchbar.setCancelButtonVisibility(false)
                 })
 
@@ -218,7 +223,8 @@ class SHSearchBarSpec: QuickSpec {
                 var searchbar: SearchBarMock!
 
                 beforeEach({
-                    searchbar = SearchBarMock(delegate: emptyDelegate)
+                    searchbar = SearchBarMock(config: config)
+                    searchbar.delegate = emptyDelegate
                     searchbar.setCancelButtonVisibility(true)
                 })
 
@@ -237,7 +243,8 @@ class SHSearchBarSpec: QuickSpec {
                 var searchbar: SearchBarMock!
 
                 beforeEach({
-                    searchbar = SearchBarMock(delegate: emptyDelegate)
+                    searchbar = SearchBarMock(config: config)
+                    searchbar.delegate = emptyDelegate
                 })
 
                 it("results in an alpha value of 1") {
@@ -255,15 +262,6 @@ class SHSearchBarSpec: QuickSpec {
 }
 
 class SearchBarMock: SHSearchBar {
-
-    init(delegate: SHSearchBarDelegate) {
-        let config = SHSearchBarConfig(animationDuration: 1234, rasterSize: 4321)
-        super.init(config: config, delegate: delegate)
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
 }
 
 class SearchBarEmptyDelegate: NSObject, SHSearchBarDelegate {

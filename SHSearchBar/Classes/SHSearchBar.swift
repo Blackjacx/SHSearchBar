@@ -22,14 +22,13 @@ public class SHSearchBar: UIView, UITextFieldDelegate {
     private(set) var bgToCancelButtonConstraint: NSLayoutConstraint!
     private(set) var bgToParentConstraint: NSLayoutConstraint!
     
-    private(set) weak var delegate: SHSearchBarDelegate?
+    public weak var delegate: SHSearchBarDelegate?
     
     
     // MARK: - Lifecycle
 
-    public init(config: SHSearchBarConfig, delegate: SHSearchBarDelegate) {
+    public init(config: SHSearchBarConfig) {
         self.config = config
-        self.delegate = delegate
         
         super.init(frame: CGRectZero)
         
