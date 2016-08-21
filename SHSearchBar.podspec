@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'SHSearchBar'
-  s.version          = '0.9.6'
+  s.version          = '0.9.7'
   s.summary          = 'The search bar that does not suck.'
 
 # This description is used to generate tags and improve search results.
