@@ -16,6 +16,8 @@ public class SHSearchBar: UIView, UITextFieldDelegate {
     public let cancelButton: UIButton = UIButton(type: .Custom)
     public let textField: UITextField = UITextField()
 
+    private var textBeforeEditing: String?
+
     // Constraints for showing and hiding the cancel button
     private(set) var bgToCancelButtonConstraint: NSLayoutConstraint!
     private(set) var bgToParentConstraint: NSLayoutConstraint!
@@ -117,6 +119,10 @@ public class SHSearchBar: UIView, UITextFieldDelegate {
         backgroundColor = UIColor.clearColor()
     }
 
+    public func resetTextField() {
+        textField.text = textBeforeEditing
+    }
+
 
     // MARK: - UITextFieldDelegate
     
@@ -129,6 +135,7 @@ public class SHSearchBar: UIView, UITextFieldDelegate {
     }
     
     public func textFieldDidBeginEditing(textField: UITextField) {
+        textBeforeEditing = textField.text
         delegate?.searchBarDidBeginEditing?(self)
     }
     

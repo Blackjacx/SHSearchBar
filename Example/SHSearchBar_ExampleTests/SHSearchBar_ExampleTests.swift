@@ -51,6 +51,16 @@ class SHSearchBarSpec: QuickSpec {
                     expect(subview.translatesAutoresizingMaskIntoConstraints) == false
                 }
             }
+            it("resets the textfield to the same text as it had right before editing") {
+                let textBefore = "Hello TextField"
+                searchbar.textField.text = textBefore
+                searchbar.textFieldDidBeginEditing(searchbar.textField)
+                expect(searchbar.textField.text).to(equal(textBefore))
+                searchbar.textField.text = "Another text"
+                expect(searchbar.textField.text).toNot(equal(textBefore))
+                searchbar.resetTextField()
+                expect(searchbar.textField.text).to(equal(textBefore))
+            }
         }
 
         describe("textField") {
