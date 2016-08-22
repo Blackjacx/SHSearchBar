@@ -103,7 +103,7 @@ public class SHSearchBar: UIView, UITextFieldDelegate {
 
     // MARK: - UI Updates
 
-     func updateUI() {
+    public func updateUI() {
         var newAttributes = config.textAttributes
         var normalTextColor = newAttributes[NSForegroundColorAttributeName] as? UIColor
 

@@ -11,6 +11,12 @@ import SHSearchBar
 
 
 class SearchBarMock: SHSearchBar {
+    var hasCalledUpdateUI = false
+
+    override func updateUI() {
+        super.updateUI()
+        hasCalledUpdateUI = true
+    }
 }
 
 class SearchBarEmptyDelegate: NSObject, SHSearchBarDelegate {

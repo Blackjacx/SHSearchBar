@@ -114,6 +114,9 @@ class SHSearchBarSpec: QuickSpec {
                     expect(value).to(be(expectedValue))
                 }
             }
+            it("calls updateUI after init") {
+                expect(searchbar.hasCalledUpdateUI) == true
+            }
         }
 
         describe("textFieldDelegate") {
