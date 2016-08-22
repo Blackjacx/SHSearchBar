@@ -17,7 +17,10 @@ class SHSearchBarSpec: QuickSpec {
 
     override func spec() {
 
-        let config = SHSearchBarConfig(animationDuration: 1234, rasterSize: 4321)
+        let attributes = [
+            NSForegroundColorAttributeName:UIColor.blackColor(),
+            NSBackgroundColorAttributeName: UIColor.clearColor()]
+        let config: SHSearchBarConfig = SHSearchBarConfig(animationDuration: 0.25, rasterSize: 11.0, textAttributes: attributes)
         let emptyDelegate = SearchBarEmptyDelegate()
 
         describe("searchbar") {
@@ -60,18 +63,56 @@ class SHSearchBarSpec: QuickSpec {
                 searchbar.resetTextField()
                 expect(searchbar.textField.text).to(equal(textBefore))
             }
-        }
-
-        describe("textField") {
-            var searchbar: SearchBarMock!
-
-            beforeEach({
-                searchbar = SearchBarMock(config: config)
-                searchbar.delegate = emptyDelegate
-            })
-
-            it("has a non nil delegate") {
+            it("sets a delegate on its textfield") {
                 expect(searchbar.textField.delegate).toNot(beNil())
+            }
+            it("sets the correct text color when active") {
+                let color = searchbar.textField.textColor
+                let expectedColor = config.textAttributes[NSForegroundColorAttributeName] as? UIColor
+                expect(color).to(equal(expectedColor))
+            }
+            it("sets the correct tint color when active") {
+                let color = searchbar.textField.tintColor
+                let expectedColor = config.textAttributes[NSForegroundColorAttributeName] as? UIColor
+                expect(color).to(equal(expectedColor))
+            }
+            it("sets the correct textAttributes when active") {
+                let attributes = searchbar.textField.defaultTextAttributes
+                let expected = config.textAttributes
+
+                for key in expected.keys {
+                    guard let value = attributes[key], let expectedValue = expected[key] else {
+                        XCTFail("Value or expected value not found for key \(key)")
+                        return
+                    }
+                    expect(value).to(be(expectedValue))
+                }
+            }
+            it("sets the correct text color when inactive") {
+                searchbar.isActive = false
+                let color = searchbar.textField.textColor
+                let expectedColor = (config.textAttributes[NSForegroundColorAttributeName] as? UIColor)?.colorWithAlphaComponent(0.5)
+                expect(color).to(equal(expectedColor))
+            }
+            it("sets the correct tint color when inactive") {
+                searchbar.isActive = false
+                let color = searchbar.textField.tintColor
+                let expectedColor = (config.textAttributes[NSForegroundColorAttributeName] as? UIColor)?.colorWithAlphaComponent(0.5)
+                expect(color).to(equal(expectedColor))
+            }
+            it("sets the correct textAttributes when inactive") {
+                searchbar.isActive = false
+                let attributes = searchbar.textField.defaultTextAttributes
+                var expected = config.textAttributes
+                expected[NSForegroundColorAttributeName] = (expected[NSForegroundColorAttributeName] as? UIColor)?.colorWithAlphaComponent(0.5)
+
+                for key in expected.keys {
+                    guard let value = attributes[key], let expectedValue = expected[key] else {
+                        XCTFail("Value or expected value not found for key \(key)")
+                        return
+                    }
+                    expect(value).to(be(expectedValue))
+                }
             }
         }
 
@@ -258,59 +299,5 @@ class SHSearchBarSpec: QuickSpec {
                 }
             }
         }
-    }
-}
-
-class SearchBarMock: SHSearchBar {
-}
-
-class SearchBarEmptyDelegate: NSObject, SHSearchBarDelegate {
-}
-
-class SearchBarAlwaysFalseDelegate: NSObject, SHSearchBarDelegate {
-    var hasTextDidChangeBeenCalled: Bool = false
-
-    // UITextField Pendants
-    @objc func searchBarShouldBeginEditing(searchBar: SHSearchBar) -> Bool {
-        return false
-    }
-    @objc func searchBarShouldEndEditing(searchBar: SHSearchBar) -> Bool {
-        return false
-    }
-    @objc func searchBar(searchBar: SHSearchBar, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        return false
-    }
-    @objc func searchBarShouldClear(searchBar: SHSearchBar) -> Bool {
-        return false
-    }
-    @objc func searchBarShouldReturn(searchBar: SHSearchBar) -> Bool {
-        return false
-    }
-    @objc func searchBar(searchBar: SHSearchBar, textDidChange text: String) {
-        hasTextDidChangeBeenCalled = true
-    }
-}
-
-class SearchBarAlwaysTrueDelegate: NSObject, SHSearchBarDelegate {
-    var hasTextDidChangeBeenCalled: Bool = false
-
-    // UITextField Pendants
-    @objc func searchBarShouldBeginEditing(searchBar: SHSearchBar) -> Bool {
-        return true
-    }
-    @objc func searchBarShouldEndEditing(searchBar: SHSearchBar) -> Bool {
-        return true
-    }
-    @objc func searchBar(searchBar: SHSearchBar, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        return true
-    }
-    @objc func searchBarShouldClear(searchBar: SHSearchBar) -> Bool {
-        return true
-    }
-    @objc func searchBarShouldReturn(searchBar: SHSearchBar) -> Bool {
-        return true
-    }
-    @objc func searchBar(searchBar: SHSearchBar, textDidChange text: String) {
-        hasTextDidChangeBeenCalled = true
     }
 }

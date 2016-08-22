@@ -9,21 +9,20 @@
 import UIKit
 
 public class SHSearchBar: UIView, UITextFieldDelegate {
-    public let config: SHSearchBarConfig
-
-    public let backgroundView: UIImageView = UIImageView()
-
-    public let cancelButton: UIButton = UIButton(type: .Custom)
-    public let textField: UITextField = UITextField()
-
     private var textBeforeEditing: String?
 
     // Constraints for showing and hiding the cancel button
     private(set) var bgToCancelButtonConstraint: NSLayoutConstraint!
     private(set) var bgToParentConstraint: NSLayoutConstraint!
-    
+
+    public let config: SHSearchBarConfig
+    public let backgroundView: UIImageView = UIImageView()
+    public let cancelButton: UIButton = UIButton(type: .Custom)
+    public let textField: UITextField = UITextField()
+
+    public var isActive: Bool = true { didSet { updateUI() } }
     public weak var delegate: SHSearchBarDelegate?
-    
+
     
     // MARK: - Lifecycle
 
@@ -51,10 +50,6 @@ public class SHSearchBar: UIView, UITextFieldDelegate {
         textField.leftViewMode = .Always
         textField.rightViewMode = .Never
         textField.clearButtonMode = .WhileEditing
-        textField.tintColor = UIColor.blackColor() // Styles the cursor as well as the selection marker
-        textField.defaultTextAttributes = [NSForegroundColorAttributeName:UIColor.blackColor(), NSBackgroundColorAttributeName: UIColor.clearColor()]
-        textField.typingAttributes = textField.defaultTextAttributes
-
         textField.translatesAutoresizingMaskIntoConstraints = false
         backgroundView.addSubview(textField)
 
@@ -72,6 +67,7 @@ public class SHSearchBar: UIView, UITextFieldDelegate {
         sendSubviewToBack(cancelButton)
 
         setupConstraints()
+        updateUI()
     }
     
     required public init?(coder aDecoder: NSCoder) {
@@ -106,6 +102,23 @@ public class SHSearchBar: UIView, UITextFieldDelegate {
 
 
     // MARK: - UI Updates
+
+     func updateUI() {
+        var newAttributes = config.textAttributes
+        var normalTextColor = newAttributes[NSForegroundColorAttributeName] as? UIColor
+
+        // Replace normal color with a lighter color so the text looks disabled
+        if !isActive {
+            normalTextColor = normalTextColor?.colorWithAlphaComponent(0.5)
+            newAttributes[NSForegroundColorAttributeName] = normalTextColor
+        }
+
+        // Set the cursor color
+        textField.tintColor = normalTextColor
+
+        textField.defaultTextAttributes = newAttributes
+        textField.textColor = normalTextColor
+    }
 
     //! Use this function to specify the views corner radii. It will be applied to a special background image view (not the search bar itself) that spans the whole search bar. The backgroundColor of this view must remain clear to make the corner radius visible.
     public func updateBackgroundWith(radius: CGFloat, corners: UIRectCorner, color: UIColor) {
