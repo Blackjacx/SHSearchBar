@@ -132,7 +132,11 @@ public class SHSearchBar: UIView, UITextFieldDelegate {
     }
 
     public func resetTextField() {
+        let oldText = textField.text
         textField.text = textBeforeEditing
+        if oldText != textField.text {
+            delegate?.searchBar?(self, textDidChange: "")
+        }
     }
 
 

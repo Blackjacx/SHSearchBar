@@ -19,7 +19,12 @@ class SearchBarMock: SHSearchBar {
     }
 }
 
-class SearchBarEmptyDelegate: NSObject, SHSearchBarDelegate {
+class SearchBarConcreteDelegate: NSObject, SHSearchBarDelegate {
+    var hasCalledTextDidChange = false
+
+    func searchBar(searchBar: SHSearchBar, textDidChange text: String) {
+        hasCalledTextDidChange = true
+    }
 }
 
 class SearchBarAlwaysFalseDelegate: NSObject, SHSearchBarDelegate {

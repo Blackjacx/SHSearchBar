@@ -21,14 +21,14 @@ class SHSearchBarSpec: QuickSpec {
             NSForegroundColorAttributeName:UIColor.blackColor(),
             NSBackgroundColorAttributeName: UIColor.clearColor()]
         let config: SHSearchBarConfig = SHSearchBarConfig(animationDuration: 0.25, rasterSize: 11.0, textAttributes: attributes)
-        let emptyDelegate = SearchBarEmptyDelegate()
+        let delegate = SearchBarConcreteDelegate()
 
         describe("searchbar") {
             var searchbar: SearchBarMock!
 
             beforeEach({
                 searchbar = SearchBarMock(config: config)
-                searchbar.delegate = emptyDelegate
+                searchbar.delegate = delegate
             })
 
             it("has a background view") {
@@ -62,6 +62,18 @@ class SHSearchBarSpec: QuickSpec {
                 expect(searchbar.textField.text).toNot(equal(textBefore))
                 searchbar.resetTextField()
                 expect(searchbar.textField.text).to(equal(textBefore))
+            }
+            it("calls textDidChange delegate when text actually changed after resetTextField()") {
+                let textBefore = "Hello TextField"
+                searchbar.textField.text = textBefore
+                delegate.hasCalledTextDidChange = false // reset
+                searchbar.resetTextField()
+                expect(delegate.hasCalledTextDidChange) == true
+            }
+            it("does not call textDidChange delegate when text doesn't change after resetTextField()") {
+                delegate.hasCalledTextDidChange = false // reset - just to be sure
+                searchbar.resetTextField()
+                expect(delegate.hasCalledTextDidChange) == false
             }
             it("sets a delegate on its textfield") {
                 expect(searchbar.textField.delegate).toNot(beNil())
@@ -248,7 +260,7 @@ class SHSearchBarSpec: QuickSpec {
 
                 beforeEach({
                     searchbar = SearchBarMock(config: config)
-                    searchbar.delegate = emptyDelegate
+                    searchbar.delegate = delegate
                     searchbar.setCancelButtonVisibility(false)
                 })
 
@@ -268,7 +280,7 @@ class SHSearchBarSpec: QuickSpec {
 
                 beforeEach({
                     searchbar = SearchBarMock(config: config)
-                    searchbar.delegate = emptyDelegate
+                    searchbar.delegate = delegate
                     searchbar.setCancelButtonVisibility(true)
                 })
 
@@ -288,7 +300,7 @@ class SHSearchBarSpec: QuickSpec {
 
                 beforeEach({
                     searchbar = SearchBarMock(config: config)
-                    searchbar.delegate = emptyDelegate
+                    searchbar.delegate = delegate
                 })
 
                 it("results in an alpha value of 1") {
