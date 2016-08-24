@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'SHSearchBar'
-  s.version          = '0.9.9'
+  s.version          = '0.9.10'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.summary          = 'The search bar that does not suck.'
   s.description      = <<-DESC
