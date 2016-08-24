@@ -1,6 +1,6 @@
 # SHSearchBar
 
-[![CI Status](http://img.shields.io/travis/Stefan Herold/SHSearchBar.svg?style=flat)](https://travis-ci.org/Stefan Herold/SHSearchBar)
+[![CI Status](http://img.shields.io/travis/Blackjacx/SHSearchBar.svg?style=flat)](https://travis-ci.org/Blackjacx/SHSearchBar)
 [![Version](https://img.shields.io/cocoapods/v/SHSearchBar.svg?style=flat)](http://cocoapods.org/pods/SHSearchBar)
 [![License](https://img.shields.io/cocoapods/l/SHSearchBar.svg?style=flat)](http://cocoapods.org/pods/SHSearchBar)
 [![Platform](https://img.shields.io/cocoapods/p/SHSearchBar.svg?style=flat)](http://cocoapods.org/pods/SHSearchBar)
