@@ -6,9 +6,7 @@
 //  Copyright © 2016 CocoaPods. All rights reserved.
 //
 
-import Foundation
-import SHSearchBar
-
+import UIKit
 
 class SearchBarMock: SHSearchBar {
     var hasCalledUpdateUI = false
