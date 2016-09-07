@@ -15,9 +15,7 @@ env:
   matrix:
     - DESTINATION="OS=9.3,name=iPhone 6S"         SCHEME="$IOS_FRAMEWORK_SCHEME"     SDK="$IOS_SDK"     RUN_TESTS="YES" BUILD_EXAMPLE="YES"  POD_LINT="YES"    
 before_install:
-  - gem install cocoapods --no-rdoc --no-ri --no-document --quiet
   - gem install xcpretty --no-rdoc --no-ri --no-document --quiet
-  - pod install
 script:
   - set -o pipefail
   - xcodebuild -version
