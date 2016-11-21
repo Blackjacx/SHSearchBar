@@ -11,7 +11,7 @@ env:
   - WORKSPACE=SHSearchBar.xcworkspace
   - IOS_FRAMEWORK_SCHEME="SHSearchBar"
   - EXAMPLE_SCHEME="iOS Example"
-  - IOS_SDK=iphonesimulator9.3
+  - IOS_SDK=iphonesimulator10.1
   matrix:
     - DESTINATION="OS=10.1,name=iPhone 6S"         SCHEME="$IOS_FRAMEWORK_SCHEME"     SDK="$IOS_SDK"     RUN_TESTS="YES" BUILD_EXAMPLE="YES"  POD_LINT="YES"    
 before_install:
