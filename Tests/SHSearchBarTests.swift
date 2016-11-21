@@ -19,8 +19,9 @@ class SHSearchBarSpec: QuickSpec {
 
         let attributes = [
             NSForegroundColorAttributeName:UIColor.blackColor(),
-            NSBackgroundColorAttributeName: UIColor.clearColor()]
-        let config: SHSearchBarConfig = SHSearchBarConfig(animationDuration: 0.25, rasterSize: 11.0, textAttributes: attributes)
+            NSBackgroundColorAttributeName:UIColor.clearColor()]
+        let config: SHSearchBarConfig = SHSearchBarConfig(animationDuration: 0.25, rasterSize: 11.0, textAttributes: attributes, textContentType: UITextContentTypeFullStreetAddress)
+        let configWithoutTextContentType: SHSearchBarConfig = SHSearchBarConfig(animationDuration: 0.25, rasterSize: 11.0, textAttributes: [:])
         let delegate = SearchBarConcreteDelegate()
 
         describe("searchbar") {
@@ -57,11 +58,11 @@ class SHSearchBarSpec: QuickSpec {
                 let textBefore = "Hello TextField"
                 searchbar.textField.text = textBefore
                 searchbar.textFieldDidBeginEditing(searchbar.textField)
-                expect(searchbar.textField.text).to(equal(textBefore))
+                expect(searchbar.textField.text) == textBefore
                 searchbar.textField.text = "Another text"
                 expect(searchbar.textField.text).toNot(equal(textBefore))
                 searchbar.resetTextField()
-                expect(searchbar.textField.text).to(equal(textBefore))
+                expect(searchbar.textField.text) == textBefore
             }
             it("calls textDidChange delegate when text actually changed after resetTextField()") {
                 let textBefore = "Hello TextField"
@@ -78,56 +79,77 @@ class SHSearchBarSpec: QuickSpec {
             it("sets a delegate on its textfield") {
                 expect(searchbar.textField.delegate).toNot(beNil())
             }
-            it("sets the correct text color when active") {
-                let color = searchbar.textField.textColor
-                let expectedColor = config.textAttributes[NSForegroundColorAttributeName] as? UIColor
-                expect(color).to(equal(expectedColor))
-            }
-            it("sets the correct tint color when active") {
-                let color = searchbar.textField.tintColor
-                let expectedColor = config.textAttributes[NSForegroundColorAttributeName] as? UIColor
-                expect(color).to(equal(expectedColor))
-            }
-            it("sets the correct textAttributes when active") {
-                let attributes = searchbar.textField.defaultTextAttributes
-                let expected = config.textAttributes
-
-                for key in expected.keys {
-                    guard let value = attributes[key], let expectedValue = expected[key] else {
-                        XCTFail("Value or expected value not found for key \(key)")
-                        return
-                    }
-                    expect(value).to(be(expectedValue))
-                }
-            }
-            it("sets the correct text color when inactive") {
-                searchbar.isActive = false
-                let color = searchbar.textField.textColor
-                let expectedColor = (config.textAttributes[NSForegroundColorAttributeName] as? UIColor)?.colorWithAlphaComponent(0.5)
-                expect(color).to(equal(expectedColor))
-            }
-            it("sets the correct tint color when inactive") {
-                searchbar.isActive = false
-                let color = searchbar.textField.tintColor
-                let expectedColor = (config.textAttributes[NSForegroundColorAttributeName] as? UIColor)?.colorWithAlphaComponent(0.5)
-                expect(color).to(equal(expectedColor))
-            }
-            it("sets the correct textAttributes when inactive") {
-                searchbar.isActive = false
-                let attributes = searchbar.textField.defaultTextAttributes
-                var expected = config.textAttributes
-                expected[NSForegroundColorAttributeName] = (expected[NSForegroundColorAttributeName] as? UIColor)?.colorWithAlphaComponent(0.5)
-
-                for key in expected.keys {
-                    guard let value = attributes[key], let expectedValue = expected[key] else {
-                        XCTFail("Value or expected value not found for key \(key)")
-                        return
-                    }
-                    expect(value).to(be(expectedValue))
-                }
-            }
             it("calls updateUI after init") {
                 expect(searchbar.hasCalledUpdateUI) == true
+            }
+
+            context("when active") {
+                it("sets the correct text color") {
+                    let color = searchbar.textField.textColor
+                    let expectedColor = config.textAttributes[NSForegroundColorAttributeName] as? UIColor
+                    expect(color) == expectedColor
+                }
+                it("sets the correct tint color") {
+                    let color = searchbar.textField.tintColor
+                    let expectedColor = config.textAttributes[NSForegroundColorAttributeName] as? UIColor
+                    expect(color) == expectedColor
+                }
+                it("sets the correct textAttributes") {
+                    let attributes = searchbar.textField.defaultTextAttributes
+                    let expected = config.textAttributes
+
+                    for key in expected.keys {
+                        guard let value = attributes[key], let expectedValue = expected[key] else {
+                            XCTFail("Value or expected value not found for key \(key)")
+                            return
+                        }
+                        expect(value).to(be(expectedValue))
+                    }
+                }
+                it("sets the correct textContentType") {
+                    expect(searchbar.textField.textContentType) == config.textContentType
+                }
+                it("sets the correct textContentType the config object was initialized without textContentType") {
+                    searchbar = SearchBarMock(config: configWithoutTextContentType)
+                    expect(searchbar.textField.textContentType).to(beNil())
+                }
+            }
+
+            context("when inactive") {
+                beforeEach({
+                    searchbar.isActive = false
+                })
+
+                it("sets the correct text color") {
+                    let color = searchbar.textField.textColor
+                    let expectedColor = (config.textAttributes[NSForegroundColorAttributeName] as? UIColor)?.colorWithAlphaComponent(0.5)
+                    expect(color) == expectedColor
+                }
+                it("sets the correct tint color") {
+                    let color = searchbar.textField.tintColor
+                    let expectedColor = (config.textAttributes[NSForegroundColorAttributeName] as? UIColor)?.colorWithAlphaComponent(0.5)
+                    expect(color) == expectedColor
+                }
+                it("sets the correct textAttributes") {
+                    let attributes = searchbar.textField.defaultTextAttributes
+                    var expected = config.textAttributes
+                    expected[NSForegroundColorAttributeName] = (expected[NSForegroundColorAttributeName] as? UIColor)?.colorWithAlphaComponent(0.5)
+
+                    for key in expected.keys {
+                        guard let value = attributes[key], let expectedValue = expected[key] else {
+                            XCTFail("Value or expected value not found for key \(key)")
+                            return
+                        }
+                        expect(value).to(be(expectedValue))
+                    }
+                }
+                it("sets the correct textContentType") {
+                    expect(searchbar.textField.textContentType) == config.textContentType
+                }
+                it("sets the correct textContentType the config object was initialized without textContentType") {
+                    searchbar = SearchBarMock(config: configWithoutTextContentType)
+                    expect(searchbar.textField.textContentType).to(beNil())
+                }
             }
         }
 

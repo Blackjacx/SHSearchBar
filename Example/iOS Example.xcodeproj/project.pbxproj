@@ -13,7 +13,23 @@
 		B91438EF1D6D9AC400182124 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91438ED1D6D9AC400182124 /* AppDelegate.swift */; };
 		B91438F01D6D9AC400182124 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91438EE1D6D9AC400182124 /* ViewController.swift */; };
 		B98A49EF1D6D9FDA009E692B /* SHSearchBar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B98A49EE1D6D9FDA009E692B /* SHSearchBar.framework */; };
+		B9CCF3B31DDBCD0F0012D659 /* SHSearchBar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9CCF3B21DDBCD0F0012D659 /* SHSearchBar.framework */; };
+		B9CCF3B41DDBCD0F0012D659 /* SHSearchBar.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B9CCF3B21DDBCD0F0012D659 /* SHSearchBar.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		B9CCF3B51DDBCD0F0012D659 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				B9CCF3B41DDBCD0F0012D659 /* SHSearchBar.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		B91438D81D6D9A1900182124 /* iOS Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -24,6 +40,7 @@
 		B91438ED1D6D9AC400182124 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B91438EE1D6D9AC400182124 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B98A49EE1D6D9FDA009E692B /* SHSearchBar.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SHSearchBar.framework; path = "../../../../../../Library/Developer/Xcode/DerivedData/SHSearchBar-cmmmthaecvvtqzedqpnwjeuqrgyu/Build/Products/Debug-iphonesimulator/SHSearchBar.framework"; sourceTree = "<group>"; };
+		B9CCF3B21DDBCD0F0012D659 /* SHSearchBar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SHSearchBar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +49,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B98A49EF1D6D9FDA009E692B /* SHSearchBar.framework in Frameworks */,
+				B9CCF3B31DDBCD0F0012D659 /* SHSearchBar.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -41,6 +59,7 @@
 		B91438CF1D6D9A1900182124 = {
 			isa = PBXGroup;
 			children = (
+				B9CCF3B21DDBCD0F0012D659 /* SHSearchBar.framework */,
 				B91438DA1D6D9A1900182124 /* iOS Example */,
 				B91438D91D6D9A1900182124 /* Products */,
 				B9B35C331D6D9BE50099D979 /* Frameworks */,
@@ -86,6 +105,7 @@
 				B91438D41D6D9A1900182124 /* Sources */,
 				B91438D51D6D9A1900182124 /* Frameworks */,
 				B91438D61D6D9A1900182124 /* Resources */,
+				B9CCF3B51DDBCD0F0012D659 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -276,7 +296,6 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEVELOPMENT_TEAM = 678J5TKLZR;
 				INFOPLIST_FILE = "iOS Example/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "stefanherold.iOS-Example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -293,7 +312,6 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEVELOPMENT_TEAM = 678J5TKLZR;
 				INFOPLIST_FILE = "iOS Example/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "stefanherold.iOS-Example";
 				PRODUCT_NAME = "$(TARGET_NAME)";

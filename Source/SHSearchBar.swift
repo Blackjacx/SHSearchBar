@@ -40,11 +40,17 @@ public class SHSearchBar: UIView, UITextFieldDelegate {
 
         // Text Field
         textField.delegate = self
-        textField.autocorrectionType = .No
+        textField.autocorrectionType = .Default
         textField.autocapitalizationType = .None
         textField.spellCheckingType = .No
         textField.adjustsFontSizeToFitWidth = false
         textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: config.rasterSize, height: 10.0))
+
+        if #available(iOS 10.0, *) {
+            if let textContentType = config.textContentType {
+                textField.textContentType = textContentType 
+            }
+        }
 
         // These are the properties you probably want to customize
         textField.leftViewMode = .Always

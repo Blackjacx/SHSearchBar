@@ -59,36 +59,51 @@ class ViewController: UIViewController, SHSearchBarDelegate {
         addressSearchbarBottom.updateBackgroundWith(6, corners: [.BottomLeft, .BottomRight], color: UIColor.whiteColor())
         view.addSubview(addressSearchbarBottom)
 
-        setupConstraints()
+        setupViewConstraints(usingMargin: 11.0)
     }
     
-    private func setupConstraints() {
-        let views: [String: AnyObject] = ["TLG":topLayoutGuide, "search1":searchBar1, "search2":searchBar2, "search3":searchBar3, "search4":searchBar4, "addressTop":addressSearchbarTop, "addressBottom":addressSearchbarBottom]
-        let metrics = ["margin":11, "SH":44]
-        
-        let formatList: [String] = [
-            // SearchBar
-            "H:|-(margin)-[search1]-(margin)-|",
-            "H:|-(margin)-[search2]-(margin)-|",
-            "H:|-(margin)-[search3]-(margin)-|",
-            "H:|-(margin)-[search4]-(margin)-|",
-            "H:|-(margin)-[addressTop]-(margin)-|",
-            "H:|-(margin)-[addressBottom]-(margin)-|",
-            "V:[TLG]-(margin)-[search1(SH)]-(margin)-[search2(SH)]-(margin)-[search3(SH)]-(margin)-[search4(SH)]-(margin)-[addressTop(SH)]-(1)-[addressBottom(SH)]"
-            ]
-        
-        for format in formatList {
-            view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(format, options: [], metrics: metrics, views: views))
-        }
+    private func setupViewConstraints(usingMargin margin: CGFloat) {
+        let searchbarHeight: CGFloat = 44.0
+        let constraints = [
+            topLayoutGuide.bottomAnchor.constraintEqualToAnchor(searchBar1.topAnchor, constant: -margin),
 
-        
+            searchBar1.leftAnchor.constraintEqualToAnchor(view.leftAnchor, constant: margin),
+            searchBar1.rightAnchor.constraintEqualToAnchor(view.rightAnchor, constant: -margin),
+            searchBar1.bottomAnchor.constraintEqualToAnchor(searchBar2.topAnchor, constant: -margin),
+            searchBar1.heightAnchor.constraintEqualToConstant(searchbarHeight),
+
+            searchBar2.leftAnchor.constraintEqualToAnchor(view.leftAnchor, constant: margin),
+            searchBar2.rightAnchor.constraintEqualToAnchor(view.rightAnchor, constant: -margin),
+            searchBar2.bottomAnchor.constraintEqualToAnchor(searchBar3.topAnchor, constant: -margin),
+            searchBar2.heightAnchor.constraintEqualToConstant(searchbarHeight),
+
+            searchBar3.leftAnchor.constraintEqualToAnchor(view.leftAnchor, constant: margin),
+            searchBar3.rightAnchor.constraintEqualToAnchor(view.rightAnchor, constant: -margin),
+            searchBar3.bottomAnchor.constraintEqualToAnchor(searchBar4.topAnchor, constant: -margin),
+            searchBar3.heightAnchor.constraintEqualToConstant(searchbarHeight),
+
+            searchBar4.leftAnchor.constraintEqualToAnchor(view.leftAnchor, constant: margin),
+            searchBar4.rightAnchor.constraintEqualToAnchor(view.rightAnchor, constant: -margin),
+            searchBar4.bottomAnchor.constraintEqualToAnchor(addressSearchbarTop.topAnchor, constant: -margin),
+            searchBar4.heightAnchor.constraintEqualToConstant(searchbarHeight),
+
+            addressSearchbarTop.leftAnchor.constraintEqualToAnchor(view.leftAnchor, constant: margin),
+            addressSearchbarTop.rightAnchor.constraintEqualToAnchor(view.rightAnchor, constant: -margin),
+            addressSearchbarTop.bottomAnchor.constraintEqualToAnchor(addressSearchbarBottom.topAnchor, constant: -margin),
+            addressSearchbarTop.heightAnchor.constraintEqualToConstant(searchbarHeight),
+
+            addressSearchbarBottom.leftAnchor.constraintEqualToAnchor(view.leftAnchor, constant: margin),
+            addressSearchbarBottom.rightAnchor.constraintEqualToAnchor(view.rightAnchor, constant: -margin),
+            addressSearchbarBottom.heightAnchor.constraintEqualToConstant(searchbarHeight),
+        ]
+        NSLayoutConstraint.activateConstraints(constraints)
     }
 
     private func defaultSearchBar() -> SHSearchBar {
         let attributes = [
             NSForegroundColorAttributeName:UIColor.blackColor(),
             NSBackgroundColorAttributeName: UIColor.clearColor()]
-        let config: SHSearchBarConfig = SHSearchBarConfig(animationDuration: 0.25, rasterSize: 11.0, textAttributes: attributes)
+        let config: SHSearchBarConfig = SHSearchBarConfig(animationDuration: 0.25, rasterSize: 11.0, textAttributes: attributes, textContentType: UITextContentTypeFullStreetAddress)
         let bar = SHSearchBar(config: config)
         bar.delegate = self
         bar.textField.placeholder = "Example"
