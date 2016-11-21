@@ -61,9 +61,9 @@ public class SHSearchBar: UIView, UITextFieldDelegate {
 
         // Cancel Button
         cancelButton.alpha = 0.0
-        cancelButton.setTitle(NSLocalizedString("Cancel", comment: "") , forState: .Normal)
-        cancelButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
-        cancelButton.setTitleColor(UIColor.darkGrayColor(), forState: .Highlighted)
+        cancelButton.setTitle(config.cancelButtonTitle , forState: .Normal)
+        cancelButton.setTitleColor(config.cancelButtonTextColor, forState: .Normal)
+        cancelButton.setTitleColor(config.cancelButtonTextColor.colorWithAlphaComponent(0.75), forState: .Highlighted)
         cancelButton.setContentHuggingPriority(UILayoutPriorityRequired, forAxis: .Horizontal)
         cancelButton.reversesTitleShadowWhenHighlighted = true
         cancelButton.adjustsImageWhenHighlighted = true

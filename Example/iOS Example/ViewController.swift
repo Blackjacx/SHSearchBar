@@ -103,7 +103,12 @@ class ViewController: UIViewController, SHSearchBarDelegate {
         let attributes = [
             NSForegroundColorAttributeName:UIColor.blackColor(),
             NSBackgroundColorAttributeName: UIColor.clearColor()]
-        let config: SHSearchBarConfig = SHSearchBarConfig(animationDuration: 0.25, rasterSize: 11.0, textAttributes: attributes, textContentType: UITextContentTypeFullStreetAddress)
+        let config: SHSearchBarConfig = SHSearchBarConfig(animationDuration: 0.25,
+                                                          rasterSize: 11.0,
+                                                          textAttributes: attributes,
+                                                          cancelButtonTitle: "Abortar",
+                                                          cancelButtonTextColor: UIColor.redColor(),
+                                                          textContentType: UITextContentTypeFullStreetAddress)
         let bar = SHSearchBar(config: config)
         bar.delegate = self
         bar.textField.placeholder = "Example"

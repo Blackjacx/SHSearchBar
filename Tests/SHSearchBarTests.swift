@@ -20,8 +20,17 @@ class SHSearchBarSpec: QuickSpec {
         let attributes = [
             NSForegroundColorAttributeName:UIColor.blackColor(),
             NSBackgroundColorAttributeName:UIColor.clearColor()]
-        let config: SHSearchBarConfig = SHSearchBarConfig(animationDuration: 0.25, rasterSize: 11.0, textAttributes: attributes, textContentType: UITextContentTypeFullStreetAddress)
-        let configWithoutTextContentType: SHSearchBarConfig = SHSearchBarConfig(animationDuration: 0.25, rasterSize: 11.0, textAttributes: [:])
+        let config: SHSearchBarConfig = SHSearchBarConfig(animationDuration: 0.25,
+                                                          rasterSize: 11.0,
+                                                          textAttributes: attributes,
+                                                          cancelButtonTitle: "Abortar",
+                                                          cancelButtonTextColor: UIColor.redColor(),
+                                                          textContentType: UITextContentTypeFullStreetAddress)
+        let configWithoutTextContentType: SHSearchBarConfig = SHSearchBarConfig(animationDuration: 0.25,
+                                                          rasterSize: 11.0,
+                                                          textAttributes: [:],
+                                                          cancelButtonTitle: "Abortar",
+                                                          cancelButtonTextColor: UIColor.redColor())
         let delegate = SearchBarConcreteDelegate()
 
         describe("searchbar") {
@@ -113,6 +122,15 @@ class SHSearchBarSpec: QuickSpec {
                     searchbar = SearchBarMock(config: configWithoutTextContentType)
                     expect(searchbar.textField.textContentType).to(beNil())
                 }
+                it("sets the correct cancel button title") {
+                    expect(searchbar.cancelButton.titleForState(.Normal)) == config.cancelButtonTitle
+                }
+                it("sets the correct cancel button normal color") {
+                    expect(searchbar.cancelButton.titleColorForState(.Normal)) == config.cancelButtonTextColor
+                }
+                it("sets the correct cancel button highlighted color") {
+                    expect(searchbar.cancelButton.titleColorForState(.Highlighted)) == config.cancelButtonTextColor.colorWithAlphaComponent(0.75)
+                }
             }
 
             context("when inactive") {
@@ -149,6 +167,15 @@ class SHSearchBarSpec: QuickSpec {
                 it("sets the correct textContentType the config object was initialized without textContentType") {
                     searchbar = SearchBarMock(config: configWithoutTextContentType)
                     expect(searchbar.textField.textContentType).to(beNil())
+                }
+                it("sets the correct cancel button title") {
+                    expect(searchbar.cancelButton.titleForState(.Normal)) == config.cancelButtonTitle
+                }
+                it("sets the correct cancel button normal color") {
+                    expect(searchbar.cancelButton.titleColorForState(.Normal)) == config.cancelButtonTextColor
+                }
+                it("sets the correct cancel button highlighted color") {
+                    expect(searchbar.cancelButton.titleColorForState(.Highlighted)) == config.cancelButtonTextColor.colorWithAlphaComponent(0.75)
                 }
             }
         }
