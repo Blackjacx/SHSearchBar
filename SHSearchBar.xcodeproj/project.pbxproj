@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		365F9C64C9680B42A3E8009C /* Pods_SHSearchBar_SHSearchBarTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11EB461F3CA7994C9FA7C11E /* Pods_SHSearchBar_SHSearchBarTests.framework */; };
 		8F7476547EEFBBB4FAC106AA /* Pods_SHSearchBar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 220F2E74C4CBFA3E4F6F6C42 /* Pods_SHSearchBar.framework */; };
 		B91438CE1D6D991200182124 /* Mocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91438CD1D6D991200182124 /* Mocks.swift */; };
 		B9B39A271D6D92B900E22022 /* SHSearchBar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9B39A1D1D6D92B900E22022 /* SHSearchBar.framework */; };
@@ -15,7 +16,6 @@
 		B9B39A3C1D6D96A300E22022 /* SHSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B39A391D6D96A300E22022 /* SHSearchBar.swift */; };
 		B9B39A3D1D6D96A300E22022 /* SHSearchBarConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B39A3A1D6D96A300E22022 /* SHSearchBarConfig.swift */; };
 		B9B39A3E1D6D96A300E22022 /* UIImage+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B39A3B1D6D96A300E22022 /* UIImage+Style.swift */; };
-		CA4E785F78624BAA236E1F7F /* Pods_SHSearchBar_SHSearchBarTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11EB461F3CA7994C9FA7C11E /* Pods_SHSearchBar_SHSearchBarTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,9 +31,8 @@
 /* Begin PBXFileReference section */
 		09FFC73EB732C2F9CDBAABA2 /* Pods-SHSearchBar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SHSearchBar.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SHSearchBar/Pods-SHSearchBar.debug.xcconfig"; sourceTree = "<group>"; };
 		11EB461F3CA7994C9FA7C11E /* Pods_SHSearchBar_SHSearchBarTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SHSearchBar_SHSearchBarTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		1AD8615E0618B2E195472DF6 /* Pods-SHSearchBar-SHSearchBarTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SHSearchBar-SHSearchBarTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SHSearchBar-SHSearchBarTests/Pods-SHSearchBar-SHSearchBarTests.release.xcconfig"; sourceTree = "<group>"; };
 		220F2E74C4CBFA3E4F6F6C42 /* Pods_SHSearchBar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SHSearchBar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		45A00B6E5DF32726845532B7 /* Pods-SHSearchBar-SHSearchBarTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SHSearchBar-SHSearchBarTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SHSearchBar-SHSearchBarTests/Pods-SHSearchBar-SHSearchBarTests.debug.xcconfig"; sourceTree = "<group>"; };
+		447E90EC37B4DA3A99B08347 /* Pods-SHSearchBar-SHSearchBarTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SHSearchBar-SHSearchBarTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SHSearchBar-SHSearchBarTests/Pods-SHSearchBar-SHSearchBarTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B91438CD1D6D991200182124 /* Mocks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mocks.swift; sourceTree = "<group>"; };
 		B9B39A1D1D6D92B900E22022 /* SHSearchBar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SHSearchBar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9B39A201D6D92B900E22022 /* SHSearchBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHSearchBar.h; sourceTree = "<group>"; };
@@ -44,6 +43,7 @@
 		B9B39A3B1D6D96A300E22022 /* UIImage+Style.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Style.swift"; sourceTree = "<group>"; };
 		B9B39A3F1D6D96C400E22022 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B9DD07D11D6D9D2700FA1FE5 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BBA3CA898BCD966AC1605006 /* Pods-SHSearchBar-SHSearchBarTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SHSearchBar-SHSearchBarTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SHSearchBar-SHSearchBarTests/Pods-SHSearchBar-SHSearchBarTests.release.xcconfig"; sourceTree = "<group>"; };
 		E28E64BE3E1AD0994C17E0E7 /* Pods-SHSearchBar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SHSearchBar.release.xcconfig"; path = "Pods/Target Support Files/Pods-SHSearchBar/Pods-SHSearchBar.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -61,7 +61,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B9B39A271D6D92B900E22022 /* SHSearchBar.framework in Frameworks */,
-				CA4E785F78624BAA236E1F7F /* Pods_SHSearchBar_SHSearchBarTests.framework in Frameworks */,
+				365F9C64C9680B42A3E8009C /* Pods_SHSearchBar_SHSearchBarTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -73,8 +73,8 @@
 			children = (
 				09FFC73EB732C2F9CDBAABA2 /* Pods-SHSearchBar.debug.xcconfig */,
 				E28E64BE3E1AD0994C17E0E7 /* Pods-SHSearchBar.release.xcconfig */,
-				45A00B6E5DF32726845532B7 /* Pods-SHSearchBar-SHSearchBarTests.debug.xcconfig */,
-				1AD8615E0618B2E195472DF6 /* Pods-SHSearchBar-SHSearchBarTests.release.xcconfig */,
+				447E90EC37B4DA3A99B08347 /* Pods-SHSearchBar-SHSearchBarTests.debug.xcconfig */,
+				BBA3CA898BCD966AC1605006 /* Pods-SHSearchBar-SHSearchBarTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -170,12 +170,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B9B39A341D6D92B900E22022 /* Build configuration list for PBXNativeTarget "SHSearchBarTests" */;
 			buildPhases = (
-				20C9180F64DD5F9E763CE208 /* [CP] Check Pods Manifest.lock */,
+				BB2FBFB5E266472C3C95AECA /* [CP] Check Pods Manifest.lock */,
 				B9B39A221D6D92B900E22022 /* Sources */,
 				B9B39A231D6D92B900E22022 /* Frameworks */,
 				B9B39A241D6D92B900E22022 /* Resources */,
-				9027BF7A0F71296DF5B47546 /* [CP] Embed Pods Frameworks */,
-				6EC000D57EA16E93B453E937 /* [CP] Copy Pods Resources */,
+				F57F3E08F6BCB757425037F6 /* [CP] Embed Pods Frameworks */,
+				F6C74DDF2C050AE025EC485B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -245,21 +245,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		20C9180F64DD5F9E763CE208 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
 		536452112CA9F3789893059E /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -275,22 +260,37 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SHSearchBar/Pods-SHSearchBar-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		6EC000D57EA16E93B453E937 /* [CP] Copy Pods Resources */ = {
+		9E7ED18ECA861545212B6473 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "[CP] Copy Pods Resources";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SHSearchBar-SHSearchBarTests/Pods-SHSearchBar-SHSearchBarTests-resources.sh\"\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		9027BF7A0F71296DF5B47546 /* [CP] Embed Pods Frameworks */ = {
+		BB2FBFB5E266472C3C95AECA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		F57F3E08F6BCB757425037F6 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -305,19 +305,19 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SHSearchBar-SHSearchBarTests/Pods-SHSearchBar-SHSearchBarTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		9E7ED18ECA861545212B6473 /* [CP] Check Pods Manifest.lock */ = {
+		F6C74DDF2C050AE025EC485B /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "[CP] Check Pods Manifest.lock";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SHSearchBar-SHSearchBarTests/Pods-SHSearchBar-SHSearchBarTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -497,7 +497,7 @@
 		};
 		B9B39A351D6D92B900E22022 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 45A00B6E5DF32726845532B7 /* Pods-SHSearchBar-SHSearchBarTests.debug.xcconfig */;
+			baseConfigurationReference = 447E90EC37B4DA3A99B08347 /* Pods-SHSearchBar-SHSearchBarTests.debug.xcconfig */;
 			buildSettings = {
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 678J5TKLZR;
@@ -512,7 +512,7 @@
 		};
 		B9B39A361D6D92B900E22022 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1AD8615E0618B2E195472DF6 /* Pods-SHSearchBar-SHSearchBarTests.release.xcconfig */;
+			baseConfigurationReference = BBA3CA898BCD966AC1605006 /* Pods-SHSearchBar-SHSearchBarTests.release.xcconfig */;
 			buildSettings = {
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 678J5TKLZR;

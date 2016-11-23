@@ -20,6 +20,11 @@ Releases framework on Production
 Creates a release branch
 
 Commits and pushes changes to remote
+### ios build_framework
+```
+fastlane ios build_framework
+```
+Build framework
 
 ----
 

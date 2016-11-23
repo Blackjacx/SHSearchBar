@@ -164,7 +164,7 @@ platform :ios do
   end
 
   desc "Build framework"
-  private_lane :build_framework do |options|
+  lane :build_framework do |options|
 
     if !options[:framework]
       raise "No framework specified!".red
@@ -176,19 +176,10 @@ platform :ios do
     configuration = "Release"
     workspace = "#{framework}.xcworkspace"
 
-    # xcodebuild(
-    #   scheme: scheme,
-    #   workspace: workspace,
-    #   configuration: configuration
-    # )
-
-    gym(
-      workspace: workspace,
+    xcodebuild(
       scheme: scheme,
-      clean: true,
-      use_legacy_build_api: true
-#      output_directory: "..",
-#      output_name: "Shuttle_build_#{buildnumber}"
+      workspace: workspace,
+      configuration: configuration
     )
   end
 

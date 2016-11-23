@@ -7,10 +7,10 @@ target 'SHSearchBar' do
 
   # Pods for SHSearchBar
 
-  target 'SHSearchBarTests' do
-    pod 'Quick'
-    pod 'Nimble'
-  end
+   target 'SHSearchBarTests' do
+     pod 'Quick'
+     pod 'Nimble'
+   end
 
 end
 
