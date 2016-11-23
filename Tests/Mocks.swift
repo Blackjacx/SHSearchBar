@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SearchBarMock: SHSearchBar {
+class SHSearchBarMock: SHSearchBar {
     var hasCalledUpdateUI = false
 
     override func updateUI() {

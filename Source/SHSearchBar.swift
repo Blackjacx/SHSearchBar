@@ -15,7 +15,7 @@ public class SHSearchBar: UIView, UITextFieldDelegate {
     private(set) var bgToCancelButtonConstraint: NSLayoutConstraint!
     private(set) var bgToParentConstraint: NSLayoutConstraint!
 
-    public let config: SHSearchBarConfig
+    public var config: SHSearchBarConfig
     public let backgroundView: UIImageView = UIImageView()
     public let cancelButton: UIButton = UIButton(type: .Custom)
     public let textField: UITextField = UITextField()
@@ -110,19 +110,17 @@ public class SHSearchBar: UIView, UITextFieldDelegate {
     // MARK: - UI Updates
 
     func updateUI() {
-        var newAttributes = config.textAttributes
-        var normalTextColor = newAttributes[NSForegroundColorAttributeName] as? UIColor
+        var normalTextColor = config.textColor
 
         // Replace normal color with a lighter color so the text looks disabled
         if !isActive {
-            normalTextColor = normalTextColor?.colorWithAlphaComponent(0.5)
-            newAttributes[NSForegroundColorAttributeName] = normalTextColor
+            normalTextColor = normalTextColor.colorWithAlphaComponent(0.5)
         }
 
         // Set the cursor color
         textField.tintColor = normalTextColor
 
-        textField.defaultTextAttributes = newAttributes
+        textField.defaultTextAttributes = [NSForegroundColorAttributeName:normalTextColor, NSBackgroundColorAttributeName: config.textBackgroundColor]
         textField.textColor = normalTextColor
     }
 

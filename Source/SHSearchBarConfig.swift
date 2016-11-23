@@ -9,25 +9,37 @@
 import Foundation
 
 public struct SHSearchBarConfig {
-    public let animationDuration: NSTimeInterval
-    public let rasterSize: CGFloat
-    public let textAttributes: [String: AnyObject]
-    public let textContentType: String?
-    public let cancelButtonTitle: String
-    public let cancelButtonTextColor: UIColor
+    public var animationDuration: NSTimeInterval = 0.25 // good value
+
+    public var rasterSize: CGFloat = 11.0 // Apples default
+
+    public var textColor: UIColor = UIColor.blackColor()
+
+    public var textBackgroundColor: UIColor = UIColor.clearColor()
+
+    public var textContentType: String?
+
+    public var cancelButtonTitle: String = NSLocalizedString("Cancel", comment: "")
+
+    public var cancelButtonTextColor: UIColor = UIColor.whiteColor()
+
+    public init() {}
 
     public init(animationDuration: NSTimeInterval,
                 rasterSize: CGFloat,
-                textAttributes: [String: AnyObject],
+                textColor: UIColor,
+                textBackgroundColor: UIColor,
                 cancelButtonTitle: String,
                 cancelButtonTextColor: UIColor,
                 textContentType: String? = nil) {
 
         self.animationDuration = animationDuration
         self.rasterSize = rasterSize
-        self.textAttributes = textAttributes
+        self.textColor = textColor
+        self.textBackgroundColor = textBackgroundColor
         self.textContentType = textContentType
         self.cancelButtonTitle = cancelButtonTitle
         self.cancelButtonTextColor = cancelButtonTextColor
     }
 }
+
