@@ -1,0 +1,214 @@
+# Customise this file, documentation can be found here:
+# https://github.com/fastlane/fastlane/tree/master/fastlane/docs
+# All available actions: https://github.com/fastlane/fastlane/blob/master/fastlane/docs/Actions.md
+# can also be listed using the `fastlane actions` command
+
+# Change the syntax highlighting to Ruby
+# All lines starting with a # are ignored when running `fastlane`
+
+# If you want to automatically update fastlane if a new version is available:
+# update_fastlane
+
+#
+# This file was created by the help of https://gist.github.com/ulhas/e8e529d08849b8cda947
+#
+
+# This is the minimum version number required.
+# Update this, if you use features of a newer version
+fastlane_version "1.110.0"
+
+default_platform :ios
+
+platform :ios do
+  before_all do
+    cocoapods
+  end
+
+  desc "Runs framework tests"
+  lane :run_framework_tests do |options|
+
+  	if !options[:framework]
+      raise "No framework specified!".red
+    end
+
+    framework = options[:framework]
+
+    scan(
+      workspace: "#{framework}.xcworkspace",
+      scheme: "#{framework}",
+      clean: true,
+      device: "iPhone 6s",
+      output_types: "html"
+    )
+  end
+
+
+  desc "Releases framework on Production"
+  desc "Creates a release branch"
+  desc "Commits and pushes changes to remote"
+  lane :release_production do |options|
+
+    if !options[:version]
+      raise "No version specified".red
+    end
+
+    if !options[:framework]
+      raise "No framework specified".red
+    end
+
+    version = options[:version]
+    framework = options[:framework]
+
+    ensure_git_branch(
+      branch: 'develop'
+    )
+    ensure_git_status_clean
+
+    git_pull
+
+    # sh "git flow release start #{version}"
+
+	release_framework framework: "#{framework}", version: version
+
+	# sh "git commit -am 'Fastlane: Release on Production #{version}'"
+ #    sh "git flow release finish #{version}" # TODO: Fix this. Find a way to finish release with providing message.
+
+ #    push_to_git_remote(
+ #      remote: 'origin',
+ #      local_branch: 'develop',
+ #      remote_branch: 'develop',
+ #      force: true,
+ #    )
+
+ #    push_to_git_remote(
+ #      remote: 'origin',
+ #      local_branch: 'master',
+ #      remote_branch: 'master',
+ #      force: true,
+ #    )
+
+ #    appledoc(
+ #      project_name: "#{framework}",
+ #      project_version: version,
+ #      project_company: "flinc GmbH",
+ #      company_id: "org.flinc",
+ #      create_html: true,
+ #      create_docset: false,
+ #      install_docset: false,
+ #      ignore: ['Pods'],
+ #      output: "./docs/",
+ #      input: "."
+ #    )
+  end
+
+
+
+
+
+
+
+
+
+
+  desc "Runs framework tets"
+  desc "Increments framework number"
+  desc "Builds framework"
+  desc "Packages framework"
+  # desc "Deploys framework to s3"
+  desc "Updates podspec file"
+  desc "Pushes podspec file to Cocoapods"
+  private_lane :release_framework do |options|
+
+    if !options[:framework]
+      raise "No framework specified!".red
+    end
+
+    if !options[:version]
+      raise "No version specified!".red
+    end
+
+    framework = options[:framework]
+    version = options[:version]
+
+	run_framework_tests framework: framework
+	increment_framework_version framework: framework, version: version
+    build_framework framework: framework
+
+
+
+    # package_framework framework: framework, version: version
+    # # deploy_framework framework: framework, version: version
+    # update_framework_podspec framework: framework, version: version
+    # push_framework_podspec framework: framework
+  end
+
+
+  desc "Increment framework version"
+  private_lane :increment_framework_version do |options|
+
+    if !options[:framework]
+      raise "No framework specified!".red
+    end
+
+    if !options[:version]
+      raise "No version specified!".red
+    end
+
+    framework = options[:framework]
+    version = options[:version]
+
+    increment_version_number(
+      xcodeproj: "#{framework}.xcodeproj",
+      version_number: version
+    )
+  end
+
+  desc "Build framework"
+  private_lane :build_framework do |options|
+
+    if !options[:framework]
+      raise "No framework specified!".red
+    end
+
+    framework = options[:framework]
+
+    scheme = "#{framework}"
+    configuration = "Release"
+    workspace = "#{framework}.xcworkspace"
+
+    # xcodebuild(
+    #   scheme: scheme,
+    #   workspace: workspace,
+    #   configuration: configuration
+    # )
+
+    gym(
+      workspace: workspace,
+      scheme: scheme,
+      clean: true,
+      use_legacy_build_api: true
+#      output_directory: "..",
+#      output_name: "Shuttle_build_#{buildnumber}"
+    )
+  end
+
+
+
+
+
+  after_all do |lane|
+    # This block is called, only if the executed lane was successful
+    notification(message: "#{lane} finished")
+  end
+
+  error do |lane, exception|
+    notification(message: "#{lane} finished with error #{exception}")
+  end
+end
+
+
+# More information about multiple platforms in fastlane: https://github.com/fastlane/fastlane/blob/master/fastlane/docs/Platforms.md
+# All available actions: https://github.com/fastlane/fastlane/blob/master/fastlane/docs/Actions.md
+
+# fastlane reports which actions are used
+# No personal data is recorded. Learn more at https://github.com/fastlane/enhancer
