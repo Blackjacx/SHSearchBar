@@ -29,7 +29,15 @@ pod "SHSearchBar"
 ## Next Steps
 
 - solve the scaling text on textField width animation bug when there are multiple SHSearchBars on the same view (like in the example)
-- put the examples with images in this readme
+- put the examples with images in this readme (improve readme)
+- become POST 1.0.0
+- Implement Github CHANGELOG
+- Improve documentation
+- Make great Documentation with help of SwiftLint
+- Migrate to Swift 3
+- Support Swift Package Manager (SPM)
+- Become popular
+- Become Very Popular 🤓
 - add support for a blurred dim view
 - test programmatic use
 
