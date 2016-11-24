@@ -109,7 +109,7 @@ platform :ios do
       install_docset: true,
       ignore: ['Pods'],
       output: "./docs/",
-      input: ['./Source']
+      input: './Source'
     )
   end
 
