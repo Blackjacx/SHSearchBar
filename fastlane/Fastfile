@@ -26,7 +26,6 @@
 
 # POSSIBLE ADDONS
 # => update_info_plist
-# => 
 
 # LINKS
 # => http://danielkummer.github.io/git-flow-cheatsheet/
@@ -125,6 +124,10 @@ platform :ios do
     push_github_release version: version
 
 	sh "git commit -am 'Fastlane: Release on Production #{version}'"
+
+    # Finish the release branch. The shell will hang here because it 1) promts for a merge message.
+    # To get around this do the following:
+    # 1) git config --global core.mergeoptions --no-edit
 	sh "git flow release finish -m 'finished_release_on_production_#{version}' #{version}"   
 
     # push to develop + push tags
