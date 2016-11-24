@@ -98,6 +98,8 @@ platform :ios do
    #    remote_branch: 'master',
    #    force: true,
    #  )
+
+   changelog = changelog_from_git_commits
   end
 
 
