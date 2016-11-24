@@ -10,12 +10,7 @@ sudo gem install fastlane
 ```
 fastlane ios changelog
 ```
-Runs framework tests
-### ios github
-```
-fastlane ios github
-```
-Runs framework tests
+Test lane to modify the CHANGELOG.md
 ### ios run_framework_tests
 ```
 fastlane ios run_framework_tests
@@ -35,14 +30,9 @@ Updates podspec file
 
 Pushes podspec file to Cocoapods
 
-Updates the changelog
+Pushes releases to github
 
 Commits and pushes changes to remote and tags the release commit
-### ios push_framework_podspec
-```
-fastlane ios push_framework_podspec
-```
-Pushes framework podspec to Cocoapods specs
 
 ----
 
