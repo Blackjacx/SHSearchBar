@@ -101,6 +101,7 @@ platform :ios do
 
     changelog = changelog_from_git_commits
     changelog = read_changelog # Read changelog
+    stamp_changelog(section_identifier: "Build #{version}") # Stamp Unreleased section with newly released build number
   end
 
 
