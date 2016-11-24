@@ -13,13 +13,20 @@
 # This file was created by the help of https://gist.github.com/ulhas/e8e529d08849b8cda947
 #
 
+# NOTE: To use faslane install:
+# 			    gem install bundler && brew install git-flow
+#
+# 		Git-flow witll be configured upon installation or the first run of fastlane.
+# 		IMPORTANT: Use the default options !!!
+#
+#		and then run:
+# 			    bundle exec fastlane release_production framework:SHSearchBar version:"<YOUR_VERSION_HERE>"
+
 # This is the minimum version number required.
 # Update this, if you use features of a newer version
 fastlane_version "1.110.0"
 
 default_platform :ios
-
-
 
 platform :ios do
   before_all do
@@ -134,7 +141,7 @@ platform :ios do
     # package_framework framework: framework, version: version
     # deploy_framework framework: framework, version: version
     update_framework_podspec framework: framework, version: version
-    # push_framework_podspec framework: framework
+    push_framework_podspec framework: framework
   end
 
 
@@ -185,7 +192,7 @@ platform :ios do
 
 
   desc "Pushes framework podspec to Cocoapods specs"
-  private_lane :push_framework_podspec do |options|
+  lane :push_framework_podspec do |options|
 
     if !options[:framework]
       raise "No framework specified!".red
@@ -197,7 +204,7 @@ platform :ios do
     pod_push(
       path: podspec,
       # repo: 'SHSearchBar',
-      sources: ['https://github.com/CocoaPods/Specs']
+      # sources: ['https://github.com/CocoaPods/Specs']
     )
   end
 
@@ -212,10 +219,3 @@ platform :ios do
     notification(message: "#{lane} finished with error #{exception}")
   end
 end
-
-
-# More information about multiple platforms in fastlane: https://github.com/fastlane/fastlane/blob/master/fastlane/docs/Platforms.md
-# All available actions: https://github.com/fastlane/fastlane/blob/master/fastlane/docs/Actions.md
-
-# fastlane reports which actions are used
-# No personal data is recorded. Learn more at https://github.com/fastlane/enhancer

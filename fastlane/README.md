@@ -20,6 +20,11 @@ Releases framework on Production
 Creates a release branch
 
 Commits and pushes changes to remote
+### ios push_framework_podspec
+```
+fastlane ios push_framework_podspec
+```
+Pushes framework podspec to Cocoapods specs
 
 ----
 

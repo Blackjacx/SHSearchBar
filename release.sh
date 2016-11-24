@@ -1,5 +1,8 @@
 #!/bin/bash
 # release.sh
+# NOTE: This is the old way releasing this framework to Cocoapods.
+#       from now on install    gem install bundler && brew install git-flow
+#		and then run    bundle exec fastlane release_production framework:SHSearchBar version:"<YOUR_VERSION_HERE>"
 
 set -x # verbose loggging with variable expansion
 set -e # switch ON exit on errors
