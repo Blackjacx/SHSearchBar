@@ -94,13 +94,13 @@ platform :ios do
     # package_framework framework: framework, version: version
     # deploy_framework framework: framework, version: version
     update_framework_podspec framework: framework, version: version
-    push_framework_podspec framework: framework
 
     stamp_changelog(section_identifier: "Build #{version}") # Stamp Unreleased section with newly released build number
 
 	  sh "git commit -am 'Fastlane: Release on Production #{version}'"
     sh "git flow release finish -m 'finished_release_on_production_#{version}' #{version}"   
 
+    # push to develop + push tags
     push_to_git_remote(
       remote: 'origin',
       local_branch: 'develop',
@@ -108,12 +108,16 @@ platform :ios do
       force: true,
     )
 
+    # push to master + push tags
     push_to_git_remote(
       remote: 'origin',
       local_branch: 'master',
       remote_branch: 'master',
       force: true,
     )
+
+    # Needs to be done at the end (expects git tag to be available)
+    push_framework_podspec framework: framework
   end
 
 
