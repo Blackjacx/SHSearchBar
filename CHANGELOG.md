@@ -6,8 +6,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
-## [Build 0.9.20] - 2016-11-24
-### Added
-- Your awesome new feature
+## [Build 1.0.0] - 2016-11-24
 
 [Unreleased]: https://github.com/blackjacx/SHSearchBar/compare/master...HEAD
