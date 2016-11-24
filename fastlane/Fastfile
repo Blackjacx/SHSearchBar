@@ -99,8 +99,8 @@ platform :ios do
    #    force: true,
    #  )
 
-   changelog = changelog_from_git_commits
-   changelog
+    changelog = changelog_from_git_commits
+    changelog = read_changelog # Read changelog
   end
 
 
