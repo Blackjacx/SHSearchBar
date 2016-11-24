@@ -63,9 +63,9 @@ platform :ios do
   # desc "Builds framework"
   # desc "Packages framework"
   # desc "Deploys framework to s3"
+  desc "Updates podspec file"
   desc "Updates the changelog"
   desc "Commits and pushes changes to remote and tags the release commit"
-  desc "Updates podspec file"
   desc "Pushes podspec file to Cocoapods"
   lane :release_production do |options|
 
@@ -92,14 +92,12 @@ platform :ios do
     # build_framework framework: framework
     # package_framework framework: framework, version: version
     # deploy_framework framework: framework, version: version
+    update_framework_podspec framework: framework, version: version
 
     stamp_changelog(section_identifier: "Build #{version}") # Stamp Unreleased section with newly released build number
 
 	  sh "git commit -am 'Fastlane: Release on Production #{version}'"
-    sh "git flow release finish -m 'finished_release_on_production_#{version}' #{version}"
-
-    update_framework_podspec framework: framework, version: version
-    push_framework_podspec framework: framework
+    sh "git flow release finish -m 'finished_release_on_production_#{version}' #{version}"   
 
     push_to_git_remote(
       remote: 'origin',
@@ -114,6 +112,8 @@ platform :ios do
       remote_branch: 'master',
       force: true,
     )
+
+    push_framework_podspec framework: framework
   end
 
 
