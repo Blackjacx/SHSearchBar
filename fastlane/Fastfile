@@ -19,10 +19,14 @@ fastlane_version "1.110.0"
 
 default_platform :ios
 
+
+
 platform :ios do
   before_all do
     cocoapods
   end
+
+
 
   desc "Runs framework tests"
   lane :run_framework_tests do |options|
@@ -41,6 +45,7 @@ platform :ios do
       output_types: "html"
     )
   end
+
 
 
   desc "Releases framework on Production"
@@ -66,21 +71,12 @@ platform :ios do
 
     git_pull
 
-<<<<<<< HEAD
-    # sh "git flow release start #{version}"
-
-	release_framework framework: "#{framework}", version: version
-
-	# sh "git commit -am 'Fastlane: Release on Production #{version}'"
- #    sh "git flow release finish #{version}" # TODO: Fix this. Find a way to finish release with providing message.
-=======
     sh "git flow release start #{version}"
 
 	release_framework framework: "#{framework}", version: version
 
 	sh "git commit -am 'Fastlane: Release on Production #{version}'"
     sh "git flow release finish #{version}" # TODO: Fix this. Find a way to finish release with providing message.
->>>>>>> release/0.9.15
 
  #    push_to_git_remote(
  #      remote: 'origin',
@@ -112,24 +108,10 @@ platform :ios do
 
 
 
-
-
-
-
-
-
-
-<<<<<<< HEAD
-  desc "Runs framework tets"
-  desc "Increments framework number"
-  desc "Builds framework"
-  desc "Packages framework"
-=======
   desc "Runs framework tests"
   desc "Increments framework number"
   # desc "Builds framework"
   # desc "Packages framework"
->>>>>>> release/0.9.15
   # desc "Deploys framework to s3"
   desc "Updates podspec file"
   desc "Pushes podspec file to Cocoapods"
@@ -148,22 +130,13 @@ platform :ios do
 
 	run_framework_tests framework: framework
 	increment_framework_version framework: framework, version: version
-<<<<<<< HEAD
-    build_framework framework: framework
-
-
-
-    # package_framework framework: framework, version: version
-    # # deploy_framework framework: framework, version: version
-    # update_framework_podspec framework: framework, version: version
-=======
     # build_framework framework: framework
     # package_framework framework: framework, version: version
     # deploy_framework framework: framework, version: version
     update_framework_podspec framework: framework, version: version
->>>>>>> release/0.9.15
     # push_framework_podspec framework: framework
   end
+
 
 
   desc "Increment framework version"
@@ -186,39 +159,15 @@ platform :ios do
     )
   end
 
-<<<<<<< HEAD
-  desc "Build framework"
-  private_lane :build_framework do |options|
-=======
+
+
   desc "Updates framework podspec version"
   private_lane :update_framework_podspec do |options|
->>>>>>> release/0.9.15
 
     if !options[:framework]
       raise "No framework specified!".red
     end
 
-<<<<<<< HEAD
-    framework = options[:framework]
-
-    scheme = "#{framework}"
-    configuration = "Release"
-    workspace = "#{framework}.xcworkspace"
-
-    # xcodebuild(
-    #   scheme: scheme,
-    #   workspace: workspace,
-    #   configuration: configuration
-    # )
-
-    gym(
-      workspace: workspace,
-      scheme: scheme,
-      clean: true,
-      use_legacy_build_api: true
-#      output_directory: "..",
-#      output_name: "Shuttle_build_#{buildnumber}"
-=======
     if !options[:version]
       raise "No version specified!".red
     end
@@ -232,6 +181,8 @@ platform :ios do
       version_number: version
     )
   end
+
+
 
   desc "Pushes framework podspec to Cocoapods specs"
   private_lane :push_framework_podspec do |options|
@@ -247,17 +198,11 @@ platform :ios do
       path: podspec,
       # repo: 'SHSearchBar',
       sources: ['https://github.com/CocoaPods/Specs']
->>>>>>> release/0.9.15
     )
   end
 
 
 
-
-<<<<<<< HEAD
-
-=======
->>>>>>> release/0.9.15
   after_all do |lane|
     # This block is called, only if the executed lane was successful
     notification(message: "#{lane} finished")
