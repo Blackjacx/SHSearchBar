@@ -76,21 +76,21 @@ platform :ios do
 	release_framework framework: "#{framework}", version: version
 
 	sh "git commit -am 'Fastlane: Release on Production #{version}'"
-    sh "git flow release finish #{version}" # TODO: Fix this. Find a way to finish release with providing message.
+    sh "git flow release finish -m 'Fastlane: Release on Production #{version}' #{version}"
 
- #    push_to_git_remote(
- #      remote: 'origin',
- #      local_branch: 'develop',
- #      remote_branch: 'develop',
- #      force: true,
- #    )
+    push_to_git_remote(
+      remote: 'origin',
+      local_branch: 'develop',
+      remote_branch: 'develop',
+      force: true,
+    )
 
- #    push_to_git_remote(
- #      remote: 'origin',
- #      local_branch: 'master',
- #      remote_branch: 'master',
- #      force: true,
- #    )
+    push_to_git_remote(
+      remote: 'origin',
+      local_branch: 'master',
+      remote_branch: 'master',
+      force: true,
+    )
 
  #    appledoc(
  #      project_name: "#{framework}",
