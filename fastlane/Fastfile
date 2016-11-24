@@ -66,12 +66,12 @@ platform :ios do
 
     git_pull
 
-    # sh "git flow release start #{version}"
+    sh "git flow release start #{version}"
 
 	release_framework framework: "#{framework}", version: version
 
-	# sh "git commit -am 'Fastlane: Release on Production #{version}'"
- #    sh "git flow release finish #{version}" # TODO: Fix this. Find a way to finish release with providing message.
+	sh "git commit -am 'Fastlane: Release on Production #{version}'"
+    sh "git flow release finish #{version}" # TODO: Fix this. Find a way to finish release with providing message.
 
  #    push_to_git_remote(
  #      remote: 'origin',
@@ -110,10 +110,10 @@ platform :ios do
 
 
 
-  desc "Runs framework tets"
+  desc "Runs framework tests"
   desc "Increments framework number"
-  desc "Builds framework"
-  desc "Packages framework"
+  # desc "Builds framework"
+  # desc "Packages framework"
   # desc "Deploys framework to s3"
   desc "Updates podspec file"
   desc "Pushes podspec file to Cocoapods"
@@ -132,13 +132,10 @@ platform :ios do
 
 	run_framework_tests framework: framework
 	increment_framework_version framework: framework, version: version
-    build_framework framework: framework
-
-
-
+    # build_framework framework: framework
     # package_framework framework: framework, version: version
-    # # deploy_framework framework: framework, version: version
-    # update_framework_podspec framework: framework, version: version
+    # deploy_framework framework: framework, version: version
+    update_framework_podspec framework: framework, version: version
     # push_framework_podspec framework: framework
   end
 
@@ -163,26 +160,43 @@ platform :ios do
     )
   end
 
-  desc "Build framework"
-  lane :build_framework do |options|
+  desc "Updates framework podspec version"
+  private_lane :update_framework_podspec do |options|
+
+    if !options[:framework]
+      raise "No framework specified!".red
+    end
+
+    if !options[:version]
+      raise "No version specified!".red
+    end
+
+    framework = options[:framework]
+    version = options[:version]
+    podspec = "#{framework}.podspec"
+
+    version = version_bump_podspec(
+      path: podspec,
+      version_number: version
+    )
+  end
+
+  desc "Pushes framework podspec to Cocoapods specs"
+  private_lane :push_framework_podspec do |options|
 
     if !options[:framework]
       raise "No framework specified!".red
     end
 
     framework = options[:framework]
+    podspec = "#{framework}.podspec"
 
-    scheme = "#{framework}"
-    configuration = "Release"
-    workspace = "#{framework}.xcworkspace"
-
-    xcodebuild(
-      scheme: scheme,
-      workspace: workspace,
-      configuration: configuration
+    pod_push(
+      path: podspec,
+      # repo: 'SHSearchBar',
+      sources: ['https://github.com/CocoaPods/Specs']
     )
   end
-
 
 
 
