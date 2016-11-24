@@ -14,7 +14,9 @@
 #
 
 # NOTE: To use faslane install:
-# 			    gem install bundler && brew install git-flow
+# 			    gem install bundler 
+#           brew install git-flow
+#           brew install apledoc
 #
 # 		Git-flow witll be configured upon installation or the first run of fastlane.
 # 		IMPORTANT: Use the default options !!!
@@ -71,9 +73,7 @@ platform :ios do
     version = options[:version]
     framework = options[:framework]
 
-    ensure_git_branch(
-      branch: 'develop'
-    )
+    ensure_git_branch(branch: 'develop')
     ensure_git_status_clean
 
     git_pull
