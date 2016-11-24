@@ -105,8 +105,8 @@ platform :ios do
       project_company: "flinc GmbH",
       company_id: "org.flinc",
       create_html: true,
-      create_docset: false,
-      install_docset: false,
+      create_docset: true,
+      install_docset: true,
       ignore: ['Pods'],
       output: "./docs/",
       input: "."
