@@ -108,16 +108,15 @@ platform :ios do
     version = options[:version]
     framework = options[:framework]
 
+    # Ensure the source code is OK and tests are green
     ensure_git_branch(branch: 'develop')
     ensure_git_status_clean
-
     git_pull
-
     pod_lib_lint
+    run_framework_tests framework: framework
 
     sh "git flow release start #{version}"
-
-    run_framework_tests framework: framework
+    
     increment_framework_version framework: framework, version: version
     # build_framework framework: framework
     # package_framework framework: framework, version: version
