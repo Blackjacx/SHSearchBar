@@ -76,7 +76,7 @@ platform :ios do
 	release_framework framework: "#{framework}", version: version
 
 	sh "git commit -am 'Fastlane: Release on Production #{version}'"
-    sh "git flow release finish -m 'Fastlane: Release on Production #{version}' #{version}"
+    sh "git flow release finish -m 'finished_release_on_production_#{version}' #{version}"
 
     push_to_git_remote(
       remote: 'origin',
