@@ -78,30 +78,28 @@ platform :ios do
 
     git_pull
 
-   #  sh "git flow release start #{version}"
+    sh "git flow release start #{version}"
 
-	  # release_framework framework: "#{framework}", version: version
+	  release_framework framework: "#{framework}", version: version
 
-	  # sh "git commit -am 'Fastlane: Release on Production #{version}'"
-   #  sh "git flow release finish -m 'finished_release_on_production_#{version}' #{version}"
-
-   #  push_to_git_remote(
-   #    remote: 'origin',
-   #    local_branch: 'develop',
-   #    remote_branch: 'develop',
-   #    force: true,
-   #  )
-
-   #  push_to_git_remote(
-   #    remote: 'origin',
-   #    local_branch: 'master',
-   #    remote_branch: 'master',
-   #    force: true,
-   #  )
-
-    changelog = changelog_from_git_commits
-    changelog = read_changelog # Read changelog
     stamp_changelog(section_identifier: "Build #{version}") # Stamp Unreleased section with newly released build number
+
+	  sh "git commit -am 'Fastlane: Release on Production #{version}'"
+    sh "git flow release finish -m 'finished_release_on_production_#{version}' #{version}"
+
+    push_to_git_remote(
+      remote: 'origin',
+      local_branch: 'develop',
+      remote_branch: 'develop',
+      force: true,
+    )
+
+    push_to_git_remote(
+      remote: 'origin',
+      local_branch: 'master',
+      remote_branch: 'master',
+      force: true,
+    )
   end
 
 
@@ -126,8 +124,8 @@ platform :ios do
     framework = options[:framework]
     version = options[:version]
 
-	run_framework_tests framework: framework
-	increment_framework_version framework: framework, version: version
+	  run_framework_tests framework: framework
+	  increment_framework_version framework: framework, version: version
     # build_framework framework: framework
     # package_framework framework: framework, version: version
     # deploy_framework framework: framework, version: version
