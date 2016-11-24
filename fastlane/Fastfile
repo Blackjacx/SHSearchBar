@@ -24,6 +24,10 @@
 #		and then run:
 # 			    bundle exec fastlane release_production framework:SHSearchBar version:"<YOUR_VERSION_HERE>"
 
+# POSSIBLE ADDONS:
+# => update_info_plist
+# => 
+
 # This is the minimum version number required.
 # Update this, if you use features of a newer version
 fastlane_version "1.110.0"
@@ -33,7 +37,27 @@ default_platform :ios
 platform :ios do
   before_all do
     cocoapods
+    clear_derived_data
   end
+
+
+  desc "Test lane to modify the CHANGELOG.md"
+  lane :changelog do |options|
+
+  	if !options[:version]
+      raise "No version specified!".red
+    end
+
+    version = options[:version]
+
+    stamp_changelog(section_identifier: 'Build #{version}') # Stamp Unreleased section with newly released build number
+  end
+
+  
+
+
+
+
 
 
   desc "Runs framework tests"
@@ -64,7 +88,7 @@ platform :ios do
   # desc "Deploys framework to s3"
   desc "Updates podspec file"
   desc "Pushes podspec file to Cocoapods"
-  desc "Updates the changelog"
+  desc "Pushes release descriptions to github"
   desc "Commits and pushes changes to remote and tags the release commit"
   lane :release_production do |options|
 
@@ -94,8 +118,7 @@ platform :ios do
     # package_framework framework: framework, version: version
     # deploy_framework framework: framework, version: version
     update_framework_podspec framework: framework, version: version
-
-    stamp_changelog(section_identifier: 'Build #{version}') # Stamp Unreleased section with newly released build number
+    push_github_release framework: framework, version: version
 
 	sh "git commit -am 'Fastlane: Release on Production #{version}'"
 	sh "git flow release finish -m 'finished_release_on_production_#{version}' #{version}"   
@@ -168,7 +191,7 @@ platform :ios do
 
 
   desc "Pushes framework podspec to Cocoapods specs"
-  lane :push_framework_podspec do |options|
+  private_lane :push_framework_podspec do |options|
 
     if !options[:framework]
       raise "No framework specified!".red
@@ -181,6 +204,30 @@ platform :ios do
       path: podspec,
       # repo: 'SHSearchBar',
       # sources: ['https://github.com/CocoaPods/Specs']
+    )
+  end
+
+
+
+  desc "Creates a github release with a git commit changelog"
+  private_lane :push_github_release do |options|
+
+    if !options[:version]
+      raise "No version specified!".red
+    end
+
+    version = options[:version]
+
+    changelog = changelog_from_git_commits
+
+    github_release = set_github_release(
+      repository_name: "blackjacx/SHSearchBar",
+      api_token: ENV["GITHUB_TOKEN"],
+      name: "#{version}",
+      tag_name: "#{version}",
+      description: ("#{changelog}" rescue "No changelog provided"),
+      commitish: "master",
+      # upload_assets: ["example_integration.ipa", "./pkg/built.gem"],
     )
   end
 
