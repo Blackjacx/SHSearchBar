@@ -88,7 +88,7 @@ platform :ios do
   # desc "Deploys framework to s3"
   desc "Updates podspec file"
   desc "Pushes podspec file to Cocoapods"
-  desc "Pushes release descriptions to github"
+  desc "Pushes releases to github"
   desc "Commits and pushes changes to remote and tags the release commit"
   lane :release_production do |options|
 
@@ -118,7 +118,7 @@ platform :ios do
     # package_framework framework: framework, version: version
     # deploy_framework framework: framework, version: version
     update_framework_podspec framework: framework, version: version
-    push_github_release framework: framework, version: version
+    push_github_release version: version
 
 	sh "git commit -am 'Fastlane: Release on Production #{version}'"
 	sh "git flow release finish -m 'finished_release_on_production_#{version}' #{version}"   
