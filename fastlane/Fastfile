@@ -99,17 +99,8 @@ platform :ios do
    #    force: true,
    #  )
 
-    appledoc(
-      project_name: "#{framework}",
-      project_version: version,
-      project_company: "StefanHerold",
-      company_id: "com.stefanherold",
-      create_html: true,
-      create_docset: true,
-      install_docset: true,
-      ignore: ['Pods'],
-      output: "./docs/",
-      input: './Source'
+    update_changelog(
+      section_identifier: '[#{version}]', # Specify what section to update
     )
   end
 
