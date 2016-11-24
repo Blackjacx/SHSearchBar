@@ -95,12 +95,12 @@ platform :ios do
     # # deploy_framework framework: framework, version: version
     # update_framework_podspec framework: framework, version: version
 
-    stamp_changelog(section_identifier: "Build #{version}") # Stamp Unreleased section with newly released build number
+    stamp_changelog(section_identifier: "Build #{version}") 
 
-    update_changelog(
-  section_identifier: '[Build #{version}]', # Specify what section to update
-  updated_section_identifier: 'Unreleased', # Specify new section identifier
-)
+    stamp_changelog(
+  	  section_identifier: 'Build #{version}', # Stamp Unreleased section with newly released build number
+  	  git_tag: '#{version}', # Specify reference to git tag associated with this section
+    )
 
 	# sh "git commit -am 'Fastlane: Release on Production #{version}'"
  #    sh "git flow release finish -m 'finished_release_on_production_#{version}' #{version}"   
