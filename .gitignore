@@ -19,6 +19,9 @@ DerivedData
 *.hmap
 *.ipa
 
+# Auto generated
+docs/
+
 # Bundler
 .bundle
 
