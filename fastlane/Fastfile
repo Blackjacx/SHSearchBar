@@ -85,8 +85,9 @@ platform :ios do
 
     git_pull
 
+    pod_lib_lint(verbose: true)
+
     sh "git flow release start #{version}"
-    sh "git flow release publish #{version}"
 
     run_framework_tests framework: framework
     increment_framework_version framework: framework, version: version
