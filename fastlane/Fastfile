@@ -24,9 +24,14 @@
 #		and then run:
 # 			    bundle exec fastlane release_production framework:SHSearchBar version:"<YOUR_VERSION_HERE>"
 
-# POSSIBLE ADDONS:
+# POSSIBLE ADDONS
 # => update_info_plist
 # => 
+
+# LINKS
+# => http://danielkummer.github.io/git-flow-cheatsheet/
+# => https://docs.fastlane.tools/actions/
+# => https://gist.github.com/JamesMGreene/cdd0ac49f90c987e45ac
 
 # This is the minimum version number required.
 # Update this, if you use features of a newer version
@@ -218,7 +223,9 @@ platform :ios do
 
     version = options[:version]
 
-    changelog = changelog_from_git_commits
+    changelog = changelog_from_git_commits(
+        include_merges: true, # Optional, lets you filter out merge commits
+    )
 
     github_release = set_github_release(
       repository_name: "blackjacx/SHSearchBar",
