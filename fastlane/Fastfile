@@ -100,6 +100,7 @@ platform :ios do
    #  )
 
    changelog = changelog_from_git_commits
+   changelog
   end
 
 
