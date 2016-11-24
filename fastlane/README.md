@@ -21,13 +21,13 @@ Runs framework tests
 
 Increments framework number
 
-Updates the changelog
-
-Commits and pushes changes to remote and tags the release commit
-
 Updates podspec file
 
 Pushes podspec file to Cocoapods
+
+Updates the changelog
+
+Commits and pushes changes to remote and tags the release commit
 ### ios push_framework_podspec
 ```
 fastlane ios push_framework_podspec

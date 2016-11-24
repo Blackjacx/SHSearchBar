@@ -64,9 +64,9 @@ platform :ios do
   # desc "Packages framework"
   # desc "Deploys framework to s3"
   desc "Updates podspec file"
+  desc "Pushes podspec file to Cocoapods"
   desc "Updates the changelog"
   desc "Commits and pushes changes to remote and tags the release commit"
-  desc "Pushes podspec file to Cocoapods"
   lane :release_production do |options|
 
     if !options[:version]
@@ -86,6 +86,7 @@ platform :ios do
     git_pull
 
     sh "git flow release start #{version}"
+    sh "git flow release publish #{version}"
 
     run_framework_tests framework: framework
     increment_framework_version framework: framework, version: version
@@ -93,6 +94,7 @@ platform :ios do
     # package_framework framework: framework, version: version
     # deploy_framework framework: framework, version: version
     update_framework_podspec framework: framework, version: version
+    push_framework_podspec framework: framework
 
     stamp_changelog(section_identifier: "Build #{version}") # Stamp Unreleased section with newly released build number
 
@@ -112,8 +114,6 @@ platform :ios do
       remote_branch: 'master',
       force: true,
     )
-
-    push_framework_podspec framework: framework
   end
 
 
