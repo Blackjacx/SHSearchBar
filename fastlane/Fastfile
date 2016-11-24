@@ -98,10 +98,6 @@ platform :ios do
    #    remote_branch: 'master',
    #    force: true,
    #  )
-
-    update_changelog(
-      section_identifier: '[#{version}]', # Specify what section to update
-    )
   end
 
 
