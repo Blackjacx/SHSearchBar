@@ -46,12 +46,6 @@ public class SHSearchBar: UIView, UITextFieldDelegate {
         textField.adjustsFontSizeToFitWidth = false
         textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: config.rasterSize, height: 10.0))
 
-        if #available(iOS 10.0, *) {
-            if let textContentType = config.textContentType {
-                textField.textContentType = textContentType 
-            }
-        }
-
         // These are the properties you probably want to customize
         textField.leftViewMode = .Always
         textField.rightViewMode = .Never
@@ -61,9 +55,6 @@ public class SHSearchBar: UIView, UITextFieldDelegate {
 
         // Cancel Button
         cancelButton.alpha = 0.0
-        cancelButton.setTitle(config.cancelButtonTitle , forState: .Normal)
-        cancelButton.setTitleColor(config.cancelButtonTextColor, forState: .Normal)
-        cancelButton.setTitleColor(config.cancelButtonTextColor.colorWithAlphaComponent(0.75), forState: .Highlighted)
         cancelButton.setContentHuggingPriority(UILayoutPriorityRequired, forAxis: .Horizontal)
         cancelButton.reversesTitleShadowWhenHighlighted = true
         cancelButton.adjustsImageWhenHighlighted = true
@@ -122,6 +113,16 @@ public class SHSearchBar: UIView, UITextFieldDelegate {
 
         textField.defaultTextAttributes = [NSForegroundColorAttributeName:normalTextColor, NSBackgroundColorAttributeName: config.textBackgroundColor]
         textField.textColor = normalTextColor
+
+        cancelButton.setTitle(config.cancelButtonTitle , forState: .Normal)
+        cancelButton.setTitleColor(config.cancelButtonTextColor, forState: .Normal)
+        cancelButton.setTitleColor(config.cancelButtonTextColor.colorWithAlphaComponent(0.75), forState: .Highlighted)
+
+        if #available(iOS 10.0, *) {
+            if let textContentType = config.textContentType {
+                textField.textContentType = textContentType
+            }
+        }
     }
 
     //! Use this function to specify the views corner radii. It will be applied to a special background image view (not the search bar itself) that spans the whole search bar. The backgroundColor of this view must remain clear to make the corner radius visible.

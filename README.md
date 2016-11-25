@@ -16,7 +16,38 @@ Since I use a UITextField these restrictions do not apply.
 
 ## Example
 
-The example project shows different use cases of the searchbar. To run it, clone the repo, and run `pod install` from the Example directory first.
+The repo includes an example project. It shows shows different use cases of the searchbar. To run it, clone the repo and run `pod install` from the Example directory first. The following images show some of these use cases:
+
+<p align="center">
+<img src="./assets/example_01" alt="Placeholder"><br />
+<caption align="bottom">You can show a custom placeholder like for normal textfields.</caption>
+</p>
+
+<p align="center">
+<img src="./assets/example_02" alt="Text"><br />
+<caption align="bottom">And you can even type text into that searchbar.</caption>
+</p>
+
+<p align="center">
+<img src="./assets/example_03" alt="Accesssory Icon"><br />
+<caption align="bottom">Wow there are customizable accessory views too!</caption>
+</p>
+
+<p align="center">
+<img src="./assets/example_04" alt="Customizable text and ancel button"><br />
+<caption align="bottom">Easily customize text and cancel button as you want - cheers UISearchBar.</caption>
+</p>
+
+<p align="center">
+<img src="./assets/example_05" alt="UITextContentMode Support"><br />
+<caption align="bottom">The inner text field supports the new iOS 10 'textContentMode'. Here it re-uses the address the user searched in Apple Maps.</caption>
+</p>
+
+<p align="center">
+<img src="./assets/example_06" alt="Corner Radius Customization"><br />
+<caption align="bottom">You can customize each corner radius of the text field so that layouts like this become an ease.</caption>
+</p>
+
 
 ## Installation
 

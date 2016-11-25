@@ -46,7 +46,6 @@ class ViewController: UIViewController, SHSearchBarDelegate {
         searchBar4.textField.textAlignment = .Center
         searchBar4.textField.text = "Example With Centered Text"
         searchBar4.textField.leftView = search4ImgView
-        searchBar4.hidden = true // TODO: centered text lets the icon on the left - this is not intended!
         view.addSubview(searchBar4)
 
         addressSearchbarTop = defaultSearchBar()
@@ -60,6 +59,13 @@ class ViewController: UIViewController, SHSearchBarDelegate {
         view.addSubview(addressSearchbarBottom)
 
         setupViewConstraints(usingMargin: 11.0)
+
+        searchBar1.hidden = true
+        searchBar2.hidden = true
+        searchBar3.hidden = false
+        searchBar4.hidden = true // TODO: centered text lets the icon on the left - this is not intended!
+        addressSearchbarTop.hidden = true
+        addressSearchbarBottom.hidden = true
     }
     
     private func setupViewConstraints(usingMargin margin: CGFloat) {
@@ -89,7 +95,7 @@ class ViewController: UIViewController, SHSearchBarDelegate {
 
             addressSearchbarTop.leftAnchor.constraintEqualToAnchor(view.leftAnchor, constant: margin),
             addressSearchbarTop.rightAnchor.constraintEqualToAnchor(view.rightAnchor, constant: -margin),
-            addressSearchbarTop.bottomAnchor.constraintEqualToAnchor(addressSearchbarBottom.topAnchor, constant: -margin),
+            addressSearchbarTop.bottomAnchor.constraintEqualToAnchor(addressSearchbarBottom.topAnchor, constant: -1.0),
             addressSearchbarTop.heightAnchor.constraintEqualToConstant(searchbarHeight),
 
             addressSearchbarBottom.leftAnchor.constraintEqualToAnchor(view.leftAnchor, constant: margin),
@@ -101,9 +107,12 @@ class ViewController: UIViewController, SHSearchBarDelegate {
 
     private func defaultSearchBar() -> SHSearchBar {
         var config: SHSearchBarConfig = SHSearchBarConfig()
-        config.cancelButtonTitle = "Abortar"
-        config.cancelButtonTextColor = UIColor.redColor()
+        config.animationDuration = 0.25
+        config.rasterSize = 11.0
+        config.textColor = UIColor.darkGrayColor()
         config.textContentType = UITextContentTypeFullStreetAddress
+        config.cancelButtonTitle = "Cancel"
+        config.cancelButtonTextColor = UIColor.darkGrayColor()
 
         let bar = SHSearchBar(config: config)
         bar.delegate = self
