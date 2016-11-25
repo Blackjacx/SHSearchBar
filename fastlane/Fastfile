@@ -26,7 +26,6 @@
 
 # POSSIBLE ADDONS
 # => update_info_plist
-# => 
 
 # LINKS
 # => http://danielkummer.github.io/git-flow-cheatsheet/
@@ -108,16 +107,15 @@ platform :ios do
     version = options[:version]
     framework = options[:framework]
 
+    # Ensure the source code is OK and tests are green
     ensure_git_branch(branch: 'develop')
     ensure_git_status_clean
-
     git_pull
-
     pod_lib_lint
+    run_framework_tests framework: framework
 
     sh "git flow release start #{version}"
-
-    run_framework_tests framework: framework
+    
     increment_framework_version framework: framework, version: version
     # build_framework framework: framework
     # package_framework framework: framework, version: version
@@ -126,6 +124,10 @@ platform :ios do
     push_github_release version: version
 
 	sh "git commit -am 'Fastlane: Release on Production #{version}'"
+
+    # Finish the release branch. The shell will hang here because it 1) promts for a merge message.
+    # To get around this do the following:
+    # 1) git config --global core.mergeoptions --no-edit
 	sh "git flow release finish -m 'finished_release_on_production_#{version}' #{version}"   
 
     # push to develop + push tags

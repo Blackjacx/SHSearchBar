@@ -33,11 +33,6 @@ Pushes podspec file to Cocoapods
 Pushes releases to github
 
 Commits and pushes changes to remote and tags the release commit
-### ios push_github_release
-```
-fastlane ios push_github_release
-```
-Creates a github release with a git commit changelog
 
 ----
 

@@ -16,7 +16,38 @@ Since I use a UITextField these restrictions do not apply.
 
 ## Example
 
-The example project shows different use cases of the searchbar. To run it, clone the repo, and run `pod install` from the Example directory first.
+The repo includes an example project. It shows shows different use cases of the searchbar. To run it, clone the repo and run `pod install` from the Example directory first. The following images show some of these use cases:
+
+<p align="center">
+<caption align="center">You can show a custom placeholder like for normal text fields:</caption><br />
+<img src="./assets/example_01.png" alt="Placeholder">
+</p>
+
+<p align="center">
+<caption align="center">And you can even type text into that searchbar:</caption><br />
+<img src="./assets/example_02.png" alt="Text">
+</p>
+
+<p align="center">
+<caption align="center">Wow there are customizable accessory views too:</caption><br />
+<img src="./assets/example_03.png" alt="Accesssory Icon">
+</p>
+
+<p align="center">
+<caption align="center">Easily customize text and cancel button as you want:</caption><br />
+<img src="./assets/example_04.png" alt="Customizable text and ancel button">
+</p>
+
+<p align="center">
+<caption align="center">You can customize each corner radius of the text field so that layouts like this become an ease:</caption><br />
+<img src="./assets/example_06.png" alt="Corner Radius Customization">
+</p>
+
+<p align="center">
+<caption align="center">The inner text field supports the new iOS 10 'textContentMode':<br />(Re-uses the address prior searched in Apple Maps)</caption><br />
+<img src="./assets/example_05.png" alt="UITextContentMode Support">
+</p>
+
 
 ## Installation
 
@@ -29,7 +60,7 @@ pod "SHSearchBar"
 ## Next Steps
 
 - solve the scaling text on textField width animation bug when there are multiple SHSearchBars on the same view (like in the example)
-- put the examples with images in this readme (improve readme)
+- put code examples in this readme (improve readme)
 - become POST 1.0.0
 - Implement Github CHANGELOG
 - Improve documentation
