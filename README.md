@@ -14,6 +14,14 @@ The clean and shiny search bar that does what UISearchBar does only with dirty h
 
 Since I use a UITextField these restrictions do not apply.
 
+## Installation
+
+SHSearchBar is compatible with `iOS 8` or higher and build with `Xcode 8` and `Swift 2.3` syntax. It is available through [CocoaPods](http://cocoapods.org). To install it, simply add the following line to your Podfile:
+
+```ruby
+pod "SHSearchBar"
+```
+
 ## Example
 
 The repo includes an example project. It shows shows different use cases of the searchbar. To run it, clone the repo and run `pod install` from the Example directory first. The following images show some of these use cases:
@@ -44,33 +52,9 @@ The repo includes an example project. It shows shows different use cases of the 
 </p>
 
 <p align="center">
-<caption align="center">The inner text field supports the new iOS 10 'textContentMode':<br />(Re-uses the address prior searched in Apple Maps)</caption><br />
+<caption align="center">The inner text field supports the new iOS 10 'textContentMode':<br />(Re-uses the address searched in Apple Maps before)</caption><br />
 <img src="./assets/example_05.png" alt="UITextContentMode Support">
 </p>
-
-
-## Installation
-
-SHSearchBar is compatible with `iOS 8` or higher and build with `Xcode 8` and `Swift 2.3` syntax. It is available through [CocoaPods](http://cocoapods.org). To install it, simply add the following line to your Podfile:
-
-```ruby
-pod "SHSearchBar"
-```
-
-## Next Steps
-
-- solve the scaling text on textField width animation bug when there are multiple SHSearchBars on the same view (like in the example)
-- put code examples in this readme (improve readme)
-- become POST 1.0.0
-- Implement Github CHANGELOG
-- Improve documentation
-- Make great Documentation with help of SwiftLint
-- Migrate to Swift 3
-- Support Swift Package Manager (SPM)
-- Become popular
-- Become Very Popular 🤓
-- add support for a blurred dim view
-- test programmatic use
 
 ## Author
 
