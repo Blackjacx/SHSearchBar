@@ -15,20 +15,41 @@ public class SHSearchBar: UIView, UITextFieldDelegate {
     private(set) var bgToCancelButtonConstraint: NSLayoutConstraint!
     private(set) var bgToParentConstraint: NSLayoutConstraint!
 
-    public var config: SHSearchBarConfig
+    public var config: SHSearchBarConfig {
+        didSet {
+            if let textField = textField as? SHSearchBarTextField  {
+                textField.config = config
+            }
+            updateUI()
+        }
+    }
+
     public let backgroundView: UIImageView = UIImageView()
     public let cancelButton: UIButton = UIButton(type: .Custom)
-    public let textField: UITextField = UITextField()
+    public let textField: UITextField
 
     public var isActive: Bool = true { didSet { updateUI() } }
     public weak var delegate: SHSearchBarDelegate?
+
+
+    // MARK: - Text Field Specific
+
+    public var leftView: UIView? {
+        get { return textField.leftView }
+        set { textField.leftView = leftView }
+    }
+    public var rightView: UIView? {
+        get { return textField.rightView }
+        set { textField.rightView = rightView }
+    }
 
     
     // MARK: - Lifecycle
 
     public init(config: SHSearchBarConfig) {
         self.config = config
-        
+        self.textField = SHSearchBarTextField(config: config)
+
         super.init(frame: CGRectZero)
         
         translatesAutoresizingMaskIntoConstraints = false
@@ -39,27 +60,26 @@ public class SHSearchBar: UIView, UITextFieldDelegate {
         addSubview(backgroundView)
 
         // Text Field
+        textField.translatesAutoresizingMaskIntoConstraints = false
         textField.delegate = self
         textField.autocorrectionType = .Default
         textField.autocapitalizationType = .None
         textField.spellCheckingType = .No
         textField.adjustsFontSizeToFitWidth = false
-        textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: config.rasterSize, height: 10.0))
 
         // These are the properties you probably want to customize
-        textField.leftViewMode = .Always
+        textField.leftViewMode = .Never
         textField.rightViewMode = .Never
         textField.clearButtonMode = .WhileEditing
-        textField.translatesAutoresizingMaskIntoConstraints = false
         backgroundView.addSubview(textField)
 
         // Cancel Button
+        cancelButton.translatesAutoresizingMaskIntoConstraints = false
         cancelButton.alpha = 0.0
         cancelButton.setContentHuggingPriority(UILayoutPriorityRequired, forAxis: .Horizontal)
         cancelButton.reversesTitleShadowWhenHighlighted = true
         cancelButton.adjustsImageWhenHighlighted = true
         cancelButton.addTarget(self, action: #selector(SHSearchBar.pressedCancelButton(_:)), forControlEvents: .TouchUpInside)
-        cancelButton.translatesAutoresizingMaskIntoConstraints = false
         addSubview(cancelButton)
         sendSubviewToBack(cancelButton)
 
@@ -150,6 +170,7 @@ public class SHSearchBar: UIView, UITextFieldDelegate {
     public func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
         let shouldBegin = delegate?.searchBarShouldBeginEditing?(self) ?? true
         if shouldBegin {
+
             setCancelButtonVisibility(true)
         }
         return shouldBegin
@@ -203,7 +224,7 @@ public class SHSearchBar: UIView, UITextFieldDelegate {
     }
 
     func setCancelButtonVisibility(makeVisible: Bool) {
-        // Thsi 'complex' if-else avoids constraint warnings in the console
+        // This 'complex' if-else avoids constraint warnings in the console
         if makeVisible {
             bgToParentConstraint.active = false
             bgToCancelButtonConstraint.active = true

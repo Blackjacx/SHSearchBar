@@ -18,54 +18,57 @@ class ViewController: UIViewController, SHSearchBarDelegate {
     var addressSearchbarTop: SHSearchBar!
     var addressSearchbarBottom: SHSearchBar!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
+        let rasterSize: CGFloat = 11.0
+        let searchGlassIconTemplate = UIImage(named: "icon-search")!.imageWithRenderingMode(.AlwaysTemplate)
+
         view.backgroundColor = UIColor.whiteColor()
 
-        searchBar1 = defaultSearchBar()
+        searchBar1 = defaultSearchBarWithRasterSize(rasterSize)
+        searchBar1.textField.leftView = imageViewWithIcon(searchGlassIconTemplate, rasterSize: rasterSize)
+        searchBar1.textField.leftViewMode = .Always
         view.addSubview(searchBar1)
 
-        searchBar2 = defaultSearchBar()
+        searchBar2 = defaultSearchBarWithRasterSize(rasterSize)
         searchBar2.textField.text = "Example With Text"
+        searchBar2.textField.rightView = imageViewWithIcon(searchGlassIconTemplate, rasterSize: rasterSize)
+        searchBar2.textField.rightViewMode = .Always
         view.addSubview(searchBar2)
 
-        let search3ImgView = UIImageView(image: UIImage(named: "icon-search")?.imageWithRenderingMode(.AlwaysTemplate))
-        search3ImgView.contentMode = .Center
-        search3ImgView.tintColor = UIColor(red: 0.75, green: 0, blue: 0, alpha: 1)
-        searchBar3 = defaultSearchBar()
+        searchBar3 = defaultSearchBarWithRasterSize(rasterSize)
         searchBar3.textField.text = "Example With Left View"
-        searchBar3.textField.leftView = search3ImgView
+        searchBar3.textField.leftView = imageViewWithIcon(searchGlassIconTemplate, rasterSize: rasterSize)
+        searchBar3.textField.leftViewMode = .Always
+        searchBar3.textField.rightView = imageViewWithIcon(searchGlassIconTemplate, rasterSize: rasterSize)
+        searchBar3.textField.rightViewMode = .UnlessEditing
         view.addSubview(searchBar3)
 
-        let search4ImgView = UIImageView(image: UIImage(named: "icon-search")?.imageWithRenderingMode(.AlwaysTemplate))
-        search4ImgView.contentMode = .Center
-        search4ImgView.tintColor = UIColor(red: 0.75, green: 0, blue: 0, alpha: 1)
-        searchBar4 = defaultSearchBar()
+        searchBar4 = defaultSearchBarWithRasterSize(rasterSize)
         searchBar4.textField.textAlignment = .Center
         searchBar4.textField.text = "Example With Centered Text"
-        searchBar4.textField.leftView = search4ImgView
+        searchBar4.textField.leftView = imageViewWithIcon(searchGlassIconTemplate, rasterSize: rasterSize)
         view.addSubview(searchBar4)
 
-        addressSearchbarTop = defaultSearchBar()
-        addressSearchbarTop.textField.text = "Example With Text"
+        addressSearchbarTop = defaultSearchBarWithRasterSize(rasterSize)
+        addressSearchbarTop.textField.text = "Mainzer Landstraße 123, Frankfurt am Main"
         addressSearchbarTop.updateBackgroundWith(6, corners: [.TopLeft, .TopRight], color: UIColor.whiteColor())
         view.addSubview(addressSearchbarTop)
 
-        addressSearchbarBottom = defaultSearchBar()
-        addressSearchbarBottom.textField.text = "Example With Text"
+        addressSearchbarBottom = defaultSearchBarWithRasterSize(rasterSize)
+        addressSearchbarBottom.textField.text = "Darmstädter Landstraße 123, Frankfurt am Main"
         addressSearchbarBottom.updateBackgroundWith(6, corners: [.BottomLeft, .BottomRight], color: UIColor.whiteColor())
         view.addSubview(addressSearchbarBottom)
 
-        setupViewConstraints(usingMargin: 11.0)
+        setupViewConstraints(usingMargin: rasterSize)
 
-        searchBar1.hidden = true
-        searchBar2.hidden = true
+        searchBar1.hidden = false
+        searchBar2.hidden = false
         searchBar3.hidden = false
         searchBar4.hidden = true // TODO: centered text lets the icon on the left - this is not intended!
-        addressSearchbarTop.hidden = true
-        addressSearchbarBottom.hidden = true
+        addressSearchbarTop.hidden = false
+        addressSearchbarBottom.hidden = false
     }
     
     private func setupViewConstraints(usingMargin margin: CGFloat) {
@@ -105,10 +108,10 @@ class ViewController: UIViewController, SHSearchBarDelegate {
         NSLayoutConstraint.activateConstraints(constraints)
     }
 
-    private func defaultSearchBar() -> SHSearchBar {
+    private func defaultSearchBarWithRasterSize(rasterSize: CGFloat) -> SHSearchBar {
         var config: SHSearchBarConfig = SHSearchBarConfig()
         config.animationDuration = 0.25
-        config.rasterSize = 11.0
+        config.rasterSize = rasterSize
         config.textColor = UIColor.darkGrayColor()
         config.textContentType = UITextContentTypeFullStreetAddress
         config.cancelButtonTitle = "Cancel"
@@ -125,6 +128,13 @@ class ViewController: UIViewController, SHSearchBarDelegate {
         return bar
     }
 
+    private func imageViewWithIcon(icon: UIImage, rasterSize: CGFloat) -> UIImageView {
+        let imgView = UIImageView(image: icon)
+        imgView.frame = CGRect(x: 0, y: 0, width: icon.size.width + rasterSize * 2.0, height: icon.size.height)
+        imgView.contentMode = .Center
+        imgView.tintColor = UIColor(red: 0.75, green: 0, blue: 0, alpha: 1)
+        return imgView
+    }
 
     // MARK: - SHSearchBarDelegate
 

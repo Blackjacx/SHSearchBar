@@ -36,6 +36,29 @@ class SHSearchBarSpec: QuickSpec {
         // TODO: Test config.animationDuration
         // TODO: Test when setting config properties explicitly nil
 
+        // TODO: Test textRectForBounds and editingRectForBounds with ([], [left view], [right view], [left & right view]). Create SHSearchBar, set left or right view of dimension (w:38, h:44) and call function. Results should match a certain CGRect in ALL parameters.
+        //    Input: (x = 0, y = 0, width = 353, height = 44)
+        //
+        //    No
+        //    (x = 11, y = 0, width = 331, height = 44)
+        //    (x = 11, y = 0, width = 264, height = 44) <= editing
+        //
+        //    Only Left
+        //    (x = 38, y = 0, width = 304, height = 44)
+        //    (x = 38, y = 0, width = 237, height = 44) <= editing
+        //
+        //    Only Right
+        //    (x = 11, y = 0, width = 304, height = 44)
+        //    (x = 11, y = 0, width = 237, height = 44) <= editing
+        //
+        //    Left and Right
+        //    (x = 38, y = 0, width = 277, height = 44)
+        //    (x = 38, y = 0, width = 210, height = 44) <= editing
+        //
+        // NOTE: Calculate relative the device's dimensions the text is executed on!
+
+        // TODO: Test updating config (test if MarginTextField is layouted again and that in SHSearchbar all parameters that are based on config are updated)
+
 
 
         describe("searchbar") {
