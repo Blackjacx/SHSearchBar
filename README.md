@@ -11,15 +11,8 @@
   <a href="http://cocoadocs.org/docsets/SHSearchBar/"><img alt="Supported Platforms" src="https://cocoapod-badges.herokuapp.com/p/SHSearchBar/badge.svg"/></a>
   <a href="http://cocoadocs.org/docsets/SHSearchBar/"><img alt="License" src="https://img.shields.io/cocoapods/l/SHSearchBar.svg?style=flat"/></a>
   <a href="http://codecov.io/gh/blackjacx/SHSearchBar"><img alt="Code Coverage Status" src="http://codecov.io/gh/blackjacx/SHSearchBar/coverage.svg?branch=master"/></a>
-
-
-  <!-- <a href="https://codebeat.co/projects/github-com-yannickl-reactions"><img alt="Codebeat badge" src="https://codebeat.co/badges/69ae0ba9-21bf-4fc6-ba45-e21b1d26ac1a" /></a> -->
+  <a href="https://codebeat.co/projects/github-com-blackjacx-shsearchbar"><img alt="Codebeat" src="https://codebeat.co/badges/44539071-5029-4379-9d33-99dd721915c8" /></a>
 </p>
-
-<!-- [![CI Status](http://img.shields.io/travis/Blackjacx/SHSearchBar.svg?style=flat)](https://travis-ci.org/Blackjacx/SHSearchBar) -->
-<!-- [![Version](https://img.shields.io/cocoapods/v/SHSearchBar.svg?style=flat)](http://cocoapods.org/pods/SHSearchBar) -->
-<!-- [![License](https://img.shields.io/cocoapods/l/SHSearchBar.svg?style=flat)](http://cocoapods.org/pods/SHSearchBar) -->
-<!-- [![Platform](https://img.shields.io/cocoapods/p/SHSearchBar.svg?style=flat)](http://cocoapods.org/pods/SHSearchBar) -->
 
 The clean and shiny search bar that does what UISearchBar does only with dirty hacks. This search bar class is designed to overcome the customization limits of UISearchBar. The difference here is that this class does not inherit UISearchBar but composes a new UIView object by using a UITextField that is much easier to use. The limits of the search bar are as follows:
 
