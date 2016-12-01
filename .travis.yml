@@ -14,8 +14,8 @@ env:
   - IOS_SDK=iphonesimulator10.1
   matrix:
     - DESTINATION="OS=10.1,name=iPhone 6S"         SCHEME="$IOS_FRAMEWORK_SCHEME"     SDK="$IOS_SDK"     RUN_TESTS="YES" BUILD_EXAMPLE="YES"  POD_LINT="YES"    ENABLE_CODE_COVERAGE="YES"
-# before_install:
-#   - gem install xcpretty --no-rdoc --no-ri --no-document --quiet
+before_install:
+  - gem install xcpretty --no-rdoc --no-ri --no-document --quiet
 script:
   - set -o pipefail
   - xcodebuild -version
