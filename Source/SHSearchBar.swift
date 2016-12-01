@@ -54,12 +54,26 @@ public class SHSearchBar: UIView, UITextFieldDelegate {
         
         translatesAutoresizingMaskIntoConstraints = false
 
+        setupBackgroundView(config)
+        setupTextField(config)
+        setupCancelButton(config)
+
+        backgroundView.addSubview(textField)
+        addSubview(cancelButton)
+        addSubview(backgroundView)
+
+        setupConstraints()
+
+        updateUI()
+    }
+
+    private func setupBackgroundView(config: SHSearchBarConfig) {
         backgroundView.translatesAutoresizingMaskIntoConstraints = false
         backgroundView.userInteractionEnabled = true
         updateBackgroundWith(0, corners: .AllCorners, color: UIColor.whiteColor())
-        addSubview(backgroundView)
+    }
 
-        // Text Field
+    private func setupTextField(config: SHSearchBarConfig) {
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.delegate = self
         textField.autocorrectionType = .Default
@@ -71,20 +85,15 @@ public class SHSearchBar: UIView, UITextFieldDelegate {
         textField.leftViewMode = .Never
         textField.rightViewMode = .Never
         textField.clearButtonMode = .WhileEditing
-        backgroundView.addSubview(textField)
+    }
 
-        // Cancel Button
+    private func setupCancelButton(config: SHSearchBarConfig) {
         cancelButton.translatesAutoresizingMaskIntoConstraints = false
         cancelButton.alpha = 0.0
         cancelButton.setContentHuggingPriority(UILayoutPriorityRequired, forAxis: .Horizontal)
         cancelButton.reversesTitleShadowWhenHighlighted = true
         cancelButton.adjustsImageWhenHighlighted = true
         cancelButton.addTarget(self, action: #selector(SHSearchBar.pressedCancelButton(_:)), forControlEvents: .TouchUpInside)
-        addSubview(cancelButton)
-        sendSubviewToBack(cancelButton)
-
-        setupConstraints()
-        updateUI()
     }
     
     required public init?(coder aDecoder: NSCoder) {
@@ -170,7 +179,6 @@ public class SHSearchBar: UIView, UITextFieldDelegate {
     public func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
         let shouldBegin = delegate?.searchBarShouldBeginEditing?(self) ?? true
         if shouldBegin {
-
             setCancelButtonVisibility(true)
         }
         return shouldBegin

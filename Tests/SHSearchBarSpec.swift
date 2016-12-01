@@ -22,7 +22,6 @@ class Box<T> {
 class SHSearchBarSpec: QuickSpec {
 
     override func spec() {
-
         let delegate: SearchBarConcreteDelegate! = SearchBarConcreteDelegate()
         let config: SHSearchBarConfig = {
             var config = SHSearchBarConfig()
@@ -36,29 +35,15 @@ class SHSearchBarSpec: QuickSpec {
         // TODO: Test config.animationDuration
         // TODO: Test when setting config properties explicitly nil
 
-        // TODO: Test textRectForBounds and editingRectForBounds with ([], [left view], [right view], [left & right view]). Create SHSearchBar, set left or right view of dimension (w:38, h:44) and call function. Results should match a certain CGRect in ALL parameters.
-        //    Input: (x = 0, y = 0, width = 353, height = 44)
-        //
-        //    No
-        //    (x = 11, y = 0, width = 331, height = 44)
-        //    (x = 11, y = 0, width = 264, height = 44) <= editing
-        //
-        //    Only Left
-        //    (x = 38, y = 0, width = 304, height = 44)
-        //    (x = 38, y = 0, width = 237, height = 44) <= editing
-        //
-        //    Only Right
-        //    (x = 11, y = 0, width = 304, height = 44)
-        //    (x = 11, y = 0, width = 237, height = 44) <= editing
-        //
-        //    Left and Right
-        //    (x = 38, y = 0, width = 277, height = 44)
-        //    (x = 38, y = 0, width = 210, height = 44) <= editing
-        //
-        // NOTE: Calculate relative the device's dimensions the text is executed on!
-
         // TODO: Test updating config (test if MarginTextField is layouted again and that in SHSearchbar all parameters that are based on config are updated)
 
+        beforeSuite {
+            UIView.setAnimationsEnabled(false)
+        }
+
+        afterSuite {
+            UIView.setAnimationsEnabled(true)
+        }
 
 
         describe("searchbar") {
@@ -371,7 +356,7 @@ class SharedConfiguration: QuickConfiguration {
                     searchbar.delegate = delegate
                 }
 
-                // Test teh basics
+                // Test the basics
 
                 it("has a background view") {
                     expect(searchbar.backgroundView).toNot(beNil())
@@ -423,6 +408,12 @@ class SharedConfiguration: QuickConfiguration {
                 it("calls updateUI after init") {
                     expect(searchbar.hasCalledUpdateUI) == true
                 }
+                it("the cancel button is behind the textFields backgroundView") {
+                    let backgroundViewIndex = searchbar.subviews.indexOf(searchbar.backgroundView)
+                    let cancelButtonIndex = searchbar.subviews.indexOf(searchbar.cancelButton)
+                    expect(backgroundViewIndex).to(beGreaterThan(cancelButtonIndex))
+                }
+
 
                 // Set specifics that depend on active / non active state
 

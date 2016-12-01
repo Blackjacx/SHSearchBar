@@ -22,5 +22,7 @@ public struct SHSearchBarConfig {
     public var cancelButtonTitle: String = NSLocalizedString("Cancel", comment: "")
 
     public var cancelButtonTextColor: UIColor = UIColor.whiteColor()
+
+    public init() {}
 }
 
