@@ -1,6 +1,5 @@
 # SHSearchBar
 
-
 <!-- <p align="center">
   <img src="https://cloud.githubusercontent.com/assets/798235/19212170/781ebb64-8d4c-11e6-8285-94e74a356d53.png" alt="Reactions">
 </p> -->
