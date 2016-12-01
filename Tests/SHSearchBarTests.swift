@@ -24,13 +24,13 @@ class SHSearchBarSpec: QuickSpec {
     override func spec() {
 
         let delegate: SearchBarConcreteDelegate! = SearchBarConcreteDelegate()
-        let config: SHSearchBarConfig = SHSearchBarConfig(animationDuration: 0.25,
-                                                          rasterSize: 11.0,
-                                                          textColor: UIColor.blackColor(),
-                                                          textBackgroundColor: UIColor.clearColor(),
-                                                          cancelButtonTitle: "Abortar",
-                                                          cancelButtonTextColor: UIColor.redColor(),
-                                                          textContentType: UITextContentTypeFullStreetAddress)
+        let config: SHSearchBarConfig = {
+            var config = SHSearchBarConfig()
+            config.cancelButtonTitle = "Abortar"
+            config.cancelButtonTextColor = UIColor.redColor()
+            config.textContentType = UITextContentTypeFullStreetAddress
+            return config
+        }()
 
         // TODO: Test config.rasterSize
         // TODO: Test config.animationDuration
