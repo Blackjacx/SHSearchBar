@@ -21,6 +21,7 @@ public class SHSearchBar: UIView, UITextFieldDelegate {
                 textField.config = config
             }
             updateUI()
+            updateAllViewConstraints(force: true)
         }
     }
 
@@ -50,7 +51,7 @@ public class SHSearchBar: UIView, UITextFieldDelegate {
         self.config = config
         self.textField = SHSearchBarTextField(config: config)
 
-        super.init(frame: CGRectZero)
+        super.init(frame: CGRect.zero)
         
         translatesAutoresizingMaskIntoConstraints = false
 
@@ -62,7 +63,7 @@ public class SHSearchBar: UIView, UITextFieldDelegate {
         addSubview(cancelButton)
         addSubview(backgroundView)
 
-        setupConstraints()
+        updateAllViewConstraints(force: true)
 
         updateUI()
     }
@@ -100,9 +101,16 @@ public class SHSearchBar: UIView, UITextFieldDelegate {
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    
-    private func setupConstraints() {
+
+    private func updateAllViewConstraints(force force: Bool) {
+        guard force || backgroundView.constraints.isEmpty else {
+            return
+        }
+
+        backgroundView.removeConstraints(backgroundView.constraints)
+        textField.removeConstraints(textField.constraints)
+        cancelButton.removeConstraints(cancelButton.constraints)
+
         if #available(iOS 9.0, *) {
             let constraints = [
                 backgroundView.leftAnchor.constraintEqualToAnchor(leftAnchor),
@@ -117,14 +125,14 @@ public class SHSearchBar: UIView, UITextFieldDelegate {
                 cancelButton.rightAnchor.constraintEqualToAnchor(rightAnchor),
                 cancelButton.topAnchor.constraintEqualToAnchor(topAnchor),
                 cancelButton.bottomAnchor.constraintEqualToAnchor(bottomAnchor),
-            ]
+                ]
             NSLayoutConstraint.activateConstraints(constraints)
 
             bgToParentConstraint = backgroundView.rightAnchor.constraintEqualToAnchor(rightAnchor)
             bgToParentConstraint.active = true
 
             bgToCancelButtonConstraint = backgroundView.rightAnchor.constraintEqualToAnchor(cancelButton.leftAnchor, constant: -config.rasterSize)
-            
+
         } else {
             let views = ["text":textField, "bg":backgroundView, "cancel":cancelButton]
             let metrics = ["margin":config.rasterSize]

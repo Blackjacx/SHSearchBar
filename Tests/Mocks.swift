@@ -8,6 +8,17 @@
 
 import UIKit
 
+func nonDefaultSearchbarConfig() -> SHSearchBarConfig {
+    var config = SHSearchBarConfig()
+    config.rasterSize = 15.0
+    config.animationDuration = 10.0
+    config.cancelButtonTextColor = UIColor.orangeColor()
+    config.cancelButtonTitle = "foo bar"
+    config.textBackgroundColor = UIColor.grayColor()
+    config.textColor = UIColor.brownColor()
+    return config
+}
+
 class SHSearchBarMock: SHSearchBar {
     var callCountUpdateUI = 0
     override func updateUI() {
