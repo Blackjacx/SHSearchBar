@@ -9,17 +9,21 @@
 import UIKit
 
 class SHSearchBarMock: SHSearchBar {
-    var hasCalledUpdateUI = false
-
+    var callCountUpdateUI = 0
     override func updateUI() {
         super.updateUI()
-        hasCalledUpdateUI = true
+        callCountUpdateUI += 1
+    }
+
+    var callCountSetCancelButtonVisibility = 0
+    override func setCancelButtonVisibility(makeVisible: Bool) {
+        super.setCancelButtonVisibility(makeVisible)
+        callCountSetCancelButtonVisibility += 1
     }
 }
 
 class SearchBarConcreteDelegate: NSObject, SHSearchBarDelegate {
     var hasCalledTextDidChange = false
-
     func searchBar(searchBar: SHSearchBar, textDidChange text: String) {
         hasCalledTextDidChange = true
     }

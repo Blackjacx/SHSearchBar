@@ -80,6 +80,7 @@ public class SHSearchBar: UIView, UITextFieldDelegate {
         textField.autocapitalizationType = .None
         textField.spellCheckingType = .No
         textField.adjustsFontSizeToFitWidth = false
+        textField.clipsToBounds = true
 
         // These are the properties you probably want to customize
         textField.leftViewMode = .Never
@@ -102,28 +103,52 @@ public class SHSearchBar: UIView, UITextFieldDelegate {
     
     
     private func setupConstraints() {
-        let views = ["text":textField, "bg":backgroundView, "cancel":cancelButton]
-        let metrics = ["margin":config.rasterSize]
-        
-        let formatList: [String] = [
-            // Background
-            "H:|[bg]",
-            "V:|[bg]|",
-            // Text field
-            "H:|[text]|",
-            "V:|[text]|",
-            // Cancel Button
-            "H:[cancel]|",
-            "V:|[cancel]|"
+        if #available(iOS 9.0, *) {
+            let constraints = [
+                backgroundView.leftAnchor.constraintEqualToAnchor(leftAnchor),
+                backgroundView.topAnchor.constraintEqualToAnchor(topAnchor),
+                backgroundView.bottomAnchor.constraintEqualToAnchor(bottomAnchor),
+
+                textField.leftAnchor.constraintEqualToAnchor(backgroundView.leftAnchor),
+                textField.rightAnchor.constraintEqualToAnchor(backgroundView.rightAnchor),
+                textField.topAnchor.constraintEqualToAnchor(backgroundView.topAnchor),
+                textField.bottomAnchor.constraintEqualToAnchor(backgroundView.bottomAnchor),
+
+                cancelButton.rightAnchor.constraintEqualToAnchor(rightAnchor),
+                cancelButton.topAnchor.constraintEqualToAnchor(topAnchor),
+                cancelButton.bottomAnchor.constraintEqualToAnchor(bottomAnchor),
+            ]
+            NSLayoutConstraint.activateConstraints(constraints)
+
+            bgToParentConstraint = backgroundView.rightAnchor.constraintEqualToAnchor(rightAnchor)
+            bgToParentConstraint.active = true
+
+            bgToCancelButtonConstraint = backgroundView.rightAnchor.constraintEqualToAnchor(cancelButton.leftAnchor, constant: -config.rasterSize)
+            
+        } else {
+            let views = ["text":textField, "bg":backgroundView, "cancel":cancelButton]
+            let metrics = ["margin":config.rasterSize]
+
+            let formatList: [String] = [
+                // Background
+                "H:|[bg]",
+                "V:|[bg]|",
+                // Text field
+                "H:|[text]|",
+                "V:|[text]|",
+                // Cancel Button
+                "H:[cancel]|",
+                "V:|[cancel]|"
             ]
 
-        for format in formatList {
-            addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(format, options: [], metrics: metrics, views: views))
-        }
+            for format in formatList {
+                addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(format, options: [], metrics: metrics, views: views))
+            }
 
-        bgToCancelButtonConstraint = NSLayoutConstraint(item: backgroundView, attribute: .Trailing, relatedBy: .Equal, toItem: cancelButton, attribute: .Leading, multiplier: 1, constant: -config.rasterSize)
-        bgToParentConstraint = NSLayoutConstraint(item: backgroundView, attribute: .Trailing, relatedBy: .Equal, toItem: self, attribute: .Trailing, multiplier: 1, constant: 0)
-        bgToParentConstraint.active = true
+            bgToCancelButtonConstraint = NSLayoutConstraint(item: backgroundView, attribute: .Trailing, relatedBy: .Equal, toItem: cancelButton, attribute: .Leading, multiplier: 1, constant: -config.rasterSize)
+            bgToParentConstraint = NSLayoutConstraint(item: backgroundView, attribute: .Trailing, relatedBy: .Equal, toItem: self, attribute: .Trailing, multiplier: 1, constant: 0)
+            bgToParentConstraint.active = true
+        }
     }
 
 

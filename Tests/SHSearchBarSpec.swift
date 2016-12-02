@@ -31,27 +31,27 @@ class SHSearchBarSpec: QuickSpec {
             return config
         }()
 
-        // TODO: Test config.rasterSize
-        // TODO: Test config.animationDuration
-        // TODO: Test when setting config properties explicitly nil
-
-        // TODO: Test updating config (test if MarginTextField is layouted again and that in SHSearchbar all parameters that are based on config are updated)
-
-        beforeSuite {
-            UIView.setAnimationsEnabled(false)
-        }
-
-        afterSuite {
-            UIView.setAnimationsEnabled(true)
-        }
-
+        // TODO: Test updating config (test if SHSearchBarTextField is layouted again and that in SHSearchbar all parameters that are based on config are updated)
 
         describe("searchbar") {
+
+            it("calls updateUI exactly once after init") {
+                let config = SHSearchBarConfig()
+                let searchbar = SHSearchBarMock(config: config)
+                expect(searchbar.callCountUpdateUI) == 1
+            }
 
             context("when active") {
 
                 context("and the default config values are used") {
                     let config = SHSearchBarConfig()
+                    let boxedConfig = Box(value: config)
+                    itBehavesLike(SharedConfiguration.searchBar) { [SharedConfiguration.ContextKey.searchbarConfig: boxedConfig, SharedConfiguration.ContextKey.isActive: true] }
+                }
+
+                context("and rasterSize is set") {
+                    var config = SHSearchBarConfig()
+                    config.rasterSize = 22.0
                     let boxedConfig = Box(value: config)
                     itBehavesLike(SharedConfiguration.searchBar) { [SharedConfiguration.ContextKey.searchbarConfig: boxedConfig, SharedConfiguration.ContextKey.isActive: true] }
                 }
@@ -96,6 +96,13 @@ class SHSearchBarSpec: QuickSpec {
 
                 context("and the default config values are used") {
                     let config = SHSearchBarConfig()
+                    let boxedConfig = Box(value: config)
+                    itBehavesLike(SharedConfiguration.searchBar) { [SharedConfiguration.ContextKey.searchbarConfig: boxedConfig, SharedConfiguration.ContextKey.isActive: false] }
+                }
+
+                context("and rasterSize is set") {
+                    var config = SHSearchBarConfig()
+                    config.rasterSize = 22.0
                     let boxedConfig = Box(value: config)
                     itBehavesLike(SharedConfiguration.searchBar) { [SharedConfiguration.ContextKey.searchbarConfig: boxedConfig, SharedConfiguration.ContextKey.isActive: false] }
                 }
@@ -337,11 +344,13 @@ class SharedConfiguration: QuickConfiguration {
     override class func configure(configuration: Configuration) {
         sharedExamples(SharedConfiguration.searchBar) { (sharedExampleContext: SharedExampleContext) in
             context("it") {
+                var superview: UIView!
+                var config: SHSearchBarConfig!
                 var searchbar: SHSearchBarMock!
                 var delegate: SearchBarConcreteDelegate!
 
                 beforeEach {
-                    guard let unwrappedSearchbarConfig = (sharedExampleContext()[SharedConfiguration.ContextKey.searchbarConfig] as? Box<SHSearchBarConfig>)?.value else {
+                    guard let unwrappedConfig = (sharedExampleContext()[SharedConfiguration.ContextKey.searchbarConfig] as? Box<SHSearchBarConfig>)?.value else {
                         XCTFail("Value \(sharedExampleContext()[SharedConfiguration.ContextKey.searchbarConfig]) not a valid SHSearchBarConfig.")
                         return
                     }
@@ -351,9 +360,24 @@ class SharedConfiguration: QuickConfiguration {
                     }
                     delegate = SearchBarConcreteDelegate()
 
-                    searchbar = SHSearchBarMock(config: unwrappedSearchbarConfig)
+                    config = unwrappedConfig
+
+                    searchbar = SHSearchBarMock(config: unwrappedConfig)
                     searchbar.isActive = unwrappedIsActive
                     searchbar.delegate = delegate
+
+                    superview = UIView(frame: CGRect(x: 0, y: 0, width: 600, height: 44))
+                    superview.addSubview(searchbar)
+
+                    let constraints = [
+                        searchbar.leftAnchor.constraintEqualToAnchor(superview.leftAnchor),
+                        searchbar.rightAnchor.constraintEqualToAnchor(superview.rightAnchor),
+                        searchbar.topAnchor.constraintEqualToAnchor(superview.topAnchor),
+                        searchbar.bottomAnchor.constraintEqualToAnchor(superview.bottomAnchor),
+                    ]
+                    NSLayoutConstraint.activateConstraints(constraints)
+
+                    superview.layoutIfNeeded()
                 }
 
                 // Test the basics
@@ -405,13 +429,41 @@ class SharedConfiguration: QuickConfiguration {
                 it("sets a delegate on its textfield") {
                     expect(searchbar.textField.delegate).toNot(beNil())
                 }
-                it("calls updateUI after init") {
-                    expect(searchbar.hasCalledUpdateUI) == true
+                it("sets the textFields clipToBounds to true") {
+                    expect(searchbar.textField.clipsToBounds) == true
                 }
                 it("the cancel button is behind the textFields backgroundView") {
                     let backgroundViewIndex = searchbar.subviews.indexOf(searchbar.backgroundView)
                     let cancelButtonIndex = searchbar.subviews.indexOf(searchbar.cancelButton)
                     expect(backgroundViewIndex).to(beGreaterThan(cancelButtonIndex))
+                }
+                it("sets a non zero frame to the searchbar") {
+                    expect(searchbar.frame) != CGRect.zero
+                }
+                it("sets a non zero frame to the cancel button") {
+                    expect(searchbar.cancelButton.frame) != CGRect.zero
+                }
+                it("sets the correct frame for the background image") {
+                    expect(searchbar.backgroundView.frame) == CGRect(x: 0, y: 0, width: searchbar.frame.width, height: searchbar.frame.height)
+                }
+                it("sets the correct frame for the text field") {
+                    expect(searchbar.textField.frame) == CGRect(x: 0, y: 0, width: searchbar.backgroundView.frame.width, height: searchbar.backgroundView.frame.height)
+                }
+                it("sets the correct frame for the cancel button") {
+                    let cancelButtonWidth = searchbar.cancelButton.frame.width
+                    expect(searchbar.cancelButton.frame) == CGRect(x: searchbar.frame.width-cancelButtonWidth, y: 0, width: cancelButtonWidth, height: searchbar.frame.height)
+                }
+                it("sets backgroundImageView to cancelbutton constraint correctly") {
+                    expect(searchbar.bgToCancelButtonConstraint.firstAnchor) == searchbar.backgroundView.rightAnchor
+                    expect(searchbar.bgToCancelButtonConstraint.secondAnchor) == searchbar.cancelButton.leftAnchor
+                    expect(searchbar.bgToCancelButtonConstraint.constant) == -config.rasterSize
+                    expect(searchbar.bgToCancelButtonConstraint.active) == false
+                }
+                it("sets backgroundImageView to searchbar constraint correctly") {
+                    expect(searchbar.bgToParentConstraint.firstAnchor) == searchbar.backgroundView.rightAnchor
+                    expect(searchbar.bgToParentConstraint.secondAnchor) == searchbar.rightAnchor
+                    expect(searchbar.bgToParentConstraint.constant) == 0
+                    expect(searchbar.bgToParentConstraint.active) == true
                 }
 
 

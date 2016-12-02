@@ -18,6 +18,7 @@ class SHSearchBarTextFieldSpec: QuickSpec {
     override func spec() {
         
         describe("textField") {
+            var config: SHSearchBarConfig!
             let bounds: CGRect = CGRect(x: 0, y: 0, width: 353, height: 44)
             let leftView = UIView(frame: CGRect(x: 0, y: 0, width: 38, height: 44))
             let rightView = UIView(frame: CGRect(x: 0, y: 0, width: 38, height: 44))
@@ -25,7 +26,7 @@ class SHSearchBarTextFieldSpec: QuickSpec {
             var expectedRect: CGRect!
 
             beforeEach({
-                let config = SHSearchBarConfig()
+                config = SHSearchBarConfig()
                 textField = SHSearchBarTextField(config: config)
                 textField.leftViewMode = .Always
                 textField.rightViewMode = .Always
@@ -34,7 +35,7 @@ class SHSearchBarTextFieldSpec: QuickSpec {
             context("with no accessory views") {
 
                 beforeEach({
-                    expectedRect = CGRect(x: 11, y: 0, width: 331, height: 44)
+                    expectedRect = CGRect(x: config.rasterSize, y: 0, width: bounds.width - config.rasterSize * 2, height: bounds.height)
                 })
 
                 it("calculates the correct textRectForBounds") {
@@ -50,7 +51,7 @@ class SHSearchBarTextFieldSpec: QuickSpec {
 
                 beforeEach({
                     textField.leftView = leftView
-                    expectedRect = CGRect(x: 38, y: 0, width: 304, height: 44)
+                    expectedRect = CGRect(x: leftView.bounds.width, y: 0, width: bounds.width - leftView.bounds.width - config.rasterSize, height: bounds.height)
                 })
 
                 it("calculates the correct textRectForBounds") {
@@ -66,7 +67,7 @@ class SHSearchBarTextFieldSpec: QuickSpec {
 
                 beforeEach({
                     textField.rightView = leftView
-                    expectedRect = CGRect(x: 11, y: 0, width: 304, height: 44)
+                    expectedRect = CGRect(x: config.rasterSize, y: 0, width: bounds.width - rightView.bounds.width - config.rasterSize, height: bounds.height)
                 })
 
                 it("calculates the correct textRectForBounds") {
@@ -83,7 +84,7 @@ class SHSearchBarTextFieldSpec: QuickSpec {
                 beforeEach({
                     textField.leftView = leftView
                     textField.rightView = rightView
-                    expectedRect = CGRect(x: 38, y: 0, width: 277, height: 44)
+                    expectedRect = CGRect(x: leftView.bounds.width, y: 0, width: bounds.width - leftView.bounds.width - leftView.bounds.width, height: bounds.height)
                 })
                 
                 it("calculates the correct textRectForBounds") {
