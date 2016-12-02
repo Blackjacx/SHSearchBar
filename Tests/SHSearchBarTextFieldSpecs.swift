@@ -28,8 +28,8 @@ class SHSearchBarTextFieldSpec: QuickSpec {
             beforeEach({
                 config = SHSearchBarConfig()
                 textField = SHSearchBarTextField(config: config)
-                textField.leftViewMode = .Always
-                textField.rightViewMode = .Always
+                textField.leftViewMode = .always
+                textField.rightViewMode = .always
             })
 
             context("with no accessory views") {
@@ -39,11 +39,11 @@ class SHSearchBarTextFieldSpec: QuickSpec {
                 })
 
                 it("calculates the correct textRectForBounds") {
-                    expect(textField.textRectForBounds(bounds)) == expectedRect
+                    expect(textField.textRect(forBounds: bounds)) == expectedRect
                 }
 
                 it("calculates the correct editingRectForBounds") {
-                    expect(textField.editingRectForBounds(bounds)) == expectedRect
+                    expect(textField.editingRect(forBounds: bounds)) == expectedRect
                 }
             }
 
@@ -55,11 +55,11 @@ class SHSearchBarTextFieldSpec: QuickSpec {
                 })
 
                 it("calculates the correct textRectForBounds") {
-                    expect(textField.textRectForBounds(bounds)) == expectedRect
+                    expect(textField.textRect(forBounds: bounds)) == expectedRect
                 }
 
                 it("calculates the correct editingRectForBounds") {
-                    expect(textField.editingRectForBounds(bounds)) == expectedRect
+                    expect(textField.editingRect(forBounds: bounds)) == expectedRect
                 }
             }
 
@@ -71,11 +71,11 @@ class SHSearchBarTextFieldSpec: QuickSpec {
                 })
 
                 it("calculates the correct textRectForBounds") {
-                    expect(textField.textRectForBounds(bounds)) == expectedRect
+                    expect(textField.textRect(forBounds: bounds)) == expectedRect
                 }
 
                 it("calculates the correct editingRectForBounds") {
-                    expect(textField.editingRectForBounds(bounds)) == expectedRect
+                    expect(textField.editingRect(forBounds: bounds)) == expectedRect
                 }
             }
 
@@ -88,11 +88,11 @@ class SHSearchBarTextFieldSpec: QuickSpec {
                 })
                 
                 it("calculates the correct textRectForBounds") {
-                    expect(textField.textRectForBounds(bounds)) == expectedRect
+                    expect(textField.textRect(forBounds: bounds)) == expectedRect
                 }
                 
                 it("calculates the correct editingRectForBounds") {
-                    expect(textField.editingRectForBounds(bounds)) == expectedRect
+                    expect(textField.editingRect(forBounds: bounds)) == expectedRect
                 }
             }
         }

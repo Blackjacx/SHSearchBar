@@ -123,7 +123,7 @@
 					B91438D71D6D9A1900182124 = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = 678J5TKLZR;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 0810;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -296,7 +296,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "stefanherold.iOS-Example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -311,7 +311,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "stefanherold.iOS-Example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
