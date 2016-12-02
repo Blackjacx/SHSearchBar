@@ -31,8 +31,6 @@ class SHSearchBarSpec: QuickSpec {
             return config
         }()
 
-        // TODO: Test updating config (test if SHSearchBarTextField is layouted again and that in SHSearchbar all parameters that are based on config are updated)
-
         describe("searchbar") {
 
             it("calls updateUI exactly once after init") {

@@ -69,6 +69,23 @@ class ViewController: UIViewController, SHSearchBarDelegate {
         searchBar4.hidden = true // TODO: centered text lets the icon on the left - this is not intended!
         addressSearchbarTop.hidden = false
         addressSearchbarBottom.hidden = false
+
+
+        let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(3 * Double(NSEC_PER_SEC)))
+        dispatch_after(delayTime, dispatch_get_main_queue()) {
+            var config: SHSearchBarConfig = SHSearchBarConfig()
+            config.rasterSize = 22.0
+            config.textColor = UIColor.darkGrayColor()
+            config.textContentType = UITextContentTypeFullStreetAddress
+            config.cancelButtonTitle = "Cancel"
+            config.cancelButtonTextColor = UIColor.darkGrayColor()
+            self.searchBar1.config = config
+            self.searchBar2.config = config
+            self.searchBar3.config = config
+            self.searchBar4.config = config
+            self.addressSearchbarTop.config = config
+            self.addressSearchbarBottom.config = config
+        }
     }
     
     private func setupViewConstraints(usingMargin margin: CGFloat) {
@@ -110,7 +127,6 @@ class ViewController: UIViewController, SHSearchBarDelegate {
 
     private func defaultSearchBarWithRasterSize(rasterSize: CGFloat) -> SHSearchBar {
         var config: SHSearchBarConfig = SHSearchBarConfig()
-        config.animationDuration = 0.25
         config.rasterSize = rasterSize
         config.textColor = UIColor.darkGrayColor()
         config.textContentType = UITextContentTypeFullStreetAddress

@@ -21,7 +21,7 @@ public class SHSearchBar: UIView, UITextFieldDelegate {
                 textField.config = config
             }
             updateUI()
-            updateAllViewConstraints(force: true)
+            updateAllViewConstraints()
         }
     }
 
@@ -63,7 +63,7 @@ public class SHSearchBar: UIView, UITextFieldDelegate {
         addSubview(cancelButton)
         addSubview(backgroundView)
 
-        updateAllViewConstraints(force: true)
+        updateAllViewConstraints()
 
         updateUI()
     }
@@ -102,59 +102,63 @@ public class SHSearchBar: UIView, UITextFieldDelegate {
         fatalError("init(coder:) has not been implemented")
     }
 
-    private func updateAllViewConstraints(force force: Bool) {
-        guard force || backgroundView.constraints.isEmpty else {
-            return
-        }
+    private func updateAllViewConstraints() {
+        let isInitialUpdate = backgroundView.constraints.isEmpty
+        let isTextFieldInEditMode = bgToCancelButtonConstraint?.active ?? false
 
-        backgroundView.removeConstraints(backgroundView.constraints)
-        textField.removeConstraints(textField.constraints)
-        cancelButton.removeConstraints(cancelButton.constraints)
+        bgToParentConstraint?.active = false
+        bgToCancelButtonConstraint?.active = false
 
         if #available(iOS 9.0, *) {
-            let constraints = [
-                backgroundView.leftAnchor.constraintEqualToAnchor(leftAnchor),
-                backgroundView.topAnchor.constraintEqualToAnchor(topAnchor),
-                backgroundView.bottomAnchor.constraintEqualToAnchor(bottomAnchor),
+            if isInitialUpdate {
+                let constraints = [
+                    backgroundView.leftAnchor.constraintEqualToAnchor(leftAnchor),
+                    backgroundView.topAnchor.constraintEqualToAnchor(topAnchor),
+                    backgroundView.bottomAnchor.constraintEqualToAnchor(bottomAnchor),
 
-                textField.leftAnchor.constraintEqualToAnchor(backgroundView.leftAnchor),
-                textField.rightAnchor.constraintEqualToAnchor(backgroundView.rightAnchor),
-                textField.topAnchor.constraintEqualToAnchor(backgroundView.topAnchor),
-                textField.bottomAnchor.constraintEqualToAnchor(backgroundView.bottomAnchor),
+                    textField.leftAnchor.constraintEqualToAnchor(backgroundView.leftAnchor),
+                    textField.rightAnchor.constraintEqualToAnchor(backgroundView.rightAnchor),
+                    textField.topAnchor.constraintEqualToAnchor(backgroundView.topAnchor),
+                    textField.bottomAnchor.constraintEqualToAnchor(backgroundView.bottomAnchor),
 
-                cancelButton.rightAnchor.constraintEqualToAnchor(rightAnchor),
-                cancelButton.topAnchor.constraintEqualToAnchor(topAnchor),
-                cancelButton.bottomAnchor.constraintEqualToAnchor(bottomAnchor),
-                ]
-            NSLayoutConstraint.activateConstraints(constraints)
+                    cancelButton.rightAnchor.constraintEqualToAnchor(rightAnchor),
+                    cancelButton.topAnchor.constraintEqualToAnchor(topAnchor),
+                    cancelButton.bottomAnchor.constraintEqualToAnchor(bottomAnchor),
+                    ]
+                NSLayoutConstraint.activateConstraints(constraints)
 
-            bgToParentConstraint = backgroundView.rightAnchor.constraintEqualToAnchor(rightAnchor)
-            bgToParentConstraint.active = true
-
+                bgToParentConstraint = backgroundView.rightAnchor.constraintEqualToAnchor(rightAnchor)
+            }
             bgToCancelButtonConstraint = backgroundView.rightAnchor.constraintEqualToAnchor(cancelButton.leftAnchor, constant: -config.rasterSize)
 
         } else {
-            let views = ["text":textField, "bg":backgroundView, "cancel":cancelButton]
-            let metrics = ["margin":config.rasterSize]
+            if isInitialUpdate {
+                let views = ["text":textField, "bg":backgroundView, "cancel":cancelButton]
+                let metrics = ["margin":config.rasterSize]
 
-            let formatList: [String] = [
-                // Background
-                "H:|[bg]",
-                "V:|[bg]|",
-                // Text field
-                "H:|[text]|",
-                "V:|[text]|",
-                // Cancel Button
-                "H:[cancel]|",
-                "V:|[cancel]|"
-            ]
+                let formatList: [String] = [
+                    // Background
+                    "H:|[bg]",
+                    "V:|[bg]|",
+                    // Text field
+                    "H:|[text]|",
+                    "V:|[text]|",
+                    // Cancel Button
+                    "H:[cancel]|",
+                    "V:|[cancel]|"
+                ]
 
-            for format in formatList {
-                addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(format, options: [], metrics: metrics, views: views))
+                for format in formatList {
+                    addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(format, options: [], metrics: metrics, views: views))
+                }
+                bgToParentConstraint = NSLayoutConstraint(item: backgroundView, attribute: .Trailing, relatedBy: .Equal, toItem: self, attribute: .Trailing, multiplier: 1, constant: 0)
             }
-
             bgToCancelButtonConstraint = NSLayoutConstraint(item: backgroundView, attribute: .Trailing, relatedBy: .Equal, toItem: cancelButton, attribute: .Leading, multiplier: 1, constant: -config.rasterSize)
-            bgToParentConstraint = NSLayoutConstraint(item: backgroundView, attribute: .Trailing, relatedBy: .Equal, toItem: self, attribute: .Trailing, multiplier: 1, constant: 0)
+        }
+
+        if isTextFieldInEditMode && !isInitialUpdate {
+            bgToCancelButtonConstraint.active = true
+        } else {
             bgToParentConstraint.active = true
         }
     }
