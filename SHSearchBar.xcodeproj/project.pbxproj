@@ -200,7 +200,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0800;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = StefanHerold;
 				TargetAttributes = {
 					B9B39A1C1D6D92B900E22022 = {
@@ -379,6 +379,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -432,6 +433,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -507,6 +509,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 447E90EC37B4DA3A99B08347 /* Pods-SHSearchBar-SHSearchBarTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 678J5TKLZR;
 				INFOPLIST_FILE = Tests/Info.plist;
@@ -522,6 +525,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BBA3CA898BCD966AC1605006 /* Pods-SHSearchBar-SHSearchBarTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 678J5TKLZR;
 				INFOPLIST_FILE = Tests/Info.plist;

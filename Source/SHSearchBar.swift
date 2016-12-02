@@ -128,8 +128,8 @@ public class SHSearchBar: UIView, UITextFieldDelegate {
                 NSLayoutConstraint.activateConstraints(constraints)
 
                 bgToParentConstraint = backgroundView.rightAnchor.constraintEqualToAnchor(rightAnchor)
+                bgToCancelButtonConstraint = backgroundView.rightAnchor.constraintEqualToAnchor(cancelButton.leftAnchor, constant: -config.rasterSize)
             }
-            bgToCancelButtonConstraint = backgroundView.rightAnchor.constraintEqualToAnchor(cancelButton.leftAnchor, constant: -config.rasterSize)
 
         } else {
             if isInitialUpdate {
@@ -152,9 +152,11 @@ public class SHSearchBar: UIView, UITextFieldDelegate {
                     addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(format, options: [], metrics: metrics, views: views))
                 }
                 bgToParentConstraint = NSLayoutConstraint(item: backgroundView, attribute: .Trailing, relatedBy: .Equal, toItem: self, attribute: .Trailing, multiplier: 1, constant: 0)
+                bgToCancelButtonConstraint = NSLayoutConstraint(item: backgroundView, attribute: .Trailing, relatedBy: .Equal, toItem: cancelButton, attribute: .Leading, multiplier: 1, constant: -config.rasterSize)
             }
-            bgToCancelButtonConstraint = NSLayoutConstraint(item: backgroundView, attribute: .Trailing, relatedBy: .Equal, toItem: cancelButton, attribute: .Leading, multiplier: 1, constant: -config.rasterSize)
         }
+
+        bgToCancelButtonConstraint.constant = -config.rasterSize
 
         if isTextFieldInEditMode && !isInitialUpdate {
             bgToCancelButtonConstraint.active = true
