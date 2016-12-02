@@ -18,7 +18,7 @@ class SHSearchBarTextField: UITextField {
 
     init(config: SHSearchBarConfig) {
         self.config = config
-        super.init(frame: CGRectZero)
+        super.init(frame: CGRect.zero)
         translatesAutoresizingMaskIntoConstraints = false
     }
 
@@ -29,17 +29,17 @@ class SHSearchBarTextField: UITextField {
 
     // MARK: - Overrides
 
-    override func textRectForBounds(bounds: CGRect) -> CGRect {
-        let rect = super.textRectForBounds(bounds)
+    override func textRect(forBounds bounds: CGRect) -> CGRect {
+        let rect = super.textRect(forBounds: bounds)
         return rectForBounds(rect, originalBounds: bounds)
     }
 
-    override func editingRectForBounds(bounds: CGRect) -> CGRect {
-        let rect = super.editingRectForBounds(bounds)
+    override func editingRect(forBounds bounds: CGRect) -> CGRect {
+        let rect = super.editingRect(forBounds: bounds)
         return rectForBounds(rect, originalBounds: bounds)
     }
 
-    private func rectForBounds(bounds: CGRect, originalBounds: CGRect) -> CGRect {
+    fileprivate func rectForBounds(_ bounds: CGRect, originalBounds: CGRect) -> CGRect {
         var minX: CGFloat = 0
         var width: CGFloat = 0
 

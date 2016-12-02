@@ -205,12 +205,13 @@
 				TargetAttributes = {
 					B9B39A1C1D6D92B900E22022 = {
 						CreatedOnToolsVersion = 8.0;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 0810;
 						ProvisioningStyle = Automatic;
 					};
 					B9B39A251D6D92B900E22022 = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = 678J5TKLZR;
+						LastSwiftMigration = 0810;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -480,7 +481,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -501,7 +502,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = stefanherold.SHSearchBar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -509,7 +510,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 447E90EC37B4DA3A99B08347 /* Pods-SHSearchBar-SHSearchBarTests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 678J5TKLZR;
 				INFOPLIST_FILE = Tests/Info.plist;
@@ -517,7 +518,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = stefanherold.SHSearchBarTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -525,7 +526,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BBA3CA898BCD966AC1605006 /* Pods-SHSearchBar-SHSearchBarTests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 678J5TKLZR;
 				INFOPLIST_FILE = Tests/Info.plist;
@@ -533,7 +534,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = stefanherold.SHSearchBarTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
