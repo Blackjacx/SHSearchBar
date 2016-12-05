@@ -1,11 +1,19 @@
 # SHSearchBar
 
-[![CI Status](http://img.shields.io/travis/Blackjacx/SHSearchBar.svg?style=flat)](https://travis-ci.org/Blackjacx/SHSearchBar)
-[![Version](https://img.shields.io/cocoapods/v/SHSearchBar.svg?style=flat)](http://cocoapods.org/pods/SHSearchBar)
-[![License](https://img.shields.io/cocoapods/l/SHSearchBar.svg?style=flat)](http://cocoapods.org/pods/SHSearchBar)
-[![Platform](https://img.shields.io/cocoapods/p/SHSearchBar.svg?style=flat)](http://cocoapods.org/pods/SHSearchBar)
+<!-- <p align="center">
+  <img src="https://cloud.githubusercontent.com/assets/798235/19212170/781ebb64-8d4c-11e6-8285-94e74a356d53.png" alt="Reactions">
+</p> -->
 
-The clean and shiny search bar that does what UISearchBar does only with dirty hacks. This search bar class is designed to overcome the customization limits of UISearchBar. The difference here is that this class does not inherit UISearchBar but composes a new UIView object by using a UITextField that is much easier to use. The limits of the search bar are as follows:
+<p align="center">
+  <a href="https://travis-ci.org/Blackjacx/SHSearchBar"><img alt="Build Status" src="http://img.shields.io/travis/Blackjacx/SHSearchBar.svg?style=flat"/></a>
+  <a href="http://cocoadocs.org/docsets/SHSearchBar"><img alt="Version" src="https://cocoapod-badges.herokuapp.com/v/SHSearchBar/badge.svg"/></a>
+  <a href="http://cocoadocs.org/docsets/SHSearchBar/"><img alt="Supported Platforms" src="https://cocoapod-badges.herokuapp.com/p/SHSearchBar/badge.svg"/></a>
+  <a href="http://cocoadocs.org/docsets/SHSearchBar/"><img alt="License" src="https://img.shields.io/cocoapods/l/SHSearchBar.svg?style=flat"/></a>
+  <a href="http://codecov.io/gh/blackjacx/SHSearchBar"><img alt="Code Coverage Status" src="http://codecov.io/gh/blackjacx/SHSearchBar/coverage.svg?branch=master"/></a>
+  <a href="https://codebeat.co/projects/github-com-blackjacx-shsearchbar"><img alt="Codebeat" src="https://codebeat.co/badges/44539071-5029-4379-9d33-99dd721915c8" /></a>
+</p>
+
+The clean and shiny search bar that does what UISearchBar does only with dirty hacks. This view is designed to tackle the customization limits of UISearchBar. The difference here is that this class does not inherit UISearchBar but composes a new UIView object by using a UITextField that is much easier to use. These are the limits of the UISearchBar:
 
 - no clean way to left align the placeholder
 - the cancel button is hard to taylor to your needs
@@ -13,6 +21,14 @@ The clean and shiny search bar that does what UISearchBar does only with dirty h
 - there are some strange behaviours when you set a custom background image
 
 Since I use a UITextField these restrictions do not apply.
+
+## Installation
+
+SHSearchBar is compatible with `iOS 8` or higher and builds with `Xcode 8` and `Swift 3` syntax. It is available through [CocoaPods](http://cocoapods.org). To install it, simply add the following line to your Podfile:
+
+```ruby
+pod "SHSearchBar"
+```
 
 ## Example
 
@@ -44,33 +60,9 @@ The repo includes an example project. It shows shows different use cases of the 
 </p>
 
 <p align="center">
-<caption align="center">The inner text field supports the new iOS 10 'textContentMode':<br />(Re-uses the address prior searched in Apple Maps)</caption><br />
+<caption align="center">The inner text field supports the new iOS 10 'textContentMode':<br />(Re-uses the address searched in Apple Maps before)</caption><br />
 <img src="./assets/example_05.png" alt="UITextContentMode Support">
 </p>
-
-
-## Installation
-
-SHSearchBar is compatible with `iOS 8` or higher and build with `Xcode 8` and `Swift 2.3` syntax. It is available through [CocoaPods](http://cocoapods.org). To install it, simply add the following line to your Podfile:
-
-```ruby
-pod "SHSearchBar"
-```
-
-## Next Steps
-
-- solve the scaling text on textField width animation bug when there are multiple SHSearchBars on the same view (like in the example)
-- put code examples in this readme (improve readme)
-- become POST 1.0.0
-- Implement Github CHANGELOG
-- Improve documentation
-- Make great Documentation with help of SwiftLint
-- Migrate to Swift 3
-- Support Swift Package Manager (SPM)
-- Become popular
-- Become Very Popular 🤓
-- add support for a blurred dim view
-- test programmatic use
 
 ## Author
 

@@ -10,8 +10,10 @@
 		365F9C64C9680B42A3E8009C /* Pods_SHSearchBar_SHSearchBarTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11EB461F3CA7994C9FA7C11E /* Pods_SHSearchBar_SHSearchBarTests.framework */; };
 		8F7476547EEFBBB4FAC106AA /* Pods_SHSearchBar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 220F2E74C4CBFA3E4F6F6C42 /* Pods_SHSearchBar.framework */; };
 		B91438CE1D6D991200182124 /* Mocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91438CD1D6D991200182124 /* Mocks.swift */; };
+		B96500D71DEB8F4600371C2B /* SHSearchBarTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96500D61DEB8F4600371C2B /* SHSearchBarTextField.swift */; };
+		B970DD4B1DF08B5900B3945B /* SHSearchBarTextFieldSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = B970DD491DF08B4800B3945B /* SHSearchBarTextFieldSpecs.swift */; };
 		B9B39A271D6D92B900E22022 /* SHSearchBar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9B39A1D1D6D92B900E22022 /* SHSearchBar.framework */; };
-		B9B39A2C1D6D92B900E22022 /* SHSearchBarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B39A2B1D6D92B900E22022 /* SHSearchBarTests.swift */; };
+		B9B39A2C1D6D92B900E22022 /* SHSearchBarSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B39A2B1D6D92B900E22022 /* SHSearchBarSpec.swift */; };
 		B9B39A381D6D962400E22022 /* SHSearchBar.h in Headers */ = {isa = PBXBuildFile; fileRef = B9B39A201D6D92B900E22022 /* SHSearchBar.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B9B39A3C1D6D96A300E22022 /* SHSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B39A391D6D96A300E22022 /* SHSearchBar.swift */; };
 		B9B39A3D1D6D96A300E22022 /* SHSearchBarConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B39A3A1D6D96A300E22022 /* SHSearchBarConfig.swift */; };
@@ -34,10 +36,12 @@
 		220F2E74C4CBFA3E4F6F6C42 /* Pods_SHSearchBar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SHSearchBar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		447E90EC37B4DA3A99B08347 /* Pods-SHSearchBar-SHSearchBarTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SHSearchBar-SHSearchBarTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SHSearchBar-SHSearchBarTests/Pods-SHSearchBar-SHSearchBarTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B91438CD1D6D991200182124 /* Mocks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mocks.swift; sourceTree = "<group>"; };
+		B96500D61DEB8F4600371C2B /* SHSearchBarTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SHSearchBarTextField.swift; sourceTree = "<group>"; };
+		B970DD491DF08B4800B3945B /* SHSearchBarTextFieldSpecs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SHSearchBarTextFieldSpecs.swift; sourceTree = "<group>"; };
 		B9B39A1D1D6D92B900E22022 /* SHSearchBar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SHSearchBar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9B39A201D6D92B900E22022 /* SHSearchBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHSearchBar.h; sourceTree = "<group>"; };
 		B9B39A261D6D92B900E22022 /* SHSearchBarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SHSearchBarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		B9B39A2B1D6D92B900E22022 /* SHSearchBarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHSearchBarTests.swift; sourceTree = "<group>"; };
+		B9B39A2B1D6D92B900E22022 /* SHSearchBarSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHSearchBarSpec.swift; sourceTree = "<group>"; };
 		B9B39A391D6D96A300E22022 /* SHSearchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SHSearchBar.swift; sourceTree = "<group>"; };
 		B9B39A3A1D6D96A300E22022 /* SHSearchBarConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SHSearchBarConfig.swift; sourceTree = "<group>"; };
 		B9B39A3B1D6D96A300E22022 /* UIImage+Style.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Style.swift"; sourceTree = "<group>"; };
@@ -112,10 +116,11 @@
 			isa = PBXGroup;
 			children = (
 				B9DD07D11D6D9D2700FA1FE5 /* Info.plist */,
+				B9B39A201D6D92B900E22022 /* SHSearchBar.h */,
 				B9B39A391D6D96A300E22022 /* SHSearchBar.swift */,
 				B9B39A3A1D6D96A300E22022 /* SHSearchBarConfig.swift */,
+				B96500D61DEB8F4600371C2B /* SHSearchBarTextField.swift */,
 				B9B39A3B1D6D96A300E22022 /* UIImage+Style.swift */,
-				B9B39A201D6D92B900E22022 /* SHSearchBar.h */,
 			);
 			name = SHSearchBar;
 			path = Source;
@@ -125,8 +130,9 @@
 			isa = PBXGroup;
 			children = (
 				B9B39A3F1D6D96C400E22022 /* Info.plist */,
-				B9B39A2B1D6D92B900E22022 /* SHSearchBarTests.swift */,
 				B91438CD1D6D991200182124 /* Mocks.swift */,
+				B9B39A2B1D6D92B900E22022 /* SHSearchBarSpec.swift */,
+				B970DD491DF08B4800B3945B /* SHSearchBarTextFieldSpecs.swift */,
 			);
 			name = SHSearchBarTests;
 			path = Tests;
@@ -194,17 +200,18 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0800;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = StefanHerold;
 				TargetAttributes = {
 					B9B39A1C1D6D92B900E22022 = {
 						CreatedOnToolsVersion = 8.0;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 0810;
 						ProvisioningStyle = Automatic;
 					};
 					B9B39A251D6D92B900E22022 = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = 678J5TKLZR;
+						LastSwiftMigration = 0810;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -328,6 +335,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B9B39A3D1D6D96A300E22022 /* SHSearchBarConfig.swift in Sources */,
+				B96500D71DEB8F4600371C2B /* SHSearchBarTextField.swift in Sources */,
 				B9B39A3C1D6D96A300E22022 /* SHSearchBar.swift in Sources */,
 				B9B39A3E1D6D96A300E22022 /* UIImage+Style.swift in Sources */,
 				B91438CE1D6D991200182124 /* Mocks.swift in Sources */,
@@ -338,7 +346,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B9B39A2C1D6D92B900E22022 /* SHSearchBarTests.swift in Sources */,
+				B9B39A2C1D6D92B900E22022 /* SHSearchBarSpec.swift in Sources */,
+				B970DD4B1DF08B5900B3945B /* SHSearchBarTextFieldSpecs.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -371,6 +380,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -424,6 +434,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -470,7 +481,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -491,7 +502,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = stefanherold.SHSearchBar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -499,6 +510,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 447E90EC37B4DA3A99B08347 /* Pods-SHSearchBar-SHSearchBarTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 678J5TKLZR;
 				INFOPLIST_FILE = Tests/Info.plist;
@@ -506,7 +518,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = stefanherold.SHSearchBarTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -514,6 +526,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BBA3CA898BCD966AC1605006 /* Pods-SHSearchBar-SHSearchBarTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 678J5TKLZR;
 				INFOPLIST_FILE = Tests/Info.plist;
@@ -521,7 +534,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = stefanherold.SHSearchBarTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

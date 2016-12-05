@@ -10,7 +10,7 @@ import UIKit
 
 extension UIImage {
 
-    class func imageWithSolidColor(color: UIColor, size: CGSize) -> UIImage {
+    class func imageWithSolidColor(_ color: UIColor, size: CGSize) -> UIImage {
         let rect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
         UIGraphicsBeginImageContextWithOptions(size, false, 0)
         color.setFill()
@@ -24,7 +24,7 @@ extension UIImage {
         let rect = CGRect(origin:CGPoint(x: 0, y: 0), size: size)
         UIGraphicsBeginImageContextWithOptions(size, false, 0)
         UIBezierPath(roundedRect: rect, byRoundingCorners: cornersToRound, cornerRadii: CGSize(width: cornerRadius, height: cornerRadius)).addClip()
-        drawInRect(rect)
+        draw(in: rect)
         return UIGraphicsGetImageFromCurrentImageContext()!
     }
 }
