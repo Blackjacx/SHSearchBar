@@ -33,7 +33,7 @@ pod "SHSearchBar"
 If you want to use the framework with `Swift 3` feel free to checkout the `swift3` branch. You can Integrate it using Cocoapods by adding the following to your Podfile:
 
 ```ruby
-pod 'SHSearchBar', :git => 'https://github.com/Blackjacx/SHSearchBar.git'
+pod 'SHSearchBar', :git => 'https://github.com/Blackjacx/SHSearchBar.git', :branch => 'swift3'
 ```
 
 ## Example
