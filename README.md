@@ -13,7 +13,7 @@
   <a href="https://codebeat.co/projects/github-com-blackjacx-shsearchbar"><img alt="Codebeat" src="https://codebeat.co/badges/44539071-5029-4379-9d33-99dd721915c8" /></a>
 </p>
 
-The clean and shiny search bar that does what UISearchBar does only with dirty hacks. This search bar class is designed to overcome the customization limits of UISearchBar. The difference here is that this class does not inherit UISearchBar but composes a new UIView object by using a UITextField that is much easier to use. The limits of the search bar are as follows:
+The clean and shiny search bar that does what UISearchBar does only with dirty hacks. This view is designed to tackle the customization limits of UISearchBar. The difference here is that this class does not inherit UISearchBar but composes a new UIView object by using a UITextField that is much easier to use. These are the limits of the UISearchBar:
 
 - no clean way to left align the placeholder
 - the cancel button is hard to taylor to your needs
@@ -24,16 +24,10 @@ Since I use a UITextField these restrictions do not apply.
 
 ## Installation
 
-SHSearchBar is compatible with `iOS 8` or higher and build with `Xcode 8` and `Swift 2.3` syntax. It is available through [CocoaPods](http://cocoapods.org). To install it, simply add the following line to your Podfile:
+SHSearchBar is compatible with `iOS 8` or higher and builds with `Xcode 8` and `Swift 3` syntax. It is available through [CocoaPods](http://cocoapods.org). To install it, simply add the following line to your Podfile:
 
 ```ruby
 pod "SHSearchBar"
-```
-
-If you want to use the framework with `Swift 3` feel free to checkout the `swift3` branch. You can Integrate it using Cocoapods by adding the following to your Podfile:
-
-```ruby
-pod 'SHSearchBar', :git => 'https://github.com/Blackjacx/SHSearchBar.git', :branch => 'swift3'
 ```
 
 ## Example
