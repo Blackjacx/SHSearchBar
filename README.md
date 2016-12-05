@@ -30,6 +30,12 @@ SHSearchBar is compatible with `iOS 8` or higher and build with `Xcode 8` and `S
 pod "SHSearchBar"
 ```
 
+If you want to use the framework with `Swift 3` feel free to checkout the `swift3` branch. You can Integrate it using Cocoapods by adding the following to your Podfile:
+
+```ruby
+pod 'SHSearchBar', :git => 'https://github.com/Blackjacx/SHSearchBar.git'
+```
+
 ## Example
 
 The repo includes an example project. It shows shows different use cases of the searchbar. To run it, clone the repo and run `pod install` from the Example directory first. The following images show some of these use cases:
