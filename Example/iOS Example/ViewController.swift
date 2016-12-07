@@ -128,11 +128,6 @@ class ViewController: UIViewController, SHSearchBarDelegate {
         searchBar.textField.resignFirstResponder()
         return true
     }
-
-    func searchBarShouldCancel(_ searchBar: SHSearchBar) -> Bool {
-        searchBar.resetTextField()
-        return true
-    }
 }
 
 

@@ -25,6 +25,12 @@ class SHSearchBarMock: SHSearchBar {
         callCountUpdateUI += 1
     }
 
+    var callCountResetTextField = 0
+    override func resetTextField() {
+        super.resetTextField()
+        callCountResetTextField += 1
+    }
+    
     var callCountSetCancelButtonVisibility = 0
     override func setCancelButtonVisibility(_ makeVisible: Bool) {
         super.setCancelButtonVisibility(makeVisible)
@@ -36,6 +42,13 @@ class SearchBarConcreteDelegate: NSObject, SHSearchBarDelegate {
     var hasCalledTextDidChange = false
     func searchBar(_ searchBar: SHSearchBar, textDidChange text: String) {
         hasCalledTextDidChange = true
+    }
+
+    var callCountSearchBarShouldCancel = 0
+    var mockSearchBarShouldCancelReturnValue = true
+    func searchBarShouldCancel(_ searchBar: SHSearchBar) -> Bool {
+        callCountSearchBarShouldCancel += 1
+        return mockSearchBarShouldCancelReturnValue
     }
 }
 

@@ -206,7 +206,10 @@ public class SHSearchBar: UIView, UITextFieldDelegate {
         backgroundColor = UIColor.clear
     }
 
-    public func resetTextField() {
+    /**
+     * Resets the textFields content to the value when etiting has been started. This function is called when the cancel button has been pressed.
+     */
+    func resetTextField() {
         let oldText = textField.text
         textField.text = textBeforeEditing
         if oldText != textField.text {
@@ -268,8 +271,10 @@ public class SHSearchBar: UIView, UITextFieldDelegate {
     // MARK: - Cancel Button Management
     
     func pressedCancelButton(_ sender: AnyObject) {
-        textField.resignFirstResponder()
-        _ = delegate?.searchBarShouldCancel?(self)
+        if delegate?.searchBarShouldCancel == nil || (delegate?.searchBarShouldCancel?(self))! == true {
+            resetTextField()
+            textField.resignFirstResponder()
+        }
     }
 
     func setCancelButtonVisibility(_ makeVisible: Bool) {

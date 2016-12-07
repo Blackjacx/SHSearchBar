@@ -289,10 +289,10 @@ class SHSearchBarSpec: QuickSpec {
                     alwaysTrueDelegate = SearchBarAlwaysTrueDelegate()
                     searchbar = SHSearchBarMock(config: config)
                     searchbar.delegate = alwaysTrueDelegate
+                    _ = searchbar.textFieldShouldBeginEditing(searchbar.textField)
                 })
 
                 it("it sets the cancelButton visibility to true") {
-                    _ = searchbar.textFieldShouldBeginEditing(searchbar.textField)
                     expect(searchbar.cancelButton.alpha).toEventually(equal(1))
                 }
             }
@@ -305,12 +305,35 @@ class SHSearchBarSpec: QuickSpec {
                     alwaysTrueDelegate = SearchBarAlwaysTrueDelegate()
                     searchbar = SHSearchBarMock(config: config)
                     searchbar.delegate = alwaysTrueDelegate
+                    _ = searchbar.textFieldShouldEndEditing(searchbar.textField)
                 })
 
                 it("it sets the cancelButton visibility to false") {
-                    _ = searchbar.textFieldShouldEndEditing(searchbar.textField)
                     expect(searchbar.cancelButton.alpha).toEventually(equal(0))
                 }
+            }
+        }
+
+        describe("pressing the cancelButton") {
+            var searchbar: SHSearchBarMock!
+
+            beforeEach({
+                searchbar = SHSearchBarMock(config: config)
+                searchbar.delegate = delegate
+            })
+
+            it("calls searchBarShouldCancel delegate") {
+                searchbar.pressedCancelButton(UIButton())
+                expect(delegate.callCountSearchBarShouldCancel) == 1
+            }
+            it("calls resetTextField with delegate set and searchBarShouldCancel returning true") {
+                searchbar.pressedCancelButton(UIButton())
+                expect(searchbar.callCountResetTextField) == 1
+            }
+            it("calls resetTextField with delegate nil") {
+                searchbar.delegate = nil
+                searchbar.pressedCancelButton(UIButton())
+                expect(searchbar.callCountResetTextField) == 1
             }
         }
 
