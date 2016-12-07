@@ -10,7 +10,7 @@ import UIKit
 
 public class SHSearchBar: UIView, UITextFieldDelegate {
     /// The content of this property is used to restore the textField text after cancellation
-    private var textBeforeEditing: String?
+    var textBeforeEditing: String?
 
     /// Constraint that shows the cancel button when active
     var bgToCancelButtonConstraint: NSLayoutConstraint!
@@ -64,13 +64,13 @@ public class SHSearchBar: UIView, UITextFieldDelegate {
         updateUI()
     }
 
-    private func setupBackgroundView(_ config: SHSearchBarConfig) {
+    func setupBackgroundView(_ config: SHSearchBarConfig) {
         backgroundView.translatesAutoresizingMaskIntoConstraints = false
         backgroundView.isUserInteractionEnabled = true
         updateBackgroundWith(0, corners: .allCorners, color: UIColor.white)
     }
 
-    private func setupTextField(_ config: SHSearchBarConfig) {
+    func setupTextField(_ config: SHSearchBarConfig) {
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.delegate = self
         textField.autocorrectionType = .default
@@ -85,7 +85,7 @@ public class SHSearchBar: UIView, UITextFieldDelegate {
         textField.clearButtonMode = .whileEditing
     }
 
-    private func setupCancelButton(_ config: SHSearchBarConfig) {
+    func setupCancelButton(_ config: SHSearchBarConfig) {
         cancelButton.translatesAutoresizingMaskIntoConstraints = false
         cancelButton.alpha = 0.0
         cancelButton.setContentHuggingPriority(UILayoutPriorityRequired, for: .horizontal)
@@ -98,7 +98,7 @@ public class SHSearchBar: UIView, UITextFieldDelegate {
         fatalError("init(coder:) has not been implemented")
     }
 
-    private func updateAllViewConstraints() {
+    func updateAllViewConstraints() {
         let isInitialUpdate = backgroundView.constraints.isEmpty
         let isTextFieldInEditMode = bgToCancelButtonConstraint?.isActive ?? false
 
