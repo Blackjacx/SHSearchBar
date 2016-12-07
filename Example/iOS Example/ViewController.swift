@@ -29,28 +29,28 @@ class ViewController: UIViewController, SHSearchBarDelegate {
         view.backgroundColor = UIColor.white
 
         searchBar1 = defaultSearchBar(withRasterSize: rasterSize, delegate: self)
-        searchBar1.textField.leftView = imageViewWithIcon(searchGlassIconTemplate, rasterSize: rasterSize)
+        searchBar1.leftView = imageViewWithIcon(searchGlassIconTemplate, rasterSize: rasterSize)
         searchBar1.textField.leftViewMode = .always
         view.addSubview(searchBar1)
 
         searchBar2 = defaultSearchBar(withRasterSize: rasterSize, delegate: self)
         searchBar2.textField.text = "Example With Text"
-        searchBar2.textField.rightView = imageViewWithIcon(searchGlassIconTemplate, rasterSize: rasterSize)
+        searchBar2.rightView = imageViewWithIcon(searchGlassIconTemplate, rasterSize: rasterSize)
         searchBar2.textField.rightViewMode = .always
         view.addSubview(searchBar2)
 
         searchBar3 = defaultSearchBar(withRasterSize: rasterSize, delegate: self)
         searchBar3.textField.text = "Example With Left View"
-        searchBar3.textField.leftView = imageViewWithIcon(searchGlassIconTemplate, rasterSize: rasterSize)
+        searchBar3.leftView = imageViewWithIcon(searchGlassIconTemplate, rasterSize: rasterSize)
         searchBar3.textField.leftViewMode = .always
-        searchBar3.textField.rightView = imageViewWithIcon(searchGlassIconTemplate, rasterSize: rasterSize)
+        searchBar3.rightView = imageViewWithIcon(searchGlassIconTemplate, rasterSize: rasterSize)
         searchBar3.textField.rightViewMode = .unlessEditing
         view.addSubview(searchBar3)
 
         searchBar4 = defaultSearchBar(withRasterSize: rasterSize, delegate: self)
         searchBar4.textField.textAlignment = .center
         searchBar4.textField.text = "Example With Centered Text"
-        searchBar4.textField.leftView = imageViewWithIcon(searchGlassIconTemplate, rasterSize: rasterSize)
+        searchBar4.leftView = imageViewWithIcon(searchGlassIconTemplate, rasterSize: rasterSize)
         view.addSubview(searchBar4)
 
         addressSearchbarTop = defaultSearchBar(withRasterSize: rasterSize, delegate: self)
@@ -150,7 +150,7 @@ func defaultSearchBar(withRasterSize rasterSize: CGFloat, delegate: SHSearchBarD
     let config = defaultSearchBarConfig(rasterSize)
     let bar = SHSearchBar(config: config)
     bar.delegate = delegate
-    bar.textField.placeholder = "Example"
+    bar.textField.placeholder = "Placeholder"
     bar.updateBackgroundWith(6, corners: [.allCorners], color: UIColor.white)
     bar.layer.shadowColor = UIColor.black.cgColor
     bar.layer.shadowOffset = CGSize(width: 0, height: 3)
@@ -159,20 +159,20 @@ func defaultSearchBar(withRasterSize rasterSize: CGFloat, delegate: SHSearchBarD
     return bar
 }
 
+func defaultSearchBarConfig(_ rasterSize: CGFloat) -> SHSearchBarConfig {
+    var config: SHSearchBarConfig = SHSearchBarConfig()
+    config.rasterSize = rasterSize
+    config.cancelButtonTitle = "Cancel"
+    config.cancelButtonTextColor = UIColor.darkGray
+    config.textContentType = UITextContentType.fullStreetAddress.rawValue
+    config.textAttributes = [NSForegroundColorAttributeName:UIColor.gray]
+    return config
+}
+
 func imageViewWithIcon(_ icon: UIImage, rasterSize: CGFloat) -> UIImageView {
     let imgView = UIImageView(image: icon)
     imgView.frame = CGRect(x: 0, y: 0, width: icon.size.width + rasterSize * 2.0, height: icon.size.height)
     imgView.contentMode = .center
     imgView.tintColor = UIColor(red: 0.75, green: 0, blue: 0, alpha: 1)
     return imgView
-}
-
-func defaultSearchBarConfig(_ rasterSize: CGFloat) -> SHSearchBarConfig {
-    var config: SHSearchBarConfig = SHSearchBarConfig()
-    config.rasterSize = rasterSize
-    config.textColor = UIColor.darkGray
-    config.textContentType = UITextContentType.fullStreetAddress.rawValue
-    config.cancelButtonTitle = "Cancel"
-    config.cancelButtonTextColor = UIColor.darkGray
-    return config
 }

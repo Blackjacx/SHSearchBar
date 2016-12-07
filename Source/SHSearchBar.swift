@@ -37,11 +37,11 @@ public class SHSearchBar: UIView, UITextFieldDelegate {
 
     public var leftView: UIView? {
         get { return textField.leftView }
-        set { textField.leftView = leftView }
+        set { textField.leftView = newValue }
     }
     public var rightView: UIView? {
         get { return textField.rightView }
-        set { textField.rightView = rightView }
+        set { textField.rightView = newValue }
     }
 
     
@@ -169,18 +169,18 @@ public class SHSearchBar: UIView, UITextFieldDelegate {
     // MARK: - UI Updates
 
     func updateUI() {
-        var normalTextColor = config.textColor
+        var textColor = config.textAttributes[NSForegroundColorAttributeName] as? UIColor ?? SHSearchBarConfig.defaultTextForegroundColor
 
         // Replace normal color with a lighter color so the text looks disabled
-        if !isActive {
-            normalTextColor = normalTextColor.withAlphaComponent(0.5)
-        }
+        if !isActive { textColor = textColor.withAlphaComponent(0.5) }
 
         // Set the cursor color
-        textField.tintColor = normalTextColor
+        textField.tintColor = textColor
+        textField.textColor = textColor
 
-        textField.defaultTextAttributes = [NSForegroundColorAttributeName:normalTextColor, NSBackgroundColorAttributeName: config.textBackgroundColor]
-        textField.textColor = normalTextColor
+        var textAttributes:[String:Any] = config.textAttributes
+        textAttributes[NSForegroundColorAttributeName] = textColor
+        textField.defaultTextAttributes = textAttributes
 
         cancelButton.setTitle(config.cancelButtonTitle , for: UIControlState())
         cancelButton.setTitleColor(config.cancelButtonTextColor, for: UIControlState())
@@ -193,7 +193,12 @@ public class SHSearchBar: UIView, UITextFieldDelegate {
         }
     }
 
-    //! Use this function to specify the views corner radii. It will be applied to a special background image view (not the search bar itself) that spans the whole search bar. The backgroundColor of this view must remain clear to make the corner radius visible.
+    /*
+     * Use this function to specify the views corner radii. 
+     * It will be applied to a special background image view (not the search bar itself) that spans the whole search bar. 
+     * The backgroundColor of this view must remain clear to make the corner radius visible.
+     */
+    //!
     public func updateBackgroundWith(_ radius: CGFloat, corners: UIRectCorner, color: UIColor) {
         let insets = UIEdgeInsets(top: radius, left: radius, bottom: radius, right: radius)
         let imgSize = CGSize(width: radius*2 + 1, height: radius*2 + 1)

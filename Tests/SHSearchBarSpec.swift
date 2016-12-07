@@ -53,13 +53,13 @@ class SHSearchBarSpec: QuickSpec {
 
                 context("and textColor is set") {
                     var config = SHSearchBarConfig()
-                    config.textColor = UIColor.black
+                    config.textAttributes = [NSForegroundColorAttributeName:UIColor.black]
                     itBehavesLike(SharedConfiguration.searchBar) { [SharedConfiguration.ContextKey.searchbarConfig: config, SharedConfiguration.ContextKey.isActive: true] }
                 }
 
                 context("and textBackgroundColor is set") {
                     var config = SHSearchBarConfig()
-                    config.textBackgroundColor = UIColor.red
+                    config.textAttributes = [NSBackgroundColorAttributeName:UIColor.red]
                     itBehavesLike(SharedConfiguration.searchBar) { [SharedConfiguration.ContextKey.searchbarConfig: config, SharedConfiguration.ContextKey.isActive: true] }
                 }
 
@@ -105,13 +105,13 @@ class SHSearchBarSpec: QuickSpec {
 
                 context("and textColor is set") {
                     var config = SHSearchBarConfig()
-                    config.textColor = UIColor.black
+                    config.textAttributes = [NSForegroundColorAttributeName:UIColor.black]
                     itBehavesLike(SharedConfiguration.searchBar) { [SharedConfiguration.ContextKey.searchbarConfig: config, SharedConfiguration.ContextKey.isActive: false] }
                 }
 
                 context("and textBackgroundColor is set") {
                     var config = SHSearchBarConfig()
-                    config.textBackgroundColor = UIColor.red
+                    config.textAttributes = [NSBackgroundColorAttributeName:UIColor.red]
                     itBehavesLike(SharedConfiguration.searchBar) { [SharedConfiguration.ContextKey.searchbarConfig: config, SharedConfiguration.ContextKey.isActive: false] }
                 }
 
@@ -468,26 +468,24 @@ class SharedConfiguration: QuickConfiguration {
 
             it("sets the correct text color") {
                 let color = searchbar.textField.textColor
-                var expectedColor = searchbar.config.textColor
-                expectedColor = searchbar.isActive ? expectedColor : expectedColor.withAlphaComponent(0.5)
-                expect(color) == expectedColor
+                let expectedTextColor = searchbar.config.textAttributes[NSForegroundColorAttributeName] as? UIColor ?? SHSearchBarConfig.defaultTextForegroundColor
+                expect(color) == (searchbar.isActive ? expectedTextColor : expectedTextColor.withAlphaComponent(0.5))
             }
 
             it("sets the correct tint color") {
                 let color = searchbar.textField.tintColor
-                var expectedColor = searchbar.config.textColor
-                expectedColor = searchbar.isActive ? expectedColor : expectedColor.withAlphaComponent(0.5)
-                expect(color) == expectedColor
+                let expectedTextColor = searchbar.config.textAttributes[NSForegroundColorAttributeName] as? UIColor ?? SHSearchBarConfig.defaultTextForegroundColor
+                expect(color) == (searchbar.isActive ? expectedTextColor : expectedTextColor.withAlphaComponent(0.5))
             }
 
             it("sets the correct textAttributes") {
                 let attributes = searchbar.textField.defaultTextAttributes
-                var expected = [NSForegroundColorAttributeName:searchbar.config.textColor,
-                                NSBackgroundColorAttributeName:searchbar.config.textBackgroundColor]
-                expected[NSForegroundColorAttributeName] = searchbar.isActive ? searchbar.config.textColor : searchbar.config.textColor.withAlphaComponent(0.5)
+                var expected = searchbar.config.textAttributes
+                let expectedTextColor = expected[NSForegroundColorAttributeName] as? UIColor
+                expected[NSForegroundColorAttributeName] = searchbar.isActive ? expectedTextColor : expectedTextColor?.withAlphaComponent(0.5)
 
                 for key in expected.keys {
-                    guard let value = attributes[key] as? UIColor, let expectedValue = expected[key] else {
+                    guard let value = attributes[key] as? UIColor, let expectedValue = expected[key] as? UIColor else {
                         XCTFail("Value or expected value not found for key \(key)")
                         return
                     }
