@@ -21,8 +21,13 @@ public struct SHSearchBarConfig {
 
     public var cancelButtonTextColor: UIColor = UIColor.white
 
-    public init() {}
+    public var leftView: UIView?
 
+    public var rightView: UIView?
+
+    // MARK: - Lifecycle
+
+    public init() {}
 
     // MARK: - Defaults
 

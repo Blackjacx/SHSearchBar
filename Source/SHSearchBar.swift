@@ -9,11 +9,13 @@
 import UIKit
 
 public class SHSearchBar: UIView, UITextFieldDelegate {
+    /// The content of this property is used to restore the textField text after cancellation
     private var textBeforeEditing: String?
 
-    // Constraints for showing and hiding the cancel button
-    private(set) var bgToCancelButtonConstraint: NSLayoutConstraint!
-    private(set) var bgToParentConstraint: NSLayoutConstraint!
+    /// Constraint that shows the cancel button when active
+    var bgToCancelButtonConstraint: NSLayoutConstraint!
+    /// Constraint that hides the cancel button when active
+    var bgToParentConstraint: NSLayoutConstraint!
 
     public var config: SHSearchBarConfig {
         didSet {
@@ -25,24 +27,18 @@ public class SHSearchBar: UIView, UITextFieldDelegate {
         }
     }
 
+    public var isActive: Bool = true {
+        didSet {
+            updateUI()
+        }
+    }
+
     public let backgroundView: UIImageView = UIImageView()
     public let cancelButton: UIButton = UIButton(type: .custom)
     public let textField: UITextField
 
-    public var isActive: Bool = true { didSet { updateUI() } }
+
     public weak var delegate: SHSearchBarDelegate?
-
-
-    // MARK: - Text Field Specific
-
-    public var leftView: UIView? {
-        get { return textField.leftView }
-        set { textField.leftView = newValue }
-    }
-    public var rightView: UIView? {
-        get { return textField.rightView }
-        set { textField.rightView = newValue }
-    }
 
     
     // MARK: - Lifecycle
@@ -174,9 +170,10 @@ public class SHSearchBar: UIView, UITextFieldDelegate {
         // Replace normal color with a lighter color so the text looks disabled
         if !isActive { textColor = textColor.withAlphaComponent(0.5) }
 
-        // Set the cursor color
-        textField.tintColor = textColor
+        textField.tintColor = textColor // set cursor color
         textField.textColor = textColor
+        textField.leftView = config.leftView
+        textField.rightView = config.rightView
 
         var textAttributes:[String:Any] = config.textAttributes
         textAttributes[NSForegroundColorAttributeName] = textColor
