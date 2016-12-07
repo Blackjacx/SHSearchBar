@@ -12,13 +12,6 @@ import Nimble
 
 @testable import SHSearchBar
 
-class Box<T> {
-    let value: T
-    init(value: T) {
-        self.value = value
-    }
-}
-
 class SHSearchBarSpec: QuickSpec {
 
     override func spec() {
@@ -43,59 +36,51 @@ class SHSearchBarSpec: QuickSpec {
 
                 context("and the default config values are used") {
                     let config = SHSearchBarConfig()
-                    let boxedConfig = Box(value: config)
-                    itBehavesLike(SharedConfiguration.searchBar) { [SharedConfiguration.ContextKey.searchbarConfig: boxedConfig, SharedConfiguration.ContextKey.isActive: true] }
+                    itBehavesLike(SharedConfiguration.searchBar) { [SharedConfiguration.ContextKey.searchbarConfig: config, SharedConfiguration.ContextKey.isActive: true] }
                 }
 
                 context("and rasterSize is set") {
                     var config = SHSearchBarConfig()
                     config.rasterSize = 22.0
-                    let boxedConfig = Box(value: config)
-                    itBehavesLike(SharedConfiguration.searchBar) { [SharedConfiguration.ContextKey.searchbarConfig: boxedConfig, SharedConfiguration.ContextKey.isActive: true] }
+                    itBehavesLike(SharedConfiguration.searchBar) { [SharedConfiguration.ContextKey.searchbarConfig: config, SharedConfiguration.ContextKey.isActive: true] }
                 }
 
                 context("and textContentType is set") {
                     var config = SHSearchBarConfig()
                     config.textContentType = UITextContentType.fullStreetAddress.rawValue
-                    let boxedConfig = Box(value: config)
-                    itBehavesLike(SharedConfiguration.searchBar) { [SharedConfiguration.ContextKey.searchbarConfig: boxedConfig, SharedConfiguration.ContextKey.isActive: true] }
+                    itBehavesLike(SharedConfiguration.searchBar) { [SharedConfiguration.ContextKey.searchbarConfig: config, SharedConfiguration.ContextKey.isActive: true] }
                 }
 
                 context("and textColor is set") {
                     var config = SHSearchBarConfig()
                     config.textColor = UIColor.black
-                    let boxedConfig = Box(value: config)
-                    itBehavesLike(SharedConfiguration.searchBar) { [SharedConfiguration.ContextKey.searchbarConfig: boxedConfig, SharedConfiguration.ContextKey.isActive: true] }
+                    itBehavesLike(SharedConfiguration.searchBar) { [SharedConfiguration.ContextKey.searchbarConfig: config, SharedConfiguration.ContextKey.isActive: true] }
                 }
 
                 context("and textBackgroundColor is set") {
                     var config = SHSearchBarConfig()
                     config.textBackgroundColor = UIColor.red
-                    let boxedConfig = Box(value: config)
-                    itBehavesLike(SharedConfiguration.searchBar) { [SharedConfiguration.ContextKey.searchbarConfig: boxedConfig, SharedConfiguration.ContextKey.isActive: true] }
+                    itBehavesLike(SharedConfiguration.searchBar) { [SharedConfiguration.ContextKey.searchbarConfig: config, SharedConfiguration.ContextKey.isActive: true] }
                 }
 
                 context("and cancelButtonTitle is set") {
                     var config = SHSearchBarConfig()
                     config.cancelButtonTitle = "Hello Cancel Button"
-                    let boxedConfig = Box(value: config)
-                    itBehavesLike(SharedConfiguration.searchBar) { [SharedConfiguration.ContextKey.searchbarConfig: boxedConfig, SharedConfiguration.ContextKey.isActive: true] }
+                    itBehavesLike(SharedConfiguration.searchBar) { [SharedConfiguration.ContextKey.searchbarConfig: config, SharedConfiguration.ContextKey.isActive: true] }
                 }
 
                 context("and cancelButtonTextColor is set") {
                     var config = SHSearchBarConfig()
                     config.cancelButtonTextColor = UIColor.purple
-                    let boxedConfig = Box(value: config)
-                    itBehavesLike(SharedConfiguration.searchBar) { [SharedConfiguration.ContextKey.searchbarConfig: boxedConfig, SharedConfiguration.ContextKey.isActive: true] }
+                    itBehavesLike(SharedConfiguration.searchBar) { [SharedConfiguration.ContextKey.searchbarConfig: config, SharedConfiguration.ContextKey.isActive: true] }
                 }
 
                 context("and updates the config") {
                     let config = SHSearchBarConfig()
                     let nonDefaultConfig = nonDefaultSearchbarConfig()
-                    let boxedConfig = Box(value: nonDefaultConfig)
                     let searchbar = SHSearchBarMock(config: config)
                     searchbar.config = nonDefaultConfig
-                    itBehavesLike(SharedConfiguration.searchBar) { [SharedConfiguration.ContextKey.searchbarConfig: boxedConfig, SharedConfiguration.ContextKey.isActive: true, SharedConfiguration.ContextKey.searchbar: searchbar] }
+                    itBehavesLike(SharedConfiguration.searchBar) { [SharedConfiguration.ContextKey.searchbarConfig: config, SharedConfiguration.ContextKey.isActive: true, SharedConfiguration.ContextKey.searchbar: searchbar] }
                 }
             }
 
@@ -103,59 +88,51 @@ class SHSearchBarSpec: QuickSpec {
 
                 context("and the default config values are used") {
                     let config = SHSearchBarConfig()
-                    let boxedConfig = Box(value: config)
-                    itBehavesLike(SharedConfiguration.searchBar) { [SharedConfiguration.ContextKey.searchbarConfig: boxedConfig, SharedConfiguration.ContextKey.isActive: false] }
+                    itBehavesLike(SharedConfiguration.searchBar) { [SharedConfiguration.ContextKey.searchbarConfig: config, SharedConfiguration.ContextKey.isActive: false] }
                 }
 
                 context("and rasterSize is set") {
                     var config = SHSearchBarConfig()
                     config.rasterSize = 22.0
-                    let boxedConfig = Box(value: config)
-                    itBehavesLike(SharedConfiguration.searchBar) { [SharedConfiguration.ContextKey.searchbarConfig: boxedConfig, SharedConfiguration.ContextKey.isActive: false] }
+                    itBehavesLike(SharedConfiguration.searchBar) { [SharedConfiguration.ContextKey.searchbarConfig: config, SharedConfiguration.ContextKey.isActive: false] }
                 }
 
                 context("and textContentType is set") {
                     var config = SHSearchBarConfig()
                     config.textContentType = UITextContentType.fullStreetAddress.rawValue
-                    let boxedConfig = Box(value: config)
-                    itBehavesLike(SharedConfiguration.searchBar) { [SharedConfiguration.ContextKey.searchbarConfig: boxedConfig, SharedConfiguration.ContextKey.isActive: false] }
+                    itBehavesLike(SharedConfiguration.searchBar) { [SharedConfiguration.ContextKey.searchbarConfig: config, SharedConfiguration.ContextKey.isActive: false] }
                 }
 
                 context("and textColor is set") {
                     var config = SHSearchBarConfig()
                     config.textColor = UIColor.black
-                    let boxedConfig = Box(value: config)
-                    itBehavesLike(SharedConfiguration.searchBar) { [SharedConfiguration.ContextKey.searchbarConfig: boxedConfig, SharedConfiguration.ContextKey.isActive: false] }
+                    itBehavesLike(SharedConfiguration.searchBar) { [SharedConfiguration.ContextKey.searchbarConfig: config, SharedConfiguration.ContextKey.isActive: false] }
                 }
 
                 context("and textBackgroundColor is set") {
                     var config = SHSearchBarConfig()
                     config.textBackgroundColor = UIColor.red
-                    let boxedConfig = Box(value: config)
-                    itBehavesLike(SharedConfiguration.searchBar) { [SharedConfiguration.ContextKey.searchbarConfig: boxedConfig, SharedConfiguration.ContextKey.isActive: false] }
+                    itBehavesLike(SharedConfiguration.searchBar) { [SharedConfiguration.ContextKey.searchbarConfig: config, SharedConfiguration.ContextKey.isActive: false] }
                 }
 
                 context("and cancelButtonTitle is set") {
                     var config = SHSearchBarConfig()
                     config.cancelButtonTitle = "Hello Cancel Button"
-                    let boxedConfig = Box(value: config)
-                    itBehavesLike(SharedConfiguration.searchBar) { [SharedConfiguration.ContextKey.searchbarConfig: boxedConfig, SharedConfiguration.ContextKey.isActive: false] }
+                    itBehavesLike(SharedConfiguration.searchBar) { [SharedConfiguration.ContextKey.searchbarConfig: config, SharedConfiguration.ContextKey.isActive: false] }
                 }
 
                 context("and cancelButtonTextColor is set") {
                     var config = SHSearchBarConfig()
                     config.cancelButtonTextColor = UIColor.purple
-                    let boxedConfig = Box(value: config)
-                    itBehavesLike(SharedConfiguration.searchBar) { [SharedConfiguration.ContextKey.searchbarConfig: boxedConfig, SharedConfiguration.ContextKey.isActive: false] }
+                    itBehavesLike(SharedConfiguration.searchBar) { [SharedConfiguration.ContextKey.searchbarConfig: config, SharedConfiguration.ContextKey.isActive: false] }
                 }
 
                 context("and updates the config") {
                     let config = SHSearchBarConfig()
                     let nonDefaultConfig = nonDefaultSearchbarConfig()
-                    let boxedConfig = Box(value: nonDefaultConfig)
                     let searchbar = SHSearchBarMock(config: config)
                     searchbar.config = nonDefaultConfig
-                    itBehavesLike(SharedConfiguration.searchBar) { [SharedConfiguration.ContextKey.searchbarConfig: boxedConfig, SharedConfiguration.ContextKey.isActive: false, SharedConfiguration.ContextKey.searchbar: searchbar] }
+                    itBehavesLike(SharedConfiguration.searchBar) { [SharedConfiguration.ContextKey.searchbarConfig: nonDefaultConfig, SharedConfiguration.ContextKey.isActive: false, SharedConfiguration.ContextKey.searchbar: searchbar] }
                 }
             }
         }
@@ -365,10 +342,11 @@ class SharedConfiguration: QuickConfiguration {
             var delegate: SearchBarConcreteDelegate!
 
             beforeEach {
-                guard let unwrappedConfig = (sharedExampleContext()[SharedConfiguration.ContextKey.searchbarConfig] as? Box<SHSearchBarConfig>)?.value else {
+                guard let unwrappedConfig = sharedExampleContext()[SharedConfiguration.ContextKey.searchbarConfig] as? SHSearchBarConfig else {
                     XCTFail("Value \(sharedExampleContext()[SharedConfiguration.ContextKey.searchbarConfig]) not a valid SHSearchBarConfig.")
                     return
                 }
+
                 guard let unwrappedIsActive = sharedExampleContext()[SharedConfiguration.ContextKey.isActive] as? Bool else {
                     XCTFail("Value \(sharedExampleContext()[SharedConfiguration.ContextKey.isActive]) not a valid Bool.")
                     return
