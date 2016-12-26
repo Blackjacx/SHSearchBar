@@ -1,9 +1,9 @@
 //
 //  SHSearchBarConfig.swift
-//  Pods
+//  SHSearchBar
 //
 //  Created by Stefan Herold on 17/08/16.
-//
+//  Copyright © 2016 StefanHerold. All rights reserved.
 //
 
 import UIKit
