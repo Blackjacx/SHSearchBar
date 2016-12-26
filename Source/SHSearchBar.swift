@@ -8,7 +8,11 @@
 
 import UIKit
 
-public class SHSearchBar: UIView, UITextFieldDelegate {
+/**
+ * The central searchbar class of this framework. 
+ * You must initialize this class using an instance of SHSearchBarConfig which is also changable later.
+ */
+public class SHSearchBar: UIView, UITextFieldDelegate, SHSearchBarDelegate {
     /// The content of this property is used to restore the textField text after cancellation
     var textBeforeEditing: String?
 
@@ -17,6 +21,22 @@ public class SHSearchBar: UIView, UITextFieldDelegate {
     /// Constraint that hides the cancel button when active
     var bgToParentConstraint: NSLayoutConstraint!
 
+    /// The background image view which is responsible for displaying the rounded corners.
+    let backgroundView: UIImageView = UIImageView()
+
+    /// The cancel button under the right side of the searhcbar.
+    let cancelButton: UIButton = UIButton(type: .custom)
+
+
+    // MARK: - Public Properties
+
+    /// This textfield is currently the central element of the searchbar. 
+    /// In future it could be possible that this view is exchanged by something different. 
+    /// Thats why it is discouraged to access the textfield directly. 
+    /// - note: Therefore I will make it hide it from the outside of this framework in one of the next versions.
+    public let textField: UITextField
+
+    /// The central SHSearchBarConfig instance which configures all searhcbar parameters.
     public var config: SHSearchBarConfig {
         didSet {
             if let textField = textField as? SHSearchBarTextField  {
@@ -27,28 +47,30 @@ public class SHSearchBar: UIView, UITextFieldDelegate {
         }
     }
 
+    /// You can set the searhcbar as inactive with this property. Currently this only dims the text color slightly.
     public var isActive: Bool = true {
         didSet {
             updateUI()
         }
     }
 
-    public let backgroundView: UIImageView = UIImageView()
-    public let cancelButton: UIButton = UIButton(type: .custom)
-    public let textField: UITextField
-
-
+    /// The delegate which informs the user about important events.
     public weak var delegate: SHSearchBarDelegate?
 
     
     // MARK: - Lifecycle
 
+    /**
+     * The designated initializer to initialize the searchbar.
+     * - parameter config: The initial SHSearchBarConfig object.
+     */
     public init(config: SHSearchBarConfig) {
         self.config = config
         self.textField = SHSearchBarTextField(config: config)
 
         super.init(frame: CGRect.zero)
-        
+
+        self.delegate = self
         translatesAutoresizingMaskIntoConstraints = false
 
         setupBackgroundView(config)
@@ -67,7 +89,7 @@ public class SHSearchBar: UIView, UITextFieldDelegate {
     func setupBackgroundView(_ config: SHSearchBarConfig) {
         backgroundView.translatesAutoresizingMaskIntoConstraints = false
         backgroundView.isUserInteractionEnabled = true
-        updateBackgroundWith(0, corners: .allCorners, color: UIColor.white)
+        updateBackgroundImage(withRadius: 0, corners: .allCorners, color: UIColor.white)
     }
 
     func setupTextField(_ config: SHSearchBarConfig) {
@@ -179,9 +201,12 @@ public class SHSearchBar: UIView, UITextFieldDelegate {
         textAttributes[NSForegroundColorAttributeName] = textColor
         textField.defaultTextAttributes = textAttributes
 
-        cancelButton.setTitle(config.cancelButtonTitle , for: UIControlState())
-        cancelButton.setTitleColor(config.cancelButtonTextColor, for: UIControlState())
-        cancelButton.setTitleColor(config.cancelButtonTextColor.withAlphaComponent(0.75), for: .highlighted)
+        let normalAttributes = config.cancelButtonTextAttributes
+        cancelButton.setAttributedTitle(NSAttributedString(string: config.cancelButtonTitle, attributes: normalAttributes), for: .normal)
+        var highlightedAttributes = config.cancelButtonTextAttributes
+        let highlightColor = highlightedAttributes[NSForegroundColorAttributeName] as? UIColor ?? SHSearchBarConfig.defaultTextForegroundColor
+        highlightedAttributes[NSForegroundColorAttributeName] = highlightColor.withAlphaComponent(0.75)
+        cancelButton.setAttributedTitle(NSAttributedString(string: config.cancelButtonTitle, attributes: highlightedAttributes), for: .highlighted)
 
         if #available(iOS 10.0, *) {
             if let textContentType = config.textContentType {
@@ -190,13 +215,15 @@ public class SHSearchBar: UIView, UITextFieldDelegate {
         }
     }
 
-    /*
-     * Use this function to specify the views corner radii. 
-     * It will be applied to a special background image view (not the search bar itself) that spans the whole search bar. 
-     * The backgroundColor of this view must remain clear to make the corner radius visible.
+    /**
+     * Use this function to specify the views corner radii. They will be applied to the background
+     * image view that spans the whole search bar. The backgroundColor of this view must remain clear to 
+     * make the corner radius visible.
+     * - parameter withRadius: The radius in pt to apply to the given corners.
+     * - parameter corners: The corners to apply the radius to.
+     * - parameter color: The solid color of the background image.
      */
-    //!
-    public func updateBackgroundWith(_ radius: CGFloat, corners: UIRectCorner, color: UIColor) {
+    public func updateBackgroundImage(withRadius radius: CGFloat, corners: UIRectCorner, color: UIColor) {
         let insets = UIEdgeInsets(top: radius, left: radius, bottom: radius, right: radius)
         let imgSize = CGSize(width: radius*2 + 1, height: radius*2 + 1)
         var img = UIImage.imageWithSolidColor(color, size: imgSize)
@@ -207,13 +234,14 @@ public class SHSearchBar: UIView, UITextFieldDelegate {
     }
 
     /**
-     * Resets the textFields content to the value when etiting has been started. This function is called when the cancel button has been pressed.
+     * Resets the textFields content to the value when etiting has been started. 
+     * This function is called when the cancel button has been pressed.
      */
     func resetTextField() {
         let oldText = textField.text
         textField.text = textBeforeEditing
         if oldText != textField.text {
-            delegate?.searchBar?(self, textDidChange: "")
+            delegate!.searchBar(self, textDidChange: "")
         }
     }
 
@@ -221,7 +249,7 @@ public class SHSearchBar: UIView, UITextFieldDelegate {
     // MARK: - UITextFieldDelegate
     
     public func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        let shouldBegin = delegate?.searchBarShouldBeginEditing?(self) ?? true
+        let shouldBegin = delegate!.searchBarShouldBeginEditing(self)
         if shouldBegin {
             setCancelButtonVisibility(true)
         }
@@ -230,11 +258,11 @@ public class SHSearchBar: UIView, UITextFieldDelegate {
     
     public func textFieldDidBeginEditing(_ textField: UITextField) {
         textBeforeEditing = textField.text
-        delegate?.searchBarDidBeginEditing?(self)
+        delegate!.searchBarDidBeginEditing(self)
     }
 
     public func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-        let shouldEnd = delegate?.searchBarShouldEndEditing?(self) ?? true
+        let shouldEnd = delegate!.searchBarShouldEndEditing(self)
         if shouldEnd {
             setCancelButtonVisibility(false)
         }
@@ -242,28 +270,28 @@ public class SHSearchBar: UIView, UITextFieldDelegate {
     }
     
     public func textFieldDidEndEditing(_ textField: UITextField) {
-        delegate?.searchBarDidEndEditing?(self)
+        delegate!.searchBarDidEndEditing(self)
     }
 
     public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        let shouldChange = delegate?.searchBar?(self, shouldChangeCharactersIn: range, replacementString: string) ?? true
+        let shouldChange = delegate!.searchBar(self, shouldChangeCharactersIn: range, replacementString: string)
         if shouldChange {
             let currentText = NSString(string: textField.text ?? "")
             let newText: String = currentText.replacingCharacters(in: range, with: string)
             if !currentText.isEqual(to: newText) {
-                delegate?.searchBar?(self, textDidChange: newText)
+                delegate!.searchBar(self, textDidChange: newText)
             }
         }
         return shouldChange
     }
 
     public func textFieldShouldClear(_ textField: UITextField) -> Bool {
-        let shouldClear = delegate?.searchBarShouldClear?(self) ?? true
+        let shouldClear = delegate!.searchBarShouldClear(self)
         return shouldClear
     }
     
     public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        let shouldReturn = delegate?.searchBarShouldReturn?(self) ?? true
+        let shouldReturn = delegate!.searchBarShouldReturn(self)
         return shouldReturn
     }
 
@@ -271,7 +299,8 @@ public class SHSearchBar: UIView, UITextFieldDelegate {
     // MARK: - Cancel Button Management
     
     func pressedCancelButton(_ sender: AnyObject) {
-        if delegate?.searchBarShouldCancel == nil || (delegate?.searchBarShouldCancel?(self))! == true {
+        let shouldCancel = delegate!.searchBarShouldCancel(self)
+        if shouldCancel {
             resetTextField()
             textField.resignFirstResponder()
         }
@@ -294,20 +323,56 @@ public class SHSearchBar: UIView, UITextFieldDelegate {
     }
 }
 
-
-
-@objc
+/**
+ * This protocol is used to inform the searchbar's delegate of important events.
+ */
 public protocol SHSearchBarDelegate : NSObjectProtocol {
-    // UITextField Pendants
-    @objc optional func searchBarShouldBeginEditing(_ searchBar: SHSearchBar) -> Bool // return NO to disallow editing.
-    @objc optional func searchBarDidBeginEditing(_ searchBar: SHSearchBar) // became first responder
-    @objc optional func searchBarShouldEndEditing(_ searchBar: SHSearchBar) -> Bool // return YES to allow editing to stop and to resign first responder status. NO to disallow the editing session to end
-    @objc optional func searchBarDidEndEditing(_ searchBar: SHSearchBar) // may be called if forced even if shouldEndEditing returns NO (e.g. view removed from window) or endEditing:YES called
-    @objc optional func searchBar(_ searchBar: SHSearchBar, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool // return NO to not change text
-    @objc optional func searchBarShouldClear(_ searchBar: SHSearchBar) -> Bool // called when clear button pressed. return NO to ignore (no notifications)
-    @objc optional func searchBarShouldReturn(_ searchBar: SHSearchBar) -> Bool // called when 'return' key pressed. return NO to ignore.
+    func searchBarShouldBeginEditing(_ searchBar: SHSearchBar) -> Bool // return NO to disallow editing.
+    func searchBarDidBeginEditing(_ searchBar: SHSearchBar) // became first responder
+    func searchBarShouldEndEditing(_ searchBar: SHSearchBar) -> Bool // return YES to allow editing to stop and to resign first responder status. NO to disallow the editing session to end
+    func searchBarDidEndEditing(_ searchBar: SHSearchBar) // may be called if forced even if shouldEndEditing returns NO (e.g. view removed from window) or endEditing:YES called
+    func searchBar(_ searchBar: SHSearchBar, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool // return NO to not change text
+    func searchBarShouldClear(_ searchBar: SHSearchBar) -> Bool // called when clear button pressed. return NO to ignore (no notifications)
+    func searchBarShouldReturn(_ searchBar: SHSearchBar) -> Bool // called when 'return' key pressed. return NO to ignore.
     
     // New delegate methods
-    @objc optional func searchBarShouldCancel(_ searchBar: SHSearchBar) -> Bool // called when 'cancel' button pressed.
-    @objc optional func searchBar(_ searchBar: SHSearchBar, textDidChange text: String) // Called when the text did change
+    func searchBarShouldCancel(_ searchBar: SHSearchBar) -> Bool // called when 'cancel' button pressed.
+    func searchBar(_ searchBar: SHSearchBar, textDidChange text: String) // Called when the text did change
+}
+
+/**
+ * This extension provides a default implementation of the protocol which replaces old-style optional protocol methods.
+ * (http://useyourloaf.com/blog/swift-optional-protocol-methods/)
+ */
+extension SHSearchBarDelegate {
+    public func searchBarShouldBeginEditing(_ searchBar: SHSearchBar) -> Bool {
+        return true
+    }
+
+    public func searchBarDidBeginEditing(_ searchBar: SHSearchBar) {}
+
+    public func searchBarShouldEndEditing(_ searchBar: SHSearchBar) -> Bool {
+        return true
+    }
+
+    public func searchBarDidEndEditing(_ searchBar: SHSearchBar) {}
+
+    public func searchBar(_ searchBar: SHSearchBar, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        return true
+    }
+
+    public func searchBarShouldClear(_ searchBar: SHSearchBar) -> Bool {
+        return true
+    }
+
+    public func searchBarShouldReturn(_ searchBar: SHSearchBar) -> Bool {
+        searchBar.textField.resignFirstResponder()
+        return true
+    }
+
+    public func searchBarShouldCancel(_ searchBar: SHSearchBar) -> Bool {
+        return true
+    }
+
+    public func searchBar(_ searchBar: SHSearchBar, textDidChange text: String) {}
 }

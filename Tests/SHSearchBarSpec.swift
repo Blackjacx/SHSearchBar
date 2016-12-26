@@ -19,7 +19,7 @@ class SHSearchBarSpec: QuickSpec {
         let config: SHSearchBarConfig = {
             var config = SHSearchBarConfig()
             config.cancelButtonTitle = "Abortar"
-            config.cancelButtonTextColor = UIColor.red
+            config.cancelButtonTextAttributes = [NSForegroundColorAttributeName:UIColor.red]
             config.textContentType = UITextContentType.fullStreetAddress.rawValue
             return config
         }()
@@ -82,7 +82,7 @@ class SHSearchBarSpec: QuickSpec {
 
                 context("and cancelButtonTextColor is set") {
                     var config = SHSearchBarConfig()
-                    config.cancelButtonTextColor = UIColor.purple
+                    config.cancelButtonTextAttributes = [NSForegroundColorAttributeName:UIColor.purple]
                     itBehavesLike(SharedConfiguration.searchBar) { [SharedConfiguration.ContextKey.searchbarConfig: config,
                                                                     SharedConfiguration.ContextKey.isActive: isActive] }
                 }
@@ -161,7 +161,7 @@ class SHSearchBarSpec: QuickSpec {
 
                 context("and cancelButtonTextColor is set") {
                     var config = SHSearchBarConfig()
-                    config.cancelButtonTextColor = UIColor.purple
+                    config.cancelButtonTextAttributes = [NSForegroundColorAttributeName:UIColor.purple]
                     itBehavesLike(SharedConfiguration.searchBar) { [SharedConfiguration.ContextKey.searchbarConfig: config,
                                                                     SharedConfiguration.ContextKey.isActive: isActive] }
                 }
@@ -593,15 +593,16 @@ class SharedConfiguration: QuickConfiguration {
                 expect(searchbar.textField.textContentType.rawValue) == textContentType
             }
 
-            it("sets the correct cancel button title") {
-                expect(searchbar.cancelButton.title(for: .normal)) == searchbar.config.cancelButtonTitle
+            it("sets the correct cancel button title in normal mode") {
+                let expectedTitle = NSAttributedString(string: searchbar.config.cancelButtonTitle, attributes: searchbar.config.cancelButtonTextAttributes)
+                expect(searchbar.cancelButton.attributedTitle(for: .normal)) == expectedTitle
             }
-
-            it("sets the correct cancel button normal color") {
-                expect(searchbar.cancelButton.titleColor(for: .normal)) == searchbar.config.cancelButtonTextColor
-            }
-            it("sets the correct cancel button highlighted color") {
-                expect(searchbar.cancelButton.titleColor(for: .highlighted)) == searchbar.config.cancelButtonTextColor.withAlphaComponent(0.75)
+            it("sets the correct cancel button title highlighted mode") {
+                var highlightedAttributes = searchbar.config.cancelButtonTextAttributes
+                let highlightedColor = highlightedAttributes[NSForegroundColorAttributeName] as? UIColor ?? SHSearchBarConfig.defaultTextForegroundColor
+                highlightedAttributes[NSForegroundColorAttributeName] = highlightedColor.withAlphaComponent(0.75)
+                let expectedTitle = NSAttributedString(string: searchbar.config.cancelButtonTitle, attributes: highlightedAttributes)
+                expect(searchbar.cancelButton.attributedTitle(for: .highlighted)) == expectedTitle
             }
         }
     }

@@ -52,12 +52,12 @@ class ViewController: UIViewController, SHSearchBarDelegate {
 
         addressSearchbarTop = defaultSearchBar(withRasterSize: rasterSize, leftView: nil, rightView: nil, delegate: self)
         addressSearchbarTop.textField.text = "Mainzer Landstraße 123, Frankfurt am Main"
-        addressSearchbarTop.updateBackgroundWith(6, corners: [.topLeft, .topRight], color: UIColor.white)
+        addressSearchbarTop.updateBackgroundImage(withRadius: 6, corners: [.topLeft, .topRight], color: UIColor.white)
         view.addSubview(addressSearchbarTop)
 
         addressSearchbarBottom = defaultSearchBar(withRasterSize: rasterSize, leftView: nil, rightView: nil, delegate: self)
         addressSearchbarBottom.textField.text = "Darmstädter Landstraße 123, Frankfurt am Main"
-        addressSearchbarBottom.updateBackgroundWith(6, corners: [.bottomLeft, .bottomRight], color: UIColor.white)
+        addressSearchbarBottom.updateBackgroundImage(withRadius: 6, corners: [.bottomLeft, .bottomRight], color: UIColor.white)
         view.addSubview(addressSearchbarBottom)
 
         setupViewConstraints(usingMargin: rasterSize)
@@ -70,7 +70,7 @@ class ViewController: UIViewController, SHSearchBarDelegate {
             let rasterSize: CGFloat = 22.0
             for bar in allSearchBars {
                 var config = bar.config
-                config.cancelButtonTextColor = UIColor.red
+                config.cancelButtonTextAttributes = [NSForegroundColorAttributeName:UIColor.red]
                 config.rasterSize = rasterSize
                 bar.config = config
             }
@@ -120,14 +120,6 @@ class ViewController: UIViewController, SHSearchBarDelegate {
         ]
         NSLayoutConstraint.activate(viewConstraints)
     }
-
-
-    // MARK: - SHSearchBarDelegate
-
-    func searchBarShouldReturn(_ searchBar: SHSearchBar) -> Bool {
-        searchBar.textField.resignFirstResponder()
-        return true
-    }
 }
 
 
@@ -142,7 +134,7 @@ func defaultSearchBar(withRasterSize rasterSize: CGFloat, leftView: UIView?, rig
     let bar = SHSearchBar(config: config)
     bar.delegate = delegate
     bar.textField.placeholder = "Placeholder"
-    bar.updateBackgroundWith(6, corners: [.allCorners], color: UIColor.white)
+    bar.updateBackgroundImage(withRadius: 6, corners: [.allCorners], color: UIColor.white)
     bar.layer.shadowColor = UIColor.black.cgColor
     bar.layer.shadowOffset = CGSize(width: 0, height: 3)
     bar.layer.shadowRadius = 5
@@ -163,7 +155,7 @@ func defaultSearchBarConfig(_ rasterSize: CGFloat) -> SHSearchBarConfig {
     var config: SHSearchBarConfig = SHSearchBarConfig()
     config.rasterSize = rasterSize
     config.cancelButtonTitle = "Cancel"
-    config.cancelButtonTextColor = UIColor.darkGray
+    config.cancelButtonTextAttributes = [NSForegroundColorAttributeName:UIColor.darkGray]
     config.textContentType = UITextContentType.fullStreetAddress.rawValue
     config.textAttributes = [NSForegroundColorAttributeName:UIColor.gray]
     return config
