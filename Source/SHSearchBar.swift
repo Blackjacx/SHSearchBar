@@ -53,10 +53,15 @@ public class SHSearchBar: UIView, UITextFieldDelegate, SHSearchBarDelegate {
         }
     }
 
+    /// The text of the searchbar. Defaults to nil.
     public var text: String? {set {textField.text = newValue} get {return textField.text}}
+    /// The placeholder of the searchbar. Defaults to nil.
     public var placeholder: String? {set {textField.placeholder = newValue} get {return textField.placeholder}}
+    /// The text alignment of the searchbar.
     public var textAlignment: NSTextAlignment {set {textField.textAlignment = newValue} get {return textField.textAlignment}}
+    /// The left view mode of the searchbar regarding to a leftView (see SHSearchBarConfig).
     public var leftViewMode: UITextFieldViewMode {set {textField.leftViewMode = newValue} get {return textField.leftViewMode}}
+    /// The right view mode of the searchbar regarding to a rightView (see SHSearchBarConfig).
     public var rightViewMode: UITextFieldViewMode {set {textField.rightViewMode = newValue} get {return textField.rightViewMode}}
 
     /// The delegate which informs the user about important events.
@@ -356,22 +361,77 @@ public class SHSearchBar: UIView, UITextFieldDelegate, SHSearchBarDelegate {
  * This protocol is used to inform the searchbar's delegate of important events.
  */
 public protocol SHSearchBarDelegate : NSObjectProtocol {
-    func searchBarShouldBeginEditing(_ searchBar: SHSearchBar) -> Bool // return NO to disallow editing.
-    func searchBarDidBeginEditing(_ searchBar: SHSearchBar) // became first responder
-    func searchBarShouldEndEditing(_ searchBar: SHSearchBar) -> Bool // return YES to allow editing to stop and to resign first responder status. NO to disallow the editing session to end
-    func searchBarDidEndEditing(_ searchBar: SHSearchBar) // may be called if forced even if shouldEndEditing returns NO (e.g. view removed from window) or endEditing:YES called
-    func searchBar(_ searchBar: SHSearchBar, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool // return NO to not change text
-    func searchBarShouldClear(_ searchBar: SHSearchBar) -> Bool // called when clear button pressed. return NO to ignore (no notifications)
-    func searchBarShouldReturn(_ searchBar: SHSearchBar) -> Bool // called when 'return' key pressed. return NO to ignore.
+    /**
+     * Controls whether editing should begin or not. Return false to disallow editing.
+     * - parameter searchBar: The searchbar for which the delegate call was issued.
+     * - returns: Whether or not to allow begin editing.
+     */
+    func searchBarShouldBeginEditing(_ searchBar: SHSearchBar) -> Bool
+
+    /**
+     * Informs the delegate that editing has begun. The searchbar has become first responder in that case.
+     * - parameter searchBar: The searchbar for which the delegate call was issued.
+     */
+    func searchBarDidBeginEditing(_ searchBar: SHSearchBar)
+
+    /**
+     * Controls whether editing should end or not. 
+     * Return true to allow editing to stop and to resign first responder status. 
+     * Return false to disallow the editing session to end
+     * - parameter searchBar: The searchbar for which the delegate call was issued.
+     * - returns: Whether or not to allow end editing.
+     */
+    func searchBarShouldEndEditing(_ searchBar: SHSearchBar) -> Bool
+
+    /**
+     * Informs the delegate that editing has ended. The searchbar has resigned first responder in that case.
+     * - note: May be called if forced even if shouldEndEditing returns NO (e.g. view removed from window) or endEditing:YES called.
+     * - parameter searchBar: The searchbar for which the delegate call was issued.
+     */
+    func searchBarDidEndEditing(_ searchBar: SHSearchBar)
+
+    /**
+     * Controls whether the currently edited character or range of characters should be changed or not. 
+     * You can use this method to restrict entry of certain characters, e.g. for entering phone numbers.
+     * - parameter searchBar: The searchbar for which the delegate call was issued.
+     * - parameter range: The range of the respective characters.
+     * - parameter string: The string the characters in 'range' should be replaced with.
+     * - returns: False when you don't want to change the characters. True when the change is ok.
+     */
+    func searchBar(_ searchBar: SHSearchBar, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool
+
+    /**
+     * Called when the clear button is pressed to delete all contents of the searchbar.
+     * - parameter searchBar: The searchbar for which the delegate call was issued.
+     * - returns: False when you want to ignore the button press.
+     */
+    func searchBarShouldClear(_ searchBar: SHSearchBar) -> Bool
+
+    /**
+     * Called when the keyboards return button is pressed.
+     * - parameter searchBar: The searchbar for which the delegate call was issued.
+     * - returns: False when you want to ignore the button press.
+     */
+    func searchBarShouldReturn(_ searchBar: SHSearchBar) -> Bool
     
-    // New delegate methods
-    func searchBarShouldCancel(_ searchBar: SHSearchBar) -> Bool // called when 'cancel' button pressed.
-    func searchBar(_ searchBar: SHSearchBar, textDidChange text: String) // Called when the text did change
+    /**
+     * Called when the cancel button is pressed.
+     * - parameter searchBar: The searchbar for which the delegate call was issued.
+     * - returns: False when you want to ignore the button press.
+     */
+    func searchBarShouldCancel(_ searchBar: SHSearchBar) -> Bool
+
+    /**
+     * Called when the text in the searchbar did change
+     * - parameter searchBar: The searchbar for which the delegate call was issued.
+     * - parameter text: The new text after the change.
+     */
+    func searchBar(_ searchBar: SHSearchBar, textDidChange text: String)
 }
 
 
 /**
- * This extension provides a default implementation of the protocol which replaces old-style optional protocol methods.
+ * This extension provides a default implementation of the protocol which replaces old-style optional protocol methods known from Objective-C.
  * (http://useyourloaf.com/blog/swift-optional-protocol-methods/)
  */
 extension SHSearchBarDelegate {
