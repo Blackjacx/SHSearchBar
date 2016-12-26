@@ -241,7 +241,7 @@ public class SHSearchBar: UIView, UITextFieldDelegate, SHSearchBarDelegate {
         let oldText = textField.text
         textField.text = textBeforeEditing
         if oldText != textField.text {
-            delegate!.searchBar(self, textDidChange: "")
+            delegate?.searchBar(self, textDidChange: "")
         }
     }
 
@@ -249,7 +249,7 @@ public class SHSearchBar: UIView, UITextFieldDelegate, SHSearchBarDelegate {
     // MARK: - UITextFieldDelegate
     
     public func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        let shouldBegin = delegate!.searchBarShouldBeginEditing(self)
+        let shouldBegin = delegate?.searchBarShouldBeginEditing(self) ?? searchBarShouldBeginEditing(self)
         if shouldBegin {
             setCancelButtonVisibility(true)
         }
@@ -258,11 +258,11 @@ public class SHSearchBar: UIView, UITextFieldDelegate, SHSearchBarDelegate {
     
     public func textFieldDidBeginEditing(_ textField: UITextField) {
         textBeforeEditing = textField.text
-        delegate!.searchBarDidBeginEditing(self)
+        delegate?.searchBarDidBeginEditing(self)
     }
 
     public func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-        let shouldEnd = delegate!.searchBarShouldEndEditing(self)
+        let shouldEnd = delegate?.searchBarShouldEndEditing(self) ?? searchBarShouldEndEditing(self)
         if shouldEnd {
             setCancelButtonVisibility(false)
         }
@@ -270,28 +270,28 @@ public class SHSearchBar: UIView, UITextFieldDelegate, SHSearchBarDelegate {
     }
     
     public func textFieldDidEndEditing(_ textField: UITextField) {
-        delegate!.searchBarDidEndEditing(self)
+        delegate?.searchBarDidEndEditing(self)
     }
 
     public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        let shouldChange = delegate!.searchBar(self, shouldChangeCharactersIn: range, replacementString: string)
+        let shouldChange = delegate?.searchBar(self, shouldChangeCharactersIn: range, replacementString: string) ?? searchBar(self, shouldChangeCharactersIn: range, replacementString: string)
         if shouldChange {
             let currentText = NSString(string: textField.text ?? "")
             let newText: String = currentText.replacingCharacters(in: range, with: string)
             if !currentText.isEqual(to: newText) {
-                delegate!.searchBar(self, textDidChange: newText)
+                delegate?.searchBar(self, textDidChange: newText)
             }
         }
         return shouldChange
     }
 
     public func textFieldShouldClear(_ textField: UITextField) -> Bool {
-        let shouldClear = delegate!.searchBarShouldClear(self)
+        let shouldClear = delegate?.searchBarShouldClear(self) ?? searchBarShouldClear(self)
         return shouldClear
     }
     
     public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        let shouldReturn = delegate!.searchBarShouldReturn(self)
+        let shouldReturn = delegate?.searchBarShouldReturn(self) ?? searchBarShouldReturn(self)
         return shouldReturn
     }
 
@@ -299,7 +299,7 @@ public class SHSearchBar: UIView, UITextFieldDelegate, SHSearchBarDelegate {
     // MARK: - Cancel Button Management
     
     func pressedCancelButton(_ sender: AnyObject) {
-        let shouldCancel = delegate!.searchBarShouldCancel(self)
+        let shouldCancel = delegate?.searchBarShouldCancel(self) ?? searchBarShouldCancel(self)
         if shouldCancel {
             resetTextField()
             textField.resignFirstResponder()
