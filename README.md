@@ -1,5 +1,5 @@
 <p align="center">
-<img src="./icon.png" alt="SHSearchBar">
+<img src="./icon.png" alt="SHSearchBar" height="128" width="128">
 </p>
 
 # SHSearchBar
