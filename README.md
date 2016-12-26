@@ -32,7 +32,7 @@ SHSearchBar is compatible with `iOS 8` or higher and builds with `Xcode 8` and `
 pod "SHSearchBar"
 ```
 
-## Example
+## Examples
 
 The repo includes an example project. It shows shows different use cases of the searchbar. To run it, clone the repo and run `pod install` from the Example directory first. The following images show some of these use cases:
 
