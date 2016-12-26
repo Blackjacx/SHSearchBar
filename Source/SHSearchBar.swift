@@ -32,9 +32,8 @@ public class SHSearchBar: UIView, UITextFieldDelegate, SHSearchBarDelegate {
 
     /// This textfield is currently the central element of the searchbar. 
     /// In future it could be possible that this view is exchanged by something different. 
-    /// Thats why it is discouraged to access the textfield directly. 
-    /// - note: Therefore I will make it hide it from the outside of this framework in one of the next versions.
-    public let textField: UITextField
+    /// Thats why it is discouraged to access the textfield directly which is the reason why it is declared as internal. 
+    let textField: UITextField
 
     /// The central SHSearchBarConfig instance which configures all searhcbar parameters.
     public var config: SHSearchBarConfig {
@@ -53,6 +52,12 @@ public class SHSearchBar: UIView, UITextFieldDelegate, SHSearchBarDelegate {
             updateUI()
         }
     }
+
+    public var text: String? {set {textField.text = newValue} get {return textField.text}}
+    public var placeholder: String? {set {textField.placeholder = newValue} get {return textField.placeholder}}
+    public var textAlignment: NSTextAlignment {set {textField.textAlignment = newValue} get {return textField.textAlignment}}
+    public var leftViewMode: UITextFieldViewMode {set {textField.leftViewMode = newValue} get {return textField.leftViewMode}}
+    public var rightViewMode: UITextFieldViewMode {set {textField.rightViewMode = newValue} get {return textField.rightViewMode}}
 
     /// The delegate which informs the user about important events.
     public weak var delegate: SHSearchBarDelegate?
@@ -184,6 +189,29 @@ public class SHSearchBar: UIView, UITextFieldDelegate, SHSearchBarDelegate {
     }
 
 
+    // MARK: - First Responder Handling
+
+    public override var isFirstResponder: Bool {
+        return textField.isFirstResponder
+    }
+
+    public override func resignFirstResponder() -> Bool {
+        return textField.resignFirstResponder()
+    }
+
+    public override func becomeFirstResponder() -> Bool {
+        return textField.becomeFirstResponder()
+    }
+
+    public override var canResignFirstResponder: Bool {
+        return textField.canResignFirstResponder
+    }
+
+    public override var canBecomeFirstResponder: Bool {
+        return textField.canBecomeFirstResponder
+    }
+
+    
     // MARK: - UI Updates
 
     func updateUI() {

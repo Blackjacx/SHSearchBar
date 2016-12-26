@@ -34,29 +34,29 @@ class ViewController: UIViewController, SHSearchBarDelegate {
 
         let rightView2 = imageViewWithIcon(searchGlassIconTemplate, rasterSize: rasterSize)
         searchBar2 = defaultSearchBar(withRasterSize: rasterSize, leftView: nil, rightView: rightView2, delegate: self)
-        searchBar2.textField.text = "Example With Text"
+        searchBar2.text = "Example With Text"
         view.addSubview(searchBar2)
 
         let leftView3 = imageViewWithIcon(searchGlassIconTemplate, rasterSize: rasterSize)
         let rightView3 = imageViewWithIcon(searchGlassIconTemplate, rasterSize: rasterSize)
         searchBar3 = defaultSearchBar(withRasterSize: rasterSize, leftView: leftView3, rightView: rightView3, delegate: self)
-        searchBar3.textField.text = "Example With Left View"
+        searchBar3.text = "Example With Left View"
         view.addSubview(searchBar3)
 
         // TODO: SearchBar4: centered text lets the icon on the left - this is not intended!
         let leftView4 = imageViewWithIcon(searchGlassIconTemplate, rasterSize: rasterSize)
         searchBar4 = defaultSearchBar(withRasterSize: rasterSize, leftView: leftView4, rightView: nil, delegate: self)
-        searchBar4.textField.textAlignment = .center
-        searchBar4.textField.text = "Example With Centered Text"
+        searchBar4.textAlignment = .center
+        searchBar4.text = "Example With Centered Text"
         view.addSubview(searchBar4)
 
         addressSearchbarTop = defaultSearchBar(withRasterSize: rasterSize, leftView: nil, rightView: nil, delegate: self)
-        addressSearchbarTop.textField.text = "Mainzer Landstraße 123, Frankfurt am Main"
+        addressSearchbarTop.text = "Mainzer Landstraße 123, Frankfurt am Main"
         addressSearchbarTop.updateBackgroundImage(withRadius: 6, corners: [.topLeft, .topRight], color: UIColor.white)
         view.addSubview(addressSearchbarTop)
 
         addressSearchbarBottom = defaultSearchBar(withRasterSize: rasterSize, leftView: nil, rightView: nil, delegate: self)
-        addressSearchbarBottom.textField.text = "Darmstädter Landstraße 123, Frankfurt am Main"
+        addressSearchbarBottom.text = "Darmstädter Landstraße 123, Frankfurt am Main"
         addressSearchbarBottom.updateBackgroundImage(withRadius: 6, corners: [.bottomLeft, .bottomRight], color: UIColor.white)
         view.addSubview(addressSearchbarBottom)
 
@@ -133,7 +133,7 @@ func defaultSearchBar(withRasterSize rasterSize: CGFloat, leftView: UIView?, rig
 
     let bar = SHSearchBar(config: config)
     bar.delegate = delegate
-    bar.textField.placeholder = "Placeholder"
+    bar.placeholder = "Placeholder"
     bar.updateBackgroundImage(withRadius: 6, corners: [.allCorners], color: UIColor.white)
     bar.layer.shadowColor = UIColor.black.cgColor
     bar.layer.shadowOffset = CGSize(width: 0, height: 3)
@@ -141,11 +141,11 @@ func defaultSearchBar(withRasterSize rasterSize: CGFloat, leftView: UIView?, rig
     bar.layer.shadowOpacity = 0.25
 
     if leftView != nil {
-        bar.textField.leftViewMode = .always
+        bar.leftViewMode = .always
     }
 
     if rightView != nil {
-        bar.textField.rightViewMode = .unlessEditing
+        bar.rightViewMode = .unlessEditing
     }
 
     return bar
