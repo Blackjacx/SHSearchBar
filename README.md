@@ -1,8 +1,7 @@
 <p align="center">
 <img src="./icon.png" alt="SHSearchBar" height="128" width="128">
-</p>
-
 # SHSearchBar
+</p>
 
 <p align="center">
   <a href="https://travis-ci.org/Blackjacx/SHSearchBar"><img alt="Build Status" src="http://img.shields.io/travis/Blackjacx/SHSearchBar.svg?style=flat"/></a>
