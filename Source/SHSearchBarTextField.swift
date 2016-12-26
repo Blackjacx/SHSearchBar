@@ -54,7 +54,7 @@ class SHSearchBarTextField: UITextField {
     }
 
     /**
-     * Calculates the text bounds depending on left and right views.
+     * Calculates the text bounds depending on the visibility of left and right views.
      * - parameter bounds: The bounds of the textField after subtracting margins for left and/or right views.
      * - parameter originalBounds: The current bounds of the textField.
      * - returns: The bounds inside the textField so that the text does not overlap with the left and right views.

@@ -345,7 +345,7 @@ class SHSearchBarSpec: QuickSpec {
                 beforeEach({
                     searchbar = SHSearchBarMock(config: config)
                     searchbar.delegate = delegate
-                    searchbar.setCancelButtonVisibility(false)
+                    searchbar.updateCancelButtonVisibility(makeVisible: false)
                 })
 
                 it("results in a zero alpha value") {
@@ -365,7 +365,7 @@ class SHSearchBarSpec: QuickSpec {
                 beforeEach({
                     searchbar = SHSearchBarMock(config: config)
                     searchbar.delegate = delegate
-                    searchbar.setCancelButtonVisibility(true)
+                    searchbar.updateCancelButtonVisibility(makeVisible: true)
                 })
 
                 it("results in an alpha value of 1") {

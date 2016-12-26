@@ -41,15 +41,15 @@ public class SHSearchBar: UIView, UITextFieldDelegate, SHSearchBarDelegate {
             if let textField = textField as? SHSearchBarTextField  {
                 textField.config = config
             }
-            updateUI()
-            updateAllViewConstraints()
+            updateUserInterface()
+            updateViewConstraints()
         }
     }
 
     /// You can set the searhcbar as inactive with this property. Currently this only dims the text color slightly.
     public var isActive: Bool = true {
         didSet {
-            updateUI()
+            updateUserInterface()
         }
     }
 
@@ -78,26 +78,26 @@ public class SHSearchBar: UIView, UITextFieldDelegate, SHSearchBarDelegate {
         self.delegate = self
         translatesAutoresizingMaskIntoConstraints = false
 
-        setupBackgroundView(config)
-        setupTextField(config)
-        setupCancelButton(config)
+        setupBackgroundView(withConfig: config)
+        setupTextField(withConfig: config)
+        setupCancelButton(withConfig: config)
 
         backgroundView.addSubview(textField)
         addSubview(cancelButton)
         addSubview(backgroundView)
 
-        updateAllViewConstraints()
+        updateViewConstraints()
 
-        updateUI()
+        updateUserInterface()
     }
 
-    func setupBackgroundView(_ config: SHSearchBarConfig) {
+    func setupBackgroundView(withConfig config: SHSearchBarConfig) {
         backgroundView.translatesAutoresizingMaskIntoConstraints = false
         backgroundView.isUserInteractionEnabled = true
         updateBackgroundImage(withRadius: 0, corners: .allCorners, color: UIColor.white)
     }
 
-    func setupTextField(_ config: SHSearchBarConfig) {
+    func setupTextField(withConfig config: SHSearchBarConfig) {
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.delegate = self
         textField.autocorrectionType = .default
@@ -112,7 +112,7 @@ public class SHSearchBar: UIView, UITextFieldDelegate, SHSearchBarDelegate {
         textField.clearButtonMode = .whileEditing
     }
 
-    func setupCancelButton(_ config: SHSearchBarConfig) {
+    func setupCancelButton(withConfig config: SHSearchBarConfig) {
         cancelButton.translatesAutoresizingMaskIntoConstraints = false
         cancelButton.alpha = 0.0
         cancelButton.setContentHuggingPriority(UILayoutPriorityRequired, for: .horizontal)
@@ -125,7 +125,7 @@ public class SHSearchBar: UIView, UITextFieldDelegate, SHSearchBarDelegate {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func updateAllViewConstraints() {
+    func updateViewConstraints() {
         let isInitialUpdate = backgroundView.constraints.isEmpty
         let isTextFieldInEditMode = bgToCancelButtonConstraint?.isActive ?? false
 
@@ -211,10 +211,10 @@ public class SHSearchBar: UIView, UITextFieldDelegate, SHSearchBarDelegate {
         return textField.canBecomeFirstResponder
     }
 
-    
+
     // MARK: - UI Updates
 
-    func updateUI() {
+    func updateUserInterface() {
         var textColor = config.textAttributes[NSForegroundColorAttributeName] as? UIColor ?? SHSearchBarConfig.defaultTextForegroundColor
 
         // Replace normal color with a lighter color so the text looks disabled
@@ -279,7 +279,7 @@ public class SHSearchBar: UIView, UITextFieldDelegate, SHSearchBarDelegate {
     public func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         let shouldBegin = delegate?.searchBarShouldBeginEditing(self) ?? searchBarShouldBeginEditing(self)
         if shouldBegin {
-            setCancelButtonVisibility(true)
+            updateCancelButtonVisibility(makeVisible: true)
         }
         return shouldBegin
     }
@@ -292,7 +292,7 @@ public class SHSearchBar: UIView, UITextFieldDelegate, SHSearchBarDelegate {
     public func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
         let shouldEnd = delegate?.searchBarShouldEndEditing(self) ?? searchBarShouldEndEditing(self)
         if shouldEnd {
-            setCancelButtonVisibility(false)
+            updateCancelButtonVisibility(makeVisible: false)
         }
         return shouldEnd
     }
@@ -334,9 +334,9 @@ public class SHSearchBar: UIView, UITextFieldDelegate, SHSearchBarDelegate {
         }
     }
 
-    func setCancelButtonVisibility(_ makeVisible: Bool) {
+    func updateCancelButtonVisibility(makeVisible show: Bool) {
         // This 'complex' if-else avoids constraint warnings in the console
-        if makeVisible {
+        if show {
             bgToParentConstraint.isActive = false
             bgToCancelButtonConstraint.isActive = true
         } else {
@@ -346,10 +346,11 @@ public class SHSearchBar: UIView, UITextFieldDelegate, SHSearchBarDelegate {
 
         UIView.animate(withDuration: config.animationDuration, delay: 0, options: UIViewAnimationOptions(), animations: {
             self.layoutIfNeeded()
-            self.cancelButton.alpha = makeVisible ? 1 : 0
+            self.cancelButton.alpha = show ? 1 : 0
         }, completion: nil)
     }
 }
+
 
 /**
  * This protocol is used to inform the searchbar's delegate of important events.
@@ -367,6 +368,7 @@ public protocol SHSearchBarDelegate : NSObjectProtocol {
     func searchBarShouldCancel(_ searchBar: SHSearchBar) -> Bool // called when 'cancel' button pressed.
     func searchBar(_ searchBar: SHSearchBar, textDidChange text: String) // Called when the text did change
 }
+
 
 /**
  * This extension provides a default implementation of the protocol which replaces old-style optional protocol methods.

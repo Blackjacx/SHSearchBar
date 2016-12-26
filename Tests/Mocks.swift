@@ -20,8 +20,8 @@ func nonDefaultSearchbarConfig() -> SHSearchBarConfig {
 
 class SHSearchBarMock: SHSearchBar {
     var callCountUpdateUI = 0
-    override func updateUI() {
-        super.updateUI()
+    override func updateUserInterface() {
+        super.updateUserInterface()
         callCountUpdateUI += 1
     }
 
@@ -30,11 +30,11 @@ class SHSearchBarMock: SHSearchBar {
         super.resetTextField()
         callCountResetTextField += 1
     }
-    
-    var callCountSetCancelButtonVisibility = 0
-    override func setCancelButtonVisibility(_ makeVisible: Bool) {
-        super.setCancelButtonVisibility(makeVisible)
-        callCountSetCancelButtonVisibility += 1
+
+    var callCountUpdateCancelButtonVisibility = 0
+    override func updateCancelButtonVisibility(makeVisible show: Bool) {
+        super.updateCancelButtonVisibility(makeVisible: show)
+        callCountUpdateCancelButtonVisibility += 1
     }
 }
 
