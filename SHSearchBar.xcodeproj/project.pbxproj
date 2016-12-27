@@ -11,6 +11,7 @@
 		8F7476547EEFBBB4FAC106AA /* Pods_SHSearchBar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 220F2E74C4CBFA3E4F6F6C42 /* Pods_SHSearchBar.framework */; };
 		B91438CE1D6D991200182124 /* Mocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91438CD1D6D991200182124 /* Mocks.swift */; };
 		B96500D71DEB8F4600371C2B /* SHSearchBarTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96500D61DEB8F4600371C2B /* SHSearchBarTextField.swift */; };
+		B967BBC81E12EA4600D98C8E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B967BBCA1E12EA4600D98C8E /* Localizable.strings */; };
 		B970DD4B1DF08B5900B3945B /* SHSearchBarTextFieldSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = B970DD491DF08B4800B3945B /* SHSearchBarTextFieldSpecs.swift */; };
 		B9B39A271D6D92B900E22022 /* SHSearchBar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9B39A1D1D6D92B900E22022 /* SHSearchBar.framework */; };
 		B9B39A2C1D6D92B900E22022 /* SHSearchBarSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B39A2B1D6D92B900E22022 /* SHSearchBarSpec.swift */; };
@@ -37,6 +38,14 @@
 		447E90EC37B4DA3A99B08347 /* Pods-SHSearchBar-SHSearchBarTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SHSearchBar-SHSearchBarTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SHSearchBar-SHSearchBarTests/Pods-SHSearchBar-SHSearchBarTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B91438CD1D6D991200182124 /* Mocks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mocks.swift; sourceTree = "<group>"; };
 		B96500D61DEB8F4600371C2B /* SHSearchBarTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SHSearchBarTextField.swift; sourceTree = "<group>"; };
+		B967BBC91E12EA4600D98C8E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		B967BBCB1E12EA7000D98C8E /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		B967BBCC1E12EA7700D98C8E /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		B967BBCD1E12EA7B00D98C8E /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
+		B967BBCE1E12EA8900D98C8E /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		B967BBCF1E12EA8F00D98C8E /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		B967BBD01E12EA9300D98C8E /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		B967BBD11E12EA9900D98C8E /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B970DD491DF08B4800B3945B /* SHSearchBarTextFieldSpecs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SHSearchBarTextFieldSpecs.swift; sourceTree = "<group>"; };
 		B9B39A1D1D6D92B900E22022 /* SHSearchBar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SHSearchBar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9B39A201D6D92B900E22022 /* SHSearchBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHSearchBar.h; sourceTree = "<group>"; };
@@ -121,6 +130,7 @@
 				B9B39A3A1D6D96A300E22022 /* SHSearchBarConfig.swift */,
 				B96500D61DEB8F4600371C2B /* SHSearchBarTextField.swift */,
 				B9B39A3B1D6D96A300E22022 /* UIImage+Style.swift */,
+				B967BBCA1E12EA4600D98C8E /* Localizable.strings */,
 			);
 			name = SHSearchBar;
 			path = Source;
@@ -222,6 +232,13 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				de,
+				fr,
+				it,
+				ru,
+				"zh-Hans",
+				ja,
+				es,
 			);
 			mainGroup = B9B39A131D6D92B900E22022;
 			productRefGroup = B9B39A1E1D6D92B900E22022 /* Products */;
@@ -239,6 +256,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B967BBC81E12EA4600D98C8E /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -361,11 +379,30 @@
 		};
 /* End PBXTargetDependency section */
 
+/* Begin PBXVariantGroup section */
+		B967BBCA1E12EA4600D98C8E /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B967BBC91E12EA4600D98C8E /* en */,
+				B967BBCB1E12EA7000D98C8E /* de */,
+				B967BBCC1E12EA7700D98C8E /* fr */,
+				B967BBCD1E12EA7B00D98C8E /* it */,
+				B967BBCE1E12EA8900D98C8E /* ru */,
+				B967BBCF1E12EA8F00D98C8E /* zh-Hans */,
+				B967BBD01E12EA9300D98C8E /* ja */,
+				B967BBD11E12EA9900D98C8E /* es */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
 		B9B39A2F1D6D92B900E22022 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -420,6 +457,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";

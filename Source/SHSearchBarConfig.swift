@@ -22,7 +22,7 @@ public struct SHSearchBarConfig {
     public var textContentType: String? = nil
 
     /// The title of the cancel button.
-    public var cancelButtonTitle: String = NSLocalizedString("Cancel", comment: "")
+    public var cancelButtonTitle: String = NSLocalizedString("sb.general.cancel", comment: "")
 
     /// The text attributes to style the cancel button.
     public var cancelButtonTextAttributes: [String:Any] = [NSForegroundColorAttributeName:defaultTextForegroundColor]

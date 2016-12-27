@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import AddressBookUI
+import Contacts
 import SHSearchBar
 
 class ViewController: UIViewController, SHSearchBarDelegate {
@@ -19,6 +21,11 @@ class ViewController: UIViewController, SHSearchBarDelegate {
     var addressSearchbarBottom: SHSearchBar!
 
     var viewConstraints: [NSLayoutConstraint] = []
+
+    let addressFormatter: CNPostalAddressFormatter = {
+        let formatter = CNPostalAddressFormatter()
+        return formatter
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,29 +41,35 @@ class ViewController: UIViewController, SHSearchBarDelegate {
 
         let rightView2 = imageViewWithIcon(searchGlassIconTemplate, rasterSize: rasterSize)
         searchBar2 = defaultSearchBar(withRasterSize: rasterSize, leftView: nil, rightView: rightView2, delegate: self)
-        searchBar2.text = "Example With Text"
+        searchBar2.text = NSLocalizedString("sbe.exampleText.simple", comment: "")
         view.addSubview(searchBar2)
 
         let leftView3 = imageViewWithIcon(searchGlassIconTemplate, rasterSize: rasterSize)
         let rightView3 = imageViewWithIcon(searchGlassIconTemplate, rasterSize: rasterSize)
         searchBar3 = defaultSearchBar(withRasterSize: rasterSize, leftView: leftView3, rightView: rightView3, delegate: self)
-        searchBar3.text = "Example With Left View"
+        searchBar3.text = NSLocalizedString("sbe.exampleText.withLeftView", comment: "")
         view.addSubview(searchBar3)
 
         // TODO: SearchBar4: centered text lets the icon on the left - this is not intended!
         let leftView4 = imageViewWithIcon(searchGlassIconTemplate, rasterSize: rasterSize)
         searchBar4 = defaultSearchBar(withRasterSize: rasterSize, leftView: leftView4, rightView: nil, delegate: self)
         searchBar4.textAlignment = .center
-        searchBar4.text = "Example With Centered Text"
+        searchBar4.text = NSLocalizedString("sbe.exampleText.centered", comment: "")
         view.addSubview(searchBar4)
 
+        let addressTop = CNMutablePostalAddress()
+        addressTop.city = "Frankfurt am Main"
+        addressTop.street = "Mainzer Landstraße 123"
         addressSearchbarTop = defaultSearchBar(withRasterSize: rasterSize, leftView: nil, rightView: nil, delegate: self)
-        addressSearchbarTop.text = "Mainzer Landstraße 123, Frankfurt am Main"
+        addressSearchbarTop.text = addressFormatter.string(from: addressTop)
         addressSearchbarTop.updateBackgroundImage(withRadius: 6, corners: [.topLeft, .topRight], color: UIColor.white)
         view.addSubview(addressSearchbarTop)
 
+        let addressBottom = CNMutablePostalAddress()
+        addressBottom.city = "Frankfurt am Main"
+        addressBottom.street = "Darmstädter Landstraße 123"
         addressSearchbarBottom = defaultSearchBar(withRasterSize: rasterSize, leftView: nil, rightView: nil, delegate: self)
-        addressSearchbarBottom.text = "Darmstädter Landstraße 123, Frankfurt am Main"
+        addressSearchbarBottom.text = addressFormatter.string(from: addressBottom)
         addressSearchbarBottom.updateBackgroundImage(withRadius: 6, corners: [.bottomLeft, .bottomRight], color: UIColor.white)
         view.addSubview(addressSearchbarBottom)
 
@@ -133,7 +146,7 @@ func defaultSearchBar(withRasterSize rasterSize: CGFloat, leftView: UIView?, rig
 
     let bar = SHSearchBar(config: config)
     bar.delegate = delegate
-    bar.placeholder = "Placeholder"
+    bar.placeholder = NSLocalizedString("sbe.textfieldPlaceholder.default", comment: "")
     bar.updateBackgroundImage(withRadius: 6, corners: [.allCorners], color: UIColor.white)
     bar.layer.shadowColor = UIColor.black.cgColor
     bar.layer.shadowOffset = CGSize(width: 0, height: 3)
@@ -154,7 +167,7 @@ func defaultSearchBar(withRasterSize rasterSize: CGFloat, leftView: UIView?, rig
 func defaultSearchBarConfig(_ rasterSize: CGFloat) -> SHSearchBarConfig {
     var config: SHSearchBarConfig = SHSearchBarConfig()
     config.rasterSize = rasterSize
-    config.cancelButtonTitle = "Cancel"
+    config.cancelButtonTitle = NSLocalizedString("sbe.general.cancel", comment: "")
     config.cancelButtonTextAttributes = [NSForegroundColorAttributeName:UIColor.darkGray]
     config.textContentType = UITextContentType.fullStreetAddress.rawValue
     config.textAttributes = [NSForegroundColorAttributeName:UIColor.gray]

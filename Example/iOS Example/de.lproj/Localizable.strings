@@ -1,0 +1,5 @@
+"sbe.general.cancel" = "Abbrechen";
+"sbe.textfieldPlaceholder.default" = "Platzhalter";
+"sbe.exampleText.simple" = "Beispiel mit Text";
+"sbe.exampleText.withLeftView" = "Beispiel mit Icon links";
+"sbe.exampleText.centered" = "Beispiel mit zentriertem Text";

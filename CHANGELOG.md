@@ -6,6 +6,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 ### Added
+- translations for DE, EN, ES, FR, IT, JA, ZH-HANS, RU
 - first responder handling by forwarding related calls directly to the textfield
 
 ### Changed
