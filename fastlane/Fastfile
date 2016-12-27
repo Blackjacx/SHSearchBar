@@ -40,29 +40,32 @@ default_platform :ios
 
 platform :ios do
   before_all do
-    cocoapods
-    clear_derived_data
+    # cocoapods
+    # clear_derived_data
   end
 
 
-  desc "Test lane to modify the CHANGELOG.md"
+  # desc "Test lane to modify the CHANGELOG.md"
+  desc "Output the changelog based on commits to from last tag to HEAD"
   lane :changelog do |options|
 
-  	if !options[:version]
-      raise "No version specified!".red
-    end
+	changelog_from_git_commits(
+        include_merges: false, # Optional, lets you filter out merge commits
+    )
 
-    version = options[:version]
+    # if !options[:version]
+    #   raise "No version specified!".red
+    # end
 
-    stamp_changelog(section_identifier: 'Build #{version}') # Stamp Unreleased section with newly released build number
+    # version = options[:version]
+
+    # changelog=read_changelog
+
+    # stamp_changelog(
+    #   section_identifier: "#{version}", # Stamp Unreleased section with newly released build number
+    #   git_tag: "#{version}" # Specify reference to git tag associated with this section
+    # )
   end
-
-  
-
-
-
-
-
 
   desc "Runs framework tests"
   lane :run_framework_tests do |options|
@@ -225,8 +228,11 @@ platform :ios do
 
     version = options[:version]
 
-    changelog = changelog_from_git_commits(
-        include_merges: false, # Optional, lets you filter out merge commits
+    # using changelog fastlane plugin
+	changelog=read_changelog
+    stamp_changelog(
+      section_identifier: "#{version}", # Stamp Unreleased section with newly released build number
+      git_tag: "#{version}" # Specify reference to git tag associated with this section
     )
 
     github_release = set_github_release(
