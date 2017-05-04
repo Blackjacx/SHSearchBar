@@ -28,10 +28,19 @@ public struct SHSearchBarConfig {
     public var cancelButtonTextAttributes: [String:Any] = [NSForegroundColorAttributeName:defaultTextForegroundColor]
 
     /// The left accessory view of the searchbar. For searchbars there is typically a search glass.
-    public var leftView: UIView?
+    public var leftView: UIView? = nil
+
+    /// The left view mode of the searchbar regarding to a leftView.
+    public var leftViewMode: UITextFieldViewMode = .never
 
     /// The right accessory view of the searchbar. For searchbars there is typically a search glass.
-    public var rightView: UIView?
+    public var rightView: UIView? = nil
+
+    /// The right view mode of the searchbar regarding to a rightView.
+    public var rightViewMode: UITextFieldViewMode = .always
+
+    /// Controls when to show the clear button.
+    public var clearButtonMode: UITextFieldViewMode = .whileEditing
 
     // MARK: - Lifecycle
 

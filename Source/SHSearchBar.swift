@@ -12,7 +12,7 @@ import UIKit
  * The central searchbar class of this framework. 
  * You must initialize this class using an instance of SHSearchBarConfig which is also changable later.
  */
-public class SHSearchBar: UIView, UITextFieldDelegate, SHSearchBarDelegate {
+public class SHSearchBar: UIView, SHSearchBarDelegate {
     /// The content of this property is used to restore the textField text after cancellation
     var textBeforeEditing: String?
 
@@ -59,10 +59,6 @@ public class SHSearchBar: UIView, UITextFieldDelegate, SHSearchBarDelegate {
     public var placeholder: String? {set {textField.placeholder = newValue} get {return textField.placeholder}}
     /// The text alignment of the searchbar.
     public var textAlignment: NSTextAlignment {set {textField.textAlignment = newValue} get {return textField.textAlignment}}
-    /// The left view mode of the searchbar regarding to a leftView (see SHSearchBarConfig).
-    public var leftViewMode: UITextFieldViewMode {set {textField.leftViewMode = newValue} get {return textField.leftViewMode}}
-    /// The right view mode of the searchbar regarding to a rightView (see SHSearchBarConfig).
-    public var rightViewMode: UITextFieldViewMode {set {textField.rightViewMode = newValue} get {return textField.rightViewMode}}
 
     /// The delegate which informs the user about important events.
     public weak var delegate: SHSearchBarDelegate?
@@ -110,11 +106,6 @@ public class SHSearchBar: UIView, UITextFieldDelegate, SHSearchBarDelegate {
         textField.spellCheckingType = .no
         textField.adjustsFontSizeToFitWidth = false
         textField.clipsToBounds = true
-
-        // These are the properties you probably want to customize
-        textField.leftViewMode = .never
-        textField.rightViewMode = .never
-        textField.clearButtonMode = .whileEditing
     }
 
     func setupCancelButton(withConfig config: SHSearchBarConfig) {
@@ -227,8 +218,14 @@ public class SHSearchBar: UIView, UITextFieldDelegate, SHSearchBarDelegate {
 
         textField.tintColor = textColor // set cursor color
         textField.textColor = textColor
+
         textField.leftView = config.leftView
+        textField.leftViewMode = config.leftViewMode
+
         textField.rightView = config.rightView
+        textField.rightViewMode = config.rightViewMode
+
+        textField.clearButtonMode = config.clearButtonMode
 
         var textAttributes:[String:Any] = config.textAttributes
         textAttributes[NSForegroundColorAttributeName] = textColor
@@ -278,56 +275,6 @@ public class SHSearchBar: UIView, UITextFieldDelegate, SHSearchBarDelegate {
         }
     }
 
-
-    // MARK: - UITextFieldDelegate
-    
-    public func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        let shouldBegin = delegate?.searchBarShouldBeginEditing(self) ?? searchBarShouldBeginEditing(self)
-        if shouldBegin {
-            updateCancelButtonVisibility(makeVisible: true)
-        }
-        return shouldBegin
-    }
-    
-    public func textFieldDidBeginEditing(_ textField: UITextField) {
-        textBeforeEditing = textField.text
-        delegate?.searchBarDidBeginEditing(self)
-    }
-
-    public func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-        let shouldEnd = delegate?.searchBarShouldEndEditing(self) ?? searchBarShouldEndEditing(self)
-        if shouldEnd {
-            updateCancelButtonVisibility(makeVisible: false)
-        }
-        return shouldEnd
-    }
-    
-    public func textFieldDidEndEditing(_ textField: UITextField) {
-        delegate?.searchBarDidEndEditing(self)
-    }
-
-    public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        let shouldChange = delegate?.searchBar(self, shouldChangeCharactersIn: range, replacementString: string) ?? searchBar(self, shouldChangeCharactersIn: range, replacementString: string)
-        if shouldChange {
-            let currentText = NSString(string: textField.text ?? "")
-            let newText: String = currentText.replacingCharacters(in: range, with: string)
-            if !currentText.isEqual(to: newText) {
-                delegate?.searchBar(self, textDidChange: newText)
-            }
-        }
-        return shouldChange
-    }
-
-    public func textFieldShouldClear(_ textField: UITextField) -> Bool {
-        let shouldClear = delegate?.searchBarShouldClear(self) ?? searchBarShouldClear(self)
-        return shouldClear
-    }
-    
-    public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        let shouldReturn = delegate?.searchBarShouldReturn(self) ?? searchBarShouldReturn(self)
-        return shouldReturn
-    }
-
     
     // MARK: - Cancel Button Management
     
@@ -353,5 +300,57 @@ public class SHSearchBar: UIView, UITextFieldDelegate, SHSearchBarDelegate {
             self.layoutIfNeeded()
             self.cancelButton.alpha = show ? 1 : 0
         }, completion: nil)
+    }
+}
+
+// MARK: - UITextFieldDelegate
+
+extension SHSearchBar: UITextFieldDelegate {
+
+    public func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        let shouldBegin = delegate?.searchBarShouldBeginEditing(self) ?? searchBarShouldBeginEditing(self)
+        if shouldBegin {
+            updateCancelButtonVisibility(makeVisible: true)
+        }
+        return shouldBegin
+    }
+
+    public func textFieldDidBeginEditing(_ textField: UITextField) {
+        textBeforeEditing = textField.text
+        delegate?.searchBarDidBeginEditing(self)
+    }
+
+    public func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        let shouldEnd = delegate?.searchBarShouldEndEditing(self) ?? searchBarShouldEndEditing(self)
+        if shouldEnd {
+            updateCancelButtonVisibility(makeVisible: false)
+        }
+        return shouldEnd
+    }
+
+    public func textFieldDidEndEditing(_ textField: UITextField) {
+        delegate?.searchBarDidEndEditing(self)
+    }
+
+    public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let shouldChange = delegate?.searchBar(self, shouldChangeCharactersIn: range, replacementString: string) ?? searchBar(self, shouldChangeCharactersIn: range, replacementString: string)
+        if shouldChange {
+            let currentText = NSString(string: textField.text ?? "")
+            let newText: String = currentText.replacingCharacters(in: range, with: string)
+            if !currentText.isEqual(to: newText) {
+                delegate?.searchBar(self, textDidChange: newText)
+            }
+        }
+        return shouldChange
+    }
+
+    public func textFieldShouldClear(_ textField: UITextField) -> Bool {
+        let shouldClear = delegate?.searchBarShouldClear(self) ?? searchBarShouldClear(self)
+        return shouldClear
+    }
+
+    public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        let shouldReturn = delegate?.searchBarShouldReturn(self) ?? searchBarShouldReturn(self)
+        return shouldReturn
     }
 }

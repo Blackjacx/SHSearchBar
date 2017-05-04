@@ -12,6 +12,23 @@ import Nimble
 
 @testable import SHSearchBar
 
+func expectedDefaultConfig() -> SHSearchBarConfig {
+
+    var config = SHSearchBarConfig()
+    config.animationDuration = 0.25
+    config.rasterSize = 11.0
+    config.textAttributes = [NSForegroundColorAttributeName:SHSearchBarConfig.defaultTextForegroundColor]
+    config.textContentType = nil
+    config.cancelButtonTitle = NSLocalizedString("sb.general.cancel", comment: "")
+    config.cancelButtonTextAttributes = [NSForegroundColorAttributeName:SHSearchBarConfig.defaultTextForegroundColor]
+    config.leftView = nil
+    config.leftViewMode = .never
+    config.rightView = nil
+    config.rightViewMode = .never
+    config.clearButtonMode = .whileEditing
+    return config
+}
+
 class SHSearchBarSpec: QuickSpec {
 
     override func spec() {
@@ -39,12 +56,6 @@ class SHSearchBarSpec: QuickSpec {
 
             context("when active") {
 
-                context("and the default config values are used") {
-                    let config = SHSearchBarConfig()
-                    itBehavesLike(SharedConfiguration.searchBar) { [SharedConfiguration.ContextKey.searchbarConfig: config,
-                                                                    SharedConfiguration.ContextKey.isActive: isActive] }
-                }
-
                 context("and rasterSize is set") {
                     var config = SHSearchBarConfig()
                     config.rasterSize = 22.0
@@ -97,6 +108,27 @@ class SHSearchBarSpec: QuickSpec {
                 context("and rightView is set") {
                     var config = SHSearchBarConfig()
                     config.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+                    itBehavesLike(SharedConfiguration.searchBar) { [SharedConfiguration.ContextKey.searchbarConfig: config,
+                                                                    SharedConfiguration.ContextKey.isActive: isActive] }
+                }
+
+                context("and leftViewMode is set") {
+                    var config = SHSearchBarConfig()
+                    config.leftViewMode = .always
+                    itBehavesLike(SharedConfiguration.searchBar) { [SharedConfiguration.ContextKey.searchbarConfig: config,
+                                                                    SharedConfiguration.ContextKey.isActive: isActive] }
+                }
+
+                context("and rightViewMode is set") {
+                    var config = SHSearchBarConfig()
+                    config.rightViewMode = .always
+                    itBehavesLike(SharedConfiguration.searchBar) { [SharedConfiguration.ContextKey.searchbarConfig: config,
+                                                                    SharedConfiguration.ContextKey.isActive: isActive] }
+                }
+
+                context("and clearButtonMode is set") {
+                    var config = SHSearchBarConfig()
+                    config.clearButtonMode = .always
                     itBehavesLike(SharedConfiguration.searchBar) { [SharedConfiguration.ContextKey.searchbarConfig: config,
                                                                     SharedConfiguration.ContextKey.isActive: isActive] }
                 }
@@ -118,12 +150,6 @@ class SHSearchBarSpec: QuickSpec {
                     isActive = false
                 }
 
-                context("and the default config values are used") {
-                    let config = SHSearchBarConfig()
-                    itBehavesLike(SharedConfiguration.searchBar) { [SharedConfiguration.ContextKey.searchbarConfig: config,
-                                                                    SharedConfiguration.ContextKey.isActive: isActive] }
-                }
-
                 context("and rasterSize is set") {
                     var config = SHSearchBarConfig()
                     config.rasterSize = 22.0
@@ -176,6 +202,27 @@ class SHSearchBarSpec: QuickSpec {
                 context("and rightView is set") {
                     var config = SHSearchBarConfig()
                     config.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+                    itBehavesLike(SharedConfiguration.searchBar) { [SharedConfiguration.ContextKey.searchbarConfig: config,
+                                                                    SharedConfiguration.ContextKey.isActive: isActive] }
+                }
+
+                context("and leftViewMode is set") {
+                    var config = SHSearchBarConfig()
+                    config.leftViewMode = .always
+                    itBehavesLike(SharedConfiguration.searchBar) { [SharedConfiguration.ContextKey.searchbarConfig: config,
+                                                                    SharedConfiguration.ContextKey.isActive: isActive] }
+                }
+
+                context("and rightViewMode is set") {
+                    var config = SHSearchBarConfig()
+                    config.rightViewMode = .always
+                    itBehavesLike(SharedConfiguration.searchBar) { [SharedConfiguration.ContextKey.searchbarConfig: config,
+                                                                    SharedConfiguration.ContextKey.isActive: isActive] }
+                }
+
+                context("and clearButtonMode is set") {
+                    var config = SHSearchBarConfig()
+                    config.clearButtonMode = .always
                     itBehavesLike(SharedConfiguration.searchBar) { [SharedConfiguration.ContextKey.searchbarConfig: config,
                                                                     SharedConfiguration.ContextKey.isActive: isActive] }
                 }
@@ -416,6 +463,7 @@ class SharedConfiguration: QuickConfiguration {
     override class func configure(_ configuration: Configuration) {
         sharedExamples(SharedConfiguration.searchBar) { (sharedExampleContext: @escaping SharedExampleContext) in
             var superview: UIView!
+            var config: SHSearchBarConfig!
             var searchbar: SHSearchBarMock!
             var delegate: SearchBarConcreteDelegate!
 
@@ -439,6 +487,8 @@ class SharedConfiguration: QuickConfiguration {
                     }
                     return
                 }
+
+                config = unwrappedConfig
 
                 if let unwrappedSearchBar = sharedExampleContext()[SharedConfiguration.ContextKey.searchbar] as? SHSearchBarMock {
                     searchbar = unwrappedSearchBar
@@ -563,6 +613,15 @@ class SharedConfiguration: QuickConfiguration {
                 } else {
                     expect(searchbar.textField.rightView) == searchbar.config.rightView
                 }
+            }
+            it("sets textFields leftViewMode correctly") {
+                expect(searchbar.textField.leftViewMode) == searchbar.config.leftViewMode
+            }
+            it("sets textFields rightViewMode correctly") {
+                expect(searchbar.textField.rightViewMode) == searchbar.config.rightViewMode
+            }
+            it("sets textFields clearButtonMode correctly") {
+                expect(searchbar.textField.clearButtonMode) == searchbar.config.clearButtonMode
             }
 
 

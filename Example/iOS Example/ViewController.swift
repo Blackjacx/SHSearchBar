@@ -144,6 +144,14 @@ func defaultSearchBar(withRasterSize rasterSize: CGFloat, leftView: UIView?, rig
     config.leftView = leftView
     config.rightView = rightView
 
+    if leftView != nil {
+        config.leftViewMode = .always
+    }
+
+    if rightView != nil {
+        config.rightViewMode = .unlessEditing
+    }
+
     let bar = SHSearchBar(config: config)
     bar.delegate = delegate
     bar.placeholder = NSLocalizedString("sbe.textfieldPlaceholder.default", comment: "")
@@ -152,14 +160,6 @@ func defaultSearchBar(withRasterSize rasterSize: CGFloat, leftView: UIView?, rig
     bar.layer.shadowOffset = CGSize(width: 0, height: 3)
     bar.layer.shadowRadius = 5
     bar.layer.shadowOpacity = 0.25
-
-    if leftView != nil {
-        bar.leftViewMode = .always
-    }
-
-    if rightView != nil {
-        bar.rightViewMode = .unlessEditing
-    }
 
     return bar
 }
