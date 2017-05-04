@@ -19,6 +19,7 @@
 		B9B39A3C1D6D96A300E22022 /* SHSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B39A391D6D96A300E22022 /* SHSearchBar.swift */; };
 		B9B39A3D1D6D96A300E22022 /* SHSearchBarConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B39A3A1D6D96A300E22022 /* SHSearchBarConfig.swift */; };
 		B9B39A3E1D6D96A300E22022 /* UIImage+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B39A3B1D6D96A300E22022 /* UIImage+Style.swift */; };
+		B9FF54E31EBBC51E00EA5E7C /* SHSearchBarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FF54E21EBBC51E00EA5E7C /* SHSearchBarDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,7 @@
 		B9B39A3B1D6D96A300E22022 /* UIImage+Style.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Style.swift"; sourceTree = "<group>"; };
 		B9B39A3F1D6D96C400E22022 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B9DD07D11D6D9D2700FA1FE5 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B9FF54E21EBBC51E00EA5E7C /* SHSearchBarDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SHSearchBarDelegate.swift; sourceTree = "<group>"; };
 		BBA3CA898BCD966AC1605006 /* Pods-SHSearchBar-SHSearchBarTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SHSearchBar-SHSearchBarTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SHSearchBar-SHSearchBarTests/Pods-SHSearchBar-SHSearchBarTests.release.xcconfig"; sourceTree = "<group>"; };
 		E28E64BE3E1AD0994C17E0E7 /* Pods-SHSearchBar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SHSearchBar.release.xcconfig"; path = "Pods/Target Support Files/Pods-SHSearchBar/Pods-SHSearchBar.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -125,12 +127,13 @@
 			isa = PBXGroup;
 			children = (
 				B9DD07D11D6D9D2700FA1FE5 /* Info.plist */,
+				B967BBCA1E12EA4600D98C8E /* Localizable.strings */,
 				B9B39A201D6D92B900E22022 /* SHSearchBar.h */,
 				B9B39A391D6D96A300E22022 /* SHSearchBar.swift */,
 				B9B39A3A1D6D96A300E22022 /* SHSearchBarConfig.swift */,
+				B9FF54E21EBBC51E00EA5E7C /* SHSearchBarDelegate.swift */,
 				B96500D61DEB8F4600371C2B /* SHSearchBarTextField.swift */,
 				B9B39A3B1D6D96A300E22022 /* UIImage+Style.swift */,
-				B967BBCA1E12EA4600D98C8E /* Localizable.strings */,
 			);
 			name = SHSearchBar;
 			path = Source;
@@ -353,6 +356,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B9B39A3D1D6D96A300E22022 /* SHSearchBarConfig.swift in Sources */,
+				B9FF54E31EBBC51E00EA5E7C /* SHSearchBarDelegate.swift in Sources */,
 				B96500D71DEB8F4600371C2B /* SHSearchBarTextField.swift in Sources */,
 				B9B39A3C1D6D96A300E22022 /* SHSearchBar.swift in Sources */,
 				B9B39A3E1D6D96A300E22022 /* UIImage+Style.swift in Sources */,
