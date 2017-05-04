@@ -35,7 +35,7 @@ public class SHSearchBar: UIView, UITextFieldDelegate, SHSearchBarDelegate {
     /// Thats why it is discouraged to access the textfield directly which is the reason why it is declared as internal. 
     let textField: UITextField
 
-    /// The central SHSearchBarConfig instance which configures all searhcbar parameters.
+    /// The central SHSearchBarConfig instance which configures all searchbar parameters.
     public var config: SHSearchBarConfig {
         didSet {
             if let textField = textField as? SHSearchBarTextField  {
@@ -46,7 +46,7 @@ public class SHSearchBar: UIView, UITextFieldDelegate, SHSearchBarDelegate {
         }
     }
 
-    /// You can set the searhcbar as inactive with this property. Currently this only dims the text color slightly.
+    /// You can set the searchbar as inactive with this property. Currently this only dims the text color slightly.
     public var isActive: Bool = true {
         didSet {
             updateUserInterface()

@@ -421,12 +421,22 @@ class SharedConfiguration: QuickConfiguration {
 
             beforeEach {
                 guard let unwrappedConfig = sharedExampleContext()[SharedConfiguration.ContextKey.searchbarConfig] as? SHSearchBarConfig else {
-                    XCTFail("Value \(sharedExampleContext()[SharedConfiguration.ContextKey.searchbarConfig]) not a valid SHSearchBarConfig.")
+                    let key = SharedConfiguration.ContextKey.searchbarConfig
+                    if let value = sharedExampleContext()[key] {
+                        fail("Value \(value) not a valid SHSearchBarConfig.")
+                    } else {
+                        fail("Value for key \(key) was nil!")
+                    }
                     return
                 }
 
                 guard let unwrappedIsActive = sharedExampleContext()[SharedConfiguration.ContextKey.isActive] as? Bool else {
-                    XCTFail("Value \(sharedExampleContext()[SharedConfiguration.ContextKey.isActive]) not a valid Bool.")
+                    let key = SharedConfiguration.ContextKey.isActive
+                    if let value = sharedExampleContext()[key] {
+                        fail("Value \(value) not a valid Bool.")
+                    } else {
+                        fail("Value for key \(key) was nil!")
+                    }
                     return
                 }
 
