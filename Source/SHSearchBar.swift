@@ -32,8 +32,8 @@ public class SHSearchBar: UIView, SHSearchBarDelegate {
 
     /// This textfield is currently the central element of the searchbar. 
     /// In future it could be possible that this view is exchanged by something different. 
-    /// Thats why it is discouraged to access the textfield directly which is the reason why it is declared as internal. 
-    let textField: UITextField
+    /// So at some time it will maybe become an internal property.
+    public let textField: UITextField
 
     /// The central SHSearchBarConfig instance which configures all searchbar parameters.
     public var config: SHSearchBarConfig {
