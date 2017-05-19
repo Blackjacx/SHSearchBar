@@ -191,10 +191,12 @@ public class SHSearchBar: UIView, SHSearchBarDelegate {
         return textField.isFirstResponder
     }
 
+    @discardableResult
     public override func resignFirstResponder() -> Bool {
         return textField.resignFirstResponder()
     }
 
+    @discardableResult
     public override func becomeFirstResponder() -> Bool {
         return textField.becomeFirstResponder()
     }
