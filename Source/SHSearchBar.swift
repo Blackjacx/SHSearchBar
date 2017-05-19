@@ -59,6 +59,8 @@ public class SHSearchBar: UIView, SHSearchBarDelegate {
     public var placeholder: String? {set {textField.placeholder = newValue} get {return textField.placeholder}}
     /// The text alignment of the searchbar.
     public var textAlignment: NSTextAlignment {set {textField.textAlignment = newValue} get {return textField.textAlignment}}
+    /// The enabled state of the searchbar.
+    public var isEnabled: Bool {set {textField.isEnabled = newValue} get {return textField.isEnabled}}
 
     /// The delegate which informs the user about important events.
     public weak var delegate: SHSearchBarDelegate?
