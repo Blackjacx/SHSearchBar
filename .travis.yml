@@ -2,7 +2,7 @@
 # * http://www.objc.io/issue-6/travis-ci.html
 # * https://github.com/supermarin/xcpretty#usage
 
-osx_image: xcode8.1
+osx_image: xcode8.3
 language: objective-c
 env:
   global:
@@ -11,11 +11,13 @@ env:
   - WORKSPACE=SHSearchBar.xcworkspace
   - IOS_FRAMEWORK_SCHEME="SHSearchBar"
   - EXAMPLE_SCHEME="iOS Example"
-  - IOS_SDK=iphonesimulator10.1
+  - IOS_SDK=iphonesimulator10.3
   matrix:
-    - DESTINATION="OS=10.1,name=iPhone 6S"         SCHEME="$IOS_FRAMEWORK_SCHEME"     SDK="$IOS_SDK"     RUN_TESTS="YES" BUILD_EXAMPLE="YES"  POD_LINT="YES"    ENABLE_CODE_COVERAGE="YES"
+    - DESTINATION="platform=iOS Simulator,name=iPhone 7"         SCHEME="$IOS_FRAMEWORK_SCHEME"     SDK="$IOS_SDK"     RUN_TESTS="YES" BUILD_EXAMPLE="YES"  POD_LINT="YES"    ENABLE_CODE_COVERAGE="YES"
 before_install:
   - gem install xcpretty --no-rdoc --no-ri --no-document --quiet
+  - gem install cocoapods # Since Travis is not always on latest version
+  - pod install --repo-update # need to update the repo before pod install
 script:
   - set -o pipefail
   - xcodebuild -version
@@ -40,10 +42,10 @@ script:
       xcodebuild -workspace "$WORKSPACE" -scheme "$EXAMPLE_SCHEME" -sdk "$SDK" -destination "$DESTINATION" -configuration Debug ONLY_ACTIVE_ARCH=YES build | xcpretty -c;
     fi
 
-  # Temporarily disabling pod lib lint check due to CocoaPods issue: https://github.com/CocoaPods/CocoaPods/issues/5661
   # Run `pod lib lint` if specified
-  # - if [ $POD_LINT == "YES" ]; then
-  #     pod lib lint;
-  #   fi
+  - if [ $POD_LINT == "YES" ]; then
+      pod lib lint --allow-warnings;
+    fi
+
 after_success:
   - bash <(curl -s https://codecov.io/bash) -J "$IOS_FRAMEWORK_SCHEME"
