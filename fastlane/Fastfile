@@ -40,7 +40,7 @@ fastlane_version "2.45.0"
 
 before_all do
   # update_fastlane
-  cocoapods
+  cocoapods(repo_update: true)
 end
 
 
@@ -73,9 +73,8 @@ lane :run_framework_tests do |options|
     workspace: workspace,
     scheme: framework,
     clean: true,
-    devices: ["iPhone 7"],
+    devices: ["iPhone 8", "iPhone 8 Plus", "iPhone X"],
     skip_build: true,
-    thread_sanitizer: true,
     output_types: "html"
   )
 end

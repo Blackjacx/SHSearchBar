@@ -83,7 +83,7 @@ class ViewController: UIViewController, SHSearchBarDelegate {
             let rasterSize: CGFloat = 22.0
             for bar in allSearchBars {
                 var config = bar.config
-                config.cancelButtonTextAttributes = [NSForegroundColorAttributeName:UIColor.red]
+                config.cancelButtonTextAttributes = [.foregroundColor : UIColor.red]
                 config.rasterSize = rasterSize
                 bar.config = config
             }
@@ -168,9 +168,9 @@ func defaultSearchBarConfig(_ rasterSize: CGFloat) -> SHSearchBarConfig {
     var config: SHSearchBarConfig = SHSearchBarConfig()
     config.rasterSize = rasterSize
     config.cancelButtonTitle = NSLocalizedString("sbe.general.cancel", comment: "")
-    config.cancelButtonTextAttributes = [NSForegroundColorAttributeName:UIColor.darkGray]
+    config.cancelButtonTextAttributes = [.foregroundColor : UIColor.darkGray]
     config.textContentType = UITextContentType.fullStreetAddress.rawValue
-    config.textAttributes = [NSForegroundColorAttributeName:UIColor.gray]
+    config.textAttributes = [.foregroundColor : UIColor.gray]
     return config
 }
 

@@ -1,6 +1,0 @@
-framework module Pods_SHSearchBar_SHSearchBarTests {
-  umbrella header "Pods-SHSearchBar-SHSearchBarTests-umbrella.h"
-
-  export *
-  module * { export * }
-}
