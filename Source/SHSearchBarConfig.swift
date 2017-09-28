@@ -19,7 +19,7 @@ public struct SHSearchBarConfig {
     public var textAttributes: [NSAttributedStringKey : Any] = [.foregroundColor : defaultTextForegroundColor]
 
     /// Convenience computed property because UITextField.defaultTextAttributes require `[String:Any]`.
-    public var oldStyleTextAttributes: [String: Any] {
+    public static func convert(textAttributes: [NSAttributedStringKey: Any]) -> [String: Any] {
         var attributes: [String: Any] = [:]
         for attr in textAttributes {
             attributes[attr.key.rawValue] = attr.value

@@ -233,7 +233,7 @@ public class SHSearchBar: UIView, SHSearchBarDelegate {
 
         var textAttributes = config.textAttributes
         textAttributes[.foregroundColor] = textColor
-        textField.defaultTextAttributes = config.oldStyleTextAttributes
+        textField.defaultTextAttributes = SHSearchBarConfig.convert(textAttributes: textAttributes)
 
         let normalAttributes = config.cancelButtonTextAttributes
         cancelButton.setAttributedTitle(NSAttributedString(string: config.cancelButtonTitle, attributes: normalAttributes), for: .normal)
