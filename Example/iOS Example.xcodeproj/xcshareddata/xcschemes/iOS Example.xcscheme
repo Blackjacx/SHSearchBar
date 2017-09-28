@@ -20,20 +20,6 @@
                ReferencedContainer = "container:iOS Example.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
-            buildForAnalyzing = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "B9B39A251D6D92B900E22022"
-               BuildableName = "SHSearchBarTests.xctest"
-               BlueprintName = "SHSearchBarTests"
-               ReferencedContainer = "container:../SHSearchBar.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
@@ -45,16 +31,6 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       codeCoverageEnabled = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "B9B39A251D6D92B900E22022"
-               BuildableName = "SHSearchBarTests.xctest"
-               BlueprintName = "SHSearchBarTests"
-               ReferencedContainer = "container:../SHSearchBar.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
