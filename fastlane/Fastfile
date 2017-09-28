@@ -40,7 +40,7 @@ fastlane_version "2.45.0"
 
 before_all do
   # update_fastlane
-  cocoapods
+  cocoapods(repo_update: true)
 end
 
 
