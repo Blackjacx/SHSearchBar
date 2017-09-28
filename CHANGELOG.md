@@ -1,6 +1,8 @@
 # Change Log
 
 ## [Unreleased]
+
+## [1.2.0] - 2017-09-29
 ### Added
 * [#15](https://github.com/Blackjacx/SHSearchBar/pull/15): translations for DE, EN, ES, FR, IT, JA, ZH-HANS, RU - [@blackjacx](https://github.com/blackjacx).
 * first responder handling by forwarding related calls directly to the textfield - [@blackjacx](https://github.com/blackjacx).
