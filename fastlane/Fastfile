@@ -73,9 +73,8 @@ lane :run_framework_tests do |options|
     workspace: workspace,
     scheme: framework,
     clean: true,
-    devices: ["iPhone 7"],
+    devices: ["iPhone 8", "iPhone 8 Plus", "iPhone X"],
     skip_build: true,
-    thread_sanitizer: true,
     output_types: "html"
   )
 end
