@@ -1,0 +1,5 @@
+"sbe.general.cancel" = "Выкинуть";
+"sbe.textfieldPlaceholder.default" = "Заполнитель";
+"sbe.exampleText.simple" = "Пример с текстом";
+"sbe.exampleText.withLeftView" = "Пример С левой точки зрения";
+"sbe.exampleText.centered" = "Пример с центрированным текстом";

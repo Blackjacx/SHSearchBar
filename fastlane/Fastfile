@@ -14,15 +14,15 @@
 #
 
 # NOTE: To use faslane install:
-# 			    gem install bundler 
+#           gem install bundler 
 #           brew install git-flow
 #           brew install apledoc
 #
-# 		Git-flow witll be configured upon installation or the first run of fastlane.
-# 		IMPORTANT: Use the default options !!!
+#     Git-flow witll be configured upon installation or the first run of fastlane.
+#     IMPORTANT: Use the default options !!!
 #
-#		and then run:
-# 			    bundle exec fastlane release_production framework:SHSearchBar version:"<YOUR_VERSION_HERE>"
+#   and then run:
+#           bundle exec fastlane release_to_cocoapods framework:SHSearchBar version:"<YOUR_VERSION_HERE>"
 
 # POSSIBLE ADDONS
 # => update_info_plist
@@ -32,222 +32,188 @@
 # => https://docs.fastlane.tools/actions/
 # => https://gist.github.com/JamesMGreene/cdd0ac49f90c987e45ac
 
-# This is the minimum version number required.
-# Update this, if you use features of a newer version
-fastlane_version "1.110.0"
+# This is the minimum version number required. 
+# Update this, if you use features of a newer version.
+fastlane_version "2.45.0"
 
-default_platform :ios
+# default_platform :ios
 
-platform :ios do
-  before_all do
-    cocoapods
-    clear_derived_data
+before_all do
+  # update_fastlane
+  cocoapods(repo_update: true)
+end
+
+
+after_all do |lane|
+  # This block is called, only if the executed lane was successful
+  notification(message: "#{lane} finished")
+end
+
+
+error do |lane, exception|
+  # This block is called, only if the executed lane failed
+  notification(message: "#{lane} finished with error #{exception}")
+end
+
+###############################################################################
+#                          PUBLIC SECTION
+###############################################################################
+
+desc "Runs tests using scan"
+lane :run_framework_tests do |options|
+
+  if !options[:framework]
+    raise "No framework specified".red
   end
 
+  framework = options[:framework]
+  workspace = "#{framework}.xcworkspace"
 
-  desc "Test lane to modify the CHANGELOG.md"
-  lane :changelog do |options|
+  scan(
+    workspace: workspace,
+    scheme: framework,
+    clean: true,
+    devices: ["iPhone 8", "iPhone 8 Plus", "iPhone X"],
+    skip_build: true,
+    output_types: "html"
+  )
+end
 
-  	if !options[:version]
-      raise "No version specified!".red
-    end
 
-    version = options[:version]
 
-    stamp_changelog(section_identifier: 'Build #{version}') # Stamp Unreleased section with newly released build number
+desc "Creates a release branch"
+desc "Runs framework tests"
+desc "Increments framework number"
+desc "Updates podspec file"
+desc "Pushes podspec file to Cocoapods"
+desc "Pushes releases to github"
+desc "Commits and pushes changes to remote and tags the release commit"
+lane :release_to_cocoapods do |options|
+
+  if !options[:framework] || !options[:version]
+    raise "No framework or no version specified".red
   end
 
+  framework = options[:framework]
+  version = options[:version]
+
+  # Ensure the source code is OK and tests are green
+  ensure_git_status_clean
+  ensure_git_branch(branch: "develop")
+  git_pull
+  pod_lib_lint(allow_warnings: false)
+  # run_framework_tests(framework: framework, version: version)
+
+  sh "git flow release start #{version}"
   
+  increment_framework_version(framework: framework, version: version)
+  update_framework_podspec(framework: framework, version: version)
+  push_github_release(framework: framework, version: version)
+
+  sh "git commit -am 'Fastlane: Release on Production #{version}'"
+
+  # Finish the release branch. The shell may hang here because it: 
+  # 1) promts for a merge message.
+  # 
+  # To get around this do the following:
+  # 1) git config --global core.mergeoptions --no-edit
+  sh "git flow release finish -m 'finished_release_on_production_#{version}' #{version}"   
+
+  # push to develop + push tags
+  push_to_git_remote(local_branch: "develop", force: true)
+
+  # push to master + push tags
+  push_to_git_remote(local_branch: "master", force: true)
+
+  # Needs to be done at the end (expects git tag to be available)
+  push_framework_podspec(framework: framework)
+end
 
 
 
+###############################################################################
+#                          PRIVATE SECTION
+###############################################################################
 
+desc "Increments CFBundleVersion by one and sets CFBundleShortVersionString"
+private_lane :increment_framework_version do |options|
 
-
-  desc "Runs framework tests"
-  lane :run_framework_tests do |options|
-
-  	if !options[:framework]
-      raise "No framework specified!".red
-    end
-
-    framework = options[:framework]
-
-    scan(
-      workspace: "#{framework}.xcworkspace",
-      scheme: "#{framework}",
-      clean: true,
-      device: "iPhone 6s",
-      output_types: "html"
-    )
+  if !options[:framework] || !options[:version]
+    raise "No framework or no version specified".red
   end
 
+  framework = options[:framework]
+  version = options[:version]
+  project = "#{framework}.xcodeproj"
+
+  increment_version_number(xcodeproj: project, version_number: version)
+  increment_build_number(xcodeproj: project)
+end
 
 
-  desc "Creates a release branch"
-  desc "Runs framework tests"
-  desc "Increments framework number"
-  # desc "Builds framework"
-  # desc "Packages framework"
-  # desc "Deploys framework to s3"
-  desc "Updates podspec file"
-  desc "Pushes podspec file to Cocoapods"
-  desc "Pushes releases to github"
-  desc "Commits and pushes changes to remote and tags the release commit"
-  lane :release_production do |options|
 
-    if !options[:version]
-      raise "No version specified".red
-    end
+desc "Updates framework podspec version"
+private_lane :update_framework_podspec do |options|
 
-    if !options[:framework]
-      raise "No framework specified".red
-    end
-
-    version = options[:version]
-    framework = options[:framework]
-
-    # Ensure the source code is OK and tests are green
-    ensure_git_branch(branch: 'develop')
-    ensure_git_status_clean
-    git_pull
-    pod_lib_lint
-    run_framework_tests framework: framework
-
-    sh "git flow release start #{version}"
-    
-    increment_framework_version framework: framework, version: version
-    # build_framework framework: framework
-    # package_framework framework: framework, version: version
-    # deploy_framework framework: framework, version: version
-    update_framework_podspec framework: framework, version: version
-    push_github_release version: version
-
-	sh "git commit -am 'Fastlane: Release on Production #{version}'"
-
-    # Finish the release branch. The shell will hang here because it 1) promts for a merge message.
-    # To get around this do the following:
-    # 1) git config --global core.mergeoptions --no-edit
-	sh "git flow release finish -m 'finished_release_on_production_#{version}' #{version}"   
-
-    # push to develop + push tags
-    push_to_git_remote(
-      remote: 'origin',
-      local_branch: 'develop',
-      remote_branch: 'develop',
-      force: true,
-    )
-
-    # push to master + push tags
-    push_to_git_remote(
-      remote: 'origin',
-      local_branch: 'master',
-      remote_branch: 'master',
-      force: true,
-    )
-
-    # Needs to be done at the end (expects git tag to be available)
-    push_framework_podspec framework: framework
+  if !options[:version]
+    raise "No version specified".red
   end
 
-
-
-  desc "Increment framework version"
-  private_lane :increment_framework_version do |options|
-
-    if !options[:framework]
-      raise "No framework specified!".red
-    end
-
-    if !options[:version]
-      raise "No version specified!".red
-    end
-
-    framework = options[:framework]
-    version = options[:version]
-
-    increment_version_number(
-      xcodeproj: "#{framework}.xcodeproj",
-      version_number: version
-    )
+  if !options[:framework]
+    raise "No framework specified".red
   end
 
+  framework = options[:framework]
+  version = options[:version]
+  podspec = "#{framework}.podspec"
+
+  version_bump_podspec(path: podspec, version_number: version)
+end
 
 
-  desc "Updates framework podspec version"
-  private_lane :update_framework_podspec do |options|
 
-    if !options[:framework]
-      raise "No framework specified!".red
-    end
+desc "Pushes framework podspec to Cocoapods specs"
+private_lane :push_framework_podspec do |options|
 
-    if !options[:version]
-      raise "No version specified!".red
-    end
+  if !options[:framework]
+    raise "No framework specified".red
+  end
+  
+  framework = options[:framework]
+  podspec = "#{framework}.podspec"
 
-    framework = options[:framework]
-    version = options[:version]
-    podspec = "#{framework}.podspec"
+  pod_push(path: podspec)
+end
 
-    version = version_bump_podspec(
-      path: podspec,
-      version_number: version
-    )
+
+
+desc "Creates a github release with a git commit changelog"
+private_lane :push_github_release do |options|
+
+  if !options[:framework] || !options[:version]
+    raise "No framework or no version specified".red
   end
 
+  framework = options[:framework]
+  version = options[:version]
 
+  changelog=read_changelog(
+    changelog_path: './CHANGELOG.md',	# Specify path to CHANGELOG.md
+    section_identifier: '[Unreleased]',	# Specify what section to read
+    excluded_markdown_elements: []	# Specify which markdown elements should be excluded
+  )
 
-  desc "Pushes framework podspec to Cocoapods specs"
-  private_lane :push_framework_podspec do |options|
+  stamp_changelog(
+    section_identifier: version # Stamp Unreleased section with newly released build number
+  )
 
-    if !options[:framework]
-      raise "No framework specified!".red
-    end
-
-    framework = options[:framework]
-    podspec = "#{framework}.podspec"
-
-    pod_push(
-      path: podspec,
-      # repo: 'SHSearchBar',
-      # sources: ['https://github.com/CocoaPods/Specs']
-    )
-  end
-
-
-
-  desc "Creates a github release with a git commit changelog"
-  private_lane :push_github_release do |options|
-
-    if !options[:version]
-      raise "No version specified!".red
-    end
-
-    version = options[:version]
-
-    changelog = changelog_from_git_commits(
-        include_merges: false, # Optional, lets you filter out merge commits
-    )
-
-    github_release = set_github_release(
-      repository_name: "blackjacx/SHSearchBar",
-      api_token: ENV["GITHUB_TOKEN"],
-      name: "#{version}",
-      tag_name: "#{version}",
-      description: ("#{changelog}" rescue "No changelog provided"),
-      commitish: "master",
-      # upload_assets: ["example_integration.ipa", "./pkg/built.gem"],
-    )
-  end
-
-
-
-  after_all do |lane|
-    # This block is called, only if the executed lane was successful
-    notification(message: "#{lane} finished")
-  end
-
-  error do |lane, exception|
-    notification(message: "#{lane} finished with error #{exception}")
-  end
+  github_release = set_github_release(
+    repository_name: "blackjacx/#{framework}",
+    api_token: ENV["GITHUB_TOKEN"],
+    name: version,
+    tag_name: version,
+    description: ("#{changelog}" rescue "No changelog provided"),
+    commitish: "master",
+    # upload_assets: ["example_integration.ipa", "./pkg/built.gem"],
+  )
 end

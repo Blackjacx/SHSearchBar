@@ -8,20 +8,34 @@
 
 import UIKit
 
+/**
+ * Internal UITextField subclass to be able to overwrite the *rect functions. 
+ * This makes it possible to exactly control all margins.
+ */
 class SHSearchBarTextField: UITextField {
 
+    /// The SHSearchbarConfig that holds the configured raster size, which is important for rect calculation.
     var config: SHSearchBarConfig {
         didSet {
             setNeedsLayout()
         }
     }
 
+    /**
+     * The designated initializer to initialize the configuration object.
+     * - parameter config: The initial SHSearchBarConfig object that holds the raster size.
+     */
     init(config: SHSearchBarConfig) {
         self.config = config
         super.init(frame: CGRect.zero)
         translatesAutoresizingMaskIntoConstraints = false
     }
 
+    /**
+     * The initializer for use with storyboards.
+     * - parameter coder: A NSCoder instance.
+     * - note: This initializer is not implementes and will raise an exception when called.
+     */
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -39,7 +53,13 @@ class SHSearchBarTextField: UITextField {
         return rectForBounds(rect, originalBounds: bounds)
     }
 
-    fileprivate func rectForBounds(_ bounds: CGRect, originalBounds: CGRect) -> CGRect {
+    /**
+     * Calculates the text bounds depending on the visibility of left and right views.
+     * - parameter bounds: The bounds of the textField after subtracting margins for left and/or right views.
+     * - parameter originalBounds: The current bounds of the textField.
+     * - returns: The bounds inside the textField so that the text does not overlap with the left and right views.
+     */
+    private func rectForBounds(_ bounds: CGRect, originalBounds: CGRect) -> CGRect {
         var minX: CGFloat = 0
         var width: CGFloat = 0
 

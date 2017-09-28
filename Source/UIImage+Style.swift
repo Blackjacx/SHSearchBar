@@ -3,7 +3,7 @@
 //  SHSearchBar
 //
 //  Created by Stefan Herold on 16/08/16.
-//
+//  Copyright © 2016 StefanHerold. All rights reserved.
 //
 
 import UIKit

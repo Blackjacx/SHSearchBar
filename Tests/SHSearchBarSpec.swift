@@ -1,9 +1,9 @@
 //
 //  SHSearchBar_ExampleTests.swift
-//  SHSearchBar_ExampleTests
+//  SHSearchBar
 //
 //  Created by Stefan Herold on 16/08/16.
-//  Copyright © 2016 CocoaPods. All rights reserved.
+//  Copyright © 2016 StefanHerold. All rights reserved.
 //
 
 import UIKit
@@ -12,11 +12,21 @@ import Nimble
 
 @testable import SHSearchBar
 
-class Box<T> {
-    let value: T
-    init(value: T) {
-        self.value = value
-    }
+func expectedDefaultConfig() -> SHSearchBarConfig {
+
+    var config = SHSearchBarConfig()
+    config.animationDuration = 0.25
+    config.rasterSize = 11.0
+    config.textAttributes = [.foregroundColor : SHSearchBarConfig.defaultTextForegroundColor]
+    config.textContentType = nil
+    config.cancelButtonTitle = NSLocalizedString("sb.general.cancel", comment: "")
+    config.cancelButtonTextAttributes = [.foregroundColor:SHSearchBarConfig.defaultTextForegroundColor]
+    config.leftView = nil
+    config.leftViewMode = .never
+    config.rightView = nil
+    config.rightViewMode = .never
+    config.clearButtonMode = .whileEditing
+    return config
 }
 
 class SHSearchBarSpec: QuickSpec {
@@ -26,12 +36,17 @@ class SHSearchBarSpec: QuickSpec {
         let config: SHSearchBarConfig = {
             var config = SHSearchBarConfig()
             config.cancelButtonTitle = "Abortar"
-            config.cancelButtonTextColor = UIColor.red
+            config.cancelButtonTextAttributes = [.foregroundColor:UIColor.red]
             config.textContentType = UITextContentType.fullStreetAddress.rawValue
             return config
         }()
+        var isActive: Bool = true
 
         describe("searchbar") {
+
+            beforeEach {
+                isActive = true
+            }
 
             it("calls updateUI exactly once after init") {
                 let config = SHSearchBarConfig()
@@ -41,121 +56,185 @@ class SHSearchBarSpec: QuickSpec {
 
             context("when active") {
 
-                context("and the default config values are used") {
-                    let config = SHSearchBarConfig()
-                    let boxedConfig = Box(value: config)
-                    itBehavesLike(SharedConfiguration.searchBar) { [SharedConfiguration.ContextKey.searchbarConfig: boxedConfig, SharedConfiguration.ContextKey.isActive: true] }
-                }
-
                 context("and rasterSize is set") {
                     var config = SHSearchBarConfig()
                     config.rasterSize = 22.0
-                    let boxedConfig = Box(value: config)
-                    itBehavesLike(SharedConfiguration.searchBar) { [SharedConfiguration.ContextKey.searchbarConfig: boxedConfig, SharedConfiguration.ContextKey.isActive: true] }
+                    itBehavesLike(SharedConfiguration.searchBar) { [SharedConfiguration.ContextKey.searchbarConfig: config,
+                                                                    SharedConfiguration.ContextKey.isActive: isActive] }
                 }
 
                 context("and textContentType is set") {
                     var config = SHSearchBarConfig()
                     config.textContentType = UITextContentType.fullStreetAddress.rawValue
-                    let boxedConfig = Box(value: config)
-                    itBehavesLike(SharedConfiguration.searchBar) { [SharedConfiguration.ContextKey.searchbarConfig: boxedConfig, SharedConfiguration.ContextKey.isActive: true] }
+                    itBehavesLike(SharedConfiguration.searchBar) { [SharedConfiguration.ContextKey.searchbarConfig: config,
+                                                                    SharedConfiguration.ContextKey.isActive: isActive] }
                 }
 
                 context("and textColor is set") {
                     var config = SHSearchBarConfig()
-                    config.textColor = UIColor.black
-                    let boxedConfig = Box(value: config)
-                    itBehavesLike(SharedConfiguration.searchBar) { [SharedConfiguration.ContextKey.searchbarConfig: boxedConfig, SharedConfiguration.ContextKey.isActive: true] }
+                    config.textAttributes = [.foregroundColor:UIColor.black]
+                    itBehavesLike(SharedConfiguration.searchBar) { [SharedConfiguration.ContextKey.searchbarConfig: config,
+                                                                    SharedConfiguration.ContextKey.isActive: isActive] }
                 }
 
                 context("and textBackgroundColor is set") {
                     var config = SHSearchBarConfig()
-                    config.textBackgroundColor = UIColor.red
-                    let boxedConfig = Box(value: config)
-                    itBehavesLike(SharedConfiguration.searchBar) { [SharedConfiguration.ContextKey.searchbarConfig: boxedConfig, SharedConfiguration.ContextKey.isActive: true] }
+                    config.textAttributes = [.backgroundColor:UIColor.red]
+                    itBehavesLike(SharedConfiguration.searchBar) { [SharedConfiguration.ContextKey.searchbarConfig: config,
+                                                                    SharedConfiguration.ContextKey.isActive: isActive] }
                 }
 
                 context("and cancelButtonTitle is set") {
                     var config = SHSearchBarConfig()
                     config.cancelButtonTitle = "Hello Cancel Button"
-                    let boxedConfig = Box(value: config)
-                    itBehavesLike(SharedConfiguration.searchBar) { [SharedConfiguration.ContextKey.searchbarConfig: boxedConfig, SharedConfiguration.ContextKey.isActive: true] }
+                    itBehavesLike(SharedConfiguration.searchBar) { [SharedConfiguration.ContextKey.searchbarConfig: config,
+                                                                    SharedConfiguration.ContextKey.isActive: isActive] }
                 }
 
                 context("and cancelButtonTextColor is set") {
                     var config = SHSearchBarConfig()
-                    config.cancelButtonTextColor = UIColor.purple
-                    let boxedConfig = Box(value: config)
-                    itBehavesLike(SharedConfiguration.searchBar) { [SharedConfiguration.ContextKey.searchbarConfig: boxedConfig, SharedConfiguration.ContextKey.isActive: true] }
+                    config.cancelButtonTextAttributes = [.foregroundColor:UIColor.purple]
+                    itBehavesLike(SharedConfiguration.searchBar) { [SharedConfiguration.ContextKey.searchbarConfig: config,
+                                                                    SharedConfiguration.ContextKey.isActive: isActive] }
+                }
+
+                context("and leftView is set") {
+                    var config = SHSearchBarConfig()
+                    config.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+                    itBehavesLike(SharedConfiguration.searchBar) { [SharedConfiguration.ContextKey.searchbarConfig: config,
+                                                                    SharedConfiguration.ContextKey.isActive: isActive] }
+                }
+
+                context("and rightView is set") {
+                    var config = SHSearchBarConfig()
+                    config.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+                    itBehavesLike(SharedConfiguration.searchBar) { [SharedConfiguration.ContextKey.searchbarConfig: config,
+                                                                    SharedConfiguration.ContextKey.isActive: isActive] }
+                }
+
+                context("and leftViewMode is set") {
+                    var config = SHSearchBarConfig()
+                    config.leftViewMode = .always
+                    itBehavesLike(SharedConfiguration.searchBar) { [SharedConfiguration.ContextKey.searchbarConfig: config,
+                                                                    SharedConfiguration.ContextKey.isActive: isActive] }
+                }
+
+                context("and rightViewMode is set") {
+                    var config = SHSearchBarConfig()
+                    config.rightViewMode = .always
+                    itBehavesLike(SharedConfiguration.searchBar) { [SharedConfiguration.ContextKey.searchbarConfig: config,
+                                                                    SharedConfiguration.ContextKey.isActive: isActive] }
+                }
+
+                context("and clearButtonMode is set") {
+                    var config = SHSearchBarConfig()
+                    config.clearButtonMode = .always
+                    itBehavesLike(SharedConfiguration.searchBar) { [SharedConfiguration.ContextKey.searchbarConfig: config,
+                                                                    SharedConfiguration.ContextKey.isActive: isActive] }
                 }
 
                 context("and updates the config") {
                     let config = SHSearchBarConfig()
                     let nonDefaultConfig = nonDefaultSearchbarConfig()
-                    let boxedConfig = Box(value: nonDefaultConfig)
                     let searchbar = SHSearchBarMock(config: config)
                     searchbar.config = nonDefaultConfig
-                    itBehavesLike(SharedConfiguration.searchBar) { [SharedConfiguration.ContextKey.searchbarConfig: boxedConfig, SharedConfiguration.ContextKey.isActive: true, SharedConfiguration.ContextKey.searchbar: searchbar] }
+                    itBehavesLike(SharedConfiguration.searchBar) { [SharedConfiguration.ContextKey.searchbarConfig: config,
+                                                                    SharedConfiguration.ContextKey.isActive: isActive,
+                                                                    SharedConfiguration.ContextKey.searchbar: searchbar] }
                 }
             }
 
             context("when inactive") {
 
-                context("and the default config values are used") {
-                    let config = SHSearchBarConfig()
-                    let boxedConfig = Box(value: config)
-                    itBehavesLike(SharedConfiguration.searchBar) { [SharedConfiguration.ContextKey.searchbarConfig: boxedConfig, SharedConfiguration.ContextKey.isActive: false] }
+                beforeEach {
+                    isActive = false
                 }
 
                 context("and rasterSize is set") {
                     var config = SHSearchBarConfig()
                     config.rasterSize = 22.0
-                    let boxedConfig = Box(value: config)
-                    itBehavesLike(SharedConfiguration.searchBar) { [SharedConfiguration.ContextKey.searchbarConfig: boxedConfig, SharedConfiguration.ContextKey.isActive: false] }
+                    itBehavesLike(SharedConfiguration.searchBar) { [SharedConfiguration.ContextKey.searchbarConfig: config,
+                                                                    SharedConfiguration.ContextKey.isActive: isActive] }
                 }
 
                 context("and textContentType is set") {
                     var config = SHSearchBarConfig()
                     config.textContentType = UITextContentType.fullStreetAddress.rawValue
-                    let boxedConfig = Box(value: config)
-                    itBehavesLike(SharedConfiguration.searchBar) { [SharedConfiguration.ContextKey.searchbarConfig: boxedConfig, SharedConfiguration.ContextKey.isActive: false] }
+                    itBehavesLike(SharedConfiguration.searchBar) { [SharedConfiguration.ContextKey.searchbarConfig: config,
+                                                                    SharedConfiguration.ContextKey.isActive: isActive] }
                 }
 
                 context("and textColor is set") {
                     var config = SHSearchBarConfig()
-                    config.textColor = UIColor.black
-                    let boxedConfig = Box(value: config)
-                    itBehavesLike(SharedConfiguration.searchBar) { [SharedConfiguration.ContextKey.searchbarConfig: boxedConfig, SharedConfiguration.ContextKey.isActive: false] }
+                    config.textAttributes = [.foregroundColor:UIColor.black]
+                    itBehavesLike(SharedConfiguration.searchBar) { [SharedConfiguration.ContextKey.searchbarConfig: config,
+                                                                    SharedConfiguration.ContextKey.isActive: isActive] }
                 }
 
                 context("and textBackgroundColor is set") {
                     var config = SHSearchBarConfig()
-                    config.textBackgroundColor = UIColor.red
-                    let boxedConfig = Box(value: config)
-                    itBehavesLike(SharedConfiguration.searchBar) { [SharedConfiguration.ContextKey.searchbarConfig: boxedConfig, SharedConfiguration.ContextKey.isActive: false] }
+                    config.textAttributes = [.backgroundColor:UIColor.red]
+                    itBehavesLike(SharedConfiguration.searchBar) { [SharedConfiguration.ContextKey.searchbarConfig: config,
+                                                                    SharedConfiguration.ContextKey.isActive: isActive] }
                 }
 
                 context("and cancelButtonTitle is set") {
                     var config = SHSearchBarConfig()
                     config.cancelButtonTitle = "Hello Cancel Button"
-                    let boxedConfig = Box(value: config)
-                    itBehavesLike(SharedConfiguration.searchBar) { [SharedConfiguration.ContextKey.searchbarConfig: boxedConfig, SharedConfiguration.ContextKey.isActive: false] }
+                    itBehavesLike(SharedConfiguration.searchBar) { [SharedConfiguration.ContextKey.searchbarConfig: config,
+                                                                    SharedConfiguration.ContextKey.isActive: isActive] }
                 }
 
                 context("and cancelButtonTextColor is set") {
                     var config = SHSearchBarConfig()
-                    config.cancelButtonTextColor = UIColor.purple
-                    let boxedConfig = Box(value: config)
-                    itBehavesLike(SharedConfiguration.searchBar) { [SharedConfiguration.ContextKey.searchbarConfig: boxedConfig, SharedConfiguration.ContextKey.isActive: false] }
+                    config.cancelButtonTextAttributes = [.foregroundColor:UIColor.purple]
+                    itBehavesLike(SharedConfiguration.searchBar) { [SharedConfiguration.ContextKey.searchbarConfig: config,
+                                                                    SharedConfiguration.ContextKey.isActive: isActive] }
+                }
+
+                context("and leftView is set") {
+                    var config = SHSearchBarConfig()
+                    config.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+                    itBehavesLike(SharedConfiguration.searchBar) { [SharedConfiguration.ContextKey.searchbarConfig: config,
+                                                                    SharedConfiguration.ContextKey.isActive: isActive] }
+                }
+
+                context("and rightView is set") {
+                    var config = SHSearchBarConfig()
+                    config.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+                    itBehavesLike(SharedConfiguration.searchBar) { [SharedConfiguration.ContextKey.searchbarConfig: config,
+                                                                    SharedConfiguration.ContextKey.isActive: isActive] }
+                }
+
+                context("and leftViewMode is set") {
+                    var config = SHSearchBarConfig()
+                    config.leftViewMode = .always
+                    itBehavesLike(SharedConfiguration.searchBar) { [SharedConfiguration.ContextKey.searchbarConfig: config,
+                                                                    SharedConfiguration.ContextKey.isActive: isActive] }
+                }
+
+                context("and rightViewMode is set") {
+                    var config = SHSearchBarConfig()
+                    config.rightViewMode = .always
+                    itBehavesLike(SharedConfiguration.searchBar) { [SharedConfiguration.ContextKey.searchbarConfig: config,
+                                                                    SharedConfiguration.ContextKey.isActive: isActive] }
+                }
+
+                context("and clearButtonMode is set") {
+                    var config = SHSearchBarConfig()
+                    config.clearButtonMode = .always
+                    itBehavesLike(SharedConfiguration.searchBar) { [SharedConfiguration.ContextKey.searchbarConfig: config,
+                                                                    SharedConfiguration.ContextKey.isActive: isActive] }
                 }
 
                 context("and updates the config") {
                     let config = SHSearchBarConfig()
                     let nonDefaultConfig = nonDefaultSearchbarConfig()
-                    let boxedConfig = Box(value: nonDefaultConfig)
                     let searchbar = SHSearchBarMock(config: config)
                     searchbar.config = nonDefaultConfig
-                    itBehavesLike(SharedConfiguration.searchBar) { [SharedConfiguration.ContextKey.searchbarConfig: boxedConfig, SharedConfiguration.ContextKey.isActive: false, SharedConfiguration.ContextKey.searchbar: searchbar] }
+                    itBehavesLike(SharedConfiguration.searchBar) { [SharedConfiguration.ContextKey.searchbarConfig: nonDefaultConfig,
+                                                                    SharedConfiguration.ContextKey.isActive: isActive,
+                                                                    SharedConfiguration.ContextKey.searchbar: searchbar] }
                 }
             }
         }
@@ -257,10 +336,10 @@ class SHSearchBarSpec: QuickSpec {
                     alwaysTrueDelegate = SearchBarAlwaysTrueDelegate()
                     searchbar = SHSearchBarMock(config: config)
                     searchbar.delegate = alwaysTrueDelegate
+                    _ = searchbar.textFieldShouldBeginEditing(searchbar.textField)
                 })
 
                 it("it sets the cancelButton visibility to true") {
-                    _ = searchbar.textFieldShouldBeginEditing(searchbar.textField)
                     expect(searchbar.cancelButton.alpha).toEventually(equal(1))
                 }
             }
@@ -273,12 +352,35 @@ class SHSearchBarSpec: QuickSpec {
                     alwaysTrueDelegate = SearchBarAlwaysTrueDelegate()
                     searchbar = SHSearchBarMock(config: config)
                     searchbar.delegate = alwaysTrueDelegate
+                    _ = searchbar.textFieldShouldEndEditing(searchbar.textField)
                 })
 
                 it("it sets the cancelButton visibility to false") {
-                    _ = searchbar.textFieldShouldEndEditing(searchbar.textField)
                     expect(searchbar.cancelButton.alpha).toEventually(equal(0))
                 }
+            }
+        }
+
+        describe("pressing the cancelButton") {
+            var searchbar: SHSearchBarMock!
+
+            beforeEach({
+                searchbar = SHSearchBarMock(config: config)
+                searchbar.delegate = delegate
+            })
+
+            it("calls searchBarShouldCancel delegate") {
+                searchbar.pressedCancelButton(UIButton())
+                expect(delegate.callCountSearchBarShouldCancel) == 1
+            }
+            it("calls resetTextField with delegate set and searchBarShouldCancel returning true") {
+                searchbar.pressedCancelButton(UIButton())
+                expect(searchbar.callCountResetTextField) == 1
+            }
+            it("calls resetTextField with delegate nil") {
+                searchbar.delegate = nil
+                searchbar.pressedCancelButton(UIButton())
+                expect(searchbar.callCountResetTextField) == 1
             }
         }
 
@@ -290,7 +392,7 @@ class SHSearchBarSpec: QuickSpec {
                 beforeEach({
                     searchbar = SHSearchBarMock(config: config)
                     searchbar.delegate = delegate
-                    searchbar.setCancelButtonVisibility(false)
+                    searchbar.updateCancelButtonVisibility(makeVisible: false)
                 })
 
                 it("results in a zero alpha value") {
@@ -310,7 +412,7 @@ class SHSearchBarSpec: QuickSpec {
                 beforeEach({
                     searchbar = SHSearchBarMock(config: config)
                     searchbar.delegate = delegate
-                    searchbar.setCancelButtonVisibility(true)
+                    searchbar.updateCancelButtonVisibility(makeVisible: true)
                 })
 
                 it("results in an alpha value of 1") {
@@ -365,12 +467,23 @@ class SharedConfiguration: QuickConfiguration {
             var delegate: SearchBarConcreteDelegate!
 
             beforeEach {
-                guard let unwrappedConfig = (sharedExampleContext()[SharedConfiguration.ContextKey.searchbarConfig] as? Box<SHSearchBarConfig>)?.value else {
-                    XCTFail("Value \(sharedExampleContext()[SharedConfiguration.ContextKey.searchbarConfig]) not a valid SHSearchBarConfig.")
+                guard let unwrappedConfig = sharedExampleContext()[SharedConfiguration.ContextKey.searchbarConfig] as? SHSearchBarConfig else {
+                    let key = SharedConfiguration.ContextKey.searchbarConfig
+                    if let value = sharedExampleContext()[key] {
+                        fail("Value \(value) not a valid SHSearchBarConfig.")
+                    } else {
+                        fail("Value for key \(key) was nil!")
+                    }
                     return
                 }
+
                 guard let unwrappedIsActive = sharedExampleContext()[SharedConfiguration.ContextKey.isActive] as? Bool else {
-                    XCTFail("Value \(sharedExampleContext()[SharedConfiguration.ContextKey.isActive]) not a valid Bool.")
+                    let key = SharedConfiguration.ContextKey.isActive
+                    if let value = sharedExampleContext()[key] {
+                        fail("Value \(value) not a valid Bool.")
+                    } else {
+                        fail("Value for key \(key) was nil!")
+                    }
                     return
                 }
 
@@ -472,17 +585,40 @@ class SharedConfiguration: QuickConfiguration {
                 let cancelButtonWidth = searchbar.cancelButton.frame.width
                 expect(searchbar.cancelButton.frame) == CGRect(x: searchbar.frame.width-cancelButtonWidth, y: 0, width: cancelButtonWidth, height: searchbar.frame.height)
             }
-            it("sets backgroundImageView to cancelbutton constraint correctly") {
+            it("sets BackgroundImageView-To-Cancelbutton-Constraint correctly") {
                 expect(searchbar.bgToCancelButtonConstraint.firstAnchor) == searchbar.backgroundView.rightAnchor
                 expect(searchbar.bgToCancelButtonConstraint.secondAnchor) == searchbar.cancelButton.leftAnchor
                 expect(searchbar.bgToCancelButtonConstraint.constant) == -searchbar.config.rasterSize
                 expect(searchbar.bgToCancelButtonConstraint.isActive) == false
             }
-            it("sets backgroundImageView to searchbar constraint correctly") {
+            it("sets BackgroundImageView-To-Searchbar-Constraint correctly") {
                 expect(searchbar.bgToParentConstraint.firstAnchor) == searchbar.backgroundView.rightAnchor
                 expect(searchbar.bgToParentConstraint.secondAnchor) == searchbar.rightAnchor
                 expect(searchbar.bgToParentConstraint.constant) == 0
                 expect(searchbar.bgToParentConstraint.isActive) == true
+            }
+            it("sets textFields leftView correctly") {
+                if searchbar.config.leftView == nil {
+                    expect(searchbar.textField.leftView).to(beNil())
+                } else {
+                    expect(searchbar.textField.leftView) == searchbar.config.leftView
+                }
+            }
+            it("sets textFields rightView correctly") {
+                if searchbar.config.rightView == nil {
+                    expect(searchbar.textField.rightView).to(beNil())
+                } else {
+                    expect(searchbar.textField.rightView) == searchbar.config.rightView
+                }
+            }
+            it("sets textFields leftViewMode correctly") {
+                expect(searchbar.textField.leftViewMode) == searchbar.config.leftViewMode
+            }
+            it("sets textFields rightViewMode correctly") {
+                expect(searchbar.textField.rightViewMode) == searchbar.config.rightViewMode
+            }
+            it("sets textFields clearButtonMode correctly") {
+                expect(searchbar.textField.clearButtonMode) == searchbar.config.clearButtonMode
             }
 
 
@@ -490,26 +626,24 @@ class SharedConfiguration: QuickConfiguration {
 
             it("sets the correct text color") {
                 let color = searchbar.textField.textColor
-                var expectedColor = searchbar.config.textColor
-                expectedColor = searchbar.isActive ? expectedColor : expectedColor.withAlphaComponent(0.5)
-                expect(color) == expectedColor
+                let expectedTextColor = searchbar.config.textAttributes[.foregroundColor] as? UIColor ?? SHSearchBarConfig.defaultTextForegroundColor
+                expect(color) == (searchbar.isActive ? expectedTextColor : expectedTextColor.withAlphaComponent(0.5))
             }
 
             it("sets the correct tint color") {
                 let color = searchbar.textField.tintColor
-                var expectedColor = searchbar.config.textColor
-                expectedColor = searchbar.isActive ? expectedColor : expectedColor.withAlphaComponent(0.5)
-                expect(color) == expectedColor
+                let expectedTextColor = searchbar.config.textAttributes[.foregroundColor] as? UIColor ?? SHSearchBarConfig.defaultTextForegroundColor
+                expect(color) == (searchbar.isActive ? expectedTextColor : expectedTextColor.withAlphaComponent(0.5))
             }
 
             it("sets the correct textAttributes") {
                 let attributes = searchbar.textField.defaultTextAttributes
-                var expected = [NSForegroundColorAttributeName:searchbar.config.textColor,
-                                NSBackgroundColorAttributeName:searchbar.config.textBackgroundColor]
-                expected[NSForegroundColorAttributeName] = searchbar.isActive ? searchbar.config.textColor : searchbar.config.textColor.withAlphaComponent(0.5)
+                var expected = searchbar.config.textAttributes
+                let expectedTextColor = expected[.foregroundColor] as? UIColor
+                expected[.foregroundColor] = searchbar.isActive ? expectedTextColor : expectedTextColor?.withAlphaComponent(0.5)
 
                 for key in expected.keys {
-                    guard let value = attributes[key] as? UIColor, let expectedValue = expected[key] else {
+                    guard let value = attributes[key.rawValue] as? UIColor, let expectedValue = expected[key] as? UIColor else {
                         XCTFail("Value or expected value not found for key \(key)")
                         return
                     }
@@ -525,15 +659,16 @@ class SharedConfiguration: QuickConfiguration {
                 expect(searchbar.textField.textContentType.rawValue) == textContentType
             }
 
-            it("sets the correct cancel button title") {
-                expect(searchbar.cancelButton.title(for: .normal)) == searchbar.config.cancelButtonTitle
+            it("sets the correct cancel button title in normal mode") {
+                let expectedTitle = NSAttributedString(string: searchbar.config.cancelButtonTitle, attributes: searchbar.config.cancelButtonTextAttributes)
+                expect(searchbar.cancelButton.attributedTitle(for: .normal)) == expectedTitle
             }
-
-            it("sets the correct cancel button normal color") {
-                expect(searchbar.cancelButton.titleColor(for: .normal)) == searchbar.config.cancelButtonTextColor
-            }
-            it("sets the correct cancel button highlighted color") {
-                expect(searchbar.cancelButton.titleColor(for: .highlighted)) == searchbar.config.cancelButtonTextColor.withAlphaComponent(0.75)
+            it("sets the correct cancel button title highlighted mode") {
+                var highlightedAttributes = searchbar.config.cancelButtonTextAttributes
+                let highlightedColor = highlightedAttributes[.foregroundColor] as? UIColor ?? SHSearchBarConfig.defaultTextForegroundColor
+                highlightedAttributes[.foregroundColor] = highlightedColor.withAlphaComponent(0.75)
+                let expectedTitle = NSAttributedString(string: searchbar.config.cancelButtonTitle, attributes: highlightedAttributes)
+                expect(searchbar.cancelButton.attributedTitle(for: .highlighted)) == expectedTitle
             }
         }
     }

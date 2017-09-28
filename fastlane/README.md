@@ -10,7 +10,7 @@ sudo gem install fastlane
 ```
 fastlane ios changelog
 ```
-Test lane to modify the CHANGELOG.md
+Output the changelog based on commits to from last tag to HEAD
 ### ios run_framework_tests
 ```
 fastlane ios run_framework_tests
