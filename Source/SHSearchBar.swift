@@ -113,7 +113,7 @@ public class SHSearchBar: UIView, SHSearchBarDelegate {
     func setupCancelButton(withConfig config: SHSearchBarConfig) {
         cancelButton.translatesAutoresizingMaskIntoConstraints = false
         cancelButton.alpha = 0.0
-        cancelButton.setContentHuggingPriority(UILayoutPriorityRequired, for: .horizontal)
+        cancelButton.setContentHuggingPriority(.required, for: .horizontal)
         cancelButton.reversesTitleShadowWhenHighlighted = true
         cancelButton.adjustsImageWhenHighlighted = true
         cancelButton.addTarget(self, action: #selector(SHSearchBar.pressedCancelButton(_:)), for: .touchUpInside)
@@ -215,7 +215,7 @@ public class SHSearchBar: UIView, SHSearchBarDelegate {
     // MARK: - UI Updates
 
     func updateUserInterface() {
-        var textColor = config.textAttributes[NSForegroundColorAttributeName] as? UIColor ?? SHSearchBarConfig.defaultTextForegroundColor
+        var textColor = config.textAttributes[.foregroundColor] as? UIColor ?? SHSearchBarConfig.defaultTextForegroundColor
 
         // Replace normal color with a lighter color so the text looks disabled
         if !isActive { textColor = textColor.withAlphaComponent(0.5) }
@@ -231,15 +231,15 @@ public class SHSearchBar: UIView, SHSearchBarDelegate {
 
         textField.clearButtonMode = config.clearButtonMode
 
-        var textAttributes:[String:Any] = config.textAttributes
-        textAttributes[NSForegroundColorAttributeName] = textColor
-        textField.defaultTextAttributes = textAttributes
+        var textAttributes = config.textAttributes
+        textAttributes[.foregroundColor] = textColor
+        textField.defaultTextAttributes = config.oldStyleTextAttributes
 
         let normalAttributes = config.cancelButtonTextAttributes
         cancelButton.setAttributedTitle(NSAttributedString(string: config.cancelButtonTitle, attributes: normalAttributes), for: .normal)
         var highlightedAttributes = config.cancelButtonTextAttributes
-        let highlightColor = highlightedAttributes[NSForegroundColorAttributeName] as? UIColor ?? SHSearchBarConfig.defaultTextForegroundColor
-        highlightedAttributes[NSForegroundColorAttributeName] = highlightColor.withAlphaComponent(0.75)
+        let highlightColor = highlightedAttributes[.foregroundColor] as? UIColor ?? SHSearchBarConfig.defaultTextForegroundColor
+        highlightedAttributes[.foregroundColor] = highlightColor.withAlphaComponent(0.75)
         cancelButton.setAttributedTitle(NSAttributedString(string: config.cancelButtonTitle, attributes: highlightedAttributes), for: .highlighted)
 
         if #available(iOS 10.0, *) {
@@ -282,7 +282,7 @@ public class SHSearchBar: UIView, SHSearchBarDelegate {
     
     // MARK: - Cancel Button Management
     
-    func pressedCancelButton(_ sender: AnyObject) {
+    @objc func pressedCancelButton(_ sender: AnyObject) {
         let shouldCancel = delegate?.searchBarShouldCancel(self) ?? searchBarShouldCancel(self)
         if shouldCancel {
             resetTextField()

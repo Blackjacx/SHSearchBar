@@ -16,7 +16,16 @@ public struct SHSearchBarConfig {
     public var rasterSize: CGFloat = 11.0 // Apples default
 
     /// The attributes to format the searchbars text.
-    public var textAttributes: [String:Any] = [NSForegroundColorAttributeName:defaultTextForegroundColor]
+    public var textAttributes: [NSAttributedStringKey : Any] = [.foregroundColor : defaultTextForegroundColor]
+
+    /// Convenience computed property because UITextField.defaultTextAttributes require `[String:Any]`.
+    public var oldStyleTextAttributes: [String: Any] {
+        var attributes: [String: Any] = [:]
+        for attr in textAttributes {
+            attributes[attr.key.rawValue] = attr.value
+        }
+        return attributes
+    }
 
     /// The textContentType property is to provide the keyboard with extra information about the semantic intent of the text document.
     public var textContentType: String? = nil
@@ -25,7 +34,7 @@ public struct SHSearchBarConfig {
     public var cancelButtonTitle: String = NSLocalizedString("sb.general.cancel", comment: "")
 
     /// The text attributes to style the cancel button.
-    public var cancelButtonTextAttributes: [String:Any] = [NSForegroundColorAttributeName:defaultTextForegroundColor]
+    public var cancelButtonTextAttributes: [NSAttributedStringKey : Any] = [.foregroundColor : defaultTextForegroundColor]
 
     /// The left accessory view of the searchbar. For searchbars there is typically a search glass.
     public var leftView: UIView? = nil

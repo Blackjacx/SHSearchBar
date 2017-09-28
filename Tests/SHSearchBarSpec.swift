@@ -17,10 +17,10 @@ func expectedDefaultConfig() -> SHSearchBarConfig {
     var config = SHSearchBarConfig()
     config.animationDuration = 0.25
     config.rasterSize = 11.0
-    config.textAttributes = [NSForegroundColorAttributeName:SHSearchBarConfig.defaultTextForegroundColor]
+    config.textAttributes = [.foregroundColor : SHSearchBarConfig.defaultTextForegroundColor]
     config.textContentType = nil
     config.cancelButtonTitle = NSLocalizedString("sb.general.cancel", comment: "")
-    config.cancelButtonTextAttributes = [NSForegroundColorAttributeName:SHSearchBarConfig.defaultTextForegroundColor]
+    config.cancelButtonTextAttributes = [.foregroundColor:SHSearchBarConfig.defaultTextForegroundColor]
     config.leftView = nil
     config.leftViewMode = .never
     config.rightView = nil
@@ -36,7 +36,7 @@ class SHSearchBarSpec: QuickSpec {
         let config: SHSearchBarConfig = {
             var config = SHSearchBarConfig()
             config.cancelButtonTitle = "Abortar"
-            config.cancelButtonTextAttributes = [NSForegroundColorAttributeName:UIColor.red]
+            config.cancelButtonTextAttributes = [.foregroundColor:UIColor.red]
             config.textContentType = UITextContentType.fullStreetAddress.rawValue
             return config
         }()
@@ -72,14 +72,14 @@ class SHSearchBarSpec: QuickSpec {
 
                 context("and textColor is set") {
                     var config = SHSearchBarConfig()
-                    config.textAttributes = [NSForegroundColorAttributeName:UIColor.black]
+                    config.textAttributes = [.foregroundColor:UIColor.black]
                     itBehavesLike(SharedConfiguration.searchBar) { [SharedConfiguration.ContextKey.searchbarConfig: config,
                                                                     SharedConfiguration.ContextKey.isActive: isActive] }
                 }
 
                 context("and textBackgroundColor is set") {
                     var config = SHSearchBarConfig()
-                    config.textAttributes = [NSBackgroundColorAttributeName:UIColor.red]
+                    config.textAttributes = [.backgroundColor:UIColor.red]
                     itBehavesLike(SharedConfiguration.searchBar) { [SharedConfiguration.ContextKey.searchbarConfig: config,
                                                                     SharedConfiguration.ContextKey.isActive: isActive] }
                 }
@@ -93,7 +93,7 @@ class SHSearchBarSpec: QuickSpec {
 
                 context("and cancelButtonTextColor is set") {
                     var config = SHSearchBarConfig()
-                    config.cancelButtonTextAttributes = [NSForegroundColorAttributeName:UIColor.purple]
+                    config.cancelButtonTextAttributes = [.foregroundColor:UIColor.purple]
                     itBehavesLike(SharedConfiguration.searchBar) { [SharedConfiguration.ContextKey.searchbarConfig: config,
                                                                     SharedConfiguration.ContextKey.isActive: isActive] }
                 }
@@ -166,14 +166,14 @@ class SHSearchBarSpec: QuickSpec {
 
                 context("and textColor is set") {
                     var config = SHSearchBarConfig()
-                    config.textAttributes = [NSForegroundColorAttributeName:UIColor.black]
+                    config.textAttributes = [.foregroundColor:UIColor.black]
                     itBehavesLike(SharedConfiguration.searchBar) { [SharedConfiguration.ContextKey.searchbarConfig: config,
                                                                     SharedConfiguration.ContextKey.isActive: isActive] }
                 }
 
                 context("and textBackgroundColor is set") {
                     var config = SHSearchBarConfig()
-                    config.textAttributes = [NSBackgroundColorAttributeName:UIColor.red]
+                    config.textAttributes = [.backgroundColor:UIColor.red]
                     itBehavesLike(SharedConfiguration.searchBar) { [SharedConfiguration.ContextKey.searchbarConfig: config,
                                                                     SharedConfiguration.ContextKey.isActive: isActive] }
                 }
@@ -187,7 +187,7 @@ class SHSearchBarSpec: QuickSpec {
 
                 context("and cancelButtonTextColor is set") {
                     var config = SHSearchBarConfig()
-                    config.cancelButtonTextAttributes = [NSForegroundColorAttributeName:UIColor.purple]
+                    config.cancelButtonTextAttributes = [.foregroundColor:UIColor.purple]
                     itBehavesLike(SharedConfiguration.searchBar) { [SharedConfiguration.ContextKey.searchbarConfig: config,
                                                                     SharedConfiguration.ContextKey.isActive: isActive] }
                 }
@@ -463,7 +463,6 @@ class SharedConfiguration: QuickConfiguration {
     override class func configure(_ configuration: Configuration) {
         sharedExamples(SharedConfiguration.searchBar) { (sharedExampleContext: @escaping SharedExampleContext) in
             var superview: UIView!
-            var config: SHSearchBarConfig!
             var searchbar: SHSearchBarMock!
             var delegate: SearchBarConcreteDelegate!
 
@@ -487,8 +486,6 @@ class SharedConfiguration: QuickConfiguration {
                     }
                     return
                 }
-
-                config = unwrappedConfig
 
                 if let unwrappedSearchBar = sharedExampleContext()[SharedConfiguration.ContextKey.searchbar] as? SHSearchBarMock {
                     searchbar = unwrappedSearchBar
@@ -629,24 +626,24 @@ class SharedConfiguration: QuickConfiguration {
 
             it("sets the correct text color") {
                 let color = searchbar.textField.textColor
-                let expectedTextColor = searchbar.config.textAttributes[NSForegroundColorAttributeName] as? UIColor ?? SHSearchBarConfig.defaultTextForegroundColor
+                let expectedTextColor = searchbar.config.textAttributes[.foregroundColor] as? UIColor ?? SHSearchBarConfig.defaultTextForegroundColor
                 expect(color) == (searchbar.isActive ? expectedTextColor : expectedTextColor.withAlphaComponent(0.5))
             }
 
             it("sets the correct tint color") {
                 let color = searchbar.textField.tintColor
-                let expectedTextColor = searchbar.config.textAttributes[NSForegroundColorAttributeName] as? UIColor ?? SHSearchBarConfig.defaultTextForegroundColor
+                let expectedTextColor = searchbar.config.textAttributes[.foregroundColor] as? UIColor ?? SHSearchBarConfig.defaultTextForegroundColor
                 expect(color) == (searchbar.isActive ? expectedTextColor : expectedTextColor.withAlphaComponent(0.5))
             }
 
             it("sets the correct textAttributes") {
                 let attributes = searchbar.textField.defaultTextAttributes
                 var expected = searchbar.config.textAttributes
-                let expectedTextColor = expected[NSForegroundColorAttributeName] as? UIColor
-                expected[NSForegroundColorAttributeName] = searchbar.isActive ? expectedTextColor : expectedTextColor?.withAlphaComponent(0.5)
+                let expectedTextColor = expected[.foregroundColor] as? UIColor
+                expected[.foregroundColor] = searchbar.isActive ? expectedTextColor : expectedTextColor?.withAlphaComponent(0.5)
 
                 for key in expected.keys {
-                    guard let value = attributes[key] as? UIColor, let expectedValue = expected[key] as? UIColor else {
+                    guard let value = attributes[key.rawValue] as? UIColor, let expectedValue = expected[key] as? UIColor else {
                         XCTFail("Value or expected value not found for key \(key)")
                         return
                     }
@@ -668,8 +665,8 @@ class SharedConfiguration: QuickConfiguration {
             }
             it("sets the correct cancel button title highlighted mode") {
                 var highlightedAttributes = searchbar.config.cancelButtonTextAttributes
-                let highlightedColor = highlightedAttributes[NSForegroundColorAttributeName] as? UIColor ?? SHSearchBarConfig.defaultTextForegroundColor
-                highlightedAttributes[NSForegroundColorAttributeName] = highlightedColor.withAlphaComponent(0.75)
+                let highlightedColor = highlightedAttributes[.foregroundColor] as? UIColor ?? SHSearchBarConfig.defaultTextForegroundColor
+                highlightedAttributes[.foregroundColor] = highlightedColor.withAlphaComponent(0.75)
                 let expectedTitle = NSAttributedString(string: searchbar.config.cancelButtonTitle, attributes: highlightedAttributes)
                 expect(searchbar.cancelButton.attributedTitle(for: .highlighted)) == expectedTitle
             }

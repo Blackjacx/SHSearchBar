@@ -26,7 +26,7 @@ Since I use a UITextField these restrictions do not apply.
 
 ## Installation
 
-SHSearchBar is compatible with `iOS 8` or higher and builds with `Xcode 8` and `Swift 3` syntax. It is available through [CocoaPods](http://cocoapods.org). To install it, simply add the following line to your Podfile:
+SHSearchBar is compatible with `iOS 8` or higher and builds with `Xcode 9` and `Swift 4` syntax. It is available through [CocoaPods](http://cocoapods.org). To install it, simply add the following line to your Podfile:
 
 ```ruby
 pod "SHSearchBar"

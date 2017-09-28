@@ -12,9 +12,9 @@ func nonDefaultSearchbarConfig() -> SHSearchBarConfig {
     var config = SHSearchBarConfig()
     config.rasterSize = 15.0
     config.animationDuration = 10.0
-    config.cancelButtonTextAttributes = [NSForegroundColorAttributeName:UIColor.orange]
+    config.cancelButtonTextAttributes = [.foregroundColor : UIColor.orange]
     config.cancelButtonTitle = "foo bar"
-    config.textAttributes = [NSForegroundColorAttributeName:UIColor.brown, NSBackgroundColorAttributeName:UIColor.gray]
+    config.textAttributes = [.foregroundColor : UIColor.brown, .backgroundColor : UIColor.gray]
     return config
 }
 
