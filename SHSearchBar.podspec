@@ -13,5 +13,5 @@ The clean and shiny search bar that does what UISearchBar does only with dirty h
   
   s.ios.deployment_target = '8.0'
 
-  s.source_files = 'Source/**/*'
+  s.source_files = 'Source/*.swift'
 end
