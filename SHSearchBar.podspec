@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'SHSearchBar'
-  s.version          = '1.2.0'
+  s.version          = '1.2.1'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.summary          = 'The search bar that does not suck.'
   s.description      = <<-DESC
@@ -13,5 +13,5 @@ The clean and shiny search bar that does what UISearchBar does only with dirty h
   
   s.ios.deployment_target = '8.0'
 
-  s.source_files = 'Source/**/*'
+  s.source_files = 'Source/*.swift'
 end
