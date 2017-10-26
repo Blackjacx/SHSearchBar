@@ -1,6 +1,8 @@
 # Change Log
 
 ## [Unreleased]
+### Changed
+* [#28](https://github.com/Blackjacx/SHSearchBar/pull/28): Make it possible to avoid internal cancel button - [@blackjacx](https://github.com/blackjacx).
 
 ## [1.2.1] - 2017-10-16
 ### Changed

@@ -13,7 +13,7 @@ public struct SHSearchBarConfig {
     public var animationDuration: TimeInterval = 0.25 // good value
 
     /// The width and height for one square of the layout raster. All sizes, margins, distances, etc. are calculated as multiples of this value.
-    public var rasterSize: CGFloat = 11.0 // Apples default
+    public var rasterSize: CGFloat = 11.0
 
     /// The attributes to format the searchbars text.
     public var textAttributes: [NSAttributedStringKey : Any] = [.foregroundColor : defaultTextForegroundColor]
@@ -29,6 +29,9 @@ public struct SHSearchBarConfig {
 
     /// The textContentType property is to provide the keyboard with extra information about the semantic intent of the text document.
     public var textContentType: String? = nil
+
+    /// Controls the visibility of the cancel button
+    public var useCancelButton: Bool = true
 
     /// The title of the cancel button.
     public var cancelButtonTitle: String = NSLocalizedString("sb.general.cancel", comment: "")

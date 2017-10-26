@@ -3,3 +3,4 @@
 "sbe.exampleText.simple" = "テキストの例";
 "sbe.exampleText.withLeftView" = "例左ビュー";
 "sbe.exampleText.centered" = "中央揃えのテキストの例";
+"sbe.exampleText.noCancelButton" = "キャンセルボタンのない例";

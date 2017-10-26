@@ -130,56 +130,30 @@ public class SHSearchBar: UIView, SHSearchBarDelegate {
         bgToParentConstraint?.isActive = false
         bgToCancelButtonConstraint?.isActive = false
 
-        if #available(iOS 9.0, *) {
-            if isInitialUpdate {
-                let constraints = [
-                    backgroundView.leftAnchor.constraint(equalTo: leftAnchor),
-                    backgroundView.topAnchor.constraint(equalTo: topAnchor),
-                    backgroundView.bottomAnchor.constraint(equalTo: bottomAnchor),
+        if isInitialUpdate {
+            let constraints = [
+                backgroundView.leadingAnchor.constraint(equalTo: leadingAnchor),
+                backgroundView.topAnchor.constraint(equalTo: topAnchor),
+                backgroundView.bottomAnchor.constraint(equalTo: bottomAnchor),
 
-                    textField.leftAnchor.constraint(equalTo: backgroundView.leftAnchor),
-                    textField.rightAnchor.constraint(equalTo: backgroundView.rightAnchor),
-                    textField.topAnchor.constraint(equalTo: backgroundView.topAnchor),
-                    textField.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor),
+                textField.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor),
+                textField.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor),
+                textField.topAnchor.constraint(equalTo: backgroundView.topAnchor),
+                textField.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor),
 
-                    cancelButton.rightAnchor.constraint(equalTo: rightAnchor),
-                    cancelButton.topAnchor.constraint(equalTo: topAnchor),
-                    cancelButton.bottomAnchor.constraint(equalTo: bottomAnchor),
-                    ]
-                NSLayoutConstraint.activate(constraints)
+                cancelButton.trailingAnchor.constraint(equalTo: trailingAnchor),
+                cancelButton.topAnchor.constraint(equalTo: topAnchor),
+                cancelButton.bottomAnchor.constraint(equalTo: bottomAnchor),
+            ]
+            NSLayoutConstraint.activate(constraints)
 
-                bgToParentConstraint = backgroundView.rightAnchor.constraint(equalTo: rightAnchor)
-                bgToCancelButtonConstraint = backgroundView.rightAnchor.constraint(equalTo: cancelButton.leftAnchor, constant: -config.rasterSize)
-            }
-
-        } else {
-            if isInitialUpdate {
-                let views = ["text":textField, "bg":backgroundView, "cancel":cancelButton]
-                let metrics = ["margin":config.rasterSize]
-
-                let formatList: [String] = [
-                    // Background
-                    "H:|[bg]",
-                    "V:|[bg]|",
-                    // Text field
-                    "H:|[text]|",
-                    "V:|[text]|",
-                    // Cancel Button
-                    "H:[cancel]|",
-                    "V:|[cancel]|"
-                ]
-
-                for format in formatList {
-                    addConstraints(NSLayoutConstraint.constraints(withVisualFormat: format, options: [], metrics: metrics, views: views))
-                }
-                bgToParentConstraint = NSLayoutConstraint(item: backgroundView, attribute: .trailing, relatedBy: .equal, toItem: self, attribute: .trailing, multiplier: 1, constant: 0)
-                bgToCancelButtonConstraint = NSLayoutConstraint(item: backgroundView, attribute: .trailing, relatedBy: .equal, toItem: cancelButton, attribute: .leading, multiplier: 1, constant: -config.rasterSize)
-            }
+            bgToParentConstraint = backgroundView.trailingAnchor.constraint(equalTo: trailingAnchor)
+            bgToCancelButtonConstraint = backgroundView.trailingAnchor.constraint(equalTo: cancelButton.leadingAnchor, constant: -config.rasterSize)
         }
 
         bgToCancelButtonConstraint.constant = -config.rasterSize
 
-        if isTextFieldInEditMode && !isInitialUpdate {
+        if isTextFieldInEditMode && !isInitialUpdate && config.useCancelButton {
             bgToCancelButtonConstraint.isActive = true
         } else {
             bgToParentConstraint.isActive = true
@@ -281,8 +255,9 @@ public class SHSearchBar: UIView, SHSearchBarDelegate {
 
     
     // MARK: - Cancel Button Management
-    
-    @objc func pressedCancelButton(_ sender: AnyObject) {
+
+    public func cancelSearch() {
+
         let shouldCancel = delegate?.searchBarShouldCancel(self) ?? searchBarShouldCancel(self)
         if shouldCancel {
             resetTextField()
@@ -290,9 +265,15 @@ public class SHSearchBar: UIView, SHSearchBarDelegate {
         }
     }
 
+    @objc func pressedCancelButton(_ sender: AnyObject) {
+
+        cancelSearch()
+    }
+
     func updateCancelButtonVisibility(makeVisible show: Bool) {
+
         // This 'complex' if-else avoids constraint warnings in the console
-        if show {
+        if show && config.useCancelButton {
             bgToParentConstraint.isActive = false
             bgToCancelButtonConstraint.isActive = true
         } else {
@@ -300,7 +281,7 @@ public class SHSearchBar: UIView, SHSearchBarDelegate {
             bgToParentConstraint.isActive = true
         }
 
-        UIView.animate(withDuration: config.animationDuration, delay: 0, options: UIViewAnimationOptions(), animations: {
+        UIView.animate(withDuration: config.animationDuration, delay: 0, options: [], animations: {
             self.layoutIfNeeded()
             self.cancelButton.alpha = show ? 1 : 0
         }, completion: nil)
