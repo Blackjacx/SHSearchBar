@@ -503,8 +503,8 @@ class SharedConfiguration: QuickConfiguration {
                 superview.addSubview(searchbar)
 
                 let constraints = [
-                    searchbar.leftAnchor.constraint(equalTo: superview.leftAnchor),
-                    searchbar.rightAnchor.constraint(equalTo: superview.rightAnchor),
+                    searchbar.leadingAnchor.constraint(equalTo: superview.leadingAnchor),
+                    searchbar.trailingAnchor.constraint(equalTo: superview.trailingAnchor),
                     searchbar.topAnchor.constraint(equalTo: superview.topAnchor),
                     searchbar.bottomAnchor.constraint(equalTo: superview.bottomAnchor),
                 ]
@@ -586,14 +586,14 @@ class SharedConfiguration: QuickConfiguration {
                 expect(searchbar.cancelButton.frame) == CGRect(x: searchbar.frame.width-cancelButtonWidth, y: 0, width: cancelButtonWidth, height: searchbar.frame.height)
             }
             it("sets BackgroundImageView-To-Cancelbutton-Constraint correctly") {
-                expect(searchbar.bgToCancelButtonConstraint.firstAnchor) == searchbar.backgroundView.rightAnchor
-                expect(searchbar.bgToCancelButtonConstraint.secondAnchor) == searchbar.cancelButton.leftAnchor
+                expect(searchbar.bgToCancelButtonConstraint.firstAnchor) == searchbar.backgroundView.trailingAnchor
+                expect(searchbar.bgToCancelButtonConstraint.secondAnchor) == searchbar.cancelButton.leadingAnchor
                 expect(searchbar.bgToCancelButtonConstraint.constant) == -searchbar.config.rasterSize
                 expect(searchbar.bgToCancelButtonConstraint.isActive) == false
             }
             it("sets BackgroundImageView-To-Searchbar-Constraint correctly") {
-                expect(searchbar.bgToParentConstraint.firstAnchor) == searchbar.backgroundView.rightAnchor
-                expect(searchbar.bgToParentConstraint.secondAnchor) == searchbar.rightAnchor
+                expect(searchbar.bgToParentConstraint.firstAnchor) == searchbar.backgroundView.trailingAnchor
+                expect(searchbar.bgToParentConstraint.secondAnchor) == searchbar.trailingAnchor
                 expect(searchbar.bgToParentConstraint.constant) == 0
                 expect(searchbar.bgToParentConstraint.isActive) == true
             }

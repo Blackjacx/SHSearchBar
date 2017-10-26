@@ -11,7 +11,7 @@ The clean and shiny search bar that does what UISearchBar does only with dirty h
   s.author           = { 'Stefan Herold' => 'stefan.herold@gmail.com' }
   s.source           = { :git => 'https://github.com/Blackjacx/SHSearchBar.git', :tag => s.version.to_s }
   
-  s.ios.deployment_target = '8.0'
+  s.ios.deployment_target = '9.0'
 
   s.source_files = 'Source/*.swift'
 end

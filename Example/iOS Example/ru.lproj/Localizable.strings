@@ -3,3 +3,4 @@
 "sbe.exampleText.simple" = "Пример с текстом";
 "sbe.exampleText.withLeftView" = "Пример С левой точки зрения";
 "sbe.exampleText.centered" = "Пример с центрированным текстом";
+"sbe.exampleText.noCancelButton" = "Пример без кнопки отмены";

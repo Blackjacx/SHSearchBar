@@ -3,3 +3,4 @@
 "sbe.exampleText.simple" = "Ejemplo con texto";
 "sbe.exampleText.withLeftView" = "Ejemplo Con vista izquierda";
 "sbe.exampleText.centered" = "Ejemplo con texto centrado";
+"sbe.exampleText.noCancelButton" = "Ejemplo sin botón cancelar";
