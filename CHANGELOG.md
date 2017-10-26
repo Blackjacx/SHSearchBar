@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+## [1.3.0] - 2017-10-26
+### Changed
+* [#28](https://github.com/Blackjacx/SHSearchBar/pull/28): Make it possible to avoid internal cancel button - [@blackjacx](https://github.com/blackjacx).
+
 ## [1.2.1] - 2017-10-16
 ### Changed
 * Update podspec by removing non-source from sources. - [@blackjacx](https://github.com/blackjacx).
