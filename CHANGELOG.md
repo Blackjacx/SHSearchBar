@@ -1,6 +1,8 @@
 # Change Log
 
 ## [Unreleased]
+### Fixed
+* [#29](https://github.com/Blackjacx/SHSearchBar/pull/29): Italian localization - [@CeceXX](https://github.com/CeceXX).
 
 ## [1.3.0] - 2017-10-26
 ### Changed
