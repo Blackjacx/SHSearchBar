@@ -1,6 +1,8 @@
 # Change Log
 
 ## [Unreleased]
+
+## [1.4.0] - 2017-11-22
 ### Changed
 * [#31](https://github.com/Blackjacx/SHSearchBar/pull/31): Refactor Text Did Change Delegation - [@blackjacx](https://github.com/blackjacx).
 
