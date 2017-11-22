@@ -2,6 +2,13 @@
 
 ## [Unreleased]
 
+## [1.4.0] - 2017-11-22
+### Changed
+* [#31](https://github.com/Blackjacx/SHSearchBar/pull/31): Refactor Text Did Change Delegation - [@blackjacx](https://github.com/blackjacx).
+
+### Fixed
+* [#29](https://github.com/Blackjacx/SHSearchBar/pull/29): Italian localization - [@CeceXX](https://github.com/CeceXX).
+
 ## [1.3.0] - 2017-10-26
 ### Changed
 * [#28](https://github.com/Blackjacx/SHSearchBar/pull/28): Make it possible to avoid internal cancel button - [@blackjacx](https://github.com/blackjacx).
