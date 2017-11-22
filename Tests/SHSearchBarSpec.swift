@@ -272,16 +272,15 @@ class SHSearchBarSpec: QuickSpec {
                     expect(result) == true
                 }
                 it("calls the textDidChange method when text changes") {
-                    let replacement = (searchbar.textField.text ?? "") + " appended text"
-                    expect(alwaysTrueDelegate.hasTextDidChangeBeenCalled).to(beFalse())
-                    _ = searchbar.textField(searchbar.textField, shouldChangeCharactersIn: NSMakeRange(0, 0), replacementString: replacement)
-                    expect(alwaysTrueDelegate.hasTextDidChangeBeenCalled).to(beTrue())
+                    expect(alwaysTrueDelegate.hasTextDidChangeBeenCalled) == false
+                    searchbar.didChangeTextField(UITextField())
+                    expect(alwaysTrueDelegate.hasTextDidChangeBeenCalled) == true
                 }
                 it("does NOT call the textDidChange method when new text is set programmatically") {
                     let newText = (searchbar.textField.text ?? "") + " appended text"
-                    expect(alwaysTrueDelegate.hasTextDidChangeBeenCalled).to(beFalse())
+                    expect(alwaysTrueDelegate.hasTextDidChangeBeenCalled) == false
                     searchbar.textField.text = newText
-                    expect(alwaysTrueDelegate.hasTextDidChangeBeenCalled).to(beFalse())
+                    expect(alwaysTrueDelegate.hasTextDidChangeBeenCalled) == false
                 }
                 it("does NOT call the textDidChange method when text actually not changes") {
                     expect(alwaysTrueDelegate.hasTextDidChangeBeenCalled).to(beFalse())

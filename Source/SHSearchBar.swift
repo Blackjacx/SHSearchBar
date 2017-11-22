@@ -108,6 +108,7 @@ public class SHSearchBar: UIView, SHSearchBarDelegate {
         textField.spellCheckingType = .no
         textField.adjustsFontSizeToFitWidth = false
         textField.clipsToBounds = true
+        textField.addTarget(self, action: #selector(didChangeTextField(_:)), for: .editingChanged)
     }
 
     func setupCancelButton(withConfig config: SHSearchBarConfig) {
@@ -116,7 +117,7 @@ public class SHSearchBar: UIView, SHSearchBarDelegate {
         cancelButton.setContentHuggingPriority(.required, for: .horizontal)
         cancelButton.reversesTitleShadowWhenHighlighted = true
         cancelButton.adjustsImageWhenHighlighted = true
-        cancelButton.addTarget(self, action: #selector(SHSearchBar.pressedCancelButton(_:)), for: .touchUpInside)
+        cancelButton.addTarget(self, action: #selector(pressedCancelButton(_:)), for: .touchUpInside)
     }
     
     required public init?(coder aDecoder: NSCoder) {
@@ -286,6 +287,14 @@ public class SHSearchBar: UIView, SHSearchBarDelegate {
             self.cancelButton.alpha = show ? 1 : 0
         }, completion: nil)
     }
+
+    // MARK: - Handle Text Changes
+
+    @objc func didChangeTextField(_ textField: UITextField) {
+
+        let newText = textField.text ?? ""
+        delegate?.searchBar(self, textDidChange: newText)
+    }
 }
 
 // MARK: - UITextFieldDelegate
@@ -319,13 +328,6 @@ extension SHSearchBar: UITextFieldDelegate {
 
     public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let shouldChange = delegate?.searchBar(self, shouldChangeCharactersIn: range, replacementString: string) ?? searchBar(self, shouldChangeCharactersIn: range, replacementString: string)
-        if shouldChange {
-            let currentText = NSString(string: textField.text ?? "")
-            let newText: String = currentText.replacingCharacters(in: range, with: string)
-            if !currentText.isEqual(to: newText) {
-                delegate?.searchBar(self, textDidChange: newText)
-            }
-        }
         return shouldChange
     }
 
