@@ -68,7 +68,7 @@ The repo includes an example project. It shows shows different use cases of the 
 
 <p align="center">
 <caption align="center">You can use the search bar inside a UINavigationBar:</caption><br />
-<img src="./assets/example_06.png" alt="UINavigationBar Support">
+<img src="./assets/example_07.png" alt="UINavigationBar Support">
 </p>
 
 ## Author
