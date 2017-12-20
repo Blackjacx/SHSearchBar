@@ -66,6 +66,11 @@ The repo includes an example project. It shows shows different use cases of the 
 <img src="./assets/example_05.png" alt="UITextContentMode Support">
 </p>
 
+<p align="center">
+<caption align="center">You can use the search bar inside a UINavigationBar:</caption><br />
+<img src="./assets/example_06.png" alt="UINavigationBar Support">
+</p>
+
 ## Author
 
 Stefan Herold, stefan.herold@gmail.com
