@@ -1,6 +1,7 @@
 # Change Log
 
 ## [Unreleased]
+* Add example for search bar in UINavigationBar - [@blackjacx](https://github.com/blackjacx).
 
 ## [1.4.0] - 2017-11-22
 ### Changed
