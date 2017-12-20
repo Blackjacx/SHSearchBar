@@ -13,6 +13,8 @@ import SHSearchBar
 
 class ViewController: UIViewController, SHSearchBarDelegate {
 
+    var rasterSize: CGFloat = 11.0
+
     var searchBar1: SHSearchBar!
     var searchBar2: SHSearchBar!
     var searchBar3: SHSearchBar!
@@ -20,8 +22,9 @@ class ViewController: UIViewController, SHSearchBarDelegate {
     var noCancelButtonSearchbar: SHSearchBar!
     var addressSearchbarTop: SHSearchBar!
     var addressSearchbarBottom: SHSearchBar!
+    var navigationSearchBar: SHSearchBar!
 
-    var viewConstraints: [NSLayoutConstraint] = []
+    var viewConstraints: [NSLayoutConstraint]?
 
     let addressFormatter: CNPostalAddressFormatter = {
         let formatter = CNPostalAddressFormatter()
@@ -31,7 +34,6 @@ class ViewController: UIViewController, SHSearchBarDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let rasterSize: CGFloat = 11.0
         let searchGlassIconTemplate = UIImage(named: "icon-search")!.withRenderingMode(.alwaysTemplate)
 
         view.backgroundColor = UIColor.white
@@ -81,70 +83,93 @@ class ViewController: UIViewController, SHSearchBarDelegate {
         addressSearchbarBottom.updateBackgroundImage(withRadius: 6, corners: [.bottomLeft, .bottomRight], color: UIColor.white)
         view.addSubview(addressSearchbarBottom)
 
-        setupViewConstraints(usingMargin: rasterSize)
+        // we need to set the title view to nil and get always the right frame
+        navigationItem.titleView = nil
+
+        // update properties of your custom title view
+        navigationSearchBar = defaultSearchBar(withRasterSize: rasterSize,
+                                               leftView: imageViewWithIcon(searchGlassIconTemplate, rasterSize: rasterSize),
+                                               rightView: nil,
+                                               delegate: self)
+
+        let titleView = SearchbarTitleView(searchbar: navigationSearchBar)
+        navigationItem.titleView = titleView
+
+        setupLayoutConstraints()
 
         let allSearchBars: [SHSearchBar] = [searchBar1, searchBar2, searchBar3, searchBar4, addressSearchbarTop, addressSearchbarBottom]
 
         // Update the searchbar config
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) { [weak self] in
-            let rasterSize: CGFloat = 22.0
+            let raster: CGFloat = 22.0
+            self?.rasterSize = raster
+
             for bar in allSearchBars {
                 var config = bar.config
                 config.cancelButtonTextAttributes = [.foregroundColor : UIColor.red]
-                config.rasterSize = rasterSize
+                config.rasterSize = raster
                 bar.config = config
             }
-            self?.setupViewConstraints(usingMargin: rasterSize)
+            self?.setupLayoutConstraints()
         }
     }
-    
-    fileprivate func setupViewConstraints(usingMargin margin: CGFloat) {
+}
+
+extension ViewController: Constrainable {
+
+    func setupLayoutConstraints() {
         let searchbarHeight: CGFloat = 44.0
 
         // Deactivate old constraints
-        for constraint in viewConstraints {
-            constraint.isActive = false
-        }
+        viewConstraints?.forEach { $0.isActive = false }
 
-        viewConstraints = [
-            topLayoutGuide.bottomAnchor.constraint(equalTo: searchBar1.topAnchor, constant: -margin),
-
-            searchBar1.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: margin),
-            searchBar1.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -margin),
-            searchBar1.bottomAnchor.constraint(equalTo: searchBar2.topAnchor, constant: -margin),
+        let constraints = [
+            searchBar1.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor, constant: rasterSize),
+            searchBar1.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor, constant: rasterSize),
+            searchBar1.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor, constant: -rasterSize),
             searchBar1.heightAnchor.constraint(equalToConstant: searchbarHeight),
 
-            searchBar2.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: margin),
-            searchBar2.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -margin),
-            searchBar2.bottomAnchor.constraint(equalTo: searchBar3.topAnchor, constant: -margin),
+            searchBar2.topAnchor.constraint(equalTo: searchBar1.bottomAnchor, constant: rasterSize),
+            searchBar2.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor, constant: rasterSize),
+            searchBar2.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor, constant: -rasterSize),
             searchBar2.heightAnchor.constraint(equalToConstant: searchbarHeight),
 
-            searchBar3.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: margin),
-            searchBar3.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -margin),
-            searchBar3.bottomAnchor.constraint(equalTo: searchBar4.topAnchor, constant: -margin),
+            searchBar3.topAnchor.constraint(equalTo: searchBar2.bottomAnchor, constant: rasterSize),
+            searchBar3.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor, constant: rasterSize),
+            searchBar3.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor, constant: -rasterSize),
             searchBar3.heightAnchor.constraint(equalToConstant: searchbarHeight),
 
-            searchBar4.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: margin),
-            searchBar4.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -margin),
-            searchBar4.bottomAnchor.constraint(equalTo: noCancelButtonSearchbar.topAnchor, constant: -margin),
+            searchBar4.topAnchor.constraint(equalTo: searchBar3.bottomAnchor, constant: rasterSize),
+            searchBar4.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor, constant: rasterSize),
+            searchBar4.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor, constant: -rasterSize),
             searchBar4.heightAnchor.constraint(equalToConstant: searchbarHeight),
 
-            noCancelButtonSearchbar.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: margin),
-            noCancelButtonSearchbar.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -margin),
-            noCancelButtonSearchbar.bottomAnchor.constraint(equalTo: addressSearchbarTop.topAnchor, constant: -margin),
+            noCancelButtonSearchbar.topAnchor.constraint(equalTo: searchBar4.bottomAnchor, constant: rasterSize),
+            noCancelButtonSearchbar.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor, constant: rasterSize),
+            noCancelButtonSearchbar.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor, constant: -rasterSize),
             noCancelButtonSearchbar.heightAnchor.constraint(equalToConstant: searchbarHeight),
 
-            addressSearchbarTop.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: margin),
-            addressSearchbarTop.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -margin),
-            addressSearchbarTop.bottomAnchor.constraint(equalTo: addressSearchbarBottom.topAnchor, constant: -1.0),
+            addressSearchbarTop.topAnchor.constraint(equalTo: noCancelButtonSearchbar.bottomAnchor, constant: rasterSize),
+            addressSearchbarTop.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor, constant: rasterSize),
+            addressSearchbarTop.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor, constant: -rasterSize),
             addressSearchbarTop.heightAnchor.constraint(equalToConstant: searchbarHeight),
 
-            addressSearchbarBottom.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: margin),
-            addressSearchbarBottom.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -margin),
-            addressSearchbarBottom.heightAnchor.constraint(equalToConstant: searchbarHeight),
+            addressSearchbarBottom.topAnchor.constraint(equalTo: addressSearchbarTop.bottomAnchor, constant: 1.0),
+            addressSearchbarBottom.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor, constant: rasterSize),
+            addressSearchbarBottom.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor, constant: -rasterSize),
+            addressSearchbarBottom.heightAnchor.constraint(equalToConstant: searchbarHeight)
         ]
-        NSLayoutConstraint.activate(viewConstraints)
+
+        NSLayoutConstraint.activate(constraints)
+
+        if viewConstraints != nil {
+            UIView.animate(withDuration: 0.25) {
+                self.view.layoutIfNeeded()
+            }
+        }
+
+        viewConstraints = constraints
     }
 }
 

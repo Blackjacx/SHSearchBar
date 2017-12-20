@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B902FD301FEAA49900506CA2 /* SearchBarTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B902FD2F1FEAA49900506CA2 /* SearchBarTitleView.swift */; };
+		B902FD321FEAA51000506CA2 /* Constrainable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B902FD311FEAA51000506CA2 /* Constrainable.swift */; };
 		B91438E11D6D9A1900182124 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B91438DF1D6D9A1900182124 /* Main.storyboard */; };
 		B91438E31D6D9A1900182124 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B91438E21D6D9A1900182124 /* Assets.xcassets */; };
 		B91438E61D6D9A1900182124 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B91438E41D6D9A1900182124 /* LaunchScreen.storyboard */; };
@@ -31,6 +33,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		B902FD2F1FEAA49900506CA2 /* SearchBarTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarTitleView.swift; sourceTree = "<group>"; };
+		B902FD311FEAA51000506CA2 /* Constrainable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constrainable.swift; sourceTree = "<group>"; };
 		B91438D81D6D9A1900182124 /* iOS Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B91438E01D6D9A1900182124 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B91438E21D6D9A1900182124 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -80,13 +84,15 @@
 		B91438DA1D6D9A1900182124 /* iOS Example */ = {
 			isa = PBXGroup;
 			children = (
-				B967BBE21E12ECF300D98C8E /* Localizable.strings */,
+				B91438E71D6D9A1900182124 /* Info.plist */,
 				B91438ED1D6D9AC400182124 /* AppDelegate.swift */,
+				B902FD311FEAA51000506CA2 /* Constrainable.swift */,
+				B902FD2F1FEAA49900506CA2 /* SearchBarTitleView.swift */,
 				B91438EE1D6D9AC400182124 /* ViewController.swift */,
-				B91438DF1D6D9A1900182124 /* Main.storyboard */,
 				B91438E21D6D9A1900182124 /* Assets.xcassets */,
 				B91438E41D6D9A1900182124 /* LaunchScreen.storyboard */,
-				B91438E71D6D9A1900182124 /* Info.plist */,
+				B967BBE21E12ECF300D98C8E /* Localizable.strings */,
+				B91438DF1D6D9A1900182124 /* Main.storyboard */,
 			);
 			path = "iOS Example";
 			sourceTree = "<group>";
@@ -184,6 +190,8 @@
 			files = (
 				B91438F01D6D9AC400182124 /* ViewController.swift in Sources */,
 				B91438EF1D6D9AC400182124 /* AppDelegate.swift in Sources */,
+				B902FD301FEAA49900506CA2 /* SearchBarTitleView.swift in Sources */,
+				B902FD321FEAA51000506CA2 /* Constrainable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
