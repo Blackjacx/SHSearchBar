@@ -16,6 +16,7 @@
   <a href="https://codecov.io/gh/blackjacx/SHSearchBar"><img alt="Codecov" src="https://codecov.io/gh/blackjacx/SHSearchBar/branch/master/graph/badge.svg"/></a>
   <a href="https://codebeat.co/projects/github-com-blackjacx-shsearchbar"><img alt="Codebeat" src="https://codebeat.co/badges/44539071-5029-4379-9d33-99dd721915c8" /></a>
   <a href="http://cocoadocs.org/docsets/SHSearchBar/"><img alt="Downloads" src="https://img.shields.io/cocoapods/dt/SHSearchBar.svg?maxAge=3600&style=flat" /></a>
+  <a href="https://www.paypal.me/STHEROLD"><img alt="Donate" src="https://img.shields.io/badge/Donate-PayPal-blue.svg"/></a>
 </p>
 
 The clean and shiny search bar that does what UISearchBar does only with dirty hacks. This view is designed to tackle the customization limits of UISearchBar. The difference here is that this class does not inherit UISearchBar but composes a new UIView object by using a UITextField that is much easier to use. These are the limits of the UISearchBar:
