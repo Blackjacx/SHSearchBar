@@ -34,16 +34,11 @@
 
 # This is the minimum version number required. 
 # Update this, if you use features of a newer version.
-fastlane_version "2.45.0"
+fastlane_version "2.81.0"
 
-# default_platform :ios
+default_platform :ios
 
 before_all do
-  # update_fastlane
-  cocoapods(
-    podfile: "Example/Podfile",
-    repo_update: true
-  )
 end
 
 
@@ -118,6 +113,11 @@ lane :test do |options|
   UI.crash!("No framework specified") if framework.nil? || framework.empty?
 
   workspace = "Example/#{framework}.xcworkspace"
+
+  cocoapods(
+    podfile: "Example/Podfile",
+    repo_update: true
+  )
 
   scan(
     workspace: workspace,
