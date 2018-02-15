@@ -69,12 +69,11 @@ desc "Pushes releases to github"
 desc "Commits and pushes changes to remote and tags the release commit"
 lane :release do |options|
 
-  if !options[:framework] || !options[:version]
-    raise "No framework or no version specified".red
-  end
-
   framework = options[:framework]
+  UI.crash!("No framework specified") if framework.nil? || framework.empty?
+
   version = options[:version]
+  UI.crash!("No version specified") if version.nil? || version.empty?
 
   # Ensure the source code is OK and tests are green
   ensure_git_status_clean
@@ -112,12 +111,10 @@ end
 desc "Runs tests using scan"
 lane :test do |options|
 
-  if !options[:framework]
-    raise "No framework specified".red
-  end
-
   framework = options[:framework]
-  workspace = "#{framework}.xcworkspace"
+  UI.crash!("No framework specified") if framework.nil? || framework.empty?
+
+  workspace = "Example/#{framework}.xcworkspace"
 
   scan(
     workspace: workspace,
@@ -135,13 +132,13 @@ end
 desc "Increments CFBundleVersion by one and sets CFBundleShortVersionString"
 private_lane :increment_framework_version do |options|
 
-  if !options[:framework] || !options[:version]
-    raise "No framework or no version specified".red
-  end
-
   framework = options[:framework]
+  UI.crash!("No framework specified") if framework.nil? || framework.empty?
+
   version = options[:version]
-  project = "#{framework}.xcodeproj"
+  UI.crash!("No version specified") if version.nil? || version.empty?
+
+  project = "Example/#{framework}.xcodeproj"
 
   increment_version_number(xcodeproj: project, version_number: version)
   increment_build_number(xcodeproj: project)
@@ -152,16 +149,12 @@ end
 desc "Updates framework podspec version"
 private_lane :update_framework_podspec do |options|
 
-  if !options[:version]
-    raise "No version specified".red
-  end
-
-  if !options[:framework]
-    raise "No framework specified".red
-  end
-
   framework = options[:framework]
+  UI.crash!("No framework specified") if framework.nil? || framework.empty?
+
   version = options[:version]
+  UI.crash!("No version specified") if version.nil? || version.empty?
+
   podspec = "#{framework}.podspec"
 
   version_bump_podspec(path: podspec, version_number: version)
@@ -172,11 +165,9 @@ end
 desc "Pushes framework podspec to Cocoapods specs"
 private_lane :push_framework_podspec do |options|
 
-  if !options[:framework]
-    raise "No framework specified".red
-  end
-  
   framework = options[:framework]
+  UI.crash!("No framework specified") if framework.nil? || framework.empty?
+  
   podspec = "#{framework}.podspec"
 
   pod_push(path: podspec)
@@ -187,15 +178,13 @@ end
 desc "Creates a github release with a git commit changelog"
 private_lane :push_github_release do |options|
 
-  if !options[:framework] || !options[:version]
-    raise "No framework or no version specified".red
-  end
-
   framework = options[:framework]
-  version = options[:version]
+  UI.crash!("No framework specified") if framework.nil? || framework.empty?
 
-  changelog=read_changelog(
-    changelog_path: './CHANGELOG.md',	# Specify path to CHANGELOG.md
+  version = options[:version]
+  UI.crash!("No version specified") if version.nil? || version.empty?
+
+  changelog = read_changelog(
     section_identifier: '[Unreleased]',	# Specify what section to read
     excluded_markdown_elements: []	# Specify which markdown elements should be excluded
   )
@@ -209,7 +198,7 @@ private_lane :push_github_release do |options|
     api_token: ENV["GITHUB_TOKEN"],
     name: version,
     tag_name: version,
-    description: ("#{changelog}" rescue "No changelog provided"),
+    description: (changelog || "No changelog provided"),
     commitish: "master",
     # upload_assets: ["example_integration.ipa", "./pkg/built.gem"],
   )
