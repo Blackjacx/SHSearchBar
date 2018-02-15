@@ -55,29 +55,10 @@ error do |lane, exception|
   notification(message: "#{lane} finished with error #{exception}")
 end
 
+
 ###############################################################################
 #                          PUBLIC SECTION
 ###############################################################################
-
-desc "Runs tests using scan"
-lane :run_framework_tests do |options|
-
-  if !options[:framework]
-    raise "No framework specified".red
-  end
-
-  framework = options[:framework]
-  workspace = "#{framework}.xcworkspace"
-
-  scan(
-    workspace: workspace,
-    scheme: framework,
-    clean: true,
-    devices: ["iPhone SE", "iPhone 8", "iPhone 8 Plus", "iPhone X"]
-  )
-end
-
-
 
 desc "Creates a release branch"
 desc "Runs framework tests"
@@ -86,7 +67,7 @@ desc "Updates podspec file"
 desc "Pushes podspec file to Cocoapods"
 desc "Pushes releases to github"
 desc "Commits and pushes changes to remote and tags the release commit"
-lane :release_to_cocoapods do |options|
+lane :release do |options|
 
   if !options[:framework] || !options[:version]
     raise "No framework or no version specified".red
@@ -100,7 +81,7 @@ lane :release_to_cocoapods do |options|
   ensure_git_branch(branch: "develop")
   git_pull
   pod_lib_lint(allow_warnings: false)
-  run_framework_tests(framework: framework, version: version)
+  test(framework: framework, version: version)
 
   # sh "git flow release start #{version}"
   
@@ -127,6 +108,24 @@ lane :release_to_cocoapods do |options|
   # push_framework_podspec(framework: framework)
 end
 
+
+desc "Runs tests using scan"
+lane :test do |options|
+
+  if !options[:framework]
+    raise "No framework specified".red
+  end
+
+  framework = options[:framework]
+  workspace = "#{framework}.xcworkspace"
+
+  scan(
+    workspace: workspace,
+    scheme: framework,
+    clean: true,
+    devices: ["iPhone SE", "iPhone 8", "iPhone 8 Plus", "iPhone X"]
+  )
+end
 
 
 ###############################################################################
