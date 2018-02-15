@@ -27,14 +27,6 @@ class SearchbarTitleView: UIView {
         fatalError()
     }
 
-    // This is important to make the title view expanding from left to right
-    override var intrinsicContentSize: CGSize {
-        return UILayoutFittingExpandedSize
-    }
-}
-
-extension SearchbarTitleView: Constrainable {
-
     func setupLayoutConstraints() {
 
         let constraints = [
@@ -44,6 +36,11 @@ extension SearchbarTitleView: Constrainable {
             searchbar.bottomAnchor.constraint(equalTo: layoutMarginsGuide.bottomAnchor)
         ]
         NSLayoutConstraint.activate(constraints)
+    }
+    
+    // This is important to make the title view expanding from left to right
+    override var intrinsicContentSize: CGSize {
+        return UILayoutFittingExpandedSize
     }
 }
 

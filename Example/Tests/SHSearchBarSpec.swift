@@ -9,7 +9,8 @@
 import UIKit
 import Quick
 import Nimble
-import SHSearchBar
+
+@testable import SHSearchBar
 
 func expectedDefaultConfig() -> SHSearchBarConfig {
 
@@ -18,7 +19,7 @@ func expectedDefaultConfig() -> SHSearchBarConfig {
     config.rasterSize = 11.0
     config.textAttributes = [.foregroundColor : SHSearchBarConfig.defaultTextForegroundColor]
     config.textContentType = nil
-    config.cancelButtonTitle = NSLocalizedString("sb.general.cancel", comment: "")
+    config.cancelButtonTitle = "sb.general.cancel".localized
     config.cancelButtonTextAttributes = [.foregroundColor:SHSearchBarConfig.defaultTextForegroundColor]
     config.leftView = nil
     config.leftViewMode = .never

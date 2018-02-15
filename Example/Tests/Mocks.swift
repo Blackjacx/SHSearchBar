@@ -8,6 +8,8 @@
 
 import UIKit
 
+@testable import SHSearchBar
+
 func nonDefaultSearchbarConfig() -> SHSearchBarConfig {
     var config = SHSearchBarConfig()
     config.rasterSize = 15.0

@@ -12,7 +12,7 @@ import UIKit
  * Internal UITextField subclass to be able to overwrite the *rect functions. 
  * This makes it possible to exactly control all margins.
  */
-class SHSearchBarTextField: UITextField {
+public class SHSearchBarTextField: UITextField {
 
     /// The SHSearchbarConfig that holds the configured raster size, which is important for rect calculation.
     var config: SHSearchBarConfig {
@@ -36,19 +36,19 @@ class SHSearchBarTextField: UITextField {
      * - parameter coder: A NSCoder instance.
      * - note: This initializer is not implementes and will raise an exception when called.
      */
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
 
     // MARK: - Overrides
 
-    override func textRect(forBounds bounds: CGRect) -> CGRect {
+    override public func textRect(forBounds bounds: CGRect) -> CGRect {
         let rect = super.textRect(forBounds: bounds)
         return rectForBounds(rect, originalBounds: bounds)
     }
 
-    override func editingRect(forBounds bounds: CGRect) -> CGRect {
+    override public func editingRect(forBounds bounds: CGRect) -> CGRect {
         let rect = super.editingRect(forBounds: bounds)
         return rectForBounds(rect, originalBounds: bounds)
     }

@@ -9,7 +9,8 @@
 import UIKit
 import Quick
 import Nimble
-import SHSearchBar
+
+@testable import SHSearchBar
 
 
 class SHSearchBarTextFieldSpec: QuickSpec {
