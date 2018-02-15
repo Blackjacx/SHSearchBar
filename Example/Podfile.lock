@@ -1,0 +1,22 @@
+PODS:
+  - Nimble (7.0.3)
+  - Quick (1.2.0)
+  - SHSearchBar (0.1.0)
+
+DEPENDENCIES:
+  - Nimble (~> 7.0.2)
+  - Quick (~> 1.2.0)
+  - SHSearchBar (from `../`)
+
+EXTERNAL SOURCES:
+  SHSearchBar:
+    :path: ../
+
+SPEC CHECKSUMS:
+  Nimble: 7f5a9c447a33002645a071bddafbfb24ea70e0ac
+  Quick: 58d203b1c5e27fff7229c4c1ae445ad7069a7a08
+  SHSearchBar: 374f71ee5cd1de24c94d376864a44678cf6cd212
+
+PODFILE CHECKSUM: 9ff006dd9e6db52b9b35308ddb930ae227a6256f
+
+COCOAPODS: 1.4.0

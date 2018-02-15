@@ -73,9 +73,7 @@ lane :run_framework_tests do |options|
     workspace: workspace,
     scheme: framework,
     clean: true,
-    devices: ["iPhone 8", "iPhone 8 Plus", "iPhone X"],
-    skip_build: true,
-    output_types: "html"
+    devices: ["iPhone SE", "iPhone 8", "iPhone 8 Plus", "iPhone X"]
   )
 end
 
@@ -102,31 +100,31 @@ lane :release_to_cocoapods do |options|
   ensure_git_branch(branch: "develop")
   git_pull
   pod_lib_lint(allow_warnings: false)
-  # run_framework_tests(framework: framework, version: version)
+  run_framework_tests(framework: framework, version: version)
 
-  sh "git flow release start #{version}"
+  # sh "git flow release start #{version}"
   
   increment_framework_version(framework: framework, version: version)
   update_framework_podspec(framework: framework, version: version)
-  push_github_release(framework: framework, version: version)
+  # push_github_release(framework: framework, version: version)
 
-  sh "git commit -am 'Fastlane: Release on Production #{version}'"
+  # sh "git commit -am 'Fastlane: Release on Production #{version}'"
 
-  # Finish the release branch. The shell may hang here because it: 
-  # 1) promts for a merge message.
-  # 
-  # To get around this do the following:
-  # 1) git config --global core.mergeoptions --no-edit
-  sh "git flow release finish -m 'finished_release_on_production_#{version}' #{version}"   
+  # # Finish the release branch. The shell may hang here because it: 
+  # # 1) promts for a merge message.
+  # # 
+  # # To get around this do the following:
+  # # 1) git config --global core.mergeoptions --no-edit
+  # sh "git flow release finish -m 'finished_release_on_production_#{version}' #{version}"   
 
-  # push to develop + push tags
-  push_to_git_remote(local_branch: "develop", force: true)
+  # # push to develop + push tags
+  # push_to_git_remote(local_branch: "develop", force: true)
 
-  # push to master + push tags
-  push_to_git_remote(local_branch: "master", force: true)
+  # # push to master + push tags
+  # push_to_git_remote(local_branch: "master", force: true)
 
-  # Needs to be done at the end (expects git tag to be available)
-  push_framework_podspec(framework: framework)
+  # # Needs to be done at the end (expects git tag to be available)
+  # push_framework_podspec(framework: framework)
 end
 
 

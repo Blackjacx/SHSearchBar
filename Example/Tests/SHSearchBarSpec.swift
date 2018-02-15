@@ -9,8 +9,7 @@
 import UIKit
 import Quick
 import Nimble
-
-@testable import SHSearchBar
+import SHSearchBar
 
 func expectedDefaultConfig() -> SHSearchBarConfig {
 
