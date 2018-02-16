@@ -80,7 +80,7 @@ lane :release do |options|
   pod_lib_lint(allow_warnings: false)
   test(framework: framework, version: version)
 
-  # sh "git flow release start #{version}"
+  sh "git flow release start #{version}"
   
   increment_framework_version(framework: framework, version: version)
   update_framework_podspec(framework: framework, version: version)
