@@ -11,7 +11,7 @@ public extension String {
 
     private class AFrameworkClass {}
 
-    var localized: String {
+    public var localized: String {
         let appTranslation = NSLocalizedString(self, comment: "")
 
         if appTranslation != self {
