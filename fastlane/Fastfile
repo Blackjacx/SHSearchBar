@@ -121,7 +121,7 @@ lane :test do |options|
 
   scan(
     workspace: workspace,
-    scheme: framework,
+    scheme: "#{framework}-Example",
     clean: true,
     devices: ["iPhone SE", "iPhone 8", "iPhone 8 Plus", "iPhone X"]
   )
