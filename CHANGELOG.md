@@ -1,6 +1,7 @@
 # Change Log
 
 ## [Unreleased]
+* [#33](https://github.com/Blackjacx/SHSearchBar/pull/33): Fix Pod Try To Quick Try Pod Example - [@blackjacx](https://github.com/blackjacx).
 * Add example for search bar in UINavigationBar - [@blackjacx](https://github.com/blackjacx).
 
 ## [1.4.0] - 2017-11-22
