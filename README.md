@@ -75,6 +75,12 @@ The repo includes an example project. It shows shows different use cases of the 
 <img src="./github/assets/example_07.png" alt="UINavigationBar Support">
 </p>
 
+## Contribution
+
+- If you found a **bug**, open an **issue**
+- If you have a **feature request**, open an **issue**
+- If you want to **contribute**, submit a **pull request**
+
 ## Author
 
 Stefan Herold, stefan.herold@gmail.com
