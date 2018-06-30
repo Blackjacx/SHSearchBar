@@ -22,10 +22,10 @@ public class SHSearchBar: UIView, SHSearchBarDelegate {
     var bgToParentConstraint: NSLayoutConstraint!
 
     /// The background image view which is responsible for displaying the rounded corners.
-    let backgroundView: UIImageView = UIImageView()
+    public let backgroundView: UIImageView = UIImageView()
 
     /// The cancel button under the right side of the searhcbar.
-    let cancelButton: UIButton = UIButton(type: .custom)
+    public let cancelButton: UIButton = UIButton(type: .custom)
 
     /// Public closure
     public var cancelButtonDidClick : (() -> Void)?
