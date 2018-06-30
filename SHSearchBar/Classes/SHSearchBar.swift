@@ -27,6 +27,9 @@ public class SHSearchBar: UIView, SHSearchBarDelegate {
     /// The cancel button under the right side of the searhcbar.
     let cancelButton: UIButton = UIButton(type: .custom)
 
+    /// Public closure
+    public var cancelButtonDidClick : (() -> Void)?
+    public var clearButtonDidClick : (() -> Void)?
 
     // MARK: - Public Properties
 
@@ -267,7 +270,7 @@ public class SHSearchBar: UIView, SHSearchBarDelegate {
     }
 
     @objc func pressedCancelButton(_ sender: AnyObject) {
-
+        cancelButtonDidClick?()
         cancelSearch()
     }
 
@@ -332,11 +335,13 @@ extension SHSearchBar: UITextFieldDelegate {
     }
 
     public func textFieldShouldClear(_ textField: UITextField) -> Bool {
+        clearButtonDidClick?()
         let shouldClear = delegate?.searchBarShouldClear(self) ?? searchBarShouldClear(self)
         return shouldClear
     }
 
     public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        clearButtonDidClick?()
         let shouldReturn = delegate?.searchBarShouldReturn(self) ?? searchBarShouldReturn(self)
         return shouldReturn
     }

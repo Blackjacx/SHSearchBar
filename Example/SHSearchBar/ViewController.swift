@@ -101,6 +101,14 @@ class ViewController: UIViewController, SHSearchBarDelegate {
         searchBar2.text = NSLocalizedString("sbe.exampleText.simple", comment: "")
         view.addSubview(searchBar2)
 
+        searchBar2.cancelButtonDidClick = {
+            print("cancel button did click ...")
+        }
+        
+        searchBar2.clearButtonDidClick = {
+            print("clear button did click ...")
+        }
+
         let leftView3 = imageViewWithIcon(searchGlassIconTemplate, rasterSize: rasterSize)
         let rightView3 = imageViewWithIcon(searchGlassIconTemplate, rasterSize: rasterSize)
         searchBar3 = defaultSearchBar(withRasterSize: rasterSize, leftView: leftView3, rightView: rightView3, delegate: self)
