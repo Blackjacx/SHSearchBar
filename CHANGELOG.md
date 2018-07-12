@@ -1,6 +1,7 @@
 # Change Log
 
 ## [Unreleased]
+* [#38](https://github.com/Blackjacx/SHSearchBar/pull/38): Make String Extension `localized` Internal To Avoid Naming Conflicts - [@blackjacx](https://github.com/blackjacx).
 
 ## [1.4.1] - 2018-02-16
 * [#33](https://github.com/Blackjacx/SHSearchBar/pull/33): Fix Pod Try To Quick Try Pod Example - [@blackjacx](https://github.com/blackjacx).
