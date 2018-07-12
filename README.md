@@ -19,7 +19,11 @@
   <a href="https://www.paypal.me/STHEROLD"><img alt="Donate" src="https://img.shields.io/badge/Donate-PayPal-blue.svg"/></a>
 </p>
 
-The clean and shiny search bar that does what UISearchBar does only with dirty hacks. This view is designed to tackle the customization limits of UISearchBar. The difference here is that this class does not inherit UISearchBar but composes a new UIView object by using a UITextField that is much easier to use. These are the limits of the UISearchBar:
+The clean and shiny search bar that does what UISearchBar does only with dirty 
+hacks. This view is designed to tackle the customization limits of UISearchBar. 
+The difference here is that this class does not inherit UISearchBar but 
+composes a new UIView object by using a UITextField that is much easier to use. 
+These are the limits of the UISearchBar:
 
 - no clean way to left align the placeholder
 - the cancel button is hard to taylor to your needs
@@ -30,7 +34,9 @@ Since I use a UITextField these restrictions do not apply.
 
 ## Installation
 
-SHSearchBar is compatible with `iOS 8` or higher and builds with `Xcode 9` and `Swift 4` syntax. It is available through [CocoaPods](http://cocoapods.org). To install it, simply add the following line to your Podfile:
+SHSearchBar is compatible with `iOS 9` or higher and builds with `Xcode 9` 
+and `Swift 4` syntax. It is available through [CocoaPods](http://cocoapods.org). 
+To install it, simply add the following line to your Podfile:
 
 ```ruby
 pod "SHSearchBar"
@@ -38,7 +44,10 @@ pod "SHSearchBar"
 
 ## Examples
 
-The repo includes an example project. It shows shows different use cases of the searchbar. To run it, clone the repo and run `pod install` from the Example directory first. The following images show some of these use cases:
+The repo includes an example project. It shows shows different use cases of 
+the searchbar. To run it, just type `pod try SHSearchBar` in your console and 
+it will be cloned and opened for you. The following images show some of these 
+use cases:
 
 <p align="center">
 <caption align="center">You can show a custom placeholder like for normal text fields:</caption><br />
@@ -75,10 +84,17 @@ The repo includes an example project. It shows shows different use cases of the 
 <img src="./github/assets/example_07.png" alt="UINavigationBar Support">
 </p>
 
+## Contribution
+
+- If you found a **bug**, open an **issue**
+- If you have a **feature request**, open an **issue**
+- If you want to **contribute**, submit a **pull request**
+
 ## Author
 
 Stefan Herold, stefan.herold@gmail.com
 
 ## License
 
-SHSearchBar is available under the MIT license. See the LICENSE file for more info.
+SHSearchBar is available under the MIT license. See the LICENSE file for more 
+info.
