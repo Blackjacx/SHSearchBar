@@ -1,6 +1,8 @@
 # Change Log
 
 ## [Unreleased]
+
+## [1.4.2] - 2018-07-12
 * [#38](https://github.com/Blackjacx/SHSearchBar/pull/38): Make String Extension `localized` Internal To Avoid Naming Conflicts - [@blackjacx](https://github.com/blackjacx).
 
 ## [1.4.1] - 2018-02-16
