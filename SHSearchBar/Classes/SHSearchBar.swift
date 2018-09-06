@@ -315,11 +315,7 @@ extension SHSearchBar: UITextFieldDelegate {
     }
 
     public func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-        let shouldEnd = delegate?.searchBarShouldEndEditing(self) ?? searchBarShouldEndEditing(self)
-        if shouldEnd {
-            updateCancelButtonVisibility(makeVisible: false)
-        }
-        return shouldEnd
+        return delegate?.searchBarShouldEndEditing(self) ?? searchBarShouldEndEditing(self)
     }
 
     public func textFieldDidEndEditing(_ textField: UITextField) {
