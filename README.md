@@ -6,7 +6,7 @@
 <h1 align="center">SHSearchBar</h1>
 
 <p align="center">
-  <a href="https://github.com/Blackjacx/SHSearchBar"><img alt="Build Status" src="https://app.bitrise.io/app/582435533da6e6e8/status.svg?token=txPO2FVRfVTh3wS57eoOuw&branch=develop"/></a>
+  <a href="https://app.bitrise.io/app/582435533da6e6e8"><img alt="Build Status" src="https://app.bitrise.io/app/582435533da6e6e8/status.svg?token=txPO2FVRfVTh3wS57eoOuw&branch=develop"/></a>
   <a href="http://cocoadocs.org/docsets/SHSearchBar"><img alt="Version" src="https://cocoapod-badges.herokuapp.com/v/SHSearchBar/badge.svg"/></a>
   <img alt="Xcode 10.0+" src="https://img.shields.io/badge/Xcode-10.0%2B-blue.svg"/>
   <img alt="iOS 9.0+" src="https://img.shields.io/badge/iOS-9.0%2B-blue.svg"/>
