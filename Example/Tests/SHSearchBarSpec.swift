@@ -642,7 +642,7 @@ class SharedConfiguration: QuickConfiguration {
                 expected[.foregroundColor] = searchbar.isActive ? expectedTextColor : expectedTextColor?.withAlphaComponent(0.5)
 
                 for key in expected.keys {
-                    guard let value = attributes[key.rawValue] as? UIColor, let expectedValue = expected[key] as? UIColor else {
+                    guard let value = attributes[key] as? UIColor, let expectedValue = expected[key] as? UIColor else {
                         XCTFail("Value or expected value not found for key \(key)")
                         return
                     }

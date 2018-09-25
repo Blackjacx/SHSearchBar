@@ -40,7 +40,7 @@ class SearchbarTitleView: UIView {
     
     // This is important to make the title view expanding from left to right
     override var intrinsicContentSize: CGSize {
-        return UILayoutFittingExpandedSize
+        return UIView.layoutFittingExpandedSize
     }
 }
 

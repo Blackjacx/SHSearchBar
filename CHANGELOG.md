@@ -1,6 +1,7 @@
 # Change Log
 
 ## [Unreleased]
+* [#41](https://github.com/Blackjacx/SHSearchBar/pull/41): Swift 4.2 - [@blackjacx](https://github.com/blackjacx).
 
 ## [1.4.3] - 2018-07-12
 * [#39](https://github.com/Blackjacx/SHSearchBar/pull/39): Make localized extension internal - [@blackjacx](https://github.com/blackjacx).
