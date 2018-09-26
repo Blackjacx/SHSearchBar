@@ -7,11 +7,14 @@
 
 <p align="center">
   <a href="https://app.bitrise.io/app/582435533da6e6e8"><img alt="Build Status" src="https://app.bitrise.io/app/582435533da6e6e8/status.svg?token=txPO2FVRfVTh3wS57eoOuw&branch=develop"/></a>
-  <a href="https://cocoapods.org/pods/SHSearchBar"><img alt="Version" src="https://cocoapod-badges.herokuapp.com/v/SHSearchBar/badge.svg"/></a>
   <img alt="Cocoapods Platforms" src="https://img.shields.io/cocoapods/p/SHSearchBar.svg"/>
   <img alt="Xcode 10.0+" src="https://img.shields.io/badge/Xcode-10.0%2B-blue.svg"/>
   <img alt="iOS 9.0+" src="https://img.shields.io/badge/iOS-9.0%2B-blue.svg"/>
   <img alt="Swift 4.2+" src="https://img.shields.io/badge/Swift-4.2%2B-orange.svg"/>
+  <img alt="Github Repo Size" src="https://img.shields.io/github/repo-size/blackjacx/SHSearchBar.svg" />
+  <img alt="Github Code Size" src="https://img.shields.io/github/languages/code-size/blackjacx/SHSearchBar.svg" />
+  <img alt="Github Closed Issues" src="https://img.shields.io/github/issues-closed-raw/blackjacx/SHSearchBar.svg" />
+  <img alt="Github Current Release" src="https://img.shields.io/github/release/blackjacx/SHSearchBar.svg" /> 
   <!-- <a href="https://github.com/Carthage/Carthage"><img alt="Carthage compatible" src="https://img.shields.io/badge/Carthage-Compatible-brightgreen.svg?style=flat"/></a> -->
   <a href="https://github.com/Blackjacx/SHSearchBar/blob/develop/LICENSE?raw=true"><img alt="License" src="https://img.shields.io/cocoapods/l/SHSearchBar.svg?style=flat"/></a>
   <a href="https://codecov.io/gh/blackjacx/SHSearchBar"><img alt="Codecov" src="https://codecov.io/gh/blackjacx/SHSearchBar/branch/master/graph/badge.svg"/></a>
