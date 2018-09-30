@@ -6,7 +6,9 @@
 <h1 align="center">SHSearchBar</h1>
 
 <p align="center">
-  <a href="https://app.bitrise.io/app/582435533da6e6e8"><img alt="Build Status" src="https://app.bitrise.io/app/582435533da6e6e8/status.svg?token=txPO2FVRfVTh3wS57eoOuw&branch=develop"/></a>
+  <a href="https://app.bitrise.io/app/582435533da6e6e8">
+    <img alt="Build Status" src="https://app.bitrise.io/app/582435533da6e6e8/status.svg?token=txPO2FVRfVTh3wS57eoOuw&branch=develop"/>
+  </a>
   <img alt="Github Current Release" src="https://img.shields.io/github/release/blackjacx/SHSearchBar.svg" /> 
   <img alt="Cocoapods Platforms" src="https://img.shields.io/cocoapods/p/SHSearchBar.svg"/>
   <img alt="Xcode 10.0+" src="https://img.shields.io/badge/Xcode-10.0%2B-blue.svg"/>
@@ -15,12 +17,24 @@
   <img alt="Github Repo Size" src="https://img.shields.io/github/repo-size/blackjacx/SHSearchBar.svg" />
   <img alt="Github Code Size" src="https://img.shields.io/github/languages/code-size/blackjacx/SHSearchBar.svg" />
   <img alt="Github Closed PR's" src="https://img.shields.io/github/issues-pr-closed/blackjacx/SHSearchBar.svg" />
-  <!-- <a href="https://github.com/Carthage/Carthage"><img alt="Carthage compatible" src="https://img.shields.io/badge/Carthage-Compatible-brightgreen.svg?style=flat"/></a> -->
-  <a href="https://github.com/Blackjacx/SHSearchBar/blob/develop/LICENSE?raw=true"><img alt="License" src="https://img.shields.io/cocoapods/l/SHSearchBar.svg?style=flat"/></a>
-  <a href="https://codecov.io/gh/blackjacx/SHSearchBar"><img alt="Codecov" src="https://codecov.io/gh/blackjacx/SHSearchBar/branch/master/graph/badge.svg"/></a>
-  <a href="https://codebeat.co/projects/github-com-blackjacx-shsearchbar"><img alt="Codebeat" src="https://codebeat.co/badges/44539071-5029-4379-9d33-99dd721915c8" /></a>
-  <a href="https://cocoapods.org/pods/SHSearchBar"><img alt="Downloads" src="https://img.shields.io/cocoapods/dt/SHSearchBar.svg?maxAge=3600&style=flat" /></a>
-  <a href="https://www.paypal.me/STHEROLD"><img alt="Donate" src="https://img.shields.io/badge/Donate-PayPal-blue.svg"/></a>
+  <!-- <a href="https://github.com/Carthage/Carthage">
+    <img alt="Carthage compatible" src="https://img.shields.io/badge/Carthage-Compatible-brightgreen.svg?style=flat"/>
+  </a> -->
+  <a href="https://github.com/Blackjacx/SHSearchBar/blob/develop/LICENSE?raw=true">
+    <img alt="License" src="https://img.shields.io/cocoapods/l/SHSearchBar.svg?style=flat"/>
+  </a>
+  <a href="https://codecov.io/gh/Blackjacx/SHSearchBar">
+    <img src="https://codecov.io/gh/Blackjacx/SHSearchBar/branch/develop/graph/badge.svg" />
+  </a>
+  <a href="https://codebeat.co/projects/github-com-blackjacx-shsearchbar">
+    <img alt="Codebeat" src="https://codebeat.co/badges/44539071-5029-4379-9d33-99dd721915c8" />
+  </a>
+  <a href="https://cocoapods.org/pods/SHSearchBar">
+    <img alt="Downloads" src="https://img.shields.io/cocoapods/dt/SHSearchBar.svg?maxAge=3600&style=flat" />
+  </a>
+  <a href="https://www.paypal.me/STHEROLD">
+    <img alt="Donate" src="https://img.shields.io/badge/Donate-PayPal-blue.svg"/>
+  </a>
 </p>
 
 The clean and shiny search bar that does what UISearchBar does only with dirty 
