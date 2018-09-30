@@ -96,7 +96,7 @@ use cases:
 
 ## Author
 
-Stefan Herold, stefan.herold@gmail.com
+Stefan Herold, stefan.herold@gmail.com ((@Blackjacxxx)[https://twitter.com/Blackjacxxx])
 
 ## License
 
