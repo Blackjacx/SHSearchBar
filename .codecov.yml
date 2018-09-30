@@ -1,4 +1,3 @@
 coverage:
   ignore:
-  - ../Example/Pods/.*
-  - ../Example/Tests/.*
+  - ./Example/.*
