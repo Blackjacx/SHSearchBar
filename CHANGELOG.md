@@ -1,6 +1,7 @@
 # Change Log
 
 ## [Unreleased]
+* [#46](https://github.com/Blackjacx/SHSearchBar/pull/46): Extending Example App - [@blackjacx](https://github.com/blackjacx).
 * Add AUTHORS file - [@blackjacx](https://github.com/blackjacx).
 
 ## [1.5.0] - 2018-09-25
