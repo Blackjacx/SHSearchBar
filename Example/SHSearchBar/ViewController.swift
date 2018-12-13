@@ -92,6 +92,9 @@ class ViewController: UIViewController, SHSearchBarDelegate {
 
         view.backgroundColor = UIColor.white
 
+        // Hides the line of the bottom of the navigation bar
+        navigationController?.navigationBar.shadowImage = UIImage()
+
         let leftView1 = imageViewWithIcon(searchGlassIconTemplate, rasterSize: rasterSize)
         searchBar1 = defaultSearchBar(withRasterSize: rasterSize, leftView: leftView1, rightView: nil, delegate: self)
         view.addSubview(searchBar1)
