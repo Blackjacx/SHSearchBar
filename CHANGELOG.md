@@ -1,6 +1,7 @@
 # Change Log
 
 ## [Unreleased]
+* [#47](https://github.com/Blackjacx/SHSearchBar/pull/47): Carthage Support - [@blackjacx](https://github.com/blackjacx).
 * [#46](https://github.com/Blackjacx/SHSearchBar/pull/46): Extending Example App - [@blackjacx](https://github.com/blackjacx).
 * Add AUTHORS file - [@blackjacx](https://github.com/blackjacx).
 
