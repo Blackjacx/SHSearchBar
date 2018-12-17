@@ -1,27 +1,20 @@
 PODS:
   - Nimble (7.3.1)
   - Quick (1.3.2)
-  - SHSearchBar (1.5.0)
 
 DEPENDENCIES:
   - Nimble
   - Quick
-  - SHSearchBar (from `../`)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Nimble
     - Quick
 
-EXTERNAL SOURCES:
-  SHSearchBar:
-    :path: "../"
-
 SPEC CHECKSUMS:
   Nimble: 04f732da099ea4d153122aec8c2a88fd0c7219ae
   Quick: 2623cb30d7a7f41ca62f684f679586558f483d46
-  SHSearchBar: b00387437faab8129705a2292febffc22cf10cc5
 
-PODFILE CHECKSUM: 435e91e436a0204b474c5e4bb6a2ce8ddf9785f0
+PODFILE CHECKSUM: 53606dc21ae8664f4b298e41212beca9da9ada82
 
 COCOAPODS: 1.5.3
