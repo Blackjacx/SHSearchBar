@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		03099720ED6A81F3BAB6C0AA /* Pods_SHSearchBar_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DCBF1F56D2C3FC7138E1EF2 /* Pods_SHSearchBar_Tests.framework */; };
+		B20CC6E8F1C1C8A2924F31FF /* Pods_TestPods_SHSearchBar_iOS_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FA58F22BAAD8A9A64023BD4 /* Pods_TestPods_SHSearchBar_iOS_Tests.framework */; };
 		B995DD912036349C00E091FB /* Mocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = B995DD8D203633E000E091FB /* Mocks.swift */; };
 		B995DD922036349C00E091FB /* SHSearchBarSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = B995DD8C203633E000E091FB /* SHSearchBarSpec.swift */; };
 		B995DD932036349C00E091FB /* SHSearchBarTextFieldSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = B995DD8B203633E000E091FB /* SHSearchBarTextFieldSpecs.swift */; };
@@ -20,10 +20,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2199CB4B186EB55AA75AB0DF /* Pods-TestPods-SHSearchBar_iOS_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestPods-SHSearchBar_iOS_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TestPods-SHSearchBar_iOS_Tests/Pods-TestPods-SHSearchBar_iOS_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		289F7FC3D557216213AC975E /* Pods-TestPods-SHSearchBar_iOS_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestPods-SHSearchBar_iOS_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TestPods-SHSearchBar_iOS_Tests/Pods-TestPods-SHSearchBar_iOS_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		347EB67A56B544424140EDED /* Pods_SHSearchBar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SHSearchBar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		607FACE51AFB9204008FA782 /* SHSearchBar_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SHSearchBar_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4FA58F22BAAD8A9A64023BD4 /* Pods_TestPods_SHSearchBar_iOS_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TestPods_SHSearchBar_iOS_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		607FACE51AFB9204008FA782 /* SHSearchBar_iOS_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SHSearchBar_iOS_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		662647D328987C163D4575B3 /* Pods-SHSearchBar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SHSearchBar.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SHSearchBar/Pods-SHSearchBar.debug.xcconfig"; sourceTree = "<group>"; };
 		6DCBF1F56D2C3FC7138E1EF2 /* Pods_SHSearchBar_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SHSearchBar_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B995DD8B203633E000E091FB /* SHSearchBarTextFieldSpecs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SHSearchBarTextFieldSpecs.swift; sourceTree = "<group>"; };
 		B995DD8C203633E000E091FB /* SHSearchBarSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SHSearchBarSpec.swift; sourceTree = "<group>"; };
@@ -44,7 +46,6 @@
 		B9C8324B21C84B5D0008ED90 /* SHSearchBarConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SHSearchBarConfig.swift; path = Classes/SHSearchBarConfig.swift; sourceTree = "<group>"; };
 		B9C8325221C84CC90008ED90 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B9C8325321C84CC90008ED90 /* SHSearchBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHSearchBar.h; sourceTree = "<group>"; };
-		CFD093D7F31BC975486593D8 /* Pods-SHSearchBar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SHSearchBar.release.xcconfig"; path = "Pods/Target Support Files/Pods-SHSearchBar/Pods-SHSearchBar.release.xcconfig"; sourceTree = "<group>"; };
 		F7A6AF85A1EC6DA32CCCC9C7 /* Pods-SHSearchBar_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SHSearchBar_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SHSearchBar_Tests/Pods-SHSearchBar_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		FA26EA3D9D157E10C2D20D77 /* Pods-SHSearchBar_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SHSearchBar_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SHSearchBar_Tests/Pods-SHSearchBar_Tests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -54,7 +55,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				03099720ED6A81F3BAB6C0AA /* Pods_SHSearchBar_Tests.framework in Frameworks */,
+				B20CC6E8F1C1C8A2924F31FF /* Pods_TestPods_SHSearchBar_iOS_Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,10 +72,10 @@
 		40D85D3C4B555A80427438F1 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				662647D328987C163D4575B3 /* Pods-SHSearchBar.debug.xcconfig */,
-				CFD093D7F31BC975486593D8 /* Pods-SHSearchBar.release.xcconfig */,
 				F7A6AF85A1EC6DA32CCCC9C7 /* Pods-SHSearchBar_Tests.debug.xcconfig */,
 				FA26EA3D9D157E10C2D20D77 /* Pods-SHSearchBar_Tests.release.xcconfig */,
+				2199CB4B186EB55AA75AB0DF /* Pods-TestPods-SHSearchBar_iOS_Tests.debug.xcconfig */,
+				289F7FC3D557216213AC975E /* Pods-TestPods-SHSearchBar_iOS_Tests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -94,7 +95,7 @@
 		607FACD11AFB9204008FA782 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				607FACE51AFB9204008FA782 /* SHSearchBar_Tests.xctest */,
+				607FACE51AFB9204008FA782 /* SHSearchBar_iOS_Tests.xctest */,
 				B9C8323E21C84B300008ED90 /* SHSearchBar.framework */,
 			);
 			name = Products;
@@ -138,6 +139,7 @@
 			children = (
 				347EB67A56B544424140EDED /* Pods_SHSearchBar.framework */,
 				6DCBF1F56D2C3FC7138E1EF2 /* Pods_SHSearchBar_Tests.framework */,
+				4FA58F22BAAD8A9A64023BD4 /* Pods_TestPods_SHSearchBar_iOS_Tests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -170,9 +172,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		607FACE41AFB9204008FA782 /* SHSearchBar_Tests */ = {
+		607FACE41AFB9204008FA782 /* SHSearchBar_iOS_Tests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 607FACF21AFB9204008FA782 /* Build configuration list for PBXNativeTarget "SHSearchBar_Tests" */;
+			buildConfigurationList = 607FACF21AFB9204008FA782 /* Build configuration list for PBXNativeTarget "SHSearchBar_iOS_Tests" */;
 			buildPhases = (
 				62D764484A0ED4B9ACC259FE /* [CP] Check Pods Manifest.lock */,
 				607FACE11AFB9204008FA782 /* Sources */,
@@ -184,16 +186,15 @@
 			);
 			dependencies = (
 			);
-			name = SHSearchBar_Tests;
+			name = SHSearchBar_iOS_Tests;
 			productName = Tests;
-			productReference = 607FACE51AFB9204008FA782 /* SHSearchBar_Tests.xctest */;
+			productReference = 607FACE51AFB9204008FA782 /* SHSearchBar_iOS_Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		B9C8323D21C84B300008ED90 /* SHSearchBar */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = B9C8324321C84B300008ED90 /* Build configuration list for PBXNativeTarget "SHSearchBar" */;
 			buildPhases = (
-				6513AF2FB6B3F24BF3BB404B /* [CP] Check Pods Manifest.lock */,
 				B9C8323921C84B300008ED90 /* Headers */,
 				B9C8323A21C84B300008ED90 /* Sources */,
 				B9C8323B21C84B300008ED90 /* Frameworks */,
@@ -252,7 +253,7 @@
 			projectRoot = "";
 			targets = (
 				B9C8323D21C84B300008ED90 /* SHSearchBar */,
-				607FACE41AFB9204008FA782 /* SHSearchBar_Tests */,
+				607FACE41AFB9204008FA782 /* SHSearchBar_iOS_Tests */,
 			);
 		};
 /* End PBXProject section */
@@ -286,29 +287,7 @@
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-SHSearchBar_Tests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		6513AF2FB6B3F24BF3BB404B /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-SHSearchBar-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-TestPods-SHSearchBar_iOS_Tests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -321,7 +300,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-SHSearchBar_Tests/Pods-SHSearchBar_Tests-frameworks.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-TestPods-SHSearchBar_iOS_Tests/Pods-TestPods-SHSearchBar_iOS_Tests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
 				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
 			);
@@ -332,7 +311,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SHSearchBar_Tests/Pods-SHSearchBar_Tests-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TestPods-SHSearchBar_iOS_Tests/Pods-TestPods-SHSearchBar_iOS_Tests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -469,7 +448,7 @@
 		};
 		607FACF31AFB9204008FA782 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F7A6AF85A1EC6DA32CCCC9C7 /* Pods-SHSearchBar_Tests.debug.xcconfig */;
+			baseConfigurationReference = 2199CB4B186EB55AA75AB0DF /* Pods-TestPods-SHSearchBar_iOS_Tests.debug.xcconfig */;
 			buildSettings = {
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -485,7 +464,7 @@
 		};
 		607FACF41AFB9204008FA782 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FA26EA3D9D157E10C2D20D77 /* Pods-SHSearchBar_Tests.release.xcconfig */;
+			baseConfigurationReference = 289F7FC3D557216213AC975E /* Pods-TestPods-SHSearchBar_iOS_Tests.release.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -497,7 +476,6 @@
 		};
 		B9C8324421C84B300008ED90 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 662647D328987C163D4575B3 /* Pods-SHSearchBar.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -536,7 +514,6 @@
 		};
 		B9C8324521C84B300008ED90 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CFD093D7F31BC975486593D8 /* Pods-SHSearchBar.release.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -581,7 +558,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		607FACF21AFB9204008FA782 /* Build configuration list for PBXNativeTarget "SHSearchBar_Tests" */ = {
+		607FACF21AFB9204008FA782 /* Build configuration list for PBXNativeTarget "SHSearchBar_iOS_Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				607FACF31AFB9204008FA782 /* Debug */,

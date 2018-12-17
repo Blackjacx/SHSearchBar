@@ -29,8 +29,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "607FACE41AFB9204008FA782"
-               BuildableName = "SHSearchBar_Tests.xctest"
-               BlueprintName = "SHSearchBar_Tests"
+               BuildableName = "SHSearchBar_iOS_Tests.xctest"
+               BlueprintName = "SHSearchBar_iOS_Tests"
                ReferencedContainer = "container:SHSearchBar.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -47,8 +47,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "607FACE41AFB9204008FA782"
-               BuildableName = "SHSearchBar_Tests.xctest"
-               BlueprintName = "SHSearchBar_Tests"
+               BuildableName = "SHSearchBar_iOS_Tests.xctest"
+               BlueprintName = "SHSearchBar_iOS_Tests"
                ReferencedContainer = "container:SHSearchBar.xcodeproj">
             </BuildableReference>
          </TestableReference>
