@@ -32,8 +32,8 @@ class SearchbarTitleView: UIView {
         let constraints = [
             searchbar.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
             searchbar.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
-            searchbar.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor),
-            searchbar.bottomAnchor.constraint(equalTo: layoutMarginsGuide.bottomAnchor)
+            searchbar.topAnchor.constraint(equalTo: topAnchor),
+            searchbar.bottomAnchor.constraint(equalTo: bottomAnchor)
         ]
         NSLayoutConstraint.activate(constraints)
     }
