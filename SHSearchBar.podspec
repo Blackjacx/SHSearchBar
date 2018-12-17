@@ -13,10 +13,10 @@ The clean and shiny search bar that does what UISearchBar does only with dirty h
   
   s.ios.deployment_target = '9.0'
 
-  s.source_files = 'SHSearchBar/Classes/**/*'
+  s.source_files = 'Source/Classes/**/*'
 
   s.resource_bundles = {
-    'SHSearchBar' => ['SHSearchBar/Strings/*.lproj/*.strings']
+    'SHSearchBar' => ['Source/Strings/*.lproj/*.strings']
   }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
