@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B20CC6E8F1C1C8A2924F31FF /* Pods_TestPods_SHSearchBar_iOS_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FA58F22BAAD8A9A64023BD4 /* Pods_TestPods_SHSearchBar_iOS_Tests.framework */; };
+		B943C6AC21C86DFC00BE8948 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B943C6AA21C86DFC00BE8948 /* Localizable.strings */; };
 		B995DD912036349C00E091FB /* Mocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = B995DD8D203633E000E091FB /* Mocks.swift */; };
 		B995DD922036349C00E091FB /* SHSearchBarSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = B995DD8C203633E000E091FB /* SHSearchBarSpec.swift */; };
 		B995DD932036349C00E091FB /* SHSearchBarTextFieldSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = B995DD8B203633E000E091FB /* SHSearchBarTextFieldSpecs.swift */; };
@@ -27,6 +28,14 @@
 		607FACE51AFB9204008FA782 /* SHSearchBar_iOS_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SHSearchBar_iOS_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6DCBF1F56D2C3FC7138E1EF2 /* Pods_SHSearchBar_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SHSearchBar_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B943C6AB21C86DFC00BE8948 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = Strings/de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		B943C6AD21C86E0100BE8948 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Strings/en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		B943C6AE21C86E0700BE8948 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = Strings/es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		B943C6B321C86E1800BE8948 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = Strings/fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		B943C6B421C86E1D00BE8948 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = Strings/it.lproj/Localizable.strings; sourceTree = "<group>"; };
+		B943C6B521C86E2500BE8948 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = Strings/ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		B943C6B621C86E2B00BE8948 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = Strings/ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		B943C6B721C86E3100BE8948 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "Strings/zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		B995DD8B203633E000E091FB /* SHSearchBarTextFieldSpecs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SHSearchBarTextFieldSpecs.swift; sourceTree = "<group>"; };
 		B995DD8C203633E000E091FB /* SHSearchBarSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SHSearchBarSpec.swift; sourceTree = "<group>"; };
 		B995DD8D203633E000E091FB /* Mocks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mocks.swift; sourceTree = "<group>"; };
@@ -155,6 +164,7 @@
 				B9C8324A21C84B5C0008ED90 /* SHSearchBarDelegate.swift */,
 				B9C8324921C84B5C0008ED90 /* SHSearchBarTextField.swift */,
 				B9C8324721C84B5C0008ED90 /* UIImage+Style.swift */,
+				B943C6AA21C86DFC00BE8948 /* Localizable.strings */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -216,7 +226,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 1000;
+				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = CocoaPods;
 				TargetAttributes = {
 					607FACE41AFB9204008FA782 = {
@@ -270,6 +280,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B943C6AC21C86DFC00BE8948 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -341,6 +352,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		B943C6AA21C86DFC00BE8948 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B943C6AB21C86DFC00BE8948 /* de */,
+				B943C6AD21C86E0100BE8948 /* en */,
+				B943C6AE21C86E0700BE8948 /* es */,
+				B943C6B321C86E1800BE8948 /* fr */,
+				B943C6B421C86E1D00BE8948 /* it */,
+				B943C6B521C86E2500BE8948 /* ja */,
+				B943C6B621C86E2B00BE8948 /* ru */,
+				B943C6B721C86E3100BE8948 /* zh-Hans */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		607FACED1AFB9204008FA782 /* Debug */ = {
@@ -486,7 +515,7 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -523,7 +552,7 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
