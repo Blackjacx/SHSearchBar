@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
-	<string>en</string>
+	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -13,12 +13,10 @@
 	<key>CFBundleName</key>
 	<string>$(PRODUCT_NAME)</string>
 	<key>CFBundlePackageType</key>
-	<string>BNDL</string>
+	<string>FMWK</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.5.0</string>
-	<key>CFBundleSignature</key>
-	<string>????</string>
+	<string>1.6.0</string>
 	<key>CFBundleVersion</key>
-	<string>5</string>
+	<string>2</string>
 </dict>
 </plist>

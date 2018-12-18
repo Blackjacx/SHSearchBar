@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'SHSearchBar'
-  s.version          = '1.5.0'
+  s.version          = '1.6.0'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.summary          = 'The search bar that does not suck.'
   s.description      = <<-DESC
@@ -11,12 +11,12 @@ The clean and shiny search bar that does what UISearchBar does only with dirty h
   s.author           = { 'Stefan Herold' => 'stefan.herold@gmail.com' }
   s.source           = { :git => 'https://github.com/Blackjacx/SHSearchBar.git', :tag => s.version.to_s }
   
-  s.ios.deployment_target = '9.0'
+  s.ios.deployment_target = '10.0'
 
-  s.source_files = 'SHSearchBar/Classes/**/*'
+  s.source_files = 'Source/Classes/**/*'
 
   s.resource_bundles = {
-    'SHSearchBar' => ['SHSearchBar/Strings/*.lproj/*.strings']
+    'SHSearchBar' => ['Source/Strings/*.lproj/*.strings']
   }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
