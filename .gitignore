@@ -48,3 +48,4 @@ fastlane/screenshots
 fastlane/test_output
 fastlane/.env
 fastlane/README.md
+fastlane/*.coverage.txt
