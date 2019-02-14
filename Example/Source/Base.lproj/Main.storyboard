@@ -12,7 +12,7 @@
         <!--View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="SHSearchBar_Example" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="SHSearchBarExample" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
@@ -26,6 +26,47 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="105" y="133"/>
+        </scene>
+        <!--SimpleVC-->
+        <scene sceneID="O8C-Rr-DWh">
+            <objects>
+                <viewController id="FOx-31-adf" customClass="SimpleVC" customModule="SHSearchBarExample" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="6MM-4G-4wB"/>
+                        <viewControllerLayoutGuide type="bottom" id="IsN-VV-TQ3"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="yj6-sn-3AP">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c8N-Uw-K3s" customClass="SHSearchBar" customModule="SHSearchBar">
+                                <rect key="frame" x="10" y="303.5" width="355" height="60"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="OKD-dY-ady"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="ama on storyboard "/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isEnabled" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isActive" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="c8N-Uw-K3s" secondAttribute="trailing" constant="10" id="1Zo-O8-grR"/>
+                            <constraint firstItem="c8N-Uw-K3s" firstAttribute="centerY" secondItem="yj6-sn-3AP" secondAttribute="centerY" id="FFJ-er-ECZ"/>
+                            <constraint firstItem="c8N-Uw-K3s" firstAttribute="leading" secondItem="yj6-sn-3AP" secondAttribute="leading" constant="10" id="qGQ-ba-DNW"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="storyboardSearchbar" destination="c8N-Uw-K3s" id="eok-Eo-kMP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jcL-2p-UAr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1398" y="133"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Eey-lm-akA">

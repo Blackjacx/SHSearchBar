@@ -12,6 +12,7 @@ import UIKit
  * The central searchbar class of this framework. 
  * You must initialize this class using an instance of SHSearchBarConfig which is also changable later.
  */
+@IBDesignable
 public class SHSearchBar: UIView, SHSearchBarDelegate {
     /// The content of this property is used to restore the textField text after cancellation
     var textBeforeEditing: String?
@@ -47,20 +48,20 @@ public class SHSearchBar: UIView, SHSearchBarDelegate {
     }
 
     /// You can set the searchbar as inactive with this property. Currently this only dims the text color slightly.
-    public var isActive: Bool = true {
+    @IBInspectable public var isActive: Bool = true {
         didSet {
             updateUserInterface()
         }
     }
 
     /// The text of the searchbar. Defaults to nil.
-    public var text: String? {set {textField.text = newValue} get {return textField.text}}
+    @IBInspectable public var text: String? {set {textField.text = newValue} get {return textField.text}}
     /// The placeholder of the searchbar. Defaults to nil.
-    public var placeholder: String? {set {textField.placeholder = newValue} get {return textField.placeholder}}
+    @IBInspectable public var placeholder: String? {set {textField.placeholder = newValue} get {return textField.placeholder}}
     /// The text alignment of the searchbar.
-    public var textAlignment: NSTextAlignment {set {textField.textAlignment = newValue} get {return textField.textAlignment}}
+    @IBInspectable public var textAlignment: NSTextAlignment {set {textField.textAlignment = newValue} get {return textField.textAlignment}}
     /// The enabled state of the searchbar.
-    public var isEnabled: Bool {set {textField.isEnabled = newValue} get {return textField.isEnabled}}
+    @IBInspectable public var isEnabled: Bool {set {textField.isEnabled = newValue} get {return textField.isEnabled}}
 
     /// The delegate which informs the user about important events.
     public weak var delegate: SHSearchBarDelegate?
@@ -121,9 +122,31 @@ public class SHSearchBar: UIView, SHSearchBarDelegate {
     }
     
     required public init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+        self.config = SHSearchBarConfig()
+        self.textField = SHSearchBarTextField(config: config)
+        super.init(coder: aDecoder)
+        
+        self.delegate = self
+        translatesAutoresizingMaskIntoConstraints = false
+        
+        setupBackgroundView(withConfig: config)
+        setupTextField(withConfig: config)
+        setupCancelButton(withConfig: config)
+        
+        backgroundView.addSubview(textField)
+        addSubview(cancelButton)
+        addSubview(backgroundView)
+        
+        updateViewConstraints()
+        
+        updateUserInterface()
 
+    }
+    
+    public override func prepareForInterfaceBuilder() {
+        super.prepareForInterfaceBuilder()
+    }
+    
     func updateViewConstraints() {
         let isInitialUpdate = backgroundView.constraints.isEmpty
         let isTextFieldInEditMode = bgToCancelButtonConstraint?.isActive ?? false

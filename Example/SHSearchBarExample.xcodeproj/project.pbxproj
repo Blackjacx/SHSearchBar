@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7963301B2214EA0000498E64 /* SimpleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796330192214EA0000498E64 /* SimpleVC.swift */; };
 		B9C8326121C84F3D0008ED90 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C8326021C84F3D0008ED90 /* AppDelegate.swift */; };
 		B9C8326321C84F3D0008ED90 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C8326221C84F3D0008ED90 /* ViewController.swift */; };
 		B9C8326621C84F3D0008ED90 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9C8326421C84F3D0008ED90 /* Main.storyboard */; };
@@ -41,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		796330192214EA0000498E64 /* SimpleVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleVC.swift; sourceTree = "<group>"; };
 		B9C8325D21C84F3D0008ED90 /* SHSearchBarExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SHSearchBarExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9C8326021C84F3D0008ED90 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B9C8326221C84F3D0008ED90 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -94,6 +96,7 @@
 				B9C8326C21C84F400008ED90 /* Info.plist */,
 				B9C8326021C84F3D0008ED90 /* AppDelegate.swift */,
 				B9C8327221C8500F0008ED90 /* SearchBarTitleView.swift */,
+				796330192214EA0000498E64 /* SimpleVC.swift */,
 				B9C8326221C84F3D0008ED90 /* ViewController.swift */,
 				B9C832A221C854A20008ED90 /* Images.xcassets */,
 				B9C8327421C850700008ED90 /* LaunchScreen.xib */,
@@ -216,6 +219,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7963301B2214EA0000498E64 /* SimpleVC.swift in Sources */,
 				B9C8326321C84F3D0008ED90 /* ViewController.swift in Sources */,
 				B9C8326121C84F3D0008ED90 /* AppDelegate.swift in Sources */,
 				B9C8327321C8500F0008ED90 /* SearchBarTitleView.swift in Sources */,
