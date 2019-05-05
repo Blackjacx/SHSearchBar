@@ -12,19 +12,16 @@
   <img alt="Github Current Release" src="https://img.shields.io/github/release/blackjacx/SHSearchBar.svg" /> 
   <img alt="Cocoapods Platforms" src="https://img.shields.io/cocoapods/p/SHSearchBar.svg"/>
   <img alt="Xcode 10.0+" src="https://img.shields.io/badge/Xcode-10.0%2B-blue.svg"/>
-  <img alt="iOS 9.0+" src="https://img.shields.io/badge/iOS-9.0%2B-blue.svg"/>
+  <img alt="iOS 10.0+" src="https://img.shields.io/badge/iOS-10.0%2B-blue.svg"/>
   <img alt="Swift 4.2+" src="https://img.shields.io/badge/Swift-4.2%2B-orange.svg"/>
   <img alt="Github Repo Size" src="https://img.shields.io/github/repo-size/blackjacx/SHSearchBar.svg" />
   <img alt="Github Code Size" src="https://img.shields.io/github/languages/code-size/blackjacx/SHSearchBar.svg" />
   <img alt="Github Closed PR's" src="https://img.shields.io/github/issues-pr-closed/blackjacx/SHSearchBar.svg" />
-  <!-- <a href="https://github.com/Carthage/Carthage">
+  <a href="https://github.com/Carthage/Carthage">
     <img alt="Carthage compatible" src="https://img.shields.io/badge/Carthage-Compatible-brightgreen.svg?style=flat"/>
-  </a> -->
+  </a>
   <a href="https://github.com/Blackjacx/SHSearchBar/blob/develop/LICENSE?raw=true">
     <img alt="License" src="https://img.shields.io/cocoapods/l/SHSearchBar.svg?style=flat"/>
-  </a>
-  <a href="https://codecov.io/gh/Blackjacx/SHSearchBar">
-    <img src="https://codecov.io/gh/Blackjacx/SHSearchBar/branch/develop/graph/badge.svg" />
   </a>
   <a href="https://codebeat.co/projects/github-com-blackjacx-shsearchbar">
     <img alt="Codebeat" src="https://codebeat.co/badges/44539071-5029-4379-9d33-99dd721915c8" />
@@ -58,6 +55,14 @@ To install it, simply add the following line to your Podfile:
 
 ```ruby
 pod "SHSearchBar"
+```
+
+### Carthage
+
+[Carthage](https://github.com/Carthage/Carthage) is a decentralized dependency manager that builds your dependencies and provides you with binary frameworks. To integrate SHSearchBar into your Xcode project using Carthage, specify it in your Cartfile:
+
+```ruby
+github "Blackjacx/SHSearchBar"
 ```
 
 ## Examples

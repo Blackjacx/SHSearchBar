@@ -564,8 +564,8 @@ class SharedConfiguration: QuickConfiguration {
                 expect(searchbar.textField.clipsToBounds) == true
             }
             it("the cancel button is behind the textFields backgroundView") {
-                let backgroundViewIndex = searchbar.subviews.index(of: searchbar.backgroundView)
-                let cancelButtonIndex = searchbar.subviews.index(of: searchbar.cancelButton)
+                let backgroundViewIndex = searchbar.subviews.firstIndex(of: searchbar.backgroundView)
+                let cancelButtonIndex = searchbar.subviews.firstIndex(of: searchbar.cancelButton)
                 expect(backgroundViewIndex).to(beGreaterThan(cancelButtonIndex))
             }
             it("sets a non zero frame to the searchbar") {

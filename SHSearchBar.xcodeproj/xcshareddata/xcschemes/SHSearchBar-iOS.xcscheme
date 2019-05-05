@@ -16,7 +16,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "B9C8323D21C84B300008ED90"
                BuildableName = "SHSearchBar.framework"
-               BlueprintName = "SHSearchBar"
+               BlueprintName = "SHSearchBar-iOS"
                ReferencedContainer = "container:SHSearchBar.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -58,7 +58,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B9C8323D21C84B300008ED90"
             BuildableName = "SHSearchBar.framework"
-            BlueprintName = "SHSearchBar"
+            BlueprintName = "SHSearchBar-iOS"
             ReferencedContainer = "container:SHSearchBar.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -80,7 +80,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B9C8323D21C84B300008ED90"
             BuildableName = "SHSearchBar.framework"
-            BlueprintName = "SHSearchBar"
+            BlueprintName = "SHSearchBar-iOS"
             ReferencedContainer = "container:SHSearchBar.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -98,7 +98,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B9C8323D21C84B300008ED90"
             BuildableName = "SHSearchBar.framework"
-            BlueprintName = "SHSearchBar"
+            BlueprintName = "SHSearchBar-iOS"
             ReferencedContainer = "container:SHSearchBar.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
