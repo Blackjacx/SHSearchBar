@@ -1,6 +1,7 @@
 # Change Log
 
 ## [Unreleased]
+* [#49](https://github.com/Blackjacx/SHSearchBar/pull/49): Swift 5 Compatibility - [@blackjacx](https://github.com/blackjacx).
 
 ## [1.6.0] - 2018-12-18
 * [#47](https://github.com/Blackjacx/SHSearchBar/pull/47): Carthage Support - [@blackjacx](https://github.com/blackjacx).
