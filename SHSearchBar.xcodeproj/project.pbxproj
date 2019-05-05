@@ -201,9 +201,9 @@
 			productReference = 607FACE51AFB9204008FA782 /* SHSearchBar_iOS_Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		B9C8323D21C84B300008ED90 /* SHSearchBar */ = {
+		B9C8323D21C84B300008ED90 /* SHSearchBar-iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B9C8324321C84B300008ED90 /* Build configuration list for PBXNativeTarget "SHSearchBar" */;
+			buildConfigurationList = B9C8324321C84B300008ED90 /* Build configuration list for PBXNativeTarget "SHSearchBar-iOS" */;
 			buildPhases = (
 				B9C8323921C84B300008ED90 /* Headers */,
 				B9C8323A21C84B300008ED90 /* Sources */,
@@ -214,7 +214,7 @@
 			);
 			dependencies = (
 			);
-			name = SHSearchBar;
+			name = "SHSearchBar-iOS";
 			productName = SHSearchBar;
 			productReference = B9C8323E21C84B300008ED90 /* SHSearchBar.framework */;
 			productType = "com.apple.product-type.framework";
@@ -263,7 +263,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				B9C8323D21C84B300008ED90 /* SHSearchBar */,
+				B9C8323D21C84B300008ED90 /* SHSearchBar-iOS */,
 				607FACE41AFB9204008FA782 /* SHSearchBar_iOS_Tests */,
 			);
 		};
@@ -532,7 +532,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.codingcobra.SHSearchBar;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = SHSearchBar;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -567,7 +567,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.codingcobra.SHSearchBar;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = SHSearchBar;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -597,7 +597,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B9C8324321C84B300008ED90 /* Build configuration list for PBXNativeTarget "SHSearchBar" */ = {
+		B9C8324321C84B300008ED90 /* Build configuration list for PBXNativeTarget "SHSearchBar-iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B9C8324421C84B300008ED90 /* Debug */,
