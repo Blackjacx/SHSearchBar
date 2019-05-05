@@ -1,6 +1,7 @@
 # Change Log
 
 ## [Unreleased]
+* [#50](https://github.com/Blackjacx/SHSearchBar/pull/50): Update readme badges - [@blackjacx](https://github.com/blackjacx).
 
 ## [1.7.0] - 2019-05-05
 * [#49](https://github.com/Blackjacx/SHSearchBar/pull/49): Swift 5 Compatibility - [@blackjacx](https://github.com/blackjacx).
