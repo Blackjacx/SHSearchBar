@@ -6,14 +6,15 @@
 <h1 align="center">SHSearchBar</h1>
 
 <p align="center">
-  <a href="https://app.bitrise.io/app/582435533da6e6e8">
-    <img alt="Build Status" src="https://app.bitrise.io/app/582435533da6e6e8/status.svg?token=txPO2FVRfVTh3wS57eoOuw&branch=develop"/>
+  <a href="https://github.com/Blackjacx/shsearchbar/actions?query=workflow%3ACI">
+    <img alt="CI status" src="https://github.com/blackjacx/shsearchbar/workflows/CI/badge.svg" />
   </a>
+  
   <img alt="Github Current Release" src="https://img.shields.io/github/release/blackjacx/SHSearchBar.svg" /> 
   <img alt="Cocoapods Platforms" src="https://img.shields.io/cocoapods/p/SHSearchBar.svg"/>
-  <img alt="Xcode 10.0+" src="https://img.shields.io/badge/Xcode-10.0%2B-blue.svg"/>
+  <img alt="Xcode 11.0+" src="https://img.shields.io/badge/Xcode-11.0%2B-blue.svg"/>
   <img alt="iOS 10.0+" src="https://img.shields.io/badge/iOS-10.0%2B-blue.svg"/>
-  <img alt="Swift 5.0+" src="https://img.shields.io/badge/Swift-5.0%2B-orange.svg"/>
+  <img alt="Swift 5.1+" src="https://img.shields.io/badge/Swift-5.1%2B-orange.svg"/>
   <img alt="Github Repo Size" src="https://img.shields.io/github/repo-size/blackjacx/SHSearchBar.svg" />
   <img alt="Github Code Size" src="https://img.shields.io/github/languages/code-size/blackjacx/SHSearchBar.svg" />
   <img alt="Github Closed PR's" src="https://img.shields.io/github/issues-pr-closed/blackjacx/SHSearchBar.svg" />
@@ -46,8 +47,8 @@ Since I use a UITextField these restrictions do not apply.
 
 ## Installation
 
-SHSearchBar is compatible with `iOS 9` or higher and builds with `Xcode 9` 
-and `Swift 4` syntax. It is available through [CocoaPods](http://cocoapods.org). 
+SHSearchBar is compatible with `iOS 10` or higher and builds with `Xcode 10` 
+and `Swift 5.1+` syntax. It is available through [CocoaPods](http://cocoapods.org). 
 To install it, simply add the following line to your Podfile:
 
 ```ruby
@@ -71,37 +72,37 @@ use cases:
 
 <p align="center">
 <caption align="center">You can show a custom placeholder like for normal text fields:</caption><br />
-<img src="./github/assets/example_01.png" alt="Placeholder">
+<img src="./.github/assets/example_01.png" alt="Placeholder">
 </p>
 
 <p align="center">
 <caption align="center">And you can even type text into that searchbar:</caption><br />
-<img src="./github/assets/example_02.png" alt="Text">
+<img src="./.github/assets/example_02.png" alt="Text">
 </p>
 
 <p align="center">
 <caption align="center">Wow there are customizable accessory views too:</caption><br />
-<img src="./github/assets/example_03.png" alt="Accesssory Icon">
+<img src="./.github/assets/example_03.png" alt="Accesssory Icon">
 </p>
 
 <p align="center">
 <caption align="center">Easily customize text and cancel button as you want:</caption><br />
-<img src="./github/assets/example_04.png" alt="Customizable text and ancel button">
+<img src="./.github/assets/example_04.png" alt="Customizable text and ancel button">
 </p>
 
 <p align="center">
 <caption align="center">You can customize each corner radius of the text field so that layouts like this become an ease:</caption><br />
-<img src="./github/assets/example_06.png" alt="Corner Radius Customization">
+<img src="./.github/assets/example_06.png" alt="Corner Radius Customization">
 </p>
 
 <p align="center">
 <caption align="center">The inner text field supports the new iOS 10 'textContentMode':<br />(Re-uses the address searched in Apple Maps before)</caption><br />
-<img src="./github/assets/example_05.png" alt="UITextContentMode Support">
+<img src="./.github/assets/example_05.png" alt="UITextContentMode Support">
 </p>
 
 <p align="center">
 <caption align="center">You can use the search bar inside a UINavigationBar:</caption><br />
-<img src="./github/assets/example_07.png" alt="UINavigationBar Support">
+<img src="./.github/assets/example_07.png" alt="UINavigationBar Support">
 </p>
 
 ## Contribution
@@ -112,9 +113,8 @@ use cases:
 
 ## Author
 
-[Stefan Herold](mailto:stefan.herold@gmail.com) • [@Blackjacxxx](https://twitter.com/Blackjacxxx)
+[Stefan Herold](mailto:stefan.herold@gmail.com) • 🐦 [@Blackjacxxx](https://twitter.com/Blackjacxxx)
 
 ## License
 
-SHSearchBar is available under the MIT license. See the LICENSE file for more 
-info.
+SHSearchBar is available under the MIT license. See the [LICENSE](LICENSE) file for more info.
