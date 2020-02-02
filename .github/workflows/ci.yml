@@ -1,6 +1,8 @@
 name: CI
 on: [push, pull_request]
 env:
+  FRAMEWORK_SCHEME: "SHSearchBar"
+  FRAMEWORK_WORKSPACE: "SHSearchBar.xcworkspace"
   FASTLANE_XCODE_LIST_TIMEOUT: 999
   FASTLANE_WORK_DIR: .
   MINT_PATH: ${{ github.workspace }}/mint
@@ -29,6 +31,6 @@ jobs:
       - name: Install dependencies
         run: bash <(curl -s https://raw.githubusercontent.com/Blackjacx/Scripts/master/frameworks/bootstrap.sh)
       - name: Run tests
-        run: bundle exec fastlane test framework:"SHSearchBar" run_danger:${{ github.event_name }}
+        run: bundle exec fastlane test framework:env.FRAMEWORK_SCHEME run_danger:${{ github.event_name }}
         env: 
           DANGER_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
