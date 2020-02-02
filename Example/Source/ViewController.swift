@@ -3,7 +3,7 @@
 //  SHSearchBar
 //
 //  Created by Stefan Herold on 08/01/2016.
-//  Copyright (c) 2016 Stefan Herold. All rights reserved.
+//  Copyright © 2020 Stefan Herold. All rights reserved.
 //
 
 import UIKit
@@ -31,6 +31,7 @@ class ViewController: UIViewController, SHSearchBarDelegate {
         return formatter
     }()
 
+    // swiftlint:disable:next function_body_length
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -42,30 +43,46 @@ class ViewController: UIViewController, SHSearchBarDelegate {
         navigationController?.navigationBar.shadowImage = UIImage()
 
         let leftView1 = imageViewWithIcon(searchGlassIconTemplate, rasterSize: rasterSize)
-        searchBar1 = defaultSearchBar(withRasterSize: rasterSize, leftView: leftView1, rightView: nil, delegate: self)
+        searchBar1 = defaultSearchBar(withRasterSize: rasterSize,
+                                      leftView: leftView1,
+                                      rightView: nil,
+                                      delegate: self)
         view.addSubview(searchBar1)
 
         let rightView2 = imageViewWithIcon(searchGlassIconTemplate, rasterSize: rasterSize)
-        searchBar2 = defaultSearchBar(withRasterSize: rasterSize, leftView: nil, rightView: rightView2, delegate: self)
+        searchBar2 = defaultSearchBar(withRasterSize: rasterSize,
+                                      leftView: nil,
+                                      rightView: rightView2,
+                                      delegate: self)
         searchBar2.text = NSLocalizedString("sbe.exampleText.simple", comment: "")
         view.addSubview(searchBar2)
 
         let leftView3 = imageViewWithIcon(searchGlassIconTemplate, rasterSize: rasterSize)
         let rightView3 = imageViewWithIcon(searchGlassIconTemplate, rasterSize: rasterSize)
-        searchBar3 = defaultSearchBar(withRasterSize: rasterSize, leftView: leftView3, rightView: rightView3, delegate: self)
+        searchBar3 = defaultSearchBar(withRasterSize: rasterSize,
+                                      leftView: leftView3,
+                                      rightView: rightView3,
+                                      delegate: self)
         searchBar3.text = NSLocalizedString("sbe.exampleText.withLeftView", comment: "")
         view.addSubview(searchBar3)
 
         // TODO: SearchBar4: centered text lets the icon on the left - this is not intended!
         let leftView4 = imageViewWithIcon(searchGlassIconTemplate, rasterSize: rasterSize)
-        searchBar4 = defaultSearchBar(withRasterSize: rasterSize, leftView: leftView4, rightView: nil, delegate: self)
+        searchBar4 = defaultSearchBar(withRasterSize: rasterSize,
+                                      leftView: leftView4,
+                                      rightView: nil,
+                                      delegate: self)
         searchBar4.textAlignment = .center
         searchBar4.text = NSLocalizedString("sbe.exampleText.centered", comment: "")
         view.addSubview(searchBar4)
 
         // TODO: SearchBar4: centered text lets the icon on the left - this is not intended!
         let leftViewNoCancelButton = imageViewWithIcon(searchGlassIconTemplate, rasterSize: rasterSize)
-        noCancelButtonSearchbar = defaultSearchBar(withRasterSize: rasterSize, leftView: leftViewNoCancelButton, rightView: nil, delegate: self, useCancelButton: false)
+        noCancelButtonSearchbar = defaultSearchBar(withRasterSize: rasterSize,
+                                                   leftView: leftViewNoCancelButton,
+                                                   rightView: nil,
+                                                   delegate: self,
+                                                   useCancelButton: false)
         noCancelButtonSearchbar.textAlignment = .center
         noCancelButtonSearchbar.text = NSLocalizedString("sbe.exampleText.noCancelButton", comment: "")
         view.addSubview(noCancelButtonSearchbar)
@@ -110,7 +127,7 @@ class ViewController: UIViewController, SHSearchBarDelegate {
 
             for bar in allSearchBars {
                 var config = bar.config
-                config.cancelButtonTextAttributes = [.foregroundColor : UIColor.red]
+                config.cancelButtonTextAttributes = [.foregroundColor: UIColor.red]
                 config.rasterSize = raster
                 bar.config = config
             }
@@ -175,7 +192,12 @@ class ViewController: UIViewController, SHSearchBarDelegate {
 
 // MARK: - Helper Functions
 
-func defaultSearchBar(withRasterSize rasterSize: CGFloat, leftView: UIView?, rightView: UIView?, delegate: SHSearchBarDelegate, useCancelButton: Bool = true) -> SHSearchBar {
+func defaultSearchBar(withRasterSize rasterSize: CGFloat,
+                      leftView: UIView?,
+                      rightView: UIView?,
+                      delegate: SHSearchBarDelegate,
+                      useCancelButton: Bool = true) -> SHSearchBar {
+
     var config = defaultSearchBarConfig(rasterSize)
     config.leftView = leftView
     config.rightView = rightView
@@ -204,9 +226,9 @@ func defaultSearchBarConfig(_ rasterSize: CGFloat) -> SHSearchBarConfig {
     var config: SHSearchBarConfig = SHSearchBarConfig()
     config.rasterSize = rasterSize
 //    config.cancelButtonTitle = NSLocalizedString("sbe.general.cancel", comment: "")
-    config.cancelButtonTextAttributes = [.foregroundColor : UIColor.darkGray]
+    config.cancelButtonTextAttributes = [.foregroundColor: UIColor.darkGray]
     config.textContentType = UITextContentType.fullStreetAddress.rawValue
-    config.textAttributes = [.foregroundColor : UIColor.gray]
+    config.textAttributes = [.foregroundColor: UIColor.gray]
     return config
 }
 

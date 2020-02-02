@@ -3,7 +3,7 @@
 //  iOS Example
 //
 //  Created by Stefan Herold on 20.12.17.
-//  Copyright © 2017 StefanHerold. All rights reserved.
+//  Copyright © 2020 Stefan Herold. All rights reserved.
 //
 
 import UIKit
@@ -24,7 +24,7 @@ class SearchbarTitleView: UIView {
 
     @available(*, unavailable, message:"init(coder:) has not been implemented")
     required init?(coder aDecoder: NSCoder) {
-        fatalError()
+        preconditionFailure()
     }
 
     func setupLayoutConstraints() {
@@ -37,10 +37,9 @@ class SearchbarTitleView: UIView {
         ]
         NSLayoutConstraint.activate(constraints)
     }
-    
+
     // This is important to make the title view expanding from left to right
     override var intrinsicContentSize: CGSize {
-        return UIView.layoutFittingExpandedSize
+        UIView.layoutFittingExpandedSize
     }
 }
-

@@ -3,7 +3,7 @@
 //  SHSearchBar
 //
 //  Created by Stefan Herold on 27/11/2016.
-//  Copyright © 2016 StefanHerold. All rights reserved.
+//  Copyright © 2020 Stefan Herold. All rights reserved.
 //
 
 import UIKit
@@ -36,10 +36,9 @@ public class SHSearchBarTextField: UITextField {
      * - parameter coder: A NSCoder instance.
      * - note: This initializer is not implementes and will raise an exception when called.
      */
-    required public init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    public required init?(coder aDecoder: NSCoder) {
+        preconditionFailure("init(coder:) has not been implemented")
     }
-
 
     // MARK: - Overrides
 
@@ -67,7 +66,7 @@ public class SHSearchBarTextField: UITextField {
             // no left and no right view
             minX = config.rasterSize
             width = bounds.width - config.rasterSize * 2
-            
+
         } else if bounds.minX > 0 && bounds.width == originalBounds.width - bounds.minX {
             // only left view
             minX = bounds.minX

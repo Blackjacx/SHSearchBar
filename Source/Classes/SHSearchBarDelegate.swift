@@ -3,15 +3,13 @@
 //  SHSearchBar
 //
 //  Created by Stefan Herold on 04.05.17.
-//  Copyright © 2017 StefanHerold. All rights reserved.
+//  Copyright © 2020 Stefan Herold. All rights reserved.
 //
 
 import Foundation
 
-/**
- * This protocol is used to inform the searchbar's delegate of important events.
- */
-public protocol SHSearchBarDelegate : NSObjectProtocol {
+/// This protocol is used to inform the searchbar's delegate of important events.
+public protocol SHSearchBarDelegate: NSObjectProtocol {
     /**
      * Controls whether editing should begin or not. Return false to disallow editing.
      * - parameter searchBar: The searchbar for which the delegate call was issued.
@@ -80,40 +78,42 @@ public protocol SHSearchBarDelegate : NSObjectProtocol {
     func searchBar(_ searchBar: SHSearchBar, textDidChange text: String)
 }
 
-
 /**
- * This extension provides a default implementation of the protocol which replaces old-style optional protocol methods known from Objective-C.
+ * This extension provides a default implementation of the protocol which
+ * replaces old-style optional protocol methods known from Objective-C.
  * (http://useyourloaf.com/blog/swift-optional-protocol-methods/)
  */
-extension SHSearchBarDelegate {
-    public func searchBarShouldBeginEditing(_ searchBar: SHSearchBar) -> Bool {
-        return true
+public extension SHSearchBarDelegate {
+    func searchBarShouldBeginEditing(_ searchBar: SHSearchBar) -> Bool {
+        true
     }
 
-    public func searchBarDidBeginEditing(_ searchBar: SHSearchBar) {}
+    func searchBarDidBeginEditing(_ searchBar: SHSearchBar) {}
 
-    public func searchBarShouldEndEditing(_ searchBar: SHSearchBar) -> Bool {
-        return true
+    func searchBarShouldEndEditing(_ searchBar: SHSearchBar) -> Bool {
+        true
     }
 
-    public func searchBarDidEndEditing(_ searchBar: SHSearchBar) {}
+    func searchBarDidEndEditing(_ searchBar: SHSearchBar) {}
 
-    public func searchBar(_ searchBar: SHSearchBar, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        return true
+    func searchBar(_ searchBar: SHSearchBar,
+                   shouldChangeCharactersIn range: NSRange,
+                   replacementString string: String) -> Bool {
+        true
     }
 
-    public func searchBarShouldClear(_ searchBar: SHSearchBar) -> Bool {
-        return true
+    func searchBarShouldClear(_ searchBar: SHSearchBar) -> Bool {
+        true
     }
 
-    public func searchBarShouldReturn(_ searchBar: SHSearchBar) -> Bool {
+    func searchBarShouldReturn(_ searchBar: SHSearchBar) -> Bool {
         searchBar.textField.resignFirstResponder()
         return true
     }
 
-    public func searchBarShouldCancel(_ searchBar: SHSearchBar) -> Bool {
-        return true
+    func searchBarShouldCancel(_ searchBar: SHSearchBar) -> Bool {
+        true
     }
 
-    public func searchBar(_ searchBar: SHSearchBar, textDidChange text: String) {}
+    func searchBar(_ searchBar: SHSearchBar, textDidChange text: String) {}
 }
