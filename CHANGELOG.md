@@ -1,6 +1,7 @@
 # Change Log
 
 ## [Unreleased]
+* [#100](https://github.com/Blackjacx/SHSearchBar/pull/100): Xcov Test - [@blackjacx](https://github.com/blackjacx).
 * [#50](https://github.com/Blackjacx/SHSearchBar/pull/50): Update readme badges - [@blackjacx](https://github.com/blackjacx).
 
 ## [1.7.0] - 2019-05-05
