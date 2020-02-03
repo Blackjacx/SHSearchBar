@@ -2,8 +2,8 @@ name: CI
 on: [push, pull_request]
 env:
   FRAMEWORK: "SHSearchBar"
+  XCOV_SCHEME: "SHSearchBar-iOS"
   FRAMEWORK_WORKSPACE: "SHSearchBar.xcworkspace"
-  XCOV_SCHEME: SHSearchBar-iOS
   FASTLANE_XCODE_LIST_TIMEOUT: 999
   FASTLANE_WORK_DIR: .
   MINT_PATH: ${{ github.workspace }}/mint
