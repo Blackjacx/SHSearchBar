@@ -3,11 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B20CC6E8F1C1C8A2924F31FF /* Pods_TestPods_SHSearchBar_iOS_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FA58F22BAAD8A9A64023BD4 /* Pods_TestPods_SHSearchBar_iOS_Tests.framework */; };
+		B934078524FD66A000F698E7 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = B934078424FD66A000F698E7 /* SwiftPackageProductDependency */; };
+		B934078824FD66C000F698E7 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = B934078724FD66C000F698E7 /* SwiftPackageProductDependency */; };
 		B943C6AC21C86DFC00BE8948 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B943C6AA21C86DFC00BE8948 /* Localizable.strings */; };
 		B995DD912036349C00E091FB /* Mocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = B995DD8D203633E000E091FB /* Mocks.swift */; };
 		B995DD922036349C00E091FB /* SHSearchBarSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = B995DD8C203633E000E091FB /* SHSearchBarSpec.swift */; };
@@ -21,13 +22,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2199CB4B186EB55AA75AB0DF /* Pods-TestPods-SHSearchBar_iOS_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestPods-SHSearchBar_iOS_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TestPods-SHSearchBar_iOS_Tests/Pods-TestPods-SHSearchBar_iOS_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		289F7FC3D557216213AC975E /* Pods-TestPods-SHSearchBar_iOS_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestPods-SHSearchBar_iOS_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TestPods-SHSearchBar_iOS_Tests/Pods-TestPods-SHSearchBar_iOS_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		347EB67A56B544424140EDED /* Pods_SHSearchBar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SHSearchBar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		4FA58F22BAAD8A9A64023BD4 /* Pods_TestPods_SHSearchBar_iOS_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TestPods_SHSearchBar_iOS_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACE51AFB9204008FA782 /* SHSearchBar_iOS_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SHSearchBar_iOS_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6DCBF1F56D2C3FC7138E1EF2 /* Pods_SHSearchBar_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SHSearchBar_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B943C6AB21C86DFC00BE8948 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = Strings/de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B943C6AD21C86E0100BE8948 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Strings/en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B943C6AE21C86E0700BE8948 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = Strings/es.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -55,8 +51,6 @@
 		B9C8324B21C84B5D0008ED90 /* SHSearchBarConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SHSearchBarConfig.swift; path = Classes/SHSearchBarConfig.swift; sourceTree = "<group>"; };
 		B9C8325221C84CC90008ED90 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B9C8325321C84CC90008ED90 /* SHSearchBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHSearchBar.h; sourceTree = "<group>"; };
-		F7A6AF85A1EC6DA32CCCC9C7 /* Pods-SHSearchBar_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SHSearchBar_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SHSearchBar_Tests/Pods-SHSearchBar_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		FA26EA3D9D157E10C2D20D77 /* Pods-SHSearchBar_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SHSearchBar_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SHSearchBar_Tests/Pods-SHSearchBar_Tests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,7 +58,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B20CC6E8F1C1C8A2924F31FF /* Pods_TestPods_SHSearchBar_iOS_Tests.framework in Frameworks */,
+				B934078824FD66C000F698E7 /* BuildFile in Frameworks */,
+				B934078524FD66A000F698E7 /* BuildFile in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,17 +73,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		40D85D3C4B555A80427438F1 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				F7A6AF85A1EC6DA32CCCC9C7 /* Pods-SHSearchBar_Tests.debug.xcconfig */,
-				FA26EA3D9D157E10C2D20D77 /* Pods-SHSearchBar_Tests.release.xcconfig */,
-				2199CB4B186EB55AA75AB0DF /* Pods-TestPods-SHSearchBar_iOS_Tests.debug.xcconfig */,
-				289F7FC3D557216213AC975E /* Pods-TestPods-SHSearchBar_iOS_Tests.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		607FACC71AFB9204008FA782 = {
 			isa = PBXGroup;
 			children = (
@@ -96,8 +80,6 @@
 				B9C8323821C849990008ED90 /* Source */,
 				607FACE81AFB9204008FA782 /* Tests */,
 				607FACD11AFB9204008FA782 /* Products */,
-				B61D229E788F55B81B930789 /* Frameworks */,
-				40D85D3C4B555A80427438F1 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -143,16 +125,6 @@
 			name = "Podspec Metadata";
 			sourceTree = "<group>";
 		};
-		B61D229E788F55B81B930789 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				347EB67A56B544424140EDED /* Pods_SHSearchBar.framework */,
-				6DCBF1F56D2C3FC7138E1EF2 /* Pods_SHSearchBar_Tests.framework */,
-				4FA58F22BAAD8A9A64023BD4 /* Pods_TestPods_SHSearchBar_iOS_Tests.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		B9C8323821C849990008ED90 /* Source */ = {
 			isa = PBXGroup;
 			children = (
@@ -186,17 +158,19 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 607FACF21AFB9204008FA782 /* Build configuration list for PBXNativeTarget "SHSearchBar_iOS_Tests" */;
 			buildPhases = (
-				62D764484A0ED4B9ACC259FE /* [CP] Check Pods Manifest.lock */,
 				607FACE11AFB9204008FA782 /* Sources */,
 				607FACE21AFB9204008FA782 /* Frameworks */,
 				607FACE31AFB9204008FA782 /* Resources */,
-				FDF77FD1B9B4ED725533FA48 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = SHSearchBar_iOS_Tests;
+			packageProductDependencies = (
+				B934078424FD66A000F698E7 /* SwiftPackageProductDependency */,
+				B934078724FD66C000F698E7 /* SwiftPackageProductDependency */,
+			);
 			productName = Tests;
 			productReference = 607FACE51AFB9204008FA782 /* SHSearchBar_iOS_Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -260,6 +234,10 @@
 				"zh-Hans",
 			);
 			mainGroup = 607FACC71AFB9204008FA782;
+			packageReferences = (
+				B934078324FD66A000F698E7 /* RemoteSwiftPackageReference */,
+				B934078624FD66C000F698E7 /* RemoteSwiftPackageReference */,
+			);
 			productRefGroup = 607FACD11AFB9204008FA782 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -289,24 +267,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		62D764484A0ED4B9ACC259FE /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-TestPods-SHSearchBar_iOS_Tests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
 		B902956C23E77EF600269EA9 /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -324,26 +284,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "mint run swiftlint\n";
-		};
-		FDF77FD1B9B4ED725533FA48 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-TestPods-SHSearchBar_iOS_Tests/Pods-TestPods-SHSearchBar_iOS_Tests-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
-				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TestPods-SHSearchBar_iOS_Tests/Pods-TestPods-SHSearchBar_iOS_Tests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -492,21 +432,25 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
 		607FACF31AFB9204008FA782 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2199CB4B186EB55AA75AB0DF /* Pods-TestPods-SHSearchBar_iOS_Tests.debug.xcconfig */;
 			buildSettings = {
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = Tests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -515,10 +459,13 @@
 		};
 		607FACF41AFB9204008FA782 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 289F7FC3D557216213AC975E /* Pods-TestPods-SHSearchBar_iOS_Tests.release.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = Tests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -547,10 +494,14 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = Source/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.codingcobra.SHSearchBar;
+				PRODUCT_BUNDLE_IDENTIFIER = com.stherold.SHSearchBar;
 				PRODUCT_NAME = SHSearchBar;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
@@ -583,9 +534,13 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = Source/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.codingcobra.SHSearchBar;
+				PRODUCT_BUNDLE_IDENTIFIER = com.stherold.SHSearchBar;
 				PRODUCT_NAME = SHSearchBar;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -626,6 +581,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B934078324FD66A000F698E7 /* RemoteSwiftPackageReference */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Quick/Nimble";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.1.1;
+			};
+		};
+		B934078624FD66C000F698E7 /* RemoteSwiftPackageReference */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Quick/Quick";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B934078424FD66A000F698E7 /* SwiftPackageProductDependency */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B934078324FD66A000F698E7 /* RemoteSwiftPackageReference */;
+			productName = Nimble;
+		};
+		B934078724FD66C000F698E7 /* SwiftPackageProductDependency */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B934078624FD66C000F698E7 /* RemoteSwiftPackageReference */;
+			productName = Quick;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 607FACC81AFB9204008FA782 /* Project object */;
 }
