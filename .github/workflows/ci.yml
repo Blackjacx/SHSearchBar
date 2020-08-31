@@ -11,20 +11,20 @@ env:
 jobs:
   bootstrap-and-test:
     name: Test
-    runs-on: macos
+    runs-on: macos-latest
     steps:      
       - name: Checkout
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2
       - name: Download Configuration Files
         run: bash <(curl -s https://raw.githubusercontent.com/Blackjacx/Scripts/master/frameworks/bootstrap.sh) -d
       - name: Cache RubyGems
-        uses: actions/cache@v1
+        uses: actions/cache@v2
         with:
           path: vendor/bundle
           key: ${{ runner.os }}-gem-${{ hashFiles('**/Gemfile.lock') }}
           restore-keys: ${{ runner.os }}-gem-
       - name: Cache Mint packages
-        uses: actions/cache@v1
+        uses: actions/cache@v2
         with:
           path: ${{ env.MINT_PATH }}
           key: ${{ runner.os }}-mint-${{ hashFiles('**/Mintfile') }}
