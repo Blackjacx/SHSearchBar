@@ -42,6 +42,22 @@ public class SHSearchBarTextField: UITextField {
 
     // MARK: - Overrides
 
+//    public override func leftViewRect(forBounds bounds: CGRect) -> CGRect {
+//        var rect = super.leftViewRect(forBounds: bounds)
+//        rect.origin = .zero
+//        rect.size.width = leftView?.frame.width ?? rect.width
+//        rect.size.height = frame.height
+//        return rect
+//    }
+//
+//    public override func rightViewRect(forBounds bounds: CGRect) -> CGRect {
+//        var rect = super.rightViewRect(forBounds: bounds)
+//        rect.origin = .zero
+//        rect.size.width = rightView?.frame.width ?? rect.width
+//        rect.size.height = frame.height
+//        return rect
+//    }
+
     override public func textRect(forBounds bounds: CGRect) -> CGRect {
         let rect = super.textRect(forBounds: bounds)
         return rectForBounds(rect, originalBounds: bounds)
