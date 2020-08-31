@@ -2,9 +2,19 @@
 #
 # gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
 
+# macos
+**/.DS_Store
+**/.env
+
 ## CI
 codesigndoc_exports
 
+# Carthage framework bundle - created during release process
+*.framework.zip
+# Fastlane config script is downloaded
+fastlane/Fastfile
+# Fastlane plugin config is downloaded
+fastlane/Pluginfile
 # Mint dependencies file which is downloaded
 Mintfile
 # Swiftlint config file which is downloaded
