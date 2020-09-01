@@ -1,6 +1,7 @@
 # Change Log
 
 ## [Unreleased]
+* [#54](https://github.com/Blackjacx/SHSearchBar/pull/54): Swift 5.3 & swift package manager - [@Blackjacx](https://github.com/Blackjacx).
 * [#50](https://github.com/Blackjacx/SHSearchBar/pull/50): Update readme badges - [@blackjacx](https://github.com/blackjacx).
 
 ## [1.7.0] - 2019-05-05
