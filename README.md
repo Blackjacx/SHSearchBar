@@ -4,31 +4,20 @@
 
 <h1 align="center">SHSearchBar</h1>
 
-<p align="center">
-  <a href="https://twitter.com/blackjacxxx"><img alt="Twitter Follow" src="https://img.shields.io/twitter/follow/blackjacxxx?label=%40Blackjacxxx"/></a>
-  <a href="https://github.com/Blackjacx/shsearchbar/actions?query=workflow%3ACI">
-    <img alt="CI status" src="https://github.com/blackjacx/shsearchbar/workflows/CI/badge.svg" />
-  </a>
-  
-  <img alt="Github Current Release" src="https://img.shields.io/github/release/blackjacx/SHSearchBar.svg" /> 
-  <img alt="Cocoapods Platforms" src="https://img.shields.io/cocoapods/p/SHSearchBar.svg"/>
-  <img alt="Xcode 11.0+" src="https://img.shields.io/badge/Xcode-11.0%2B-blue.svg"/>
-  <img alt="iOS 10.0+" src="https://img.shields.io/badge/iOS-10.0%2B-blue.svg"/>
-  <img alt="Swift 5.1+" src="https://img.shields.io/badge/Swift-5.1%2B-orange.svg"/>
-  <img alt="Github Repo Size" src="https://img.shields.io/github/repo-size/blackjacx/SHSearchBar.svg" />
-  <img alt="Github Code Size" src="https://img.shields.io/github/languages/code-size/blackjacx/SHSearchBar.svg" />
-  <img alt="Github Closed PR's" src="https://img.shields.io/github/issues-pr-closed/blackjacx/SHSearchBar.svg" />
-  <a href="https://github.com/Carthage/Carthage">
-    <img alt="Carthage compatible" src="https://img.shields.io/badge/Carthage-Compatible-brightgreen.svg?style=flat"/>
-  </a>
-  <a href="https://github.com/Blackjacx/SHSearchBar/blob/develop/LICENSE?raw=true">
-    <img alt="License" src="https://img.shields.io/cocoapods/l/SHSearchBar.svg?style=flat"/>
-  </a>
-  <a href="https://codebeat.co/projects/github-com-blackjacx-shsearchbar">
-    <img alt="Codebeat" src="https://codebeat.co/badges/44539071-5029-4379-9d33-99dd721915c8" />
-  </a>
-  <a href="https://www.paypal.me/STHEROLD"><img alt="Donate" src="https://img.shields.io/badge/Donate-PayPal-blue.svg"/></a>
-</p>
+[![Twitter](https://img.shields.io/twitter/follow/blackjacxxx?label=%40Blackjacxxx)](https://twitter.com/blackjacx)
+<a href="https://github.com/Blackjacx/shsearchbar/actions?query=workflow%3ACI"><img alt="CI status" src="https://github.com/blackjacx/shsearchbar/workflows/CI/badge.svg" /></a>
+<img alt="Github Current Release" src="https://img.shields.io/github/release/blackjacx/SHSearchBar.svg" /> 
+<img alt="Cocoapods Platforms" src="https://img.shields.io/cocoapods/p/SHSearchBar.svg"/>
+<img alt="Xcode 11.0+" src="https://img.shields.io/badge/Xcode-11.0%2B-blue.svg"/>
+<img alt="iOS 10.0+" src="https://img.shields.io/badge/iOS-10.0%2B-blue.svg"/>
+<img alt="Swift 5.1+" src="https://img.shields.io/badge/Swift-5.1%2B-orange.svg"/>
+<img alt="Github Repo Size" src="https://img.shields.io/github/repo-size/blackjacx/SHSearchBar.svg" />
+<img alt="Github Code Size" src="https://img.shields.io/github/languages/code-size/blackjacx/SHSearchBar.svg" />
+<img alt="Github Closed PR's" src="https://img.shields.io/github/issues-pr-closed/blackjacx/SHSearchBar.svg" />
+<a href="https://github.com/Carthage/Carthage"><img alt="Carthage compatible" src="https://img.shields.io/badge/Carthage-Compatible-brightgreen.svg?style=flat"/></a>
+<a href="https://github.com/Blackjacx/SHSearchBar/blob/develop/LICENSE?raw=true"><img alt="License" src="https://img.shields.io/cocoapods/l/SHSearchBar.svg?style=flat"/></a>
+<a href="https://codebeat.co/projects/github-com-blackjacx-shsearchbar"><img alt="Codebeat" src="https://codebeat.co/badges/44539071-5029-4379-9d33-99dd721915c8" /></a>
+<a href="https://www.paypal.me/STHEROLD"><img alt="Donate" src="https://img.shields.io/badge/Donate-PayPal-blue.svg"/></a>
 
 The clean and shiny search bar that does what UISearchBar does only with dirty 
 hacks. This view is designed to tackle the customization limits of UISearchBar. 
