@@ -1,4 +1,3 @@
-
 <!-- <p align="center">
 <img src="./icon.png" alt="SHSearchBar" height="128" width="128">
 </p> -->
@@ -6,6 +5,7 @@
 <h1 align="center">SHSearchBar</h1>
 
 <p align="center">
+  <a href="https://twitter.com/blackjacxxx"><img alt="Twitter Follow" src="https://img.shields.io/twitter/follow/blackjacxxx?label=%40Blackjacxxx"/></a>
   <a href="https://github.com/Blackjacx/shsearchbar/actions?query=workflow%3ACI">
     <img alt="CI status" src="https://github.com/blackjacx/shsearchbar/workflows/CI/badge.svg" />
   </a>
@@ -27,9 +27,7 @@
   <a href="https://codebeat.co/projects/github-com-blackjacx-shsearchbar">
     <img alt="Codebeat" src="https://codebeat.co/badges/44539071-5029-4379-9d33-99dd721915c8" />
   </a>
-  <a href="https://www.paypal.me/STHEROLD">
-    <img alt="Donate" src="https://img.shields.io/badge/Donate-PayPal-blue.svg"/>
-  </a>
+  <a href="https://www.paypal.me/STHEROLD"><img alt="Donate" src="https://img.shields.io/badge/Donate-PayPal-blue.svg"/></a>
 </p>
 
 The clean and shiny search bar that does what UISearchBar does only with dirty 
