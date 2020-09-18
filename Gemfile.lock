@@ -163,6 +163,7 @@ GEM
       xcodeproj (>= 1.13.0, < 2.0.0)
       xcpretty (~> 0.3.0)
       xcpretty-travis-formatter (>= 0.0.3)
+    fastlane-plugin-changelog (0.15.0)
     ffi (1.13.1)
     fourflusher (2.3.1)
     fuzzy_match (2.0.4)
@@ -302,6 +303,7 @@ DEPENDENCIES
   danger-swiftlint
   danger-xcov
   fastlane
+  fastlane-plugin-changelog
   xcov
 
 BUNDLED WITH
