@@ -1,8 +1,38 @@
-# OS X
-.DS_Store
-
 # Xcode
+#
+# gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
+
+# macos
+**/.DS_Store
+**/.env
+
+## CI
+codesigndoc_exports
+
+# Carthage framework bundle - created during release process
+*.framework.zip
+# Fastlane config script is downloaded
+fastlane/Fastfile
+# Fastlane plugin config is downloaded
+fastlane/Pluginfile
+# Mint dependencies file which is downloaded
+Mintfile
+# Swiftlint config file which is downloaded
+.swiftlint.yml
+# Danger config file which is downloaded
+Dangerfile
+# Ruby gems config file which is downloaded
+Gemfile
+# Bundler configuration which is bootstrapped
+.bundle
+# Bundler vendor information which is bootstrapped
+vendor
+
+## Build generated
 build/
+DerivedData/
+
+## Various settings
 *.pbxuser
 !default.pbxuser
 *.mode1v3
@@ -12,35 +42,50 @@ build/
 *.perspectivev3
 !default.perspectivev3
 xcuserdata/
-*.xccheckout
-profile
+
+## Other
 *.moved-aside
-DerivedData
+*.xccheckout
+*.xcscmblueprint
+
+## Obj-C/Swift specific
 *.hmap
 *.ipa
+*.dSYM.zip
+*.dSYM
 
-# Auto generated
-docs/
+## Playgrounds
+timeline.xctimeline
+playground.xcworkspace
 
-# Bundler
-.bundle
-
-Carthage
+# CocoaPods
+#
 # We recommend against adding the Pods directory to your .gitignore. However
 # you should judge for yourself, the pros and cons are mentioned at:
-# http://guides.cocoapods.org/using/using-cocoapods.html#should-i-ignore-the-pods-directory-in-source-control
-# 
-# Note: if you ignore the Pods directory, make sure to uncomment
-# `pod install` in .travis.yml
+# https://guides.cocoapods.org/using/using-cocoapods.html#should-i-check-the-pods-directory-into-source-control
 #
 Pods/
+
+# Carthage
+#
+# Add this line if you want to avoid checking in source code from Carthage dependencies.
+# Carthage/Checkouts
+Carthage/Build
+
+# Swift Package Manager
+#
+# Add this line if you want to avoid checking in source code from Swift Package Manager dependencies.
+# Packages/
+# Package.pins
+.build/
+.swiftpm
 
 # fastlane
 #
 # It is recommended to not store the screenshots in the git repo. Instead, use fastlane to re-generate the
 # screenshots whenever they are needed.
 # For more information about the recommended setup visit:
-# https://github.com/fastlane/fastlane/blob/master/fastlane/docs/Gitignore.md
+# https://docs.fastlane.tools/best-practices/source-control/#source-control
 
 fastlane/report.xml
 fastlane/Preview.html
@@ -48,4 +93,3 @@ fastlane/screenshots
 fastlane/test_output
 fastlane/.env
 fastlane/README.md
-fastlane/*.coverage.txt

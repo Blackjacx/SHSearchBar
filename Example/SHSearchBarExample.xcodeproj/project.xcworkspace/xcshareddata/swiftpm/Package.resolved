@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "SHSearchBar",
+        "repositoryURL": "https://github.com/Blackjacx/SHSearchBar/",
+        "state": {
+          "branch": "develop",
+          "revision": "28841293be7566771a66094b0ad6f2165513e55d",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}

@@ -1,6 +1,0 @@
-
-import_from_git(
-  url: "git@github.com:Blackjacx/Scripts.git",
-  branch: "master",
-  path: "Fastfile_Pods"
-)

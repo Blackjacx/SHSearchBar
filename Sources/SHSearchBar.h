@@ -3,7 +3,7 @@
 //  SHSearchBar
 //
 //  Created by Stefan Herold on 17.12.18.
-//  Copyright © 2018 CocoaPods. All rights reserved.
+//  Copyright © 2020 Stefan Herold. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

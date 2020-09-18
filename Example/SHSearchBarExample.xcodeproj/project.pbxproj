@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -14,31 +14,8 @@
 		B9C8327621C850700008ED90 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9C8327421C850700008ED90 /* LaunchScreen.xib */; };
 		B9C832A321C854A20008ED90 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B9C832A221C854A20008ED90 /* Images.xcassets */; };
 		B9C832A621C854BD0008ED90 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B9C832A421C854BD0008ED90 /* Localizable.strings */; };
+		B9EAB54724FE5CA600374E52 /* SHSearchBar in Frameworks */ = {isa = PBXBuildFile; productRef = B9EAB54624FE5CA600374E52 /* SHSearchBar */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		B9C8329C21C853F90008ED90 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B9C8329721C853F90008ED90 /* SHSearchBar.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = B9C8323E21C84B300008ED90;
-			remoteInfo = SHSearchBar;
-		};
-		B9C8329E21C853F90008ED90 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B9C8329721C853F90008ED90 /* SHSearchBar.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 607FACE51AFB9204008FA782;
-			remoteInfo = SHSearchBar_Tests;
-		};
-		B9C832A021C8540A0008ED90 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B9C8329721C853F90008ED90 /* SHSearchBar.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = B9C8323D21C84B300008ED90;
-			remoteInfo = SHSearchBar;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		B9C8325D21C84F3D0008ED90 /* SHSearchBarExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SHSearchBarExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -48,7 +25,6 @@
 		B9C8326C21C84F400008ED90 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B9C8327221C8500F0008ED90 /* SearchBarTitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchBarTitleView.swift; sourceTree = "<group>"; };
 		B9C8327521C850700008ED90 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		B9C8329721C853F90008ED90 /* SHSearchBar.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SHSearchBar.xcodeproj; path = ../SHSearchBar.xcodeproj; sourceTree = "<group>"; };
 		B9C832A221C854A20008ED90 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		B9C832A521C854BD0008ED90 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B9C832A721C854C50008ED90 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -65,6 +41,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B9EAB54724FE5CA600374E52 /* SHSearchBar in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,7 +53,6 @@
 			children = (
 				B9C8325F21C84F3D0008ED90 /* SHSearchBarExample */,
 				B9C8325E21C84F3D0008ED90 /* Products */,
-				B9C8329721C853F90008ED90 /* SHSearchBar.xcodeproj */,
 			);
 			sourceTree = "<group>";
 		};
@@ -104,15 +80,6 @@
 			path = Source;
 			sourceTree = "<group>";
 		};
-		B9C8329821C853F90008ED90 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				B9C8329D21C853F90008ED90 /* SHSearchBar.framework */,
-				B9C8329F21C853F90008ED90 /* SHSearchBar_iOS_Tests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -127,9 +94,11 @@
 			buildRules = (
 			);
 			dependencies = (
-				B9C832A121C8540A0008ED90 /* PBXTargetDependency */,
 			);
 			name = SHSearchBarExample;
+			packageProductDependencies = (
+				B9EAB54624FE5CA600374E52 /* SHSearchBar */,
+			);
 			productName = SHSearchBarExample;
 			productReference = B9C8325D21C84F3D0008ED90 /* SHSearchBarExample.app */;
 			productType = "com.apple.product-type.application";
@@ -141,7 +110,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1010;
-				LastUpgradeCheck = 1010;
+				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = CodingCobra;
 				TargetAttributes = {
 					B9C8325C21C84F3D0008ED90 = {
@@ -151,7 +120,7 @@
 				};
 			};
 			buildConfigurationList = B9C8325821C84F3D0008ED90 /* Build configuration list for PBXProject "SHSearchBarExample" */;
-			compatibilityVersion = "Xcode 9.3";
+			compatibilityVersion = "Xcode 12.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -166,37 +135,17 @@
 				"zh-Hans",
 			);
 			mainGroup = B9C8325421C84F3D0008ED90;
+			packageReferences = (
+				B9EAB54524FE5CA600374E52 /* XCRemoteSwiftPackageReference "SHSearchBar" */,
+			);
 			productRefGroup = B9C8325E21C84F3D0008ED90 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = B9C8329821C853F90008ED90 /* Products */;
-					ProjectRef = B9C8329721C853F90008ED90 /* SHSearchBar.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				B9C8325C21C84F3D0008ED90 /* SHSearchBarExample */,
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		B9C8329D21C853F90008ED90 /* SHSearchBar.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = SHSearchBar.framework;
-			remoteRef = B9C8329C21C853F90008ED90 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		B9C8329F21C853F90008ED90 /* SHSearchBar_iOS_Tests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = SHSearchBar_iOS_Tests.xctest;
-			remoteRef = B9C8329E21C853F90008ED90 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		B9C8325B21C84F3D0008ED90 /* Resources */ = {
@@ -224,14 +173,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		B9C832A121C8540A0008ED90 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = SHSearchBar;
-			targetProxy = B9C832A021C8540A0008ED90 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		B9C8326421C84F3D0008ED90 /* Main.storyboard */ = {
@@ -295,6 +236,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -356,6 +298,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -440,6 +383,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B9EAB54524FE5CA600374E52 /* XCRemoteSwiftPackageReference "SHSearchBar" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Blackjacx/SHSearchBar/";
+			requirement = {
+				branch = develop;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B9EAB54624FE5CA600374E52 /* SHSearchBar */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B9EAB54524FE5CA600374E52 /* XCRemoteSwiftPackageReference "SHSearchBar" */;
+			productName = SHSearchBar;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = B9C8325521C84F3D0008ED90 /* Project object */;
 }

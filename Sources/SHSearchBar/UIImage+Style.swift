@@ -3,7 +3,7 @@
 //  SHSearchBar
 //
 //  Created by Stefan Herold on 16/08/16.
-//  Copyright © 2016 StefanHerold. All rights reserved.
+//  Copyright © 2020 Stefan Herold. All rights reserved.
 //
 
 import UIKit
@@ -21,9 +21,11 @@ extension UIImage {
     }
 
     func roundedImage(with cornerRadius: CGFloat, cornersToRound: UIRectCorner) -> UIImage {
-        let rect = CGRect(origin:CGPoint(x: 0, y: 0), size: size)
+        let rect = CGRect(origin: CGPoint(x: 0, y: 0), size: size)
         UIGraphicsBeginImageContextWithOptions(size, false, 0)
-        UIBezierPath(roundedRect: rect, byRoundingCorners: cornersToRound, cornerRadii: CGSize(width: cornerRadius, height: cornerRadius)).addClip()
+        UIBezierPath(roundedRect: rect,
+                     byRoundingCorners: cornersToRound,
+                     cornerRadii: CGSize(width: cornerRadius, height: cornerRadius)).addClip()
         draw(in: rect)
         return UIGraphicsGetImageFromCurrentImageContext()!
     }

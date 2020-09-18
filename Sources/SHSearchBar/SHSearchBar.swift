@@ -3,15 +3,14 @@
 //  SHSearchBar
 //
 //  Created by Stefan Herold on 01/08/16.
-//  Copyright © 2016 StefanHerold. All rights reserved.
+//  Copyright © 2020 Stefan Herold. All rights reserved.
 //
 
 import UIKit
 
-/**
- * The central searchbar class of this framework. 
- * You must initialize this class using an instance of SHSearchBarConfig which is also changable later.
- */
+/// The central searchbar class of this framework.
+/// You must initialize this class using an instance of SHSearchBarConfig which
+/// is also changable later.
 public class SHSearchBar: UIView, SHSearchBarDelegate {
     /// The content of this property is used to restore the textField text after cancellation
     var textBeforeEditing: String?
@@ -27,7 +26,6 @@ public class SHSearchBar: UIView, SHSearchBarDelegate {
     /// The cancel button under the right side of the searhcbar.
     let cancelButton: UIButton = UIButton(type: .custom)
 
-
     // MARK: - Public Properties
 
     /// This textfield is currently the central element of the searchbar. 
@@ -38,7 +36,7 @@ public class SHSearchBar: UIView, SHSearchBarDelegate {
     /// The central SHSearchBarConfig instance which configures all searchbar parameters.
     public var config: SHSearchBarConfig {
         didSet {
-            if let textField = textField as? SHSearchBarTextField  {
+            if let textField = textField as? SHSearchBarTextField {
                 textField.config = config
             }
             updateUserInterface()
@@ -54,18 +52,17 @@ public class SHSearchBar: UIView, SHSearchBarDelegate {
     }
 
     /// The text of the searchbar. Defaults to nil.
-    public var text: String? {set {textField.text = newValue} get {return textField.text}}
+    public var text: String? { get { textField.text } set { textField.text = newValue } }
     /// The placeholder of the searchbar. Defaults to nil.
-    public var placeholder: String? {set {textField.placeholder = newValue} get {return textField.placeholder}}
+    public var placeholder: String? { get { textField.placeholder } set { textField.placeholder = newValue } }
     /// The text alignment of the searchbar.
-    public var textAlignment: NSTextAlignment {set {textField.textAlignment = newValue} get {return textField.textAlignment}}
+    public var textAlignment: NSTextAlignment { get { textField.textAlignment } set { textField.textAlignment = newValue } }
     /// The enabled state of the searchbar.
-    public var isEnabled: Bool {set {textField.isEnabled = newValue} get {return textField.isEnabled}}
+    public var isEnabled: Bool { get { textField.isEnabled } set { textField.isEnabled = newValue } }
 
     /// The delegate which informs the user about important events.
     public weak var delegate: SHSearchBarDelegate?
 
-    
     // MARK: - Lifecycle
 
     /**
@@ -119,8 +116,9 @@ public class SHSearchBar: UIView, SHSearchBarDelegate {
         cancelButton.adjustsImageWhenHighlighted = true
         cancelButton.addTarget(self, action: #selector(pressedCancelButton(_:)), for: .touchUpInside)
     }
-    
-    required public init?(coder aDecoder: NSCoder) {
+
+    @available(*, unavailable, message: "init(coder:) has not been implemented")
+    required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
@@ -144,12 +142,13 @@ public class SHSearchBar: UIView, SHSearchBarDelegate {
 
                 cancelButton.trailingAnchor.constraint(equalTo: trailingAnchor),
                 cancelButton.topAnchor.constraint(equalTo: topAnchor),
-                cancelButton.bottomAnchor.constraint(equalTo: bottomAnchor),
+                cancelButton.bottomAnchor.constraint(equalTo: bottomAnchor)
             ]
             NSLayoutConstraint.activate(constraints)
 
             bgToParentConstraint = backgroundView.trailingAnchor.constraint(equalTo: trailingAnchor)
-            bgToCancelButtonConstraint = backgroundView.trailingAnchor.constraint(equalTo: cancelButton.leadingAnchor, constant: -config.rasterSize)
+            bgToCancelButtonConstraint = backgroundView.trailingAnchor.constraint(equalTo: cancelButton.leadingAnchor,
+                                                                                  constant: -config.rasterSize)
         }
 
         bgToCancelButtonConstraint.constant = -config.rasterSize
@@ -161,31 +160,29 @@ public class SHSearchBar: UIView, SHSearchBarDelegate {
         }
     }
 
-
     // MARK: - First Responder Handling
 
-    public override var isFirstResponder: Bool {
-        return textField.isFirstResponder
+    override public var isFirstResponder: Bool {
+        textField.isFirstResponder
     }
 
     @discardableResult
-    public override func resignFirstResponder() -> Bool {
-        return textField.resignFirstResponder()
+    override public func resignFirstResponder() -> Bool {
+        textField.resignFirstResponder()
     }
 
     @discardableResult
-    public override func becomeFirstResponder() -> Bool {
-        return textField.becomeFirstResponder()
+    override public func becomeFirstResponder() -> Bool {
+        textField.becomeFirstResponder()
     }
 
-    public override var canResignFirstResponder: Bool {
-        return textField.canResignFirstResponder
+    override public var canResignFirstResponder: Bool {
+        textField.canResignFirstResponder
     }
 
-    public override var canBecomeFirstResponder: Bool {
-        return textField.canBecomeFirstResponder
+    override public var canBecomeFirstResponder: Bool {
+        textField.canBecomeFirstResponder
     }
-
 
     // MARK: - UI Updates
 
@@ -215,7 +212,9 @@ public class SHSearchBar: UIView, SHSearchBarDelegate {
         var highlightedAttributes = config.cancelButtonTextAttributes
         let highlightColor = highlightedAttributes[.foregroundColor] as? UIColor ?? SHSearchBarConfig.defaultTextForegroundColor
         highlightedAttributes[.foregroundColor] = highlightColor.withAlphaComponent(0.75)
-        cancelButton.setAttributedTitle(NSAttributedString(string: config.cancelButtonTitle, attributes: highlightedAttributes), for: .highlighted)
+        cancelButton.setAttributedTitle(NSAttributedString(string: config.cancelButtonTitle,
+                                                           attributes: highlightedAttributes),
+                                        for: .highlighted)
 
         if #available(iOS 10.0, *) {
             if let textContentType = config.textContentType {
@@ -234,7 +233,7 @@ public class SHSearchBar: UIView, SHSearchBarDelegate {
      */
     public func updateBackgroundImage(withRadius radius: CGFloat, corners: UIRectCorner, color: UIColor) {
         let insets = UIEdgeInsets(top: radius, left: radius, bottom: radius, right: radius)
-        let imgSize = CGSize(width: radius*2 + 1, height: radius*2 + 1)
+        let imgSize = CGSize(width: radius * 2 + 1, height: radius * 2 + 1)
         var img = UIImage.imageWithSolidColor(color, size: imgSize)
         img = img.roundedImage(with: radius, cornersToRound: corners)
         img = img.resizableImage(withCapInsets: insets)
@@ -254,7 +253,6 @@ public class SHSearchBar: UIView, SHSearchBarDelegate {
         }
     }
 
-    
     // MARK: - Cancel Button Management
 
     public func cancelSearch() {
@@ -327,8 +325,10 @@ extension SHSearchBar: UITextFieldDelegate {
     }
 
     public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        let shouldChange = delegate?.searchBar(self, shouldChangeCharactersIn: range, replacementString: string) ?? searchBar(self, shouldChangeCharactersIn: range, replacementString: string)
-        return shouldChange
+        guard let delegate = delegate else {
+            return searchBar(self, shouldChangeCharactersIn: range, replacementString: string)
+        }
+        return delegate.searchBar(self, shouldChangeCharactersIn: range, replacementString: string)
     }
 
     public func textFieldShouldClear(_ textField: UITextField) -> Bool {

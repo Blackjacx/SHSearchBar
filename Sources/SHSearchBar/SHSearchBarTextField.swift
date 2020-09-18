@@ -3,7 +3,7 @@
 //  SHSearchBar
 //
 //  Created by Stefan Herold on 27/11/2016.
-//  Copyright © 2016 StefanHerold. All rights reserved.
+//  Copyright © 2020 Stefan Herold. All rights reserved.
 //
 
 import UIKit
@@ -36,12 +36,27 @@ public class SHSearchBarTextField: UITextField {
      * - parameter coder: A NSCoder instance.
      * - note: This initializer is not implementes and will raise an exception when called.
      */
-    required public init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    public required init?(coder aDecoder: NSCoder) {
+        preconditionFailure("init(coder:) has not been implemented")
     }
 
-
     // MARK: - Overrides
+
+//    public override func leftViewRect(forBounds bounds: CGRect) -> CGRect {
+//        var rect = super.leftViewRect(forBounds: bounds)
+//        rect.origin = .zero
+//        rect.size.width = leftView?.frame.width ?? rect.width
+//        rect.size.height = frame.height
+//        return rect
+//    }
+//
+//    public override func rightViewRect(forBounds bounds: CGRect) -> CGRect {
+//        var rect = super.rightViewRect(forBounds: bounds)
+//        rect.origin = .zero
+//        rect.size.width = rightView?.frame.width ?? rect.width
+//        rect.size.height = frame.height
+//        return rect
+//    }
 
     override public func textRect(forBounds bounds: CGRect) -> CGRect {
         let rect = super.textRect(forBounds: bounds)
@@ -67,7 +82,7 @@ public class SHSearchBarTextField: UITextField {
             // no left and no right view
             minX = config.rasterSize
             width = bounds.width - config.rasterSize * 2
-            
+
         } else if bounds.minX > 0 && bounds.width == originalBounds.width - bounds.minX {
             // only left view
             minX = bounds.minX
