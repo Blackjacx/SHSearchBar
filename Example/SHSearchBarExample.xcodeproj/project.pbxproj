@@ -389,7 +389,7 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Blackjacx/SHSearchBar/";
 			requirement = {
-				branch = swift53;
+				branch = develop;
 				kind = branch;
 			};
 		};
