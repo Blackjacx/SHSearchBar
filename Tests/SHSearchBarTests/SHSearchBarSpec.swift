@@ -9,6 +9,7 @@
 import UIKit
 import Quick
 import Nimble
+import XCTest
 
 @testable import SHSearchBar
 

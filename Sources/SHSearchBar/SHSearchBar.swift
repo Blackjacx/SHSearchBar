@@ -52,13 +52,13 @@ public class SHSearchBar: UIView, SHSearchBarDelegate {
     }
 
     /// The text of the searchbar. Defaults to nil.
-    public var text: String? { set { textField.text = newValue } get { textField.text } }
+    public var text: String? { get { textField.text } set { textField.text = newValue } }
     /// The placeholder of the searchbar. Defaults to nil.
-    public var placeholder: String? { set { textField.placeholder = newValue } get { textField.placeholder } }
+    public var placeholder: String? { get { textField.placeholder } set { textField.placeholder = newValue } }
     /// The text alignment of the searchbar.
-    public var textAlignment: NSTextAlignment { set { textField.textAlignment = newValue } get { textField.textAlignment } }
+    public var textAlignment: NSTextAlignment { get { textField.textAlignment } set { textField.textAlignment = newValue } }
     /// The enabled state of the searchbar.
-    public var isEnabled: Bool { set { textField.isEnabled = newValue } get { textField.isEnabled } }
+    public var isEnabled: Bool { get { textField.isEnabled } set { textField.isEnabled = newValue } }
 
     /// The delegate which informs the user about important events.
     public weak var delegate: SHSearchBarDelegate?
