@@ -58,13 +58,6 @@ xcuserdata/
 timeline.xctimeline
 playground.xcworkspace
 
-# Swift Package Manager
-#
-# Add this line if you want to avoid checking in source code from Swift Package Manager dependencies.
-# Packages/
-# Package.pins
-.build/
-
 # CocoaPods
 #
 # We recommend against adding the Pods directory to your .gitignore. However
@@ -80,6 +73,7 @@ Pods/
 Carthage/Build
 
 # SPM
+.build
 .swiftpm
 
 # fastlane
