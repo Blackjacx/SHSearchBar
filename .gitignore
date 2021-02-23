@@ -5,6 +5,7 @@
 # macos
 **/.DS_Store
 **/.env
+**/.envrc
 
 ## CI
 codesigndoc_exports
