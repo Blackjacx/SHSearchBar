@@ -12,6 +12,7 @@ codesigndoc_exports
 
 # Carthage framework bundle - created during release process
 *.framework.zip
+*.xcframework.zip
 # Fastlane config script is downloaded
 fastlane/Fastfile
 # Fastlane plugin config is downloaded
