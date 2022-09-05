@@ -4,7 +4,7 @@
 
 <h1 align="center">SHSearchBar</h1>
 
-[![Twitter](https://img.shields.io/twitter/follow/blackjacxxx?label=%40Blackjacxxx)](https://twitter.com/blackjacx)
+[![Twitter](https://img.shields.io/twitter/follow/blackjacxxx?label=%40Blackjacxxx)](https://twitter.com/blackjacxxx)
 <a href="https://github.com/Blackjacx/shsearchbar/actions?query=workflow%3ACI"><img alt="CI status" src="https://github.com/blackjacx/shsearchbar/workflows/CI/badge.svg" /></a>
 <img alt="Github Current Release" src="https://img.shields.io/github/release/blackjacx/SHSearchBar.svg" /> 
 [![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2FBlackjacx%2FSHSearchBar%2Fbadge%3Ftype%3Dswift-versions)](https://swiftpackageindex.com/Blackjacx/SHSearchBar)
