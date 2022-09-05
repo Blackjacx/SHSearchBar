@@ -518,7 +518,7 @@ final class SharedConfiguration: QuickConfiguration {
     static var searchBar = "it"
 
     // swiftlint:disable:next function_body_length
-    override class func configure(_ configuration: Configuration) {
+    override class func configure(_ configuration: QCKConfiguration) {
         sharedExamples(SharedConfiguration.searchBar) { (sharedExampleContext: @escaping SharedExampleContext) in
             var superview: UIView!
             var searchbar: SHSearchBarMock!
