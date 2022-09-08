@@ -42,19 +42,18 @@ confirm.
 
 ### [CocoaPods](http://cocoapods.org)
 
-Since SHSearchBar uses localized resources I dropped CocoaPods support in favor for SPM from version `2.0.0`. 
+Since SHSearchBar uses localized resources I dropped CocoaPods support in favor of SPM from version `2.0.0`. 
 Please integrate the package via SPM (see above).
 
 ### Carthage
 
-Since SHSearchBar uses localized resources I dropped Carthage support in favor for SPM version `2.0.0`. 
+Since SHSearchBar uses localized resources I dropped Carthage support in favor of SPM from version `2.0.0`. 
 Please integrate the package via SPM (see above).
 
 ## Examples
 
 The repo includes an example project. It shows shows different use cases of 
-the searchbar. To run it, just type `pod try SHSearchBar` in your console and 
-it will be cloned and opened for you. The following images show some of these 
+the search bar. To run it, just open and run `./Example/SHSearchBarExample.xcodeproj`. The following images show some
 use cases:
 
 <p align="center">
@@ -91,6 +90,31 @@ use cases:
 <caption align="center">You can use the search bar inside a UINavigationBar:</caption><br />
 <img src="./.github/assets/example_07.png" alt="UINavigationBar Support">
 </p>
+
+## Code Documentation
+
+The [code documentation](https://swiftpackageindex.com/Blackjacx/SHSearchBar/develop/documentation/shsearchbar) is generated and hosted by [Swift Package Index](https://swiftpackageindex.com/) (powered by [DocC](https://developer.apple.com/documentation/docc))
+
+## Release
+
+To release this Swift package the following steps have to be taken:
+- Create a new branch `release-x.y.z`
+- Run `bash <(curl -H -s https://raw.githubusercontent.com/Blackjacx/Scripts/master/frameworks/bootstrap.sh)` to update to the latest shared development files
+- Run `bundle update` to update all Ruby gems
+- Commit all changes, make a PR and merge it to develop
+- Run `bundle exec fastlane release framework:"SHSearchBar" version:"x.y.z"` to release the new version
+- Post the following on Twitter
+```
+SHSearchBar release x.y.z 🎉
+
+▸ 🚀  SHSearchBar (x.y.z) successfully published
+▸ 📅  September 2nd
+▸ 🌎  https://swiftpackageindex.com/Blackjacx/SHSearchBar
+▸ 🌎  https://github.com/Blackjacx/SHSearchBar/releases/latest
+▸ 👍  Tell your friends!
+
+#spm #search #ios #apple #xcode #uisearchbar #swiftpackagemanager
+```
 
 ## Contribution
 
