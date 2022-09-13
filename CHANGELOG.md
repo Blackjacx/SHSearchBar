@@ -1,6 +1,7 @@
 # Change Log
 
 ## [Unreleased]
+* [#58](https://github.com/Blackjacx/SHSearchBar/pull/58): Xcode 14 Compatibility - [@Blackjacx](https://github.com/Blackjacx).
 
 ## [2.0.0] - 2020-09-18
 * [#54](https://github.com/Blackjacx/SHSearchBar/pull/54): Swift 5.3 & swift package manager - [@Blackjacx](https://github.com/Blackjacx).
