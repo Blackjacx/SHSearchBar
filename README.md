@@ -1,17 +1,18 @@
-<!-- <p align="center">
-<img src="./icon.png" alt="SHSearchBar" height="128" width="128">
-</p> -->
-
-<h1 align="center">SHSearchBar</h1>
-
 <!--<a href="https://github.com/Blackjacx/shsearchbar/actions?query=workflow%3ACI"><img alt="CI status" src="https://github.com/blackjacx/shsearchbar/workflows/CI/badge.svg" /></a>-->
-[![Twitter](https://img.shields.io/twitter/follow/blackjacxxx?label=%40Blackjacxxx)](https://twitter.com/blackjacxxx)
+[![Twitter Follow](https://img.shields.io/badge/follow-%40blackjacx-1DA1F2?logo=twitter&style=for-the-badge)](https://twitter.com/intent/follow?original_referer=https%3A%2F%2Fgithub.com%2Fblackjacx&screen_name=Blackjacxxx)
+[![Twitter Follow](https://img.shields.io/badge/Follow-%40Blackjacx-1DA1F2?logo=twitter)](https://twitter.com/intent/follow?original_referer=https%3A%2F%2Fgithub.com%2Fblackjacx&screen_name=Blackjacxxx)
 [![Version](https://shields.io/github/v/release/blackjacx/shsearchbar?display_name=tag&include_prereleases&sort=semver)](https://github.com/Blackjacx/shsearchbar/releases)
 [![Swift Versions](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2FBlackjacx%2FSHSearchBar%2Fbadge%3Ftype%3Dswift-versions)](https://swiftpackageindex.com/Blackjacx/SHSearchBar)
 [![Platforms](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2FBlackjacx%2FSHSearchBar%2Fbadge%3Ftype%3Dplatforms)](https://swiftpackageindex.com/Blackjacx/SHSearchBar)
 [![Codebeat](https://codebeat.co/badges/44539071-5029-4379-9d33-99dd721915c8)](https://codebeat.co/projects/github-com-blackjacx-shsearchbar)
 [![License](https://img.shields.io/github/license/blackjacx/shsearchbar.svg)](https://github.com/blackjacx/shsearchbar/blob/develop/LICENSE)
-[![Donate](https://img.shields.io/badge/Donate-PayPal-blue.svg)](https://www.paypal.me/STHEROLD)
+[![Donate](https://img.shields.io/badge/Donate-PayPal-blue.svg?logo=paypal&style=for-the-badge)](https://www.paypal.me/STHEROLD)
+
+<!-- <p align="center">
+<img src="./icon.png" alt="SHSearchBar" height="128" width="128">
+</p> -->
+
+# SHSearchBar
 
 The clean and shiny search bar that does what UISearchBar does only with dirty 
 hacks. This view is designed to tackle the customization limits of UISearchBar. 
