@@ -5,7 +5,7 @@ let package = Package(
     name: "SHSearchBar",
     defaultLocalization: "en",
     platforms: [
-        .iOS(.v10)
+        .iOS(.v14)
     ],
     products: [
         .library(name: "SHSearchBar", targets: ["SHSearchBar"])

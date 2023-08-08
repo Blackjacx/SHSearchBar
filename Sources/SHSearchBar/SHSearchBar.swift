@@ -216,10 +216,8 @@ public class SHSearchBar: UIView, SHSearchBarDelegate {
                                                            attributes: highlightedAttributes),
                                         for: .highlighted)
 
-        if #available(iOS 10.0, *) {
-            if let textContentType = config.textContentType {
-                textField.textContentType = UITextContentType(rawValue: textContentType)
-            }
+        if let textContentType = config.textContentType {
+            textField.textContentType = UITextContentType(rawValue: textContentType)
         }
     }
 
