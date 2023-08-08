@@ -15,7 +15,7 @@ import Nimble
 final class SHSearchBarTextFieldSpec: QuickSpec {
 
     // swiftlint:disable:next function_body_length
-    override func spec() {
+    override class func spec() {
 
         var config: SHSearchBarConfig!
         let bounds: CGRect = CGRect(x: 0, y: 0, width: 353, height: 44)

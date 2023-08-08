@@ -30,10 +30,10 @@ func expectedDefaultConfig() -> SHSearchBarConfig {
     return config
 }
 
-class SHSearchBarSpec: QuickSpec {
+final class SHSearchBarSpec: QuickSpec {
 
     // swiftlint:disable:next function_body_length
-    override func spec() {
+    override class func spec() {
         let delegate: SearchBarConcreteDelegate! = SearchBarConcreteDelegate()
         var config: SHSearchBarConfig = SHSearchBarConfig()
         var nonDefaultConfig = nonDefaultSearchbarConfig()
