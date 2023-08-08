@@ -1,6 +1,8 @@
 # Change Log
 
 ## [Unreleased]
+
+## [2.1.0] - 2023-08-08Z
 * [#63](https://github.com/Blackjacx/SHSearchBar/pull/63): Xcode 15 & Swift 5.9 - [@Blackjacx](https://github.com/Blackjacx).
 
 ## [2.0.0] - 2020-09-18
