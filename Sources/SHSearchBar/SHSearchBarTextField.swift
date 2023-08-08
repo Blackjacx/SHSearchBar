@@ -78,25 +78,21 @@ public class SHSearchBarTextField: UITextField {
         var minX: CGFloat = 0
         var width: CGFloat = 0
 
-        if bounds.width == originalBounds.width {
+        (minX, width) = if bounds.width == originalBounds.width {
             // no left and no right view
-            minX = config.rasterSize
-            width = bounds.width - config.rasterSize * 2
+            (config.rasterSize, bounds.width - config.rasterSize * 2)
 
         } else if bounds.minX > 0 && bounds.width == originalBounds.width - bounds.minX {
             // only left view
-            minX = bounds.minX
-            width = bounds.width - config.rasterSize
+            (bounds.minX, bounds.width - config.rasterSize)
 
         } else if bounds.minX == 0 && bounds.width < originalBounds.width {
             // only right view
-            minX = config.rasterSize
-            width = bounds.width - config.rasterSize
+            (config.rasterSize, bounds.width - config.rasterSize)
 
         } else {
             // left & right view
-            minX = bounds.minX
-            width = bounds.width
+            (bounds.minX, bounds.width)
         }
         return CGRect(x: minX, y: 0.0, width: width, height: bounds.height)
     }
