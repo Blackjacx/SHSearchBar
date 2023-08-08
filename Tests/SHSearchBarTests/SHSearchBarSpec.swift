@@ -30,10 +30,10 @@ func expectedDefaultConfig() -> SHSearchBarConfig {
     return config
 }
 
-class SHSearchBarSpec: QuickSpec {
+final class SHSearchBarSpec: QuickSpec {
 
     // swiftlint:disable:next function_body_length
-    override func spec() {
+    override class func spec() {
         let delegate: SearchBarConcreteDelegate! = SearchBarConcreteDelegate()
         var config: SHSearchBarConfig = SHSearchBarConfig()
         var nonDefaultConfig = nonDefaultSearchbarConfig()
@@ -518,7 +518,7 @@ final class SharedConfiguration: QuickConfiguration {
     static var searchBar = "it"
 
     // swiftlint:disable:next function_body_length
-    override class func configure(_ configuration: Configuration) {
+    override class func configure(_ configuration: QCKConfiguration) {
         sharedExamples(SharedConfiguration.searchBar) { (sharedExampleContext: @escaping SharedExampleContext) in
             var superview: UIView!
             var searchbar: SHSearchBarMock!
@@ -546,10 +546,10 @@ final class SharedConfiguration: QuickConfiguration {
                     return
                 }
 
-                if let unwrappedSearchBar = sharedExampleContext()[SharedConfiguration.ContextKey.searchbar] as? SHSearchBarMock {
-                    searchbar = unwrappedSearchBar
+                searchbar = if let unwrappedSearchBar = sharedExampleContext()[SharedConfiguration.ContextKey.searchbar] as? SHSearchBarMock {
+                    unwrappedSearchBar
                 } else {
-                    searchbar = SHSearchBarMock(config: unwrappedConfig)
+                    SHSearchBarMock(config: unwrappedConfig)
                 }
 
                 delegate = SearchBarConcreteDelegate()

@@ -1,23 +1,18 @@
+<!--<a href="https://github.com/Blackjacx/shsearchbar/actions?query=workflow%3ACI"><img alt="CI status" src="https://github.com/blackjacx/shsearchbar/workflows/CI/badge.svg" /></a>-->
+[![Twitter Follow](https://img.shields.io/badge/follow-%40blackjacx-1DA1F2?logo=twitter&style=for-the-badge)](https://twitter.com/intent/follow?original_referer=https%3A%2F%2Fgithub.com%2Fblackjacx&screen_name=Blackjacxxx)
+[![Twitter Follow](https://img.shields.io/badge/Follow-%40Blackjacx-1DA1F2?logo=twitter)](https://twitter.com/intent/follow?original_referer=https%3A%2F%2Fgithub.com%2Fblackjacx&screen_name=Blackjacxxx)
+[![Version](https://shields.io/github/v/release/blackjacx/shsearchbar?display_name=tag&include_prereleases&sort=semver)](https://github.com/Blackjacx/shsearchbar/releases)
+[![Swift Versions](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2FBlackjacx%2FSHSearchBar%2Fbadge%3Ftype%3Dswift-versions)](https://swiftpackageindex.com/Blackjacx/SHSearchBar)
+[![Platforms](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2FBlackjacx%2FSHSearchBar%2Fbadge%3Ftype%3Dplatforms)](https://swiftpackageindex.com/Blackjacx/SHSearchBar)
+[![Codebeat](https://codebeat.co/badges/44539071-5029-4379-9d33-99dd721915c8)](https://codebeat.co/projects/github-com-blackjacx-shsearchbar)
+[![License](https://img.shields.io/github/license/blackjacx/shsearchbar.svg)](https://github.com/blackjacx/shsearchbar/blob/develop/LICENSE)
+[![Donate](https://img.shields.io/badge/Donate-PayPal-blue.svg?logo=paypal&style=for-the-badge)](https://www.paypal.me/STHEROLD)
+
 <!-- <p align="center">
 <img src="./icon.png" alt="SHSearchBar" height="128" width="128">
 </p> -->
 
-<h1 align="center">SHSearchBar</h1>
-
-[![Twitter](https://img.shields.io/twitter/follow/blackjacxxx?label=%40Blackjacxxx)](https://twitter.com/blackjacx)
-<a href="https://github.com/Blackjacx/shsearchbar/actions?query=workflow%3ACI"><img alt="CI status" src="https://github.com/blackjacx/shsearchbar/workflows/CI/badge.svg" /></a>
-<img alt="Github Current Release" src="https://img.shields.io/github/release/blackjacx/SHSearchBar.svg" /> 
-<img alt="Cocoapods Platforms" src="https://img.shields.io/cocoapods/p/SHSearchBar.svg"/>
-<img alt="Xcode 12.0+" src="https://img.shields.io/badge/Xcode-12.0%2B-blue.svg"/>
-<img alt="iOS 10.0+" src="https://img.shields.io/badge/iOS-10.0%2B-blue.svg"/>
-<img alt="Swift 5.3+" src="https://img.shields.io/badge/Swift-5.3%2B-orange.svg"/>
-<img alt="Github Repo Size" src="https://img.shields.io/github/repo-size/blackjacx/SHSearchBar.svg" />
-<img alt="Github Code Size" src="https://img.shields.io/github/languages/code-size/blackjacx/SHSearchBar.svg" />
-<img alt="Github Closed PR's" src="https://img.shields.io/github/issues-pr-closed/blackjacx/SHSearchBar.svg" />
-<a href="https://github.com/Carthage/Carthage"><img alt="Carthage compatible" src="https://img.shields.io/badge/Carthage-Compatible-brightgreen.svg?style=flat"/></a>
-<a href="https://github.com/Blackjacx/SHSearchBar/blob/develop/LICENSE?raw=true"><img alt="License" src="https://img.shields.io/cocoapods/l/SHSearchBar.svg?style=flat"/></a>
-<a href="https://codebeat.co/projects/github-com-blackjacx-shsearchbar"><img alt="Codebeat" src="https://codebeat.co/badges/44539071-5029-4379-9d33-99dd721915c8" /></a>
-<a href="https://www.paypal.me/STHEROLD"><img alt="Donate" src="https://img.shields.io/badge/Donate-PayPal-blue.svg"/></a>
+# SHSearchBar
 
 The clean and shiny search bar that does what UISearchBar does only with dirty 
 hacks. This view is designed to tackle the customization limits of UISearchBar. 
@@ -43,19 +38,18 @@ confirm.
 
 ### [CocoaPods](http://cocoapods.org)
 
-Since SHSearchBar uses localized resources I dropped CocoaPods support in favor for SPM from version `2.0.0`. 
+Since SHSearchBar uses localized resources I dropped CocoaPods support in favor of SPM from version `2.0.0`. 
 Please integrate the package via SPM (see above).
 
 ### Carthage
 
-Since SHSearchBar uses localized resources I dropped Carthage support in favor for SPM version `2.0.0`. 
+Since SHSearchBar uses localized resources I dropped Carthage support in favor of SPM from version `2.0.0`. 
 Please integrate the package via SPM (see above).
 
 ## Examples
 
 The repo includes an example project. It shows shows different use cases of 
-the searchbar. To run it, just type `pod try SHSearchBar` in your console and 
-it will be cloned and opened for you. The following images show some of these 
+the search bar. To run it, just open and run `./Example/SHSearchBarExample.xcodeproj`. The following images show some
 use cases:
 
 <p align="center">
@@ -93,6 +87,31 @@ use cases:
 <img src="./.github/assets/example_07.png" alt="UINavigationBar Support">
 </p>
 
+## Code Documentation
+
+The [code documentation](https://swiftpackageindex.com/Blackjacx/SHSearchBar/develop/documentation/shsearchbar) is generated and hosted by [Swift Package Index](https://swiftpackageindex.com/) (powered by [DocC](https://developer.apple.com/documentation/docc))
+
+## Release
+
+To release this Swift package the following steps have to be taken:
+- Create a new branch `release-x.y.z`
+- Run `bash <(curl -H -s https://raw.githubusercontent.com/Blackjacx/Scripts/master/frameworks/bootstrap.sh)` to update to the latest shared development files
+- Run `bundle update` to update all Ruby gems
+- Commit all changes, make a PR and merge it to develop
+- Run `bundle exec fastlane release framework:"SHSearchBar" version:"x.y.z"` to release the new version
+- Post the following on Twitter
+```
+SHSearchBar release x.y.z 🎉
+
+▸ 🚀  SHSearchBar (x.y.z) successfully published
+▸ 📅  September 2nd
+▸ 🌎  https://swiftpackageindex.com/Blackjacx/SHSearchBar
+▸ 🌎  https://github.com/Blackjacx/SHSearchBar/releases/latest
+▸ 👍  Tell your friends!
+
+#spm #search #ios #apple #xcode #uisearchbar #swiftpackagemanager
+```
+
 ## Contribution
 
 - If you found a **bug**, please open an **issue**.
@@ -102,6 +121,14 @@ use cases:
 ## Author
 
 [Stefan Herold](mailto:stefan.herold@gmail.com) • 🐦 [@Blackjacxxx](https://twitter.com/Blackjacxxx)
+
+## Contributors
+
+Thanks to all of you who are part of this:
+
+<a href="https://github.com/blackjacx/SHSearchBar/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=blackjacx/SHSearchBar" />
+</a>
 
 ## License
 

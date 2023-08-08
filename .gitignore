@@ -5,12 +5,14 @@
 # macos
 **/.DS_Store
 **/.env
+**/.envrc
 
 ## CI
 codesigndoc_exports
 
 # Carthage framework bundle - created during release process
 *.framework.zip
+*.xcframework.zip
 # Fastlane config script is downloaded
 fastlane/Fastfile
 # Fastlane plugin config is downloaded
@@ -21,12 +23,12 @@ Mintfile
 .swiftlint.yml
 # Danger config file which is downloaded
 Dangerfile
-# Ruby gems config file which is downloaded
-Gemfile
 # Bundler configuration which is bootstrapped
 .bundle
 # Bundler vendor information which is bootstrapped
 vendor
+# Documentation script - loaded via https://raw.githubusercontent.com/Blackjacx/Scripts/master/frameworks/bootstrap.sh
+scripts/make-docc-documentation.sh
 
 ## Build generated
 build/
