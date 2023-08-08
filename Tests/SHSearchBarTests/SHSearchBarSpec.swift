@@ -546,10 +546,10 @@ final class SharedConfiguration: QuickConfiguration {
                     return
                 }
 
-                if let unwrappedSearchBar = sharedExampleContext()[SharedConfiguration.ContextKey.searchbar] as? SHSearchBarMock {
-                    searchbar = unwrappedSearchBar
+                searchbar = if let unwrappedSearchBar = sharedExampleContext()[SharedConfiguration.ContextKey.searchbar] as? SHSearchBarMock {
+                    unwrappedSearchBar
                 } else {
-                    searchbar = SHSearchBarMock(config: unwrappedConfig)
+                    SHSearchBarMock(config: unwrappedConfig)
                 }
 
                 delegate = SearchBarConcreteDelegate()

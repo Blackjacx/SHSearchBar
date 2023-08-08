@@ -12,10 +12,10 @@ extension String {
     var localized: String {
         let frameworkTranslation = NSLocalizedString(self, tableName: "Localizable", bundle: .module, value: self, comment: "")
 
-        if frameworkTranslation != self {
-            return frameworkTranslation
+        return if frameworkTranslation != self {
+            frameworkTranslation
+        } else {
+            self
         }
-
-        return self
     }
 }
