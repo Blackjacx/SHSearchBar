@@ -23,6 +23,7 @@ class ViewController: UIViewController, SHSearchBarDelegate {
     var addressSearchbarTop: SHSearchBar!
     var addressSearchbarBottom: SHSearchBar!
     var navigationSearchBar: SHSearchBar!
+    var blurEffectView: UIVisualEffectView?
 
     var viewConstraints: [NSLayoutConstraint]?
 
@@ -188,6 +189,14 @@ class ViewController: UIViewController, SHSearchBarDelegate {
 
         viewConstraints = constraints
     }
+    
+    func searchBarDidBeginEditing(_ searchBar: SHSearchBar) {
+        setEditMode(enabled: true)
+    }
+    
+    func searchBarDidEndEditing(_ searchBar: SHSearchBar) {
+        setEditMode(enabled: false)
+    }
 }
 
 // MARK: - Helper Functions
@@ -251,4 +260,23 @@ func imageViewWithIcon(_ icon: UIImage, raster: CGFloat) -> UIView {
     ])
 
     return container
+}
+
+extension ViewController {
+    
+    func setEditMode(enabled: Bool) {
+        if enabled {
+            addBlurView()
+        } else {
+            blurEffectView?.removeFromSuperview()
+        }
+    }
+    
+    func addBlurView() {
+        let blurEffect = UIBlurEffect(style: .light)
+        blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView?.frame = view.bounds
+        blurEffectView?.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.addSubview(blurEffectView!)
+    }
 }
