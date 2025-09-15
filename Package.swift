@@ -12,7 +12,7 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/Quick/Quick", from: "7.0.0"),
-        .package(url: "https://github.com/Quick/Nimble", from: "12.0.0")
+        .package(url: "https://github.com/Quick/Nimble", from: "13.7.1")
     ],
     targets: [
         .target(name: "SHSearchBar", resources: [.process("Resources")]),
