@@ -14,7 +14,7 @@ jobs:
     runs-on: macos-latest
     steps:      
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v5
       - name: Download Configuration Files
         run: bash <(curl -s https://raw.githubusercontent.com/Blackjacx/Scripts/master/frameworks/bootstrap.sh) -d
       - name: Cache RubyGems
