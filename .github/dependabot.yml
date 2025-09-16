@@ -9,12 +9,12 @@ updates:
     schedule:
       interval: "weekly"
     assignees:
-      - "blackjacx"
+      - "Blackjacx"
     open-pull-requests-limit: 20 # Limit the number of open PRs
   - package-ecosystem: "swift"
     directory: "/" # Location of package manifests
     schedule:
       interval: "weekly"
     assignees:
-      - "blackjacx"
+      - "Blackjacx"
     open-pull-requests-limit: 20 # Limit the number of open PRs
