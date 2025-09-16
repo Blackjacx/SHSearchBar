@@ -1,10 +1,10 @@
 <!--<a href="https://github.com/Blackjacx/shsearchbar/actions?query=workflow%3ACI"><img alt="CI status" src="https://github.com/blackjacx/shsearchbar/workflows/CI/badge.svg" /></a>-->
+
 [![Twitter Follow](https://img.shields.io/badge/follow-%40blackjacx-1DA1F2?logo=twitter&style=for-the-badge)](https://twitter.com/intent/follow?original_referer=https%3A%2F%2Fgithub.com%2Fblackjacx&screen_name=Blackjacxxx)
 [![Twitter Follow](https://img.shields.io/badge/Follow-%40Blackjacx-1DA1F2?logo=twitter)](https://twitter.com/intent/follow?original_referer=https%3A%2F%2Fgithub.com%2Fblackjacx&screen_name=Blackjacxxx)
 [![Version](https://shields.io/github/v/release/blackjacx/shsearchbar?display_name=tag&include_prereleases&sort=semver)](https://github.com/Blackjacx/shsearchbar/releases)
 [![Swift Versions](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2FBlackjacx%2FSHSearchBar%2Fbadge%3Ftype%3Dswift-versions)](https://swiftpackageindex.com/Blackjacx/SHSearchBar)
 [![Platforms](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2FBlackjacx%2FSHSearchBar%2Fbadge%3Ftype%3Dplatforms)](https://swiftpackageindex.com/Blackjacx/SHSearchBar)
-[![Codebeat](https://codebeat.co/badges/44539071-5029-4379-9d33-99dd721915c8)](https://codebeat.co/projects/github-com-blackjacx-shsearchbar)
 [![License](https://img.shields.io/github/license/blackjacx/shsearchbar.svg)](https://github.com/blackjacx/shsearchbar/blob/develop/LICENSE)
 [![Donate](https://img.shields.io/badge/Donate-PayPal-blue.svg?logo=paypal&style=for-the-badge)](https://www.paypal.me/STHEROLD)
 
@@ -14,10 +14,10 @@
 
 # SHSearchBar
 
-The clean and shiny search bar that does what UISearchBar does only with dirty 
-hacks. This view is designed to tackle the customization limits of UISearchBar. 
-The difference here is that this class does not inherit UISearchBar but 
-composes a new UIView object by using a UITextField that is much easier to use. 
+The clean and shiny search bar that does what UISearchBar does only with dirty
+hacks. This view is designed to tackle the customization limits of UISearchBar.
+The difference here is that this class does not inherit UISearchBar but
+composes a new UIView object by using a UITextField that is much easier to use.
 These are the limits of the UISearchBar:
 
 - no clean way to left align the placeholder
@@ -32,23 +32,23 @@ Since I use a UITextField these restrictions do not apply.
 ### [Swift Package Manager](https://swift.org/package-manager/)
 
 In Xcode open your target list and select your project. Click the tab `Swift 
-Packages` and there the small `+` icon. Enter the URL of this repository, 
-select the version you want to install - usually the preset is okay - and 
+Packages` and there the small `+` icon. Enter the URL of this repository,
+select the version you want to install - usually the preset is okay - and
 confirm.
 
 ### [CocoaPods](http://cocoapods.org)
 
-Since SHSearchBar uses localized resources I dropped CocoaPods support in favor of SPM from version `2.0.0`. 
+Since SHSearchBar uses localized resources I dropped CocoaPods support in favor of SPM from version `2.0.0`.
 Please integrate the package via SPM (see above).
 
 ### Carthage
 
-Since SHSearchBar uses localized resources I dropped Carthage support in favor of SPM from version `2.0.0`. 
+Since SHSearchBar uses localized resources I dropped Carthage support in favor of SPM from version `2.0.0`.
 Please integrate the package via SPM (see above).
 
 ## Examples
 
-The repo includes an example project. It shows shows different use cases of 
+The repo includes an example project. It shows shows different use cases of
 the search bar. To run it, just open and run `./Example/SHSearchBarExample.xcodeproj`. The following images show some
 use cases:
 
@@ -94,12 +94,14 @@ The [code documentation](https://swiftpackageindex.com/Blackjacx/SHSearchBar/dev
 ## Release
 
 To release this Swift package the following steps have to be taken:
+
 - Create a new branch `release-x.y.z`
 - Run `bash <(curl -H -s https://raw.githubusercontent.com/Blackjacx/Scripts/master/frameworks/bootstrap.sh)` to update to the latest shared development files
 - Run `bundle update` to update all Ruby gems
 - Commit all changes, make a PR and merge it to develop
 - Run `bundle exec fastlane release framework:"SHSearchBar" version:"x.y.z"` to release the new version
 - Post the following on Twitter
+
 ```
 SHSearchBar release x.y.z 🎉
 
