@@ -17,7 +17,7 @@ jobs:
       - uses: swift-actions/setup-swift@v2
         with:
           swift-version: ${{ matrix.swift }}
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - name: Log Swift Version
         run: swift --version
       - name: Log Xcode Versions
