@@ -18,13 +18,13 @@ jobs:
       - name: Download Configuration Files
         run: bash <(curl -s https://raw.githubusercontent.com/Blackjacx/Scripts/master/frameworks/bootstrap.sh) -d
       - name: Cache RubyGems
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: vendor/bundle
           key: ${{ runner.os }}-gem-${{ hashFiles('**/Gemfile.lock') }}
           restore-keys: ${{ runner.os }}-gem-
       - name: Cache Mint packages
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: ${{ env.MINT_PATH }}
           key: ${{ runner.os }}-mint-${{ hashFiles('**/Mintfile') }}
